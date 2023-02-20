@@ -1,0 +1,142 @@
+# https://taskfile.dev
+
+version: '3'
+
+silent: true
+
+dotenv:
+  - .env
+
+tasks:
+  create-symlink-safe:
+    internal: true
+    cmds:
+      - '{{.USER_WORKING_DIR}}/scripts/symlink-safe.sh "{{.SOURCE}}" "{{.TARGET}}"'
+
+  default:
+    desc: List all available tasks
+    cmds:
+      - task --list-all
+
+  1password-ssh:
+    desc: Setup 1password SSH agent
+    cmds:
+      - mkdir -p {{.HOME}}/.1password
+      - ln -sf {{.HOME}}/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock {{.HOME}}/.1password/agent.sock
+
+  brew-bundle:
+    desc: Update brewfile with installed formulae / casks
+    cmds:
+      - brew bundle dump --force --describe --file {{.USER_WORKING_DIR}}/config/homebrew/Brewfile
+
+  brew-install:
+    desc: Install formulae / casks listed in Brewfile
+    cmds:
+      - brew bundle --file {{.USER_WORKING_DIR}}/config/homebrew/Brewfile
+
+  editorconfig:
+    desc: Setup editorconfig config
+    cmds:
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/editorconfig/editorconfig'
+          TARGET: '{{.HOME}}/.editorconfig'
+
+  fish:
+    desc: Setup 🐟 config
+    cmds:
+      - mkdir -p {{.HOME}}/.config
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/fish'
+          TARGET: '{{.HOME}}/.config/fish'
+
+  fish-init:
+    desc: Install fisher and plugins
+    cmds:
+      # Install fisher
+      - fish -c 'curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher'
+      # Install plugins
+      - fish -c 'fisher update'
+
+  git:
+    desc: Setup Git config
+    cmds:
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/git/gitattributes'
+          TARGET: '{{.HOME}}/.gitattributes'
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/git/gitignore'
+          TARGET: '{{.HOME}}/.gitignore'
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/git/gitconfig.local'
+          TARGET: '{{.HOME}}/.gitconfig.local'
+      - git config --global include.path ~/.gitconfig.local
+      - '[[ -n "$GIT_USERNAME" ]] && git config --global user.name "$GIT_USERNAME"; true'
+      - '[[ -n "$GIT_EMAIL" ]] && git config --global user.email "$GIT_EMAIL"; true'
+
+  git-gpg:
+    desc: Setup Git GPG commit signing
+    vars:
+      GPG_SSH_PROGRAM: /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+    cmds:
+      - git config --global commit.gpgsign true
+      - git config --global gpg.format ssh
+      - '[ -f "{{.GPG_SSH_PROGRAM}}" ] && git config --global gpg.ssh.program "{{.GPG_SSH_PROGRAM}}"'
+      - '[[ -n "$GIT_SIGNING_KEY" ]] && git config --global user.signingkey "$GIT_SIGNING_KEY"; true'
+
+  go:
+    desc: Setup Go environment
+    cmds:
+      - mkdir -p {{.HOME}}/.go
+
+  iterm:
+    desc: Install iIterm2 preferences
+    cmds:
+      - open {{.USER_WORKING_DIR}}/config/iterm2/Snazzy.itermcolors
+
+  macos:
+    desc: Configure macOS
+    cmds:
+      - '{{.USER_WORKING_DIR}}/scripts/setup-macos.sh'
+
+  raycast:
+    desc: Install Raycast preferences
+    cmds:
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/raycast/script-commands'
+          TARGET: '{{.HOME}}/.config/raycast/script-commands'
+      - open {{.USER_WORKING_DIR}}/config/raycast/mike.rayconfig
+
+  ssh:
+    desc: Setup SSH config
+    deps:
+      - 1password-ssh
+    cmds:
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/ssh/config'
+          TARGET: '{{.HOME}}/.ssh/config'
+
+  sublime-text:
+    desc: Setup Sublime Text config
+    vars:
+      ST_CFG_PATH: '{{.HOME}}/Library/Application Support/Sublime Text/Packages/User'
+    cmds:
+      - mkdir -p '{{.ST_CFG_PATH}}'
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/sublime-text/Preferences.sublime-settings'
+          TARGET: '{{.ST_CFG_PATH}}/Preferences.sublime-settings'
+
+  zsh:
+    desc: Setup zsh config
+    cmds:
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/zsh/zprofile'
+          TARGET: '{{.HOME}}/.zprofile'

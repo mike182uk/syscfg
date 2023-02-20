@@ -1,0 +1,116 @@
+tap "go-task/tap"
+tap "homebrew/bundle"
+tap "homebrew/cask-fonts"
+tap "homebrew/services"
+tap "mike182uk/tap"
+tap "oven-sh/bun"
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
+# Good-lookin' diffs with diff-highlight and more
+brew "diff-so-fancy"
+# Modern replacement for 'ls'
+brew "exa"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
+# User-friendly command-line shell for UNIX-like operating systems
+brew "fish"
+# Fast and simple Node.js version manager
+brew "fnm"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# GitHub command-line tool
+brew "gh"
+# Distributed revision control system
+brew "git"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
+# Mac App Store command-line interface
+brew "mas"
+# Tools for and transforming and inspecting PDF files
+brew "qpdf"
+# CLI tool that moves files or folder to the trash
+brew "trash"
+# Display directories as trees (with optional color/HTML output)
+brew "tree"
+# Task runner / simpler Make alternative written in Go
+brew "go-task/tap/go-task"
+# Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
+brew "oven-sh/bun/bun"
+# Password manager that keeps all passwords secure behind one password
+cask "1password"
+# Command-line helper for the 1Password password manager
+cask "1password-cli"
+# Chromium based browser
+cask "arc"
+# Official Balena CLI tool
+cask "mike182uk/tap/balena-cli"
+# Menu bar icon organizer
+cask "bartender"
+# Web browser focusing on privacy
+cask "brave-browser"
+# Typeface made for developers
+cask "font-jetbrains-mono"
+# Web browser
+cask "google-chrome"
+# Client for the Google Drive storage service
+cask "google-drive"
+# HTTP and GraphQL Client
+cask "insomnia"
+# Java IDE by JetBrains
+cask "intellij-idea"
+# Terminal emulator as alternative to Apple's Terminal app
+cask "iterm2"
+# App to write, plan, collaborate, and get organized
+cask "notion"
+# Control your tools with a few keystrokes
+cask "raycast"
+# Collection of apps available by subscription
+cask "setapp"
+# Music streaming service
+cask "spotify"
+# Text editor for code, markup and prose
+cask "sublime-text"
+# Application for inspecting installer packages
+cask "suspicious-package"
+# To-do list
+cask "todoist"
+# Open-source code editor
+cask "visual-studio-code"
+# Desktop client for WhatsApp
+cask "whatsapp"
+mas "Command X", id: 6448461551
+mas "Lungo", id: 1263070803
+mas "Xcode", id: 497799835
+vscode "bmalehorn.vscode-fish"
+vscode "bradlc.vscode-tailwindcss"
+vscode "christian-kohler.npm-intellisense"
+vscode "CucumberOpen.cucumber-official"
+vscode "dbaeumer.vscode-eslint"
+vscode "denoland.vscode-deno"
+vscode "dracula-theme.theme-dracula"
+vscode "dunstontc.viml"
+vscode "eamodio.gitlens"
+vscode "EditorConfig.EditorConfig"
+vscode "esbenp.prettier-vscode"
+vscode "formulahendry.auto-rename-tag"
+vscode "Garmin.monkey-c"
+vscode "GitHub.copilot"
+vscode "GitHub.copilot-chat"
+vscode "GitHub.copilot-labs"
+vscode "golang.go"
+vscode "Gruntfuggly.todo-tree"
+vscode "ionutvmi.path-autocomplete"
+vscode "johnpapa.vscode-peacock"
+vscode "ms-azuretools.vscode-docker"
+vscode "ms-vscode.makefile-tools"
+vscode "naumovs.color-highlight"
+vscode "Prisma.prisma"
+vscode "redhat.vscode-yaml"
+vscode "standard.vscode-standard"
+vscode "task.vscode-task"
+vscode "TryGhost.ghost"
+vscode "Vue.volar"
+vscode "wayou.vscode-todo-highlight"
+vscode "yzhang.markdown-all-in-one"
+vscode "zhuangtongfa.material-theme"
+vscode "zxh404.vscode-proto3"

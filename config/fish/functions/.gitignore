@@ -1,0 +1,6 @@
+*
+!.gitignore
+
+!cdf.fish
+!mkd.fish
+!o.fish

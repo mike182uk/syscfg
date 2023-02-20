@@ -1,0 +1,49 @@
+[alias]
+	l = log --pretty=oneline -n 20 --graph --abbrev-commit
+	s = status -s
+	b = branch
+	r = remote
+	ca = commit -am
+	co = commit -m
+	coi = commit
+	pa = push --all
+	go = checkout
+	a = add
+	aa = add .
+	m = merge
+	patch = !git --no-pager diff --no-color
+	undo = reset HEAD~
+	coa = commit --amend
+	coan = commit --amend --no-edit
+	pushf = push -f
+[color]
+	ui = always
+[core]
+	attributesFile = ~/.gitattributes
+	excludesfile = ~/.gitignore
+
+	# Make `git rebase` safer on macOS.
+	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+	trustctime = false
+
+	# Make `git push` push relevant annotated tags when pushing branches out.
+	followTags = true
+
+	# Speed up commands involving untracked files such as `git status`.
+	# https://git-scm.com/docs/git-update-index#_untracked_cache
+	untrackedCache = true
+
+	# Use diff-so-fancy for diffs
+	pager = diff-so-fancy | less --tabs=4 -RFX
+[fetch]
+	prune = true
+[init]
+	defaultBranch = main
+[pull]
+	rebase = true
+[push]
+	default = current
+[rebase]
+	autoStash = true
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
