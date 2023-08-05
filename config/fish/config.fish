@@ -8,7 +8,7 @@ set --global --export HOMEBREW_CASK_OPTS --require-sha
 
 # Init editor
 
-set --global --export EDITOR vim
+set --global --export EDITOR 'zed --wait'
 
 # Init fnm
 

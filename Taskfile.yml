@@ -133,6 +133,14 @@ tasks:
           SOURCE: '{{.USER_WORKING_DIR}}/config/sublime-text/Preferences.sublime-settings'
           TARGET: '{{.ST_CFG_PATH}}/Preferences.sublime-settings'
 
+  zed:
+    desc: Setup Zed config
+    cmds:
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/zed/settings.json'
+          TARGET: '{{.HOME}}/.config/zed/settings.json'
+
   zsh:
     desc: Setup zsh config
     cmds:

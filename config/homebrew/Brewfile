@@ -78,6 +78,8 @@ cask "todoist"
 cask "visual-studio-code"
 # Desktop client for WhatsApp
 cask "whatsapp"
+# Multiplayer code editor
+cask "zed"
 mas "Command X", id: 6448461551
 mas "Lungo", id: 1263070803
 mas "Xcode", id: 497799835
