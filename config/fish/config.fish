@@ -38,7 +38,7 @@ end
 # Init abbreviations
 
 abbr --add cat 'bat'
-abbr --add ls 'exa'
+abbr --add ls 'eza'
 abbr --add nvm 'fnm'
 abbr --add rm 'trash'
 abbr --add brwe 'brew'
@@ -47,7 +47,7 @@ abbr --add d 'docker'
 abbr --add dc 'docker-compose'
 abbr --add e "$EDITOR"
 abbr --add g 'git'
-abbr --add l 'exa -lga --git --group-directories-first'
+abbr --add l 'eza -lga --git --group-directories-first'
 
 abbr --add .. 'cd ..'
 abbr --add ... 'cd ../..'
