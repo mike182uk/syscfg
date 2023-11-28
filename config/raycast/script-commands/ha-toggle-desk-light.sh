@@ -14,8 +14,6 @@
 # @raycast.authorURL https://mdb.sh
 # @raycast.description Toggle Desk Light
 
-source ./.env
+shortcuts run 9288626E-03DB-4B8F-A570-F4CB128A52FE
 
-curl -X POST $HA_URL/api/webhook/$HA_WEBHOOK_ID_TOGGLE_DESK_LIGHT
-
-echo 'Automation Triggered'
+echo 'Desk Light Toggled'

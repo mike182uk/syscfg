@@ -14,8 +14,6 @@
 # @raycast.authorURL https://mdb.sh
 # @raycast.description Toggle Desk
 
-source ./.env
+shortcuts run FBD0D48E-9C78-44FA-AB22-6F4755F9B849
 
-curl -X POST $HA_URL/api/webhook/$HA_WEBHOOK_ID_TOGGLE_DESK
-
-echo 'Automation Triggered'
+echo 'Desk Toggled'

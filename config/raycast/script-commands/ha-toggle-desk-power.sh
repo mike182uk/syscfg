@@ -14,8 +14,6 @@
 # @raycast.authorURL https://mdb.sh
 # @raycast.description Toggle Desk Power
 
-source ./.env
+shortcuts run D74EA0A2-94E2-42CD-ACE5-5CB3B3D34C28
 
-curl -X POST $HA_URL/api/webhook/$HA_WEBHOOK_ID_TOGGLE_DESK_POWER
-
-echo 'Automation Triggered'
+echo 'Desk Power Toggled'
