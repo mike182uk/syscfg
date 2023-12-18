@@ -29,6 +29,10 @@ if test -d $gopath
 	fish_add_path --path $gopath/bin
 end
 
+# Init rust
+
+fish_add_path --path $HOME/.cargo/bin
+
 # Init ssh
 
 if test -e $HOME/.1password/agent.sock
