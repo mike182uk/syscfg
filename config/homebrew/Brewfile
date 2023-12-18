@@ -6,10 +6,16 @@ tap "mike182uk/tap"
 tap "oven-sh/bun"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Cross-platform make
+brew "cmake"
+# Container runtimes on MacOS (and Linux) with minimal setup
+brew "colima", restart_service: true
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
+# Pack, ship and run any application as a lightweight container
+brew "docker"
 # Modern, maintained replacement for ls
-brew "exa"
+brew "eza"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # User-friendly command-line shell for UNIX-like operating systems
@@ -28,26 +34,32 @@ brew "jq"
 brew "mas"
 # Tools for and transforming and inspecting PDF files
 brew "qpdf"
+# Rust toolchain installer
+brew "rustup-init"
 # CLI tool that moves files or folder to the trash
 brew "trash"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Process YAML, JSON, XML, CSV and properties documents from the CLI
+brew "yq"
 # Task runner / simpler Make alternative written in Go
 brew "go-task/tap/go-task"
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
 brew "oven-sh/bun/bun"
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
-# Command-line helper for the 1Password password manager
+# Command-line interface for 1Password
 cask "1password-cli"
 # Chromium based browser
 cask "arc"
 # Official Balena CLI tool
-cask "mike182uk/tap/balena-cli"
+cask "balena-cli"
 # Menu bar icon organizer
 cask "bartender"
 # Web browser focusing on privacy
 cask "brave-browser"
+# Write, edit, and chat about your code with AI
+cask "cursor"
 # Typeface made for developers
 cask "font-jetbrains-mono"
 # Web browser
@@ -56,8 +68,6 @@ cask "google-chrome"
 cask "google-drive"
 # HTTP and GraphQL Client
 cask "insomnia"
-# Java IDE by JetBrains
-cask "intellij-idea"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
 # App to write, plan, collaborate, and get organized
@@ -76,8 +86,6 @@ cask "suspicious-package"
 cask "todoist"
 # Open-source code editor
 cask "visual-studio-code"
-# Desktop client for WhatsApp
-cask "whatsapp"
 # Multiplayer code editor
 cask "zed"
 mas "Command X", id: 6448461551
@@ -103,6 +111,7 @@ vscode "golang.go"
 vscode "Gruntfuggly.todo-tree"
 vscode "ionutvmi.path-autocomplete"
 vscode "johnpapa.vscode-peacock"
+vscode "mechatroner.rainbow-csv"
 vscode "ms-azuretools.vscode-docker"
 vscode "ms-vscode.makefile-tools"
 vscode "naumovs.color-highlight"
