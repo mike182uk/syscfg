@@ -14,6 +14,8 @@ brew "colima", restart_service: true
 brew "diff-so-fancy"
 # Pack, ship and run any application as a lightweight container
 brew "docker"
+# Isolated development environments using Docker
+brew "docker-compose"
 # Modern, maintained replacement for ls
 brew "eza"
 # Simple, fast and user-friendly alternative to find
@@ -30,6 +32,8 @@ brew "gh"
 brew "git"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# Lazier way to manage everything docker
+brew "lazydocker"
 # Mac App Store command-line interface
 brew "mas"
 # Tools for and transforming and inspecting PDF files
@@ -106,7 +110,6 @@ vscode "formulahendry.auto-rename-tag"
 vscode "Garmin.monkey-c"
 vscode "GitHub.copilot"
 vscode "GitHub.copilot-chat"
-vscode "GitHub.copilot-labs"
 vscode "golang.go"
 vscode "Gruntfuggly.todo-tree"
 vscode "ionutvmi.path-autocomplete"
