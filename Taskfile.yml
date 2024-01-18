@@ -106,6 +106,7 @@ tasks:
   raycast:
     desc: Install Raycast preferences
     cmds:
+      - mkdir -p {{.HOME}}/.config/raycast
       - task: create-symlink-safe
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/raycast/script-commands'
@@ -136,6 +137,7 @@ tasks:
   zed:
     desc: Setup Zed config
     cmds:
+      - mkdir -p {{.HOME}}/.config/zed
       - task: create-symlink-safe
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/zed/settings.json'

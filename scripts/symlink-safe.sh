@@ -33,6 +33,6 @@ fi
 
 # Create a symbolic link from the target to the source
 if ! ln -s "$SOURCE" "$TARGET"; then
-	echo "Failed to create symbolic link from $TARGET to $SOURCE" >&2
+	echo "Failed to create symbolic link from $SOURCE to $TARGET" >&2
 	exit 1
 fi
