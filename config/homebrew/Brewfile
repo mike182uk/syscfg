@@ -54,6 +54,8 @@ brew "oven-sh/bun/bun"
 cask "1password"
 # Command-line interface for 1Password
 cask "1password-cli"
+# GPU-accelerated terminal emulator
+cask "alacritty"
 # Chromium based browser
 cask "arc"
 # Official Balena CLI tool
@@ -72,8 +74,6 @@ cask "google-chrome"
 cask "google-drive"
 # HTTP and GraphQL Client
 cask "insomnia"
-# Terminal emulator as alternative to Apple's Terminal app
-cask "iterm2"
 # App to write, plan, collaborate, and get organized
 cask "notion"
 # Control your tools with a few keystrokes

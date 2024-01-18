@@ -24,6 +24,15 @@ tasks:
       - mkdir -p {{.HOME}}/.1password
       - ln -sf {{.HOME}}/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock {{.HOME}}/.1password/agent.sock
 
+  alacritty:
+    desc: Install Alacritty config
+    cmds:
+      - mkdir -p {{.HOME}}/.config/alacritty
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/alacritty/alacritty.toml'
+          TARGET: '{{.HOME}}/.config/alacritty/alacritty.toml'
+
   brew-bundle:
     desc: Update brewfile with installed formulae / casks
     cmds:
@@ -92,11 +101,6 @@ tasks:
     desc: Setup Go environment
     cmds:
       - mkdir -p {{.HOME}}/.go
-
-  iterm:
-    desc: Install iIterm2 preferences
-    cmds:
-      - open {{.USER_WORKING_DIR}}/config/iterm2/Snazzy.itermcolors
 
   macos:
     desc: Configure macOS
