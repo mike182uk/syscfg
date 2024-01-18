@@ -40,6 +40,8 @@ brew "mas"
 brew "qpdf"
 # Rust toolchain installer
 brew "rustup-init"
+# Terminal multiplexer
+brew "tmux"
 # CLI tool that moves files or folder to the trash
 brew "trash"
 # Display directories as trees (with optional color/HTML output)

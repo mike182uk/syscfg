@@ -138,6 +138,15 @@ tasks:
           SOURCE: '{{.USER_WORKING_DIR}}/config/sublime-text/Preferences.sublime-settings'
           TARGET: '{{.ST_CFG_PATH}}/Preferences.sublime-settings'
 
+  tmux:
+    desc: Setup tmux config
+    cmds:
+      - git clone https://github.com/tmux-plugins/tpm {{.HOME}}/.tmux/plugins/tpm
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/tmux/tmux.conf'
+          TARGET: '{{.HOME}}/.tmux.conf'
+
   zed:
     desc: Setup Zed config
     cmds:
