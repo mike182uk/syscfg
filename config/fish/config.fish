@@ -1,3 +1,7 @@
+# Disable fish greeting
+
+set --global --export fish_greeting ''
+
 # Init homebrew
 
 set --global --export HOMEBREW_NO_ANALYTICS 1
