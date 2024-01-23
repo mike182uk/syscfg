@@ -140,6 +140,14 @@ tasks:
           SOURCE: '{{.USER_WORKING_DIR}}/config/ssh/config'
           TARGET: '{{.HOME}}/.ssh/config'
 
+  starship:
+    desc: Setup starship config
+    cmds:
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/starship/starship.toml'
+          TARGET: '{{.HOME}}/.config/starship.toml'
+
   sublime-text:
     desc: Setup Sublime Text config
     vars:

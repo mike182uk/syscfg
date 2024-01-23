@@ -38,6 +38,8 @@ brew "lazydocker"
 brew "mas"
 # Tools for and transforming and inspecting PDF files
 brew "qpdf"
+# Cross-shell prompt for astronauts
+brew "starship"
 # Terminal multiplexer
 brew "tmux"
 # CLI tool that moves files or folder to the trash

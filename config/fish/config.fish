@@ -32,6 +32,12 @@ end
 
 set --global --export ASDF_GOLANG_MOD_VERSION_ENABLED true
 
+# Init starship
+
+if command -v starship > /dev/null
+	starship init fish | source
+end
+
 # Init ssh
 
 if test -e $HOME/.1password/agent.sock
