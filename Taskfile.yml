@@ -43,11 +43,15 @@ tasks:
 
   brew-bundle:
     desc: Update brewfile with installed formulae / casks
+    preconditions:
+      - command -v brew
     cmds:
       - brew bundle dump --force --describe --file {{.USER_WORKING_DIR}}/config/homebrew/Brewfile
 
   brew-install:
     desc: Install formulae / casks listed in Brewfile
+    preconditions:
+      - command -v brew
     cmds:
       - brew bundle --file {{.USER_WORKING_DIR}}/config/homebrew/Brewfile
 
@@ -70,6 +74,8 @@ tasks:
 
   fish-init:
     desc: Install fisher and plugins
+    preconditions:
+      - command -v fish
     cmds:
       # Install fisher
       - fish -c 'curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher'
@@ -78,6 +84,8 @@ tasks:
 
   git:
     desc: Setup Git config
+    preconditions:
+      - command -v git
     cmds:
       - task: create-symlink-safe
         vars:
@@ -99,6 +107,8 @@ tasks:
     desc: Setup Git GPG commit signing
     vars:
       GPG_SSH_PROGRAM: /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+    preconditions:
+      - command -v git
     cmds:
       - git config --global commit.gpgsign true
       - git config --global gpg.format ssh
