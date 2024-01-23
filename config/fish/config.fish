@@ -16,28 +16,17 @@ end
 
 set --global --export EDITOR 'zed --wait'
 
-# Init fnm
-
-fnm env | source
-
 # Init fzf.fish
 
 fzf_configure_bindings --directory=\cf --git_log=\cg --git_status=\cs --processes=\cp --variables=\cv
 
 # Init go
 
-set --local gopath $HOME/.go
-
-if test -d $gopath
-	set --global --export GOPATH $gopath
-	set --global --export GOBIN $gopath/bin
-
-	fish_add_path --path $gopath/bin
+if test -e $HOME/.asdf/plugins/golang/set-env.fish
+	source $HOME/.asdf/plugins/golang/set-env.fish
 end
 
-# Init rust
-
-fish_add_path --path $HOME/.cargo/bin
+set --global --export ASDF_GOLANG_MOD_VERSION_ENABLED true
 
 # Init ssh
 
@@ -49,7 +38,6 @@ end
 
 abbr --add cat 'bat'
 abbr --add ls 'eza'
-abbr --add nvm 'fnm'
 abbr --add rm 'trash'
 abbr --add brwe 'brew'
 

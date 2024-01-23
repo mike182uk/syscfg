@@ -105,11 +105,6 @@ tasks:
       - '[ -f "{{.GPG_SSH_PROGRAM}}" ] && git config --global gpg.ssh.program "{{.GPG_SSH_PROGRAM}}"'
       - '[[ -n "$GIT_SIGNING_KEY" ]] && git config --global user.signingkey "$GIT_SIGNING_KEY"; true'
 
-  go:
-    desc: Setup Go environment
-    cmds:
-      - mkdir -p {{.HOME}}/.go
-
   macos:
     desc: Configure macOS
     cmds:
