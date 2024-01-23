@@ -1,6 +1,8 @@
 # Disable fish greeting
 
-set --global --export fish_greeting ''
+function fish_greeting
+	# Do nothing
+end
 
 # Prevent fish from shortening the prompt pwd
 
@@ -10,6 +12,12 @@ set --global --export fish_prompt_pwd_dir_length 0
 
 function fish_title
 	echo $argv[1] (prompt_pwd)
+end
+
+# Add newline before prompt but only when previous output exists
+#	https://stackoverflow.com/questions/65722822/fish-shell-add-newline-before-prompt-only-when-previous-output-exists
+function add_newline_before_prompt_maybe --on-event fish_postexec
+	echo
 end
 
 # Init homebrew

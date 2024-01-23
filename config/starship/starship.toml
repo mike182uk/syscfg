@@ -11,6 +11,8 @@ $cmd_duration\
 $line_break\
 $character"""
 
+add_newline = false
+
 [directory]
 format = "[$path]($style) "
 truncate_to_repo = false
@@ -36,11 +38,22 @@ modified = "​"
 staged = "​"
 renamed = "​"
 deleted = "​"
-stashed = "≡"
+stashed = "≡ "
+diverged = "⇡⇣ "
+ahead = "⇡ "
+behind = "⇣ "
+up_to_date = "​"
 
 [git_state]
-format = '\([$state( $progress_current/$progress_total)]($style)\) '
+format = '[$state(\($progress_current/$progress_total\))]($style)'
 style = "bright-black"
+rebase = "rebasing"
+merge = "merging"
+revert = "reverting"
+cherry_pick = "cherry-picking"
+bisect = "bisecting"
+am = "am"
+am_or_rebase = "am/rebase"
 
 [cmd_duration]
 format = "[$duration]($style) "
