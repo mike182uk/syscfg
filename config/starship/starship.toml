@@ -15,6 +15,7 @@ $character"""
 format = "[$path]($style) "
 truncate_to_repo = false
 truncation_length = 10
+fish_style_pwd_dir_length = 0
 style = "blue"
 
 [character]

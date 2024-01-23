@@ -2,6 +2,16 @@
 
 set --global --export fish_greeting ''
 
+# Prevent fish from shortening the prompt pwd
+
+set --global --export fish_prompt_pwd_dir_length 0
+
+# Set the terminal title
+
+function fish_title
+	echo $argv[1] (prompt_pwd)
+end
+
 # Init homebrew
 
 set --global --export HOMEBREW_NO_ANALYTICS 1
