@@ -33,6 +33,14 @@ tasks:
           SOURCE: '{{.USER_WORKING_DIR}}/config/alacritty/alacritty.toml'
           TARGET: '{{.HOME}}/.config/alacritty/alacritty.toml'
 
+  asdf:
+    desc: Setup asdf config
+    cmds:
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/asdf/asdfrc'
+          TARGET: '{{.HOME}}/.asdfrc'
+
   brew-bundle:
     desc: Update brewfile with installed formulae / casks
     cmds:

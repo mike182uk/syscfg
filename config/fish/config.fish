@@ -6,6 +6,12 @@ set --global --export HOMEBREW_CASK_OPTS --require-sha
 
 /opt/homebrew/bin/brew shellenv | source
 
+# Init asdf
+
+if command -v asdf > /dev/null
+	source $(brew --prefix asdf)/libexec/asdf.fish
+end
+
 # Init editor
 
 set --global --export EDITOR 'zed --wait'

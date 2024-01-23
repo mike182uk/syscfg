@@ -4,6 +4,8 @@ tap "homebrew/cask-fonts"
 tap "homebrew/services"
 tap "mike182uk/tap"
 tap "oven-sh/bun"
+# Extendable version manager with support for Ruby, Node.js, Erlang & more
+brew "asdf"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Cross-platform make
@@ -38,8 +40,6 @@ brew "lazydocker"
 brew "mas"
 # Tools for and transforming and inspecting PDF files
 brew "qpdf"
-# Rust toolchain installer
-brew "rustup-init"
 # Terminal multiplexer
 brew "tmux"
 # CLI tool that moves files or folder to the trash
