@@ -119,6 +119,12 @@ if test -e $HOME/.1password/agent.sock
 	set --global --export SSH_AUTH_SOCK $HOME/.1password/agent.sock
 end
 
+# Init zoxide
+
+if command -v zoxide > /dev/null
+	zoxide init fish | source
+end
+
 # Init abbreviations
 
 abbr --add cat 'bat'
