@@ -16,9 +16,56 @@ end
 
 # Add newline before prompt but only when previous output exists
 #	https://stackoverflow.com/questions/65722822/fish-shell-add-newline-before-prompt-only-when-previous-output-exists
+
 function add_newline_before_prompt_maybe --on-event fish_postexec
 	echo
 end
+
+# Set colors
+# https://fishshell.com/docs/current/interactive.html
+# To see all colors set: set -n | grep color
+
+set --global --export fish_color_autosuggestion brblack
+set --global --export fish_color_cancel red --reverse
+set --global --export fish_color_command blue
+set --global --export fish_color_comment brblack
+set --global --export fish_color_end white
+set --global --export fish_color_error red
+set --global --export fish_color_escape white
+set --global --export fish_color_history_current magenta
+set --global --export fish_color_keyword cyan
+set --global --export fish_color_normal white
+set --global --export fish_color_operator green
+set --global --export fish_color_option yellow
+set --global --export fish_color_param cyan
+set --global --export fish_color_quote cyan
+set --global --export fish_color_redirection white
+set --global --export fish_color_search_match white --reverse
+set --global --export fish_color_selection white --reverse
+set --global --export fish_color_valid_path green
+
+set --global --export fish_pager_color_background
+set --global --export fish_pager_color_completion white
+set --global --export fish_pager_color_description magenta
+set --global --export fish_pager_color_prefix white
+set --global --export fish_pager_color_progress yellow
+
+set --global --export fish_pager_color_secondary_background
+set --global --export fish_pager_color_secondary_completion white
+set --global --export fish_pager_color_secondary_description magenta
+set --global --export fish_pager_color_secondary_prefix white
+
+set --global --export fish_pager_color_selected_background white --reverse
+set --global --export fish_pager_color_selected_completion white
+set --global --export fish_pager_color_selected_description white
+set --global --export fish_pager_color_selected_prefix white
+
+set --global --export fish_color_status magenta
+set --global --export fish_color_cwd green
+set --global --export fish_color_cwd_root green
+set --global --export fish_color_host white
+set --global --export fish_color_host_remote white
+set --global --export fish_color_user white
 
 # Init homebrew
 
