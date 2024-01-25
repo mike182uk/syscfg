@@ -67,6 +67,10 @@ set --global --export fish_color_host white
 set --global --export fish_color_host_remote white
 set --global --export fish_color_user white
 
+
+# Allow scrolling with mouse in less, bat etc. when using tmux
+set --global --export LESS '--mouse'
+
 # Init homebrew
 
 set --global --export HOMEBREW_NO_ANALYTICS 1
