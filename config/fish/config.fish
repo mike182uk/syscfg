@@ -85,6 +85,16 @@ end
 
 set --global --export EDITOR 'zed --wait'
 
+# Init fzf
+
+set --global --export FZF_DEFAULT_OPTS '
+	--color=fg:-1,fg+:-1,bg:-1,bg+:-1
+	--color=hl:5,hl+:5,info:3,marker:2
+	--color=prompt:4,spinner:3,pointer:5:bold,header:8:bold
+	--color=border:8,label:7,query:7
+	--border --cycle --layout=reverse --info=inline-right --marker=*
+'
+
 # Init fzf.fish
 
 fzf_configure_bindings --directory=\cf --git_log=\cg --git_status=\cs --processes=\cp --variables=\cv
