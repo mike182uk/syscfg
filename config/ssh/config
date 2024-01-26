@@ -1,4 +1,4 @@
-Include ~/.colima/ssh_config
+Include ~/.orbstack/ssh/config
 
 Host *
 	IdentityAgent "~/.1password/agent.sock"
