@@ -79,12 +79,6 @@ set --global --export HOMEBREW_CASK_OPTS --require-sha
 
 /opt/homebrew/bin/brew shellenv | source
 
-# Init asdf
-
-if command -v asdf > /dev/null
-	source $(brew --prefix asdf)/libexec/asdf.fish
-end
-
 # Init editor
 
 set --global --export EDITOR 'zed --wait'
@@ -102,14 +96,6 @@ set --global --export FZF_DEFAULT_OPTS '
 # Init fzf.fish
 
 fzf_configure_bindings --directory=\cf --git_log=\cg --git_status=\cs --processes=\cp --variables=\cv
-
-# Init go
-
-if test -e $HOME/.asdf/plugins/golang/set-env.fish
-	source $HOME/.asdf/plugins/golang/set-env.fish
-end
-
-set --global --export ASDF_GOLANG_MOD_VERSION_ENABLED true
 
 # Init starship
 

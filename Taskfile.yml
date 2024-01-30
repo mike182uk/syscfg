@@ -33,14 +33,6 @@ tasks:
           SOURCE: '{{.USER_WORKING_DIR}}/config/alacritty/alacritty.toml'
           TARGET: '{{.HOME}}/.config/alacritty/alacritty.toml'
 
-  asdf:
-    desc: Setup asdf config
-    cmds:
-      - task: create-symlink-safe
-        vars:
-          SOURCE: '{{.USER_WORKING_DIR}}/config/asdf/asdfrc'
-          TARGET: '{{.HOME}}/.asdfrc'
-
   brew-bundle:
     desc: Update brewfile with installed formulae / casks
     preconditions:
@@ -114,6 +106,11 @@ tasks:
       - git config --global gpg.format ssh
       - '[ -f "{{.GPG_SSH_PROGRAM}}" ] && git config --global gpg.ssh.program "{{.GPG_SSH_PROGRAM}}"'
       - '[[ -n "$GIT_SIGNING_KEY" ]] && git config --global user.signingkey "$GIT_SIGNING_KEY"; true'
+
+  mise:
+    desc: Configure mise
+    cmds:
+      - mise settings set legacy_version_file true
 
   macos:
     desc: Configure macOS

@@ -4,8 +4,6 @@ tap "homebrew/cask-fonts"
 tap "homebrew/services"
 tap "mike182uk/tap"
 tap "oven-sh/bun"
-# Extendable version manager with support for Ruby, Node.js, Erlang & more
-brew "asdf"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Cross-platform make
@@ -30,6 +28,8 @@ brew "jq"
 brew "lazydocker"
 # Mac App Store command-line interface
 brew "mas"
+# Polyglot runtime manager (asdf rust clone)
+brew "mise"
 # Tools for and transforming and inspecting PDF files
 brew "qpdf"
 # Cross-shell prompt for astronauts
