@@ -68,10 +68,12 @@ set --global --export fish_color_host_remote white
 set --global --export fish_color_user white
 
 # Set key bindings
+
 bind -k sr beginning-of-line # Shift + Up Arrow - Move to the beginning of the line
 bind -k sf end-of-line       # Shift + Down Arrow - Move to the end of the line
 
 # Allow scrolling with mouse in less, bat etc. when using tmux
+
 set --global --export LESS '--mouse'
 
 # Init homebrew
