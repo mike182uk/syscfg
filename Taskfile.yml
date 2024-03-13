@@ -125,7 +125,6 @@ tasks:
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/raycast/script-commands'
           TARGET: '{{.HOME}}/.config/raycast/script-commands'
-      - open {{.USER_WORKING_DIR}}/config/raycast/mike.rayconfig
 
   ssh:
     desc: Setup SSH config
