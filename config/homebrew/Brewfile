@@ -6,8 +6,6 @@ tap "mike182uk/tap"
 tap "oven-sh/bun"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# Cross-platform make
-brew "cmake"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
 # Modern, maintained replacement for ls
@@ -60,7 +58,7 @@ cask "alacritty"
 cask "arc"
 # Official Balena CLI tool
 cask "balena-cli"
-# Menu bar icon organizer
+# Menu bar icon organiser
 cask "bartender"
 # Web browser focusing on privacy
 cask "brave-browser"
@@ -78,7 +76,7 @@ cask "google-drive"
 cask "insomnia"
 # System monitoring app
 cask "istat-menus"
-# App to write, plan, collaborate, and get organized
+# App to write, plan, collaborate, and get organised
 cask "notion"
 # Replacement for Docker Desktop
 cask "orbstack"
@@ -103,34 +101,35 @@ cask "zed"
 mas "Command X", id: 6448461551
 mas "Lungo", id: 1263070803
 mas "Xcode", id: 497799835
+vscode "biomejs.biome"
 vscode "bmalehorn.vscode-fish"
 vscode "bradlc.vscode-tailwindcss"
 vscode "christian-kohler.npm-intellisense"
-vscode "CucumberOpen.cucumber-official"
+vscode "cucumberopen.cucumber-official"
 vscode "dbaeumer.vscode-eslint"
 vscode "denoland.vscode-deno"
 vscode "dunstontc.viml"
 vscode "eamodio.gitlens"
-vscode "EditorConfig.EditorConfig"
+vscode "editorconfig.editorconfig"
 vscode "esbenp.prettier-vscode"
 vscode "formulahendry.auto-rename-tag"
-vscode "Garmin.monkey-c"
-vscode "GitHub.copilot"
-vscode "GitHub.copilot-chat"
+vscode "garmin.monkey-c"
+vscode "github.copilot"
+vscode "github.copilot-chat"
 vscode "golang.go"
-vscode "Gruntfuggly.todo-tree"
+vscode "gruntfuggly.todo-tree"
 vscode "ionutvmi.path-autocomplete"
 vscode "mechatroner.rainbow-csv"
 vscode "ms-azuretools.vscode-docker"
 vscode "ms-vscode.makefile-tools"
 vscode "naumovs.color-highlight"
-vscode "Prisma.prisma"
+vscode "prisma.prisma"
 vscode "redhat.vscode-yaml"
 vscode "standard.vscode-standard"
 vscode "tamasfe.even-better-toml"
 vscode "task.vscode-task"
-vscode "TryGhost.ghost"
-vscode "Vue.volar"
+vscode "tryghost.ghost"
+vscode "vue.volar"
 vscode "wayou.vscode-todo-highlight"
 vscode "yzhang.markdown-all-in-one"
 vscode "zhuangtongfa.material-theme"
