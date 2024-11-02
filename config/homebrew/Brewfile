@@ -6,8 +6,12 @@ tap "mike182uk/tap"
 tap "oven-sh/bun"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Resource monitor. C++ version and continuation of bashtop and bpytop
+brew "btop"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
+# Perl lib for reading and writing EXIF metadata
+brew "exiftool"
 # Modern, maintained replacement for ls
 brew "eza"
 # Simple, fast and user-friendly alternative to find
@@ -20,8 +24,8 @@ brew "fzf"
 brew "gh"
 # Distributed revision control system
 brew "git"
-# Improved top (interactive process viewer)
-brew "htop"
+# User-friendly cURL replacement (command-line HTTP client)
+brew "httpie"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Lazier way to manage everything docker
@@ -32,6 +36,12 @@ brew "mas"
 brew "mise"
 # Tools for and transforming and inspecting PDF files
 brew "qpdf"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# Static analysis and lint tool, for (ba)sh scripts
+brew "shellcheck"
+# Autoformat shell script source code
+brew "shfmt"
 # Cross-shell prompt for astronauts
 brew "starship"
 # Terminal multiplexer
@@ -56,12 +66,16 @@ cask "1password-cli"
 cask "alacritty"
 # Chromium based browser
 cask "arc"
-# Official Balena CLI tool
+# Official balena command-line interface
 cask "balena-cli"
+# Tool to flash OS images to SD cards & USB drives
+cask "balenaetcher"
 # Menu bar icon organiser
 cask "bartender"
 # Web browser focusing on privacy
 cask "brave-browser"
+# Opensource IDE for exploring and testing api's
+cask "bruno"
 # Screen capturing tool
 cask "cleanshot"
 # Write, edit, and chat about your code with AI
@@ -72,12 +86,14 @@ cask "font-jetbrains-mono"
 cask "google-chrome"
 # Client for the Google Drive storage service
 cask "google-drive"
-# HTTP and GraphQL Client
-cask "insomnia"
+# Convert your caps lock key or any of your modifier keys to the hyper key
+cask "hyperkey"
 # System monitoring app
 cask "istat-menus"
 # App to write, plan, collaborate, and get organised
 cask "notion"
+# Knowledge base that works on top of a local folder of plain text Markdown files
+cask "obsidian"
 # Replacement for Docker Desktop
 cask "orbstack"
 # Control your tools with a few keystrokes
@@ -100,6 +116,7 @@ cask "whatsapp"
 cask "zed"
 mas "Command X", id: 6448461551
 mas "Lungo", id: 1263070803
+mas "Tailscale", id: 1475387142
 mas "Xcode", id: 497799835
 vscode "biomejs.biome"
 vscode "bmalehorn.vscode-fish"
@@ -121,16 +138,19 @@ vscode "gruntfuggly.todo-tree"
 vscode "ionutvmi.path-autocomplete"
 vscode "mechatroner.rainbow-csv"
 vscode "ms-azuretools.vscode-docker"
+vscode "ms-vscode-remote.remote-containers"
 vscode "ms-vscode.makefile-tools"
 vscode "naumovs.color-highlight"
 vscode "prisma.prisma"
 vscode "redhat.vscode-yaml"
 vscode "standard.vscode-standard"
+vscode "supermaven.supermaven"
 vscode "tamasfe.even-better-toml"
 vscode "task.vscode-task"
 vscode "tryghost.ghost"
 vscode "vue.volar"
 vscode "wayou.vscode-todo-highlight"
+vscode "yoavbls.pretty-ts-errors"
 vscode "yzhang.markdown-all-in-one"
 vscode "zhuangtongfa.material-theme"
 vscode "zxh404.vscode-proto3"
