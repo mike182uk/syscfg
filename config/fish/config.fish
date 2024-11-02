@@ -127,12 +127,15 @@ abbr --add ls 'eza'
 abbr --add rm 'trash'
 abbr --add brwe 'brew'
 
+abbr --add b 'brew'
+abbr --add c 'cursor'
 abbr --add d 'docker'
 abbr --add dc 'docker-compose'
 abbr --add e "$EDITOR"
 abbr --add g 'git'
 abbr --add l 'eza -lga --git --group-directories-first'
 abbr --add lzd 'lazydocker'
+abbr --add ts '/Applications/Tailscale.app/Contents/MacOS/Tailscale'
 
 abbr --add .. 'cd ..'
 abbr --add ... 'cd ../..'
