@@ -1,5 +1,6 @@
 # https://alacritty.org/config-alacritty.html
 
+[terminal]
 shell = "/opt/homebrew/bin/fish"
 
 [window]
