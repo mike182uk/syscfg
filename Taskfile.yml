@@ -68,6 +68,15 @@ tasks:
           SOURCE: '{{.USER_WORKING_DIR}}/config/fish'
           TARGET: '{{.HOME}}/.config/fish'
 
+  fish-completions:
+    desc: Install fish completions for installed programs
+    preconditions:
+      - command -v orbctl
+      - command -v task
+    cmds:
+      - orbctl completion fish > {{.HOME}}/.config/fish/completions/orbstack.fish
+      - task --completion fish > {{.HOME}}/.config/fish/completions/task.fish
+
   fish-init:
     desc: Install fisher and plugins
     preconditions:
