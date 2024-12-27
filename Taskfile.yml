@@ -37,8 +37,12 @@ tasks:
     desc: Update brewfile with installed formulae / casks
     preconditions:
       - command -v brew
+      - command -v jq
+      - "[ -f {{.HOME}}/.cursor/extensions/extensions.json ] && exit 0 || exit 1"
     cmds:
-      - brew bundle dump --force --describe --file {{.USER_WORKING_DIR}}/config/homebrew/Brewfile
+      - brew bundle dump --no-vscode --force --describe --file {{.USER_WORKING_DIR}}/config/homebrew/Brewfile
+      # Manually append vscode extensions based on what extensions have been added to Cursor
+      - jq -r '.[].identifier.id' {{.HOME}}/.cursor/extensions/extensions.json | sort -u | while read -r id; do echo "vscode \"$id\"" >> {{.USER_WORKING_DIR}}/config/homebrew/Brewfile; done
 
   brew-install:
     desc: Install formulae / casks listed in Brewfile
