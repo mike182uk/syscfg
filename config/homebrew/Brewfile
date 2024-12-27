@@ -82,6 +82,8 @@ cask "cleanshot"
 cask "cursor"
 # Typeface made for developers
 cask "font-jetbrains-mono"
+# Terminal emulator that uses platform-native UI and GPU acceleration
+cask "ghostty"
 # Web browser
 cask "google-chrome"
 # Client for the Google Drive storage service

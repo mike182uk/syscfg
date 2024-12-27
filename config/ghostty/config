@@ -1,0 +1,19 @@
+command = /opt/homebrew/bin/fish
+shell-integration = fish
+shell-integration-features = no-cursor
+
+window-padding-x = 10
+window-padding-y = 8
+
+font-size = 14
+
+theme = snazzy
+
+selection-background = #feffff
+selection-foreground = #282a36
+
+cursor-style = block
+cursor-style-blink = true
+cursor-click-to-move = true
+
+resize-overlay = never

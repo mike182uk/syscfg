@@ -74,6 +74,15 @@ tasks:
       # Install plugins
       - fish -c 'fisher update'
 
+  ghostty:
+    desc: Install Ghostty config
+    cmds:
+      - mkdir -p {{.HOME}}/.config/ghostty/config
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/ghostty/config'
+          TARGET: '{{.HOME}}/.config/ghostty/config'
+
   git:
     desc: Setup Git config
     preconditions:
