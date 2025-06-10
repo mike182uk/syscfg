@@ -2,7 +2,6 @@ tap "go-task/tap"
 tap "homebrew/bundle"
 tap "homebrew/services"
 tap "mike182uk/tap"
-tap "oven-sh/bun"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
@@ -59,8 +58,6 @@ brew "go-task/tap/go-task"
 cask "1password"
 # Command-line interface for 1Password
 cask "1password-cli"
-# GPU-accelerated terminal emulator
-cask "alacritty"
 # Chromium based browser
 cask "arc"
 # Tool to flash OS images to SD cards & USB drives
