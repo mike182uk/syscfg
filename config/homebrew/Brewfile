@@ -1,6 +1,5 @@
 tap "go-task/tap"
 tap "homebrew/bundle"
-tap "homebrew/cask-fonts"
 tap "homebrew/services"
 tap "mike182uk/tap"
 tap "oven-sh/bun"
@@ -25,7 +24,7 @@ brew "gh"
 # Distributed revision control system
 brew "git"
 # User-friendly cURL replacement (command-line HTTP client)
-brew "httpie"
+brew "httpie", link: false
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Lazier way to manage everything docker
@@ -47,7 +46,7 @@ brew "starship"
 # Terminal multiplexer
 brew "tmux"
 # CLI tool that moves files or folder to the trash
-brew "trash"
+brew "trash", link: true
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
@@ -56,8 +55,6 @@ brew "yq"
 brew "zoxide"
 # Task runner / simpler Make alternative written in Go
 brew "go-task/tap/go-task"
-# Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
-brew "oven-sh/bun/bun"
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
 # Command-line interface for 1Password
@@ -66,21 +63,18 @@ cask "1password-cli"
 cask "alacritty"
 # Chromium based browser
 cask "arc"
-# Official balena command-line interface
-cask "balena-cli"
 # Tool to flash OS images to SD cards & USB drives
 cask "balenaetcher"
 # Menu bar icon organiser
 cask "bartender"
 # Web browser focusing on privacy
 cask "brave-browser"
-# Opensource IDE for exploring and testing api's
-cask "bruno"
+# OpenAI's official ChatGPT desktop app
+cask "chatgpt"
 # Screen capturing tool
 cask "cleanshot"
 # Write, edit, and chat about your code with AI
 cask "cursor"
-# Typeface made for developers
 cask "font-jetbrains-mono"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
@@ -88,14 +82,14 @@ cask "ghostty"
 cask "google-chrome"
 # Client for the Google Drive storage service
 cask "google-drive"
-# Convert your caps lock key or any of your modifier keys to the hyper key
-cask "hyperkey"
+# Testing client for REST, GraphQL, and HTTP APIs
+cask "httpie"
 # System monitoring app
 cask "istat-menus"
 # App to write, plan, collaborate, and get organised
 cask "notion"
-# Knowledge base that works on top of a local folder of plain text Markdown files
-cask "obsidian"
+# Cloud gaming platform
+cask "nvidia-geforce-now"
 # Replacement for Docker Desktop
 cask "orbstack"
 # Control your tools with a few keystrokes
@@ -116,10 +110,14 @@ cask "visual-studio-code"
 cask "whatsapp"
 # Multiplayer code editor
 cask "zed"
+mas "1Password for Safari", id: 1569813296
 mas "Command X", id: 6448461551
 mas "Lungo", id: 1263070803
 mas "Tailscale", id: 1475387142
 mas "Xcode", id: 497799835
+vscode "alefragnani.bookmarks"
+vscode "anthropic.claude-code"
+vscode "anysphere.pyright"
 vscode "biomejs.biome"
 vscode "bmalehorn.vscode-fish"
 vscode "bradlc.vscode-tailwindcss"
@@ -140,15 +138,20 @@ vscode "github.copilot-chat"
 vscode "github.vscode-github-actions"
 vscode "golang.go"
 vscode "gruntfuggly.todo-tree"
+vscode "hashicorp.terraform"
 vscode "ionutvmi.path-autocomplete"
 vscode "johnpapa.vscode-peacock"
 vscode "mechatroner.rainbow-csv"
 vscode "ms-azuretools.vscode-docker"
+vscode "ms-python.debugpy"
+vscode "ms-python.python"
+vscode "ms-python.vscode-pylance"
 vscode "ms-vscode-remote.remote-containers"
 vscode "ms-vscode.makefile-tools"
 vscode "naumovs.color-highlight"
 vscode "oderwat.indent-rainbow"
 vscode "prisma.prisma"
+vscode "redhat.ansible"
 vscode "redhat.vscode-yaml"
 vscode "standard.vscode-standard"
 vscode "supermaven.supermaven"
