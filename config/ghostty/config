@@ -19,3 +19,4 @@ cursor-style-blink = true
 cursor-click-to-move = true
 
 resize-overlay = never
+keybind = shift+enter=text:\n
