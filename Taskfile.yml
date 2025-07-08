@@ -51,6 +51,19 @@ tasks:
     cmds:
       - brew bundle --file {{.USER_WORKING_DIR}}/config/homebrew/Brewfile
 
+  claude:
+    desc: Setup Claude config
+    cmds:
+      - mkdir -p {{.HOME}}/.claude
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/claude/settings.json'
+          TARGET: '{{.HOME}}/.claude/settings.json'
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/claude/CLAUDE.md'
+          TARGET: '{{.HOME}}/.claude/CLAUDE.md'
+
   editorconfig:
     desc: Setup editorconfig config
     cmds:

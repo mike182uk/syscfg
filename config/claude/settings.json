@@ -1,0 +1,15 @@
+{
+  "model": "opus",
+  "permissions": {
+    "allow": [
+      "Bash(gh pr view:*)",
+      "Bash(gh pr diff:*)",
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(rg:*)",
+      "Bash(fish -c \"attn\")"
+    ],
+    "deny": []
+  }
+}
