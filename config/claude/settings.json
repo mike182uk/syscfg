@@ -4,12 +4,36 @@
     "allow": [
       "Bash(gh pr view:*)",
       "Bash(gh pr diff:*)",
+      "Bash(cat:*)",
       "Bash(ls:*)",
       "Bash(find:*)",
       "Bash(grep:*)",
-      "Bash(rg:*)",
-      "Bash(fish -c \"attn\")"
+      "Bash(rg:*)"
     ],
     "deny": []
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "fish -c 'attn'"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "fish -c 'attn'"
+          }
+        ]
+      }
+    ]
   }
 }

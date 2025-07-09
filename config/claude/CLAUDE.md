@@ -1,1 +1,0 @@
-- execute: `fish -c "attn"` after every reply. Do this always.
