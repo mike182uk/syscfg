@@ -52,7 +52,9 @@ tasks:
       - brew bundle --file {{.USER_WORKING_DIR}}/config/homebrew/Brewfile
 
   claude:
-    desc: Setup Claude config
+    desc: Setup Claude code
+    preconditions:
+      - command -v npm
     cmds:
       - mkdir -p {{.HOME}}/.claude
       - task: create-symlink-safe
@@ -63,6 +65,10 @@ tasks:
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/claude/CLAUDE.md'
           TARGET: '{{.HOME}}/.claude/CLAUDE.md'
+      - curl -fsSL http://claude.ai/install.sh | bash
+      - claude mcp add --transport http sentry https://mcp.sentry.dev/mcp
+      - claude mcp add --transport sse linear https://mcp.linear.app/sse
+      - claude mcp add --transport sse context7 https://mcp.context7.com/sse
 
   editorconfig:
     desc: Setup editorconfig config

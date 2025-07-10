@@ -76,6 +76,10 @@ bind -k sf end-of-line       # Shift + Down Arrow - Move to the end of the line
 
 set --global --export LESS '--mouse'
 
+# Init paths
+
+fish_add_path ~/.local/bin
+
 # Init homebrew
 
 set --global --export HOMEBREW_NO_ANALYTICS 1
