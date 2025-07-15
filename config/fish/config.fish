@@ -130,6 +130,8 @@ abbr --add cat 'bat'
 abbr --add ls 'eza'
 abbr --add rm 'trash'
 abbr --add brwe 'brew'
+abbr --add /claude 'claude'
+abbr --add cluade 'claude'
 
 abbr --add b 'brew'
 abbr --add c 'cursor'
