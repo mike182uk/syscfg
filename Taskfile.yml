@@ -86,6 +86,7 @@ tasks:
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/fish'
           TARGET: '{{.HOME}}/.config/fish'
+      - '[ -f {{.HOME}}/.config/fish/config.local.fish ] || touch {{.HOME}}/.config/fish/config.local.fish'
 
   fish-completions:
     desc: Install fish completions for installed programs
@@ -199,11 +200,20 @@ tasks:
   tmux:
     desc: Setup tmux config
     cmds:
-      - git clone https://github.com/tmux-plugins/tpm {{.HOME}}/.tmux/plugins/tpm
+      - '[ -d "{{.HOME}}/.tmux/plugins/tpm" ] || git clone https://github.com/tmux-plugins/tpm {{.HOME}}/.tmux/plugins/tpm'
       - task: create-symlink-safe
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/tmux/tmux.conf'
           TARGET: '{{.HOME}}/.tmux.conf'
+      - |
+        if [[ -n "$IPINFO_API_TOKEN" ]]; then
+          if ! grep -q "IPINFO_API_TOKEN" {{.HOME}}/.config/fish/config.local.fish; then
+            echo "" >> {{.HOME}}/.config/fish/config.local.fish
+            echo "# Init IPINFO_API_TOKEN" >> {{.HOME}}/.config/fish/config.local.fish
+            echo "" >> {{.HOME}}/.config/fish/config.local.fish
+            echo "set --global --export IPINFO_API_TOKEN $IPINFO_API_TOKEN" >> {{.HOME}}/.config/fish/config.local.fish
+          fi
+        fi
 
   zed:
     desc: Setup Zed config
