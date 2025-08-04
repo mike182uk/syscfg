@@ -66,9 +66,11 @@ tasks:
           SOURCE: '{{.USER_WORKING_DIR}}/config/claude/CLAUDE.md'
           TARGET: '{{.HOME}}/.claude/CLAUDE.md'
       - curl -fsSL http://claude.ai/install.sh | bash
-      - claude mcp add --transport http sentry https://mcp.sentry.dev/mcp
-      - claude mcp add --transport sse linear https://mcp.linear.app/sse
-      - claude mcp add --transport sse context7 https://mcp.context7.com/sse
+      - claude config set --global theme dark-daltonized
+      - claude mcp add --scope user --transport http sentry https://mcp.sentry.dev/mcp
+      - claude mcp add --scope user --transport sse linear https://mcp.linear.app/sse
+      - claude mcp add --scope user --transport sse context7 https://mcp.context7.com/sse
+      - claude mcp add --scope user playwright npx '@playwright/mcp@latest'
 
   editorconfig:
     desc: Setup editorconfig config
