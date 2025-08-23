@@ -65,6 +65,10 @@ tasks:
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/claude/CLAUDE.md'
           TARGET: '{{.HOME}}/.claude/CLAUDE.md'
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/claude/statusline.sh'
+          TARGET: '{{.HOME}}/.claude/statusline.sh'
       - curl -fsSL http://claude.ai/install.sh | bash
       - claude config set --global theme dark-daltonized
       - claude mcp add --scope user --transport http sentry https://mcp.sentry.dev/mcp
