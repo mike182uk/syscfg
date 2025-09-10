@@ -1,0 +1,66 @@
+// https://opencode.ai/docs/config
+{
+  "$schema": "https://opencode.ai/config.json",
+  "theme": "tokyonight",
+  // See https://models.dev
+  "model": "anthropic/claude-opus-4-1-20250805",
+  "autoupdate": true,
+  "permission": {
+    "edit": "ask",
+    "bash": {
+      "cat": "allow",
+      "fd": "allow",
+      "find": "allow",
+      "gh pr view": "allow",
+      "gh pr diff": "allow",
+      "git diff": "allow",
+      "git log": "allow",
+      "git status": "allow",
+      "grep": "allow",
+      "jq": "allow",
+      "ls": "allow",
+      "pwd": "allow",
+      "rg": "allow",
+      "*": "ask"
+    }
+  },
+  "mcp": {
+    // https://github.com/upstash/context7
+    "context7": {
+      "type": "remote",
+      "url": "https://mcp.context7.com/mcp",
+      "enabled": true
+    },
+    // https://github.com/microsoft/playwright-mcp
+    "playwright": {
+      "type": "local",
+      "command": [
+        "npx",
+        "@playwright/mcp@latest"
+      ],
+      "enabled": true
+    },
+    // https://linear.app/docs/mcp
+    "linear": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "mcp-remote@latest",
+        "https://mcp.linear.app/sse"
+      ],
+      "enabled": true
+    },
+    // https://docs.sentry.io/product/sentry-mcp
+    "sentry": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "mcp-remote@latest",
+        "https://mcp.sentry.dev/mcp"
+      ],
+      "enabled": true
+    }
+  }
+}

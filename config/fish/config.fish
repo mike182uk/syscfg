@@ -141,6 +141,7 @@ abbr --add e "$EDITOR"
 abbr --add g 'git'
 abbr --add l 'eza -lga --git --group-directories-first'
 abbr --add lzd 'lazydocker'
+abbr --add oc 'opencode'
 abbr --add ts '/Applications/Tailscale.app/Contents/MacOS/Tailscale'
 
 abbr --add .. 'cd ..'
