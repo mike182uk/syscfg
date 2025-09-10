@@ -2,10 +2,18 @@ tap "go-task/tap"
 tap "homebrew/bundle"
 tap "homebrew/services"
 tap "mike182uk/tap"
+tap "oven-sh/bun"
+tap "sst/tap"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
 brew "btop"
+# Cloudflare Tunnel client (formerly Argo Tunnel)
+brew "cloudflared"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# OpenAI's coding agent that runs in your terminal
+brew "codex"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
 # Perl lib for reading and writing EXIF metadata
@@ -34,8 +42,6 @@ brew "mas"
 brew "mise"
 # Tools for and transforming and inspecting PDF files
 brew "qpdf"
-# Search tool like grep and The Silver Searcher
-brew "ripgrep"
 # Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
 # Autoformat shell script source code
@@ -54,10 +60,14 @@ brew "yq"
 brew "zoxide"
 # Task runner / simpler Make alternative written in Go
 brew "go-task/tap/go-task"
+# The AI coding agent built for the terminal.
+brew "sst/tap/opencode"
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
 # Command-line interface for 1Password
 cask "1password-cli"
+# Speech-to-text system
+cask "aqua-voice"
 # Chromium based browser
 cask "arc"
 # Tool to flash OS images to SD cards & USB drives
@@ -68,6 +78,8 @@ cask "bartender"
 cask "brave-browser"
 # OpenAI's official ChatGPT desktop app
 cask "chatgpt"
+# Anthropic's official Claude AI desktop app
+cask "claude"
 # Screen capturing tool
 cask "cleanshot"
 # Write, edit, and chat about your code with AI
@@ -80,7 +92,7 @@ cask "google-chrome"
 # Client for the Google Drive storage service
 cask "google-drive"
 # Testing client for REST, GraphQL, and HTTP APIs
-cask "httpie"
+cask "httpie-desktop"
 # System monitoring app
 cask "istat-menus"
 # App to write, plan, collaborate, and get organised
@@ -89,6 +101,8 @@ cask "notion"
 cask "nvidia-geforce-now"
 # Replacement for Docker Desktop
 cask "orbstack"
+# VPN client focusing on security
+cask "protonvpn"
 # Control your tools with a few keystrokes
 cask "raycast"
 # Music streaming service
@@ -100,7 +114,7 @@ cask "suspicious-package"
 # Native GUI tool for relational databases
 cask "tableplus"
 # To-do list
-cask "todoist"
+cask "todoist-app"
 # Open-source code editor
 cask "visual-studio-code"
 # Native desktop client for WhatsApp
@@ -114,6 +128,7 @@ mas "Tailscale", id: 1475387142
 mas "Xcode", id: 497799835
 vscode "alefragnani.bookmarks"
 vscode "anthropic.claude-code"
+vscode "anysphere.cursorpyright"
 vscode "anysphere.pyright"
 vscode "biomejs.biome"
 vscode "bmalehorn.vscode-fish"
@@ -147,6 +162,7 @@ vscode "ms-vscode-remote.remote-containers"
 vscode "ms-vscode.makefile-tools"
 vscode "naumovs.color-highlight"
 vscode "oderwat.indent-rainbow"
+vscode "oven.bun-vscode"
 vscode "prisma.prisma"
 vscode "redhat.ansible"
 vscode "redhat.vscode-yaml"
