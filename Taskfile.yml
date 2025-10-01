@@ -75,6 +75,7 @@ tasks:
       - claude mcp add --scope user --transport sse linear https://mcp.linear.app/sse
       - claude mcp add --scope user --transport sse context7 https://mcp.context7.com/sse
       - claude mcp add --scope user playwright npx '@playwright/mcp@latest'
+      - claude mcp add --scope user chrome-devtools npx chrome-devtools-mcp@latest
 
   editorconfig:
     desc: Setup editorconfig config
