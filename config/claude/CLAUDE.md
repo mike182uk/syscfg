@@ -1,0 +1,1 @@
+- When looking up documentation, use the context7 MCP first before searching the web

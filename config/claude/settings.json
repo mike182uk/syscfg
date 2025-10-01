@@ -9,11 +9,12 @@
       "Bash(find:*)",
       "Bash(grep:*)",
       "Bash(rg:*)",
-      "Bash(jq:*)"
+      "Bash(jq:*)",
+      "mcp__context7__resolve-library-id",
+      "mcp__context7__get-library-docs"
     ],
     "deny": []
   },
-  "model": "opus",
   "hooks": {
     "Stop": [
       {
@@ -42,5 +43,6 @@
     "type": "command",
     "command": "~/.claude/statusline.sh",
     "padding": 0
-  }
+  },
+  "alwaysThinkingEnabled": false
 }
