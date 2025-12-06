@@ -9,6 +9,7 @@
       "Bash(find:*)",
       "Bash(grep:*)",
       "Bash(rg:*)",
+      "Bash(ast-grep:*)",
       "Bash(jq:*)",
       "mcp__context7__resolve-library-id",
       "mcp__context7__get-library-docs"
@@ -20,5 +21,8 @@
     "command": "~/.claude/statusline.sh",
     "padding": 0
   },
-  "alwaysThinkingEnabled": true
+  "alwaysThinkingEnabled": true,
+  "enabledPlugins": {
+    "ast-grep@ast-grep-marketplace": true
+  }
 }

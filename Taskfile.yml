@@ -79,6 +79,9 @@ tasks:
       - claude mcp add --scope user chrome-devtools npx chrome-devtools-mcp@latest
       - claude mcp add --scope user --transport http sentry https://mcp.sentry.dev/mcp
       - claude mcp add --scope user --transport http linear https://mcp.linear.app/mcp
+      # Plugins
+      - claude plugin marketplace add ast-grep/claude-skill
+      - claude plugin install ast-grep
 
   editorconfig:
     desc: Setup editorconfig config
@@ -103,9 +106,11 @@ tasks:
     preconditions:
       - command -v orbctl
       - command -v task
+      - command -v ast-grep
     cmds:
       - orbctl completion fish > {{.HOME}}/.config/fish/completions/orbstack.fish
       - task --completion fish > {{.HOME}}/.config/fish/completions/task.fish
+      - ast-grep completions fish > {{.HOME}}/.config/fish/completions/ast-grep.fish
 
   fish-init:
     desc: Install fisher and plugins
