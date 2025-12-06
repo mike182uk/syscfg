@@ -132,6 +132,8 @@ abbr --add rm 'trash'
 abbr --add brwe 'brew'
 abbr --add /claude 'claude'
 abbr --add cluade 'claude'
+abbr --add claudeyolo 'claude --dangerously-skip-permissions'
+abbr --add cluadeyolo 'claude --dangerously-skip-permissions'
 
 abbr --add b 'brew'
 abbr --add c 'cursor'
