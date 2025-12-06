@@ -69,13 +69,16 @@ tasks:
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/claude/statusline.sh'
           TARGET: '{{.HOME}}/.claude/statusline.sh'
+      # Install
       - curl -fsSL http://claude.ai/install.sh | bash
+      # Config
       - claude config set --global theme dark-daltonized
-      - claude mcp add --scope user --transport http sentry https://mcp.sentry.dev/mcp
-      - claude mcp add --scope user --transport sse linear https://mcp.linear.app/sse
-      - claude mcp add --scope user --transport sse context7 https://mcp.context7.com/sse
+      # MCP
+      - claude mcp add --scope user --transport http context7 https://mcp.context7.com/mcp
       - claude mcp add --scope user playwright npx '@playwright/mcp@latest'
       - claude mcp add --scope user chrome-devtools npx chrome-devtools-mcp@latest
+      - claude mcp add --scope user --transport http sentry https://mcp.sentry.dev/mcp
+      - claude mcp add --scope user --transport http linear https://mcp.linear.app/mcp
 
   editorconfig:
     desc: Setup editorconfig config
