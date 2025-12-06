@@ -45,8 +45,8 @@ get_duration() {
 	duration_ms=$(echo "$input" | jq -r '.cost.total_duration_ms')
 
 	if [[ "$duration_ms" =~ ^[0-9]+$ ]] && [ "$duration_ms" -gt 0 ]; then
-		# Round up to nearest minute
-		duration_m=$(((duration_ms + 59999) / 60000))
+		# Round down to nearest minute
+		duration_m=$((duration_ms / 60000))
 		duration_h=$((duration_m / 60))
 		duration_m=$((duration_m % 60))
 		duration_format=""
@@ -70,8 +70,8 @@ get_cost() {
 	if [ -z "$cost" ] || [ "$cost" = "null" ] || [ "$cost" = "0" ]; then
 		cost="0.00"
 	else
-		# Round up to nearest cent
-		cost=$(awk "BEGIN {printf \"%.2f\", int($cost * 100 + 0.99) / 100}")
+		# Round down to nearest cent
+		cost=$(awk "BEGIN {printf \"%.2f\", int($cost * 100) / 100}")
 	fi
 
 	echo "\$${cost}"
@@ -106,8 +106,8 @@ get_context_percent() {
 	local tokens=$1
 
 	if [ "$tokens" -gt 0 ]; then
-		# Round up to nearest percent
-		echo $(((tokens * 100 + CONTEXT_LIMIT - 1) / CONTEXT_LIMIT))
+		# Round down to nearest percent
+		echo $((tokens * 100 / CONTEXT_LIMIT))
 	else
 		echo "0"
 	fi
@@ -117,8 +117,8 @@ get_context_count() {
 	local tokens=$1
 
 	if [ "$tokens" -gt 0 ]; then
-		# Format as Xk (round up)
-		total_k=$(((tokens + 999) / 1000))
+		# Format as Xk (round down)
+		total_k=$((tokens / 1000))
 		limit_k=$((CONTEXT_LIMIT / 1000))
 
 		echo "${total_k}k/${limit_k}k"
@@ -129,4 +129,9 @@ get_context_count() {
 
 context_tokens=$(get_context_tokens)
 
-echo "$(get_model)${SEPARATOR}$(get_duration)${SEPARATOR}$(get_cost)${SEPARATOR}$(get_context_percent "$context_tokens")% ${DIM}($(get_context_count "$context_tokens"))${RESET}"
+# Only show cost and context after first API call
+if [ "$context_tokens" -gt 0 ]; then
+	echo "$(get_model)${SEPARATOR}$(get_duration)${SEPARATOR}$(get_cost)${SEPARATOR}$(get_context_percent "$context_tokens")% ${DIM}($(get_context_count "$context_tokens"))${RESET}"
+else
+	echo "$(get_model)${SEPARATOR}$(get_duration)"
+fi
