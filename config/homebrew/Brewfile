@@ -1,9 +1,8 @@
 tap "go-task/tap"
-tap "homebrew/bundle"
-tap "homebrew/services"
 tap "mike182uk/tap"
 tap "oven-sh/bun"
 tap "sst/tap"
+tap "stripe/stripe-cli"
 # Code searching, linting, rewriting
 brew "ast-grep"
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -12,10 +11,6 @@ brew "bat"
 brew "btop"
 # Cloudflare Tunnel client (formerly Argo Tunnel)
 brew "cloudflared"
-# Search tool like grep and The Silver Searcher
-brew "ripgrep"
-# OpenAI's coding agent that runs in your terminal
-brew "codex"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
 # Perl lib for reading and writing EXIF metadata
@@ -33,17 +28,25 @@ brew "gh"
 # Distributed revision control system
 brew "git"
 # User-friendly cURL replacement (command-line HTTP client)
-brew "httpie", link: false
+brew "httpie"
+# Update of iperf: measures TCP, UDP, and SCTP bandwidth
+brew "iperf3"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Lazier way to manage everything docker
 brew "lazydocker"
+# Simple terminal UI for git commands
+brew "lazygit"
 # Mac App Store command-line interface
 brew "mas"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
+# AI coding agent, built for the terminal
+brew "opencode"
 # Tools for and transforming and inspecting PDF files
 brew "qpdf"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
 # Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
 # Autoformat shell script source code
@@ -62,8 +65,8 @@ brew "yq"
 brew "zoxide"
 # Task runner / simpler Make alternative written in Go
 brew "go-task/tap/go-task"
-# The AI coding agent built for the terminal.
-brew "sst/tap/opencode"
+# Stripe CLI utility
+brew "stripe/stripe-cli/stripe"
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
 # Command-line interface for 1Password
@@ -74,8 +77,6 @@ cask "aqua-voice"
 cask "arc"
 # Tool to flash OS images to SD cards & USB drives
 cask "balenaetcher"
-# Menu bar icon organiser
-cask "bartender"
 # Web browser focusing on privacy
 cask "brave-browser"
 # OpenAI's official ChatGPT desktop app
@@ -84,6 +85,8 @@ cask "chatgpt"
 cask "claude"
 # Screen capturing tool
 cask "cleanshot"
+# OpenAI's coding agent that runs in your terminal
+cask "codex"
 # Write, edit, and chat about your code with AI
 cask "cursor"
 cask "font-jetbrains-mono"
@@ -97,6 +100,14 @@ cask "google-drive"
 cask "httpie-desktop"
 # System monitoring app
 cask "istat-menus"
+# Menu bar manager
+cask "jordanbaird-ice"
+# Tool to show what is persistently installed on the computer
+cask "knockknock"
+# Host-based application firewall
+cask "little-snitch"
+# Monitors and reports any microphone and camera activity
+cask "micro-snitch"
 # App to write, plan, collaborate, and get organised
 cask "notion"
 # Cloud gaming platform
@@ -130,8 +141,6 @@ mas "Tailscale", id: 1475387142
 mas "Xcode", id: 497799835
 vscode "alefragnani.bookmarks"
 vscode "anthropic.claude-code"
-vscode "anysphere.cursorpyright"
-vscode "anysphere.pyright"
 vscode "biomejs.biome"
 vscode "bmalehorn.vscode-fish"
 vscode "bradlc.vscode-tailwindcss"
@@ -155,6 +164,7 @@ vscode "gruntfuggly.todo-tree"
 vscode "hashicorp.terraform"
 vscode "ionutvmi.path-autocomplete"
 vscode "johnpapa.vscode-peacock"
+vscode "matthewpi.caddyfile-support"
 vscode "mechatroner.rainbow-csv"
 vscode "ms-azuretools.vscode-docker"
 vscode "ms-python.debugpy"
@@ -164,6 +174,7 @@ vscode "ms-vscode-remote.remote-containers"
 vscode "ms-vscode.makefile-tools"
 vscode "naumovs.color-highlight"
 vscode "oderwat.indent-rainbow"
+vscode "openai.chatgpt"
 vscode "oven.bun-vscode"
 vscode "prisma.prisma"
 vscode "redhat.ansible"
