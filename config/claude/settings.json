@@ -45,8 +45,9 @@
     "command": "~/.claude/statusline.sh",
     "padding": 0
   },
-  "alwaysThinkingEnabled": true,
   "enabledPlugins": {
-    "ast-grep@ast-grep-marketplace": true
-  }
+    "ast-grep@ast-grep-marketplace": true,
+    "frontend-design@claude-code-plugins": true
+  },
+  "alwaysThinkingEnabled": true
 }

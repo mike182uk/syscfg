@@ -82,6 +82,8 @@ tasks:
       # Plugins
       - claude plugin marketplace add ast-grep/claude-skill
       - claude plugin install ast-grep
+      - claude plugin marketplace add anthropics/claude-code
+      - claude plugin install frontend-design@claude-code-plugins
 
   editorconfig:
     desc: Setup editorconfig config
