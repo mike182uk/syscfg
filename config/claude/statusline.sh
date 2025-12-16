@@ -26,12 +26,21 @@
 #     "total_api_duration_ms": 2300,
 #     "total_lines_added": 156,
 #     "total_lines_removed": 23
+#   },
+#   "context_window": {
+#     "total_input_tokens": 15234,
+#     "total_output_tokens": 4521,
+#     "context_window_size": 200000,
+#     "current_usage": {
+#       "input_tokens": 8500,
+#       "output_tokens": 1200,
+#       "cache_creation_input_tokens": 5000,
+#       "cache_read_input_tokens": 2000
+#     }
 #   }
 # }
 
 input=$(cat)
-
-CONTEXT_LIMIT=200000
 
 DIM=$'\033[90m'
 RESET=$'\033[0m'
@@ -45,7 +54,6 @@ get_duration() {
 	duration_ms=$(echo "$input" | jq -r '.cost.total_duration_ms')
 
 	if [[ "$duration_ms" =~ ^[0-9]+$ ]] && [ "$duration_ms" -gt 0 ]; then
-		# Round down to nearest minute
 		duration_m=$((duration_ms / 60000))
 		duration_h=$((duration_m / 60))
 		duration_m=$((duration_m % 60))
@@ -70,68 +78,32 @@ get_cost() {
 	if [ -z "$cost" ] || [ "$cost" = "null" ] || [ "$cost" = "0" ]; then
 		cost="0.00"
 	else
-		# Round down to nearest cent
 		cost=$(awk "BEGIN {printf \"%.2f\", int($cost * 100) / 100}")
 	fi
 
 	echo "\$${cost}"
 }
 
-get_context_tokens() {
-	transcript_path=$(echo "$input" | jq -r '.transcript_path // empty')
+get_context() {
+	limit=$(echo "$input" | jq -r '.context_window.context_window_size')
+	usage=$(echo "$input" | jq '.context_window.current_usage')
 
-	if [ -z "$transcript_path" ] || [ ! -f "$transcript_path" ]; then
-		echo "0"
+	if [ "$usage" = "null" ]; then
 		return
 	fi
 
-	# Get the last assistant message's usage from the transcript
-	# Total context = input_tokens + cache_creation_input_tokens + cache_read_input_tokens
-	usage=$(tail -20 "$transcript_path" 2>/dev/null |
-		jq -s '[.[] | select(.type == "assistant") | .message.usage] | last // empty' 2>/dev/null)
+	tokens=$(echo "$usage" | jq '.input_tokens + .cache_creation_input_tokens + .cache_read_input_tokens')
+	percent=$((tokens * 100 / limit))
+	tokens_k=$((tokens / 1000))
+	limit_k=$((limit / 1000))
 
-	if [ -z "$usage" ] || [ "$usage" = "null" ]; then
-		echo "0"
-		return
-	fi
-
-	input_tokens=$(echo "$usage" | jq -r '.input_tokens // 0')
-	cache_creation=$(echo "$usage" | jq -r '.cache_creation_input_tokens // 0')
-	cache_read=$(echo "$usage" | jq -r '.cache_read_input_tokens // 0')
-
-	echo $((input_tokens + cache_creation + cache_read))
+	echo "${percent}% ${DIM}(${tokens_k}k/${limit_k}k)${RESET}"
 }
 
-get_context_percent() {
-	local tokens=$1
+context=$(get_context)
 
-	if [ "$tokens" -gt 0 ]; then
-		# Round down to nearest percent
-		echo $((tokens * 100 / CONTEXT_LIMIT))
-	else
-		echo "0"
-	fi
-}
-
-get_context_count() {
-	local tokens=$1
-
-	if [ "$tokens" -gt 0 ]; then
-		# Format as Xk (round down)
-		total_k=$((tokens / 1000))
-		limit_k=$((CONTEXT_LIMIT / 1000))
-
-		echo "${total_k}k/${limit_k}k"
-	else
-		echo "0k/$((CONTEXT_LIMIT / 1000))k"
-	fi
-}
-
-context_tokens=$(get_context_tokens)
-
-# Only show cost and context after first API call
-if [ "$context_tokens" -gt 0 ]; then
-	echo "$(get_model)${SEPARATOR}$(get_duration)${SEPARATOR}$(get_cost)${SEPARATOR}$(get_context_percent "$context_tokens")% ${DIM}($(get_context_count "$context_tokens"))${RESET}"
+if [ -n "$context" ]; then
+	echo "$(get_model)${SEPARATOR}$(get_duration)${SEPARATOR}$(get_cost)${SEPARATOR}${context}"
 else
 	echo "$(get_model)${SEPARATOR}$(get_duration)"
 fi
