@@ -79,6 +79,7 @@ tasks:
       - claude mcp add --scope user chrome-devtools npx chrome-devtools-mcp@latest
       - claude mcp add --scope user --transport http sentry https://mcp.sentry.dev/mcp
       - claude mcp add --scope user --transport http linear https://mcp.linear.app/mcp
+      - claude mcp add --scope user --transport http grep https://mcp.grep.app
       # Plugins
       - claude plugin marketplace add ast-grep/claude-skill
       - claude plugin install ast-grep

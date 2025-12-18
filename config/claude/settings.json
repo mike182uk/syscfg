@@ -36,9 +36,14 @@
       "Bash(wc:*)",
       "Bash(yq:*)",
       "mcp__context7__get-library-docs",
-      "mcp__context7__resolve-library-id"
+      "mcp__context7__resolve-library-id",
+      "mcp__grep__searchGitHub",
+      "mcp__playwright__browser_click",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_close"
     ],
-    "deny": []
+    "deny": [],
+    "defaultMode": "default"
   },
   "statusLine": {
     "type": "command",
@@ -48,6 +53,5 @@
   "enabledPlugins": {
     "ast-grep@ast-grep-marketplace": true,
     "frontend-design@claude-code-plugins": true
-  },
-  "alwaysThinkingEnabled": true
+  }
 }
