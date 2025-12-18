@@ -127,11 +127,15 @@ tasks:
   ghostty:
     desc: Install Ghostty config
     cmds:
-      - mkdir -p {{.HOME}}/.config/ghostty/config
+      - mkdir -p {{.HOME}}/.config/ghostty
       - task: create-symlink-safe
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/ghostty/config'
           TARGET: '{{.HOME}}/.config/ghostty/config'
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/ghostty/themes'
+          TARGET: '{{.HOME}}/.config/ghostty/themes'
 
   git:
     desc: Setup Git config
