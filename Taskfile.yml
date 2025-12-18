@@ -63,12 +63,12 @@ tasks:
           TARGET: '{{.HOME}}/.claude/settings.json'
       - task: create-symlink-safe
         vars:
-          SOURCE: '{{.USER_WORKING_DIR}}/config/claude/CLAUDE.md'
-          TARGET: '{{.HOME}}/.claude/CLAUDE.md'
-      - task: create-symlink-safe
-        vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/claude/statusline.sh'
           TARGET: '{{.HOME}}/.claude/statusline.sh'
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/agents/AGENTS.md'
+          TARGET: '{{.HOME}}/CLAUDE.md'
       # Install
       - curl -fsSL http://claude.ai/install.sh | bash
       # Config
@@ -198,6 +198,10 @@ tasks:
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/opencode/opencode.jsonc'
           TARGET: '{{.HOME}}/.config/opencode/opencode.jsonc'
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/agents/AGENTS.md'
+          TARGET: '{{.HOME}}/.config/opencode/AGENTS.md'
 
   ssh:
     desc: Setup SSH config
