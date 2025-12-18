@@ -1,29 +1,7 @@
 // https://opencode.ai/docs/config
 {
-  "$schema": "https://opencode.ai/config.json",
-  "theme": "tokyonight",
-  // See https://models.dev
-  "model": "anthropic/claude-opus-4-1-20250805",
+  "$schema": "https://opncd.ai/config.json",
   "autoupdate": true,
-  "permission": {
-    "edit": "ask",
-    "bash": {
-      "cat": "allow",
-      "fd": "allow",
-      "find": "allow",
-      "gh pr view": "allow",
-      "gh pr diff": "allow",
-      "git diff": "allow",
-      "git log": "allow",
-      "git status": "allow",
-      "grep": "allow",
-      "jq": "allow",
-      "ls": "allow",
-      "pwd": "allow",
-      "rg": "allow",
-      "*": "ask"
-    }
-  },
   "mcp": {
     // https://github.com/upstash/context7
     "context7": {
@@ -31,13 +9,10 @@
       "url": "https://mcp.context7.com/mcp",
       "enabled": true
     },
-    // https://github.com/microsoft/playwright-mcp
-    "playwright": {
-      "type": "local",
-      "command": [
-        "npx",
-        "@playwright/mcp@latest"
-      ],
+    // https://vercel.com/blog/grep-a-million-github-repositories-via-mcp
+    "grep": {
+      "type": "remote",
+      "url": "https://mcp.grep.app",
       "enabled": true
     },
     // https://linear.app/docs/mcp
@@ -49,7 +24,16 @@
         "mcp-remote@latest",
         "https://mcp.linear.app/sse"
       ],
-      "enabled": true
+      "enabled": false
+    },
+    // https://github.com/microsoft/playwright-mcp
+    "playwright": {
+      "type": "local",
+      "command": [
+        "npx",
+        "@playwright/mcp@latest"
+      ],
+      "enabled": false
     },
     // https://docs.sentry.io/product/sentry-mcp
     "sentry": {
@@ -60,7 +44,49 @@
         "mcp-remote@latest",
         "https://mcp.sentry.dev/mcp"
       ],
-      "enabled": true
+      "enabled": false
     }
-  }
+  },
+  "model": "anthropic/claude-opus-4-5",   // https://models.dev
+  "permission": {
+    "edit": "ask",
+    "bash": {
+      "ast-grep": "allow",
+      "awk": "allow",
+      "basename": "allow",
+      "cat": "allow",
+      "cut": "allow",
+      "diff": "allow",
+      "dirname": "allow",
+      "docker inspect": "allow",
+      "docker logs": "allow",
+      "docker ps": "allow",
+      "fd": "allow",
+      "file": "allow",
+      "find": "allow",
+      "gh pr diff": "allow",
+      "gh pr view": "allow",
+      "git diff": "allow",
+      "git log": "allow",
+      "git show": "allow",
+      "git status": "allow",
+      "grep": "allow",
+      "head": "allow",
+      "jq": "allow",
+      "ls": "allow",
+      "realpath": "allow",
+      "rg": "allow",
+      "sort": "allow",
+      "stat": "allow",
+      "tail": "allow",
+      "tr": "allow",
+      "tree": "allow",
+      "uniq": "allow",
+      "wc": "allow",
+      "yq": "allow",
+      "*": "ask"
+    }
+  },
+  "share": "disabled",
+  "theme": "tokyonight"
 }
