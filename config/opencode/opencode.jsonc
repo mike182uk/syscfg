@@ -1,6 +1,6 @@
 // https://opencode.ai/docs/config
 {
-  "$schema": "https://opncd.ai/config.json",
+  "$schema": "https://opencode.ai/config.json",
   "autoupdate": true,
   "mcp": {
     // https://github.com/upstash/context7
@@ -49,7 +49,6 @@
   },
   "model": "anthropic/claude-opus-4-5",   // https://models.dev
   "permission": {
-    "edit": "ask",
     "bash": {
       "ast-grep": "allow",
       "awk": "allow",
