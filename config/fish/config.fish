@@ -74,7 +74,7 @@ bind shift-down end-of-line       # Shift + Down Arrow - Move to the end of the 
 
 # Allow scrolling with mouse in less, bat etc. when using tmux
 
-set --global --export LESS '--mouse'
+set --global LESS '--mouse'
 
 # Init paths
 
