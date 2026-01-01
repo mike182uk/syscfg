@@ -1,5 +1,9 @@
 #!/usr/bin/env sh
 
+# Appearance
+
+defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
+
 # Dock
 
 defaults write com.apple.dock autohide -boolean true
@@ -7,32 +11,40 @@ defaults write com.apple.dock autohide-delay -float 0
 defaults write com.apple.dock launchanim -boolean false
 defaults write com.apple.dock minimize-to-application -boolean true
 defaults write com.apple.dock mineffect -string "scale"
-defaults write com.apple.dock show-process-indicators -bool true
+defaults write com.apple.dock show-process-indicators -boolean true
 defaults write com.apple.dock show-recents -boolean false
-defaults write com.apple.dock showhidden -bool true
+defaults write com.apple.dock showhidden -boolean true
 defaults write com.apple.dock tilesize -integer 50
-defaults write com.apple.dock wvous-bl-corner -int 4
-defaults write com.apple.dock wvous-bl-modifier -int 0
-defaults write com.apple.dock wvous-br-corner -int 1
-defaults write com.apple.dock wvous-br-modifier -int 0
+# Hot corners: bl = bottom-left, br = bottom-right
+# Actions: 1 = disabled, 4 = show desktop
+defaults write com.apple.dock wvous-bl-corner -integer 4
+defaults write com.apple.dock wvous-bl-modifier -integer 0
+defaults write com.apple.dock wvous-br-corner -integer 1
+defaults write com.apple.dock wvous-br-modifier -integer 0
 
 # Finder
 
+defaults write com.apple.finder NewWindowTarget -string "PfHm"
 defaults write com.apple.finder _FXSortFoldersFirst -boolean true
 defaults write com.apple.finder AppleShowAllFiles -boolean true
-defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+defaults write com.apple.finder FXEnableExtensionChangeWarning -boolean false
 defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
-defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+defaults write NSGlobalDomain AppleShowAllExtensions -boolean true
+
+# Keyboard
+
+defaults write NSGlobalDomain KeyRepeat -integer 2
+defaults write NSGlobalDomain InitialKeyRepeat -integer 15
 
 # Trackpad
 
-defaults write com.apple.AppleMultitouchTrackpad ActuateDetents -bool false
-defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -bool true
-defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
+defaults write com.apple.AppleMultitouchTrackpad ActuateDetents -boolean false
+defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -boolean true
+defaults write NSGlobalDomain com.apple.swipescrolldirection -boolean false
 
 # Restart affected applications
 
 for app in "Dock" \
 	"Finder"; do
-	killall "${app}" &> /dev/null
+	killall "${app}" >/dev/null 2>&1
 done
