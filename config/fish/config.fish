@@ -156,4 +156,6 @@ abbr --add p 'cd ~/Projects'
 
 # Load local config
 
-source $__fish_config_dir/config.local.fish
+if test -f $__fish_config_dir/config.local.fish
+	source $__fish_config_dir/config.local.fish
+end
