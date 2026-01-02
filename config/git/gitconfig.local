@@ -1,6 +1,7 @@
 [alias]
 	l = log --pretty=oneline -n 20 --graph --abbrev-commit
 	s = status -s
+	d = diff
 	b = branch
 	r = remote
 	ca = commit -am
