@@ -13,6 +13,11 @@ function u --description 'Update system'
 
 	_update_msg "Updating tmux plugins..."
 	$HOME/.tmux/plugins/tpm/bin/update_plugins all
+
+	_update_msg "Updating misc programs..."
+	mise upgrade github:sst/opencode
+	echo ""
+	claude update
 end
 
 function _update_msg
