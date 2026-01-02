@@ -1,4 +1,7 @@
 function u --description 'Update system'
+	# Trigger 1Password authentication before attempting to update brew
+	op vault list >/dev/null 2>&1; or return 1
+
 	_update_msg "Updating brew..."
 	brew update && brew outdated && brew upgrade
 
