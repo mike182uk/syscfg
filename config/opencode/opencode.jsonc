@@ -88,12 +88,9 @@
       "gh workflow list*": "allow",
       "gh workflow view*": "allow",
       "git branch": "allow",
-      "git branch -*": "allow",
-      "git branch --*": "allow",
       "git diff*": "allow",
       "git log*": "allow",
       "git remote": "allow",
-      "git remote -*": "allow",
       "git remote show*": "allow",
       "git remote get-url*": "allow",
       "git rev-parse*": "allow",
@@ -124,245 +121,245 @@
   },
   "plugin": [
     // https://github.com/franlol/opencode-md-table-formatter
-    "@franlol/opencode-md-table-formatter@0.0.3",
-    // https://github.com/numman-ali/opencode-openai-codex-auth
-    "opencode-openai-codex-auth@4.3.0"
+    "@franlol/opencode-md-table-formatter@0.0.3"
+    // https://github.com/anomalyco/opencode-anthropic-auth/pull/10#issuecomment-3727147201
+    // "opencode-anthropic-auth@0.0.8"
   ],
   // https://numman-ali.github.io/opencode-openai-codex-auth/getting-started.html
   // https://raw.githubusercontent.com/numman-ali/opencode-openai-codex-auth/main/config/opencode-modern.json
-  "provider": {
-    "openai": {
-      "options": {
-        "reasoningEffort": "medium",
-        "reasoningSummary": "auto",
-        "textVerbosity": "medium",
-        "include": [
-          "reasoning.encrypted_content"
-        ],
-        "store": false
-      },
-      "models": {
-        "gpt-5.2": {
-          "name": "GPT 5.2 (OAuth)",
-          "limit": {
-            "context": 272000,
-            "output": 128000
-          },
-          "modalities": {
-            "input": [
-              "text",
-              "image"
-            ],
-            "output": [
-              "text"
-            ]
-          },
-          "variants": {
-            "none": {
-              "reasoningEffort": "none",
-              "reasoningSummary": "auto",
-              "textVerbosity": "medium"
-            },
-            "low": {
-              "reasoningEffort": "low",
-              "reasoningSummary": "auto",
-              "textVerbosity": "medium"
-            },
-            "medium": {
-              "reasoningEffort": "medium",
-              "reasoningSummary": "auto",
-              "textVerbosity": "medium"
-            },
-            "high": {
-              "reasoningEffort": "high",
-              "reasoningSummary": "detailed",
-              "textVerbosity": "medium"
-            },
-            "xhigh": {
-              "reasoningEffort": "xhigh",
-              "reasoningSummary": "detailed",
-              "textVerbosity": "medium"
-            }
-          }
-        },
-        "gpt-5.2-codex": {
-          "name": "GPT 5.2 Codex (OAuth)",
-          "limit": {
-            "context": 272000,
-            "output": 128000
-          },
-          "modalities": {
-            "input": [
-              "text",
-              "image"
-            ],
-            "output": [
-              "text"
-            ]
-          },
-          "variants": {
-            "low": {
-              "reasoningEffort": "low",
-              "reasoningSummary": "auto",
-              "textVerbosity": "medium"
-            },
-            "medium": {
-              "reasoningEffort": "medium",
-              "reasoningSummary": "auto",
-              "textVerbosity": "medium"
-            },
-            "high": {
-              "reasoningEffort": "high",
-              "reasoningSummary": "detailed",
-              "textVerbosity": "medium"
-            },
-            "xhigh": {
-              "reasoningEffort": "xhigh",
-              "reasoningSummary": "detailed",
-              "textVerbosity": "medium"
-            }
-          }
-        },
-        "gpt-5.1-codex-max": {
-          "name": "GPT 5.1 Codex Max (OAuth)",
-          "limit": {
-            "context": 272000,
-            "output": 128000
-          },
-          "modalities": {
-            "input": [
-              "text",
-              "image"
-            ],
-            "output": [
-              "text"
-            ]
-          },
-          "variants": {
-            "low": {
-              "reasoningEffort": "low",
-              "reasoningSummary": "detailed",
-              "textVerbosity": "medium"
-            },
-            "medium": {
-              "reasoningEffort": "medium",
-              "reasoningSummary": "detailed",
-              "textVerbosity": "medium"
-            },
-            "high": {
-              "reasoningEffort": "high",
-              "reasoningSummary": "detailed",
-              "textVerbosity": "medium"
-            },
-            "xhigh": {
-              "reasoningEffort": "xhigh",
-              "reasoningSummary": "detailed",
-              "textVerbosity": "medium"
-            }
-          }
-        },
-        "gpt-5.1-codex": {
-          "name": "GPT 5.1 Codex (OAuth)",
-          "limit": {
-            "context": 272000,
-            "output": 128000
-          },
-          "modalities": {
-            "input": [
-              "text",
-              "image"
-            ],
-            "output": [
-              "text"
-            ]
-          },
-          "variants": {
-            "low": {
-              "reasoningEffort": "low",
-              "reasoningSummary": "auto",
-              "textVerbosity": "medium"
-            },
-            "medium": {
-              "reasoningEffort": "medium",
-              "reasoningSummary": "auto",
-              "textVerbosity": "medium"
-            },
-            "high": {
-              "reasoningEffort": "high",
-              "reasoningSummary": "detailed",
-              "textVerbosity": "medium"
-            }
-          }
-        },
-        "gpt-5.1-codex-mini": {
-          "name": "GPT 5.1 Codex Mini (OAuth)",
-          "limit": {
-            "context": 272000,
-            "output": 128000
-          },
-          "modalities": {
-            "input": [
-              "text",
-              "image"
-            ],
-            "output": [
-              "text"
-            ]
-          },
-          "variants": {
-            "medium": {
-              "reasoningEffort": "medium",
-              "reasoningSummary": "auto",
-              "textVerbosity": "medium"
-            },
-            "high": {
-              "reasoningEffort": "high",
-              "reasoningSummary": "detailed",
-              "textVerbosity": "medium"
-            }
-          }
-        },
-        "gpt-5.1": {
-          "name": "GPT 5.1 (OAuth)",
-          "limit": {
-            "context": 272000,
-            "output": 128000
-          },
-          "modalities": {
-            "input": [
-              "text",
-              "image"
-            ],
-            "output": [
-              "text"
-            ]
-          },
-          "variants": {
-            "none": {
-              "reasoningEffort": "none",
-              "reasoningSummary": "auto",
-              "textVerbosity": "medium"
-            },
-            "low": {
-              "reasoningEffort": "low",
-              "reasoningSummary": "auto",
-              "textVerbosity": "low"
-            },
-            "medium": {
-              "reasoningEffort": "medium",
-              "reasoningSummary": "auto",
-              "textVerbosity": "medium"
-            },
-            "high": {
-              "reasoningEffort": "high",
-              "reasoningSummary": "detailed",
-              "textVerbosity": "high"
-            }
-          }
-        }
-      }
-    }
-  },
+  // "provider": {
+  //   "openai": {
+  //     "options": {
+  //       "reasoningEffort": "medium",
+  //       "reasoningSummary": "auto",
+  //       "textVerbosity": "medium",
+  //       "include": [
+  //         "reasoning.encrypted_content"
+  //       ],
+  //       "store": false
+  //     },
+  //     "models": {
+  //       "gpt-5.2": {
+  //         "name": "GPT 5.2 (OAuth)",
+  //         "limit": {
+  //           "context": 272000,
+  //           "output": 128000
+  //         },
+  //         "modalities": {
+  //           "input": [
+  //             "text",
+  //             "image"
+  //           ],
+  //           "output": [
+  //             "text"
+  //           ]
+  //         },
+  //         "variants": {
+  //           "none": {
+  //             "reasoningEffort": "none",
+  //             "reasoningSummary": "auto",
+  //             "textVerbosity": "medium"
+  //           },
+  //           "low": {
+  //             "reasoningEffort": "low",
+  //             "reasoningSummary": "auto",
+  //             "textVerbosity": "medium"
+  //           },
+  //           "medium": {
+  //             "reasoningEffort": "medium",
+  //             "reasoningSummary": "auto",
+  //             "textVerbosity": "medium"
+  //           },
+  //           "high": {
+  //             "reasoningEffort": "high",
+  //             "reasoningSummary": "detailed",
+  //             "textVerbosity": "medium"
+  //           },
+  //           "xhigh": {
+  //             "reasoningEffort": "xhigh",
+  //             "reasoningSummary": "detailed",
+  //             "textVerbosity": "medium"
+  //           }
+  //         }
+  //       },
+  //       "gpt-5.2-codex": {
+  //         "name": "GPT 5.2 Codex (OAuth)",
+  //         "limit": {
+  //           "context": 272000,
+  //           "output": 128000
+  //         },
+  //         "modalities": {
+  //           "input": [
+  //             "text",
+  //             "image"
+  //           ],
+  //           "output": [
+  //             "text"
+  //           ]
+  //         },
+  //         "variants": {
+  //           "low": {
+  //             "reasoningEffort": "low",
+  //             "reasoningSummary": "auto",
+  //             "textVerbosity": "medium"
+  //           },
+  //           "medium": {
+  //             "reasoningEffort": "medium",
+  //             "reasoningSummary": "auto",
+  //             "textVerbosity": "medium"
+  //           },
+  //           "high": {
+  //             "reasoningEffort": "high",
+  //             "reasoningSummary": "detailed",
+  //             "textVerbosity": "medium"
+  //           },
+  //           "xhigh": {
+  //             "reasoningEffort": "xhigh",
+  //             "reasoningSummary": "detailed",
+  //             "textVerbosity": "medium"
+  //           }
+  //         }
+  //       },
+  //       "gpt-5.1-codex-max": {
+  //         "name": "GPT 5.1 Codex Max (OAuth)",
+  //         "limit": {
+  //           "context": 272000,
+  //           "output": 128000
+  //         },
+  //         "modalities": {
+  //           "input": [
+  //             "text",
+  //             "image"
+  //           ],
+  //           "output": [
+  //             "text"
+  //           ]
+  //         },
+  //         "variants": {
+  //           "low": {
+  //             "reasoningEffort": "low",
+  //             "reasoningSummary": "detailed",
+  //             "textVerbosity": "medium"
+  //           },
+  //           "medium": {
+  //             "reasoningEffort": "medium",
+  //             "reasoningSummary": "detailed",
+  //             "textVerbosity": "medium"
+  //           },
+  //           "high": {
+  //             "reasoningEffort": "high",
+  //             "reasoningSummary": "detailed",
+  //             "textVerbosity": "medium"
+  //           },
+  //           "xhigh": {
+  //             "reasoningEffort": "xhigh",
+  //             "reasoningSummary": "detailed",
+  //             "textVerbosity": "medium"
+  //           }
+  //         }
+  //       },
+  //       "gpt-5.1-codex": {
+  //         "name": "GPT 5.1 Codex (OAuth)",
+  //         "limit": {
+  //           "context": 272000,
+  //           "output": 128000
+  //         },
+  //         "modalities": {
+  //           "input": [
+  //             "text",
+  //             "image"
+  //           ],
+  //           "output": [
+  //             "text"
+  //           ]
+  //         },
+  //         "variants": {
+  //           "low": {
+  //             "reasoningEffort": "low",
+  //             "reasoningSummary": "auto",
+  //             "textVerbosity": "medium"
+  //           },
+  //           "medium": {
+  //             "reasoningEffort": "medium",
+  //             "reasoningSummary": "auto",
+  //             "textVerbosity": "medium"
+  //           },
+  //           "high": {
+  //             "reasoningEffort": "high",
+  //             "reasoningSummary": "detailed",
+  //             "textVerbosity": "medium"
+  //           }
+  //         }
+  //       },
+  //       "gpt-5.1-codex-mini": {
+  //         "name": "GPT 5.1 Codex Mini (OAuth)",
+  //         "limit": {
+  //           "context": 272000,
+  //           "output": 128000
+  //         },
+  //         "modalities": {
+  //           "input": [
+  //             "text",
+  //             "image"
+  //           ],
+  //           "output": [
+  //             "text"
+  //           ]
+  //         },
+  //         "variants": {
+  //           "medium": {
+  //             "reasoningEffort": "medium",
+  //             "reasoningSummary": "auto",
+  //             "textVerbosity": "medium"
+  //           },
+  //           "high": {
+  //             "reasoningEffort": "high",
+  //             "reasoningSummary": "detailed",
+  //             "textVerbosity": "medium"
+  //           }
+  //         }
+  //       },
+  //       "gpt-5.1": {
+  //         "name": "GPT 5.1 (OAuth)",
+  //         "limit": {
+  //           "context": 272000,
+  //           "output": 128000
+  //         },
+  //         "modalities": {
+  //           "input": [
+  //             "text",
+  //             "image"
+  //           ],
+  //           "output": [
+  //             "text"
+  //           ]
+  //         },
+  //         "variants": {
+  //           "none": {
+  //             "reasoningEffort": "none",
+  //             "reasoningSummary": "auto",
+  //             "textVerbosity": "medium"
+  //           },
+  //           "low": {
+  //             "reasoningEffort": "low",
+  //             "reasoningSummary": "auto",
+  //             "textVerbosity": "low"
+  //           },
+  //           "medium": {
+  //             "reasoningEffort": "medium",
+  //             "reasoningSummary": "auto",
+  //             "textVerbosity": "medium"
+  //           },
+  //           "high": {
+  //             "reasoningEffort": "high",
+  //             "reasoningSummary": "detailed",
+  //             "textVerbosity": "high"
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // },
   "share": "disabled",
   "theme": "tokyonight"
 }
