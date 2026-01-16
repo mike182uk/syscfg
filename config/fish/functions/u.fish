@@ -15,7 +15,7 @@ function u --description 'Update system'
 	$HOME/.tmux/plugins/tpm/bin/update_plugins all
 
 	_update_msg "Updating misc programs..."
-	mise upgrade github:sst/opencode
+	mise upgrade github:anomalyco/opencode
 	echo ""
 	claude update
 end
