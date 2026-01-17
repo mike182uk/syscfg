@@ -3,6 +3,15 @@
   "$schema": "https://opencode.ai/config.json",
   "autoupdate": true,
   "mcp": {
+      // https://github.com/ChromeDevTools/chrome-devtools-mcp/
+      "chrome-devtools": {
+        "type": "local",
+        "command": [
+          "npx",
+          "chrome-devtools-mcp@latest"
+        ],
+        "enabled": false
+      },
     // https://github.com/upstash/context7
     "context7": {
       "type": "remote",

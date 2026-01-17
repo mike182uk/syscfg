@@ -78,7 +78,7 @@ tasks:
       - claude config set --global theme dark-daltonized
       # MCP
       - claude mcp add --scope user --transport http context7 https://mcp.context7.com/mcp
-      - claude mcp add --scope user playwright npx '@playwright/mcp@latest'
+      - claude mcp add --scope user playwright npx @playwright/mcp@latest
       - claude mcp add --scope user chrome-devtools npx chrome-devtools-mcp@latest
       - claude mcp add --scope user --transport http sentry https://mcp.sentry.dev/mcp
       - claude mcp add --scope user --transport http linear https://mcp.linear.app/mcp
