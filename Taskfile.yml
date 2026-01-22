@@ -28,13 +28,15 @@ tasks:
     desc: Setup AI agents
     cmds:
       # https://github.com/ast-grep/claude-skill
-      - bunx add-skill ast-grep/claude-skill --skill ast-grep --agent claude-code --agent codex --agent opencode --global --yes
+      - DISABLE_TELEMETRY=1 bunx add-skill ast-grep/claude-skill --skill ast-grep --agent claude-code --agent codex --agent opencode --global --yes
       # https://github.com/anthropics/claude-code
-      - bunx add-skill anthropics/claude-code --skill frontend-design --agent claude-code --agent codex --agent opencode --global --yes
+      - DISABLE_TELEMETRY=1 bunx add-skill anthropics/claude-code --skill frontend-design --agent claude-code --agent codex --agent opencode --global --yes
+      # https://github.com/blader/humanizer
+      - DISABLE_TELEMETRY=1 bunx add-skill blader/humanizer --skill humanizer --agent claude-code --agent codex --agent opencode --global --yes
       # https://github.com/stripe/ai
-      - bunx add-skill stripe/ai --skill stripe-best-practices --agent claude-code --agent codex --agent opencode --global --yes
+      - DISABLE_TELEMETRY=1 bunx add-skill stripe/ai --skill stripe-best-practices --agent claude-code --agent codex --agent opencode --global --yes
       # https://github.com/vercel-labs/agent-skills
-      - bunx add-skill vercel-labs/agent-skills --skill vercel-react-best-practices --agent claude-code --agent codex --agent opencode --global --yes
+      - DISABLE_TELEMETRY=1 bunx add-skill vercel-labs/agent-skills --skill vercel-react-best-practices --agent claude-code --agent codex --agent opencode --global --yes
 
   brew-bundle:
     desc: Update brewfile with installed formulae / casks
