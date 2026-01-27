@@ -154,7 +154,7 @@ abbr --add .... 'cd ../../..'
 abbr --add ..... 'cd ../../../..'
 abbr --add h 'cd ~'
 abbr --add dl 'cd ~/Downloads'
-abbr --add p 'cd ~/Projects'
+abbr --add dv 'cd ~/Developer'
 
 # Load local config
 
