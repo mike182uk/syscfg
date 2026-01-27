@@ -1,0 +1,71 @@
+{
+  "editor.fontSize": 14,
+  "editor.fontFamily": "Jetbrains Mono",
+  "editor.renderWhitespace": "all",
+  "editor.lineHeight": 42,
+  "editor.minimap.showSlider": "always",
+  "editor.rulers": [80],
+  "explorer.openEditors.visible": 1,
+  "workbench.colorTheme": "Tokyo Night",
+  "workbench.tree.indent": 22,
+  "workbench.tree.renderIndentGuides": "always",
+  "go.useLanguageServer": true,
+  "todo-tree.highlights.customHighlight": {
+    "TODO": {},
+    "FIXME": {}
+  },
+  "todo-tree.highlights.defaultHighlight": {
+    "foreground": "green",
+    "type": "none"
+  },
+  "terminal.integrated.fontSize": 14,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter.notebook.ipynb"
+  },
+  "todo-tree.general.tags": [
+    "BUG",
+    "HACK",
+    "FIXME",
+    "TODO",
+    "XXX",
+    "[ ]",
+    "[x]"
+  ],
+  "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
+  "go.toolsManagement.autoUpdate": true,
+  "markdown.extension.toc.updateOnSave": false,
+  "redhat.telemetry.enabled": false,
+  "editor.inlineSuggest.enabled": true,
+  "editor.minimap.enabled": false,
+  "oneDarkPro.vivid": false,
+  "editor.semanticHighlighting.enabled": true,
+  "terminal.integrated.minimumContrastRatio": 1,
+  "window.titleBarStyle": "custom",
+  "gopls": {
+    "ui.semanticTokens": true
+  },
+  "go.toolsGopath": "~/.vscode/go-tools",
+  "gitlens.plusFeatures.enabled": false,
+  "editor.accessibilitySupport": "off",
+  "go.alternateTools": {},
+  "cursor.cpp.disabledLanguages": ["scminput"],
+  "cursor.cpp.enablePartialAccepts": true,
+  "cursor.preferNotificationsSameAsChat": true,
+  "cursor-retrieval.canAttemptGithubLogin": false,
+  "cursor.windowSwitcher.sidebarHoverCollapsed": true,
+  "deno.enable": false,
+  "[dockercompose]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "cursor.composer.usageSummaryDisplay": "always",
+  "claudeCode.preferredLocation": "panel",
+  "catalogLens.enabled": true,
+  "workbench.editor.enablePreview": false
+}

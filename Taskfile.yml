@@ -99,6 +99,21 @@ tasks:
       - claude plugin marketplace add anthropics/claude-code
       - claude plugin install frontend-design@claude-code-plugins
 
+  cursor:
+    desc: Setup Cursor config
+    vars:
+      CURSOR_CFG_PATH: '{{.HOME}}/Library/Application Support/Cursor/User'
+    cmds:
+      - mkdir -p '{{.CURSOR_CFG_PATH}}'
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/cursor/settings.json'
+          TARGET: '{{.CURSOR_CFG_PATH}}/settings.json'
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/cursor/keybindings.json'
+          TARGET: '{{.CURSOR_CFG_PATH}}/keybindings.json'
+
   editorconfig:
     desc: Setup editorconfig config
     cmds:
@@ -245,12 +260,20 @@ tasks:
     desc: Setup Sublime Text config
     vars:
       ST_CFG_PATH: '{{.HOME}}/Library/Application Support/Sublime Text/Packages/User'
+      ST_PKG_PATH: '{{.HOME}}/Library/Application Support/Sublime Text/Installed Packages'
     cmds:
       - mkdir -p '{{.ST_CFG_PATH}}'
+      - mkdir -p '{{.ST_PKG_PATH}}'
+      # https://packagecontrol.io/installation
+      - '[ -f "{{.ST_PKG_PATH}}/Package Control.sublime-package" ] || curl -sL -o "{{.ST_PKG_PATH}}/Package Control.sublime-package" "https://packagecontrol.io/Package%20Control.sublime-package"'
       - task: create-symlink-safe
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/sublime-text/Preferences.sublime-settings'
           TARGET: '{{.ST_CFG_PATH}}/Preferences.sublime-settings'
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/sublime-text/Package Control.sublime-settings'
+          TARGET: '{{.ST_CFG_PATH}}/Package Control.sublime-settings'
 
   tmux:
     desc: Setup tmux config
