@@ -1,0 +1,12 @@
+[settings]
+legacy_version_file = true
+idiomatic_version_file_enable_tools = ["node", "terraform", "yarn"]
+
+[tools]
+actionlint = "latest"
+bun = "latest"
+deno = "latest"
+go = "1.24"
+node = "22"
+"github:anomalyco/opencode" = { version = "latest", asset_pattern = "opencode-darwin-arm64.zip" }
+yarn = "1"

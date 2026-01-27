@@ -177,9 +177,16 @@ tasks:
       - '[[ -n "$GIT_SIGNING_KEY" ]] && git config --global user.signingkey "$GIT_SIGNING_KEY"; true'
 
   mise:
-    desc: Configure mise
+    desc: Setup mise config
+    preconditions:
+      - command -v mise
     cmds:
-      - mise settings set legacy_version_file true
+      - mkdir -p {{.HOME}}/.config/mise
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/mise/config.toml'
+          TARGET: '{{.HOME}}/.config/mise/config.toml'
+      - mise install
 
   macos:
     desc: Configure macOS
