@@ -1,5 +1,14 @@
 #!/usr/bin/env sh
 
+# Hostname
+
+if [ -n "$HOSTNAME" ]; then
+	sudo scutil --set ComputerName "$HOSTNAME"
+	sudo scutil --set LocalHostName "$HOSTNAME"
+	sudo scutil --set HostName "$HOSTNAME"
+	dscacheutil -flushcache
+fi
+
 # Appearance
 
 defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
