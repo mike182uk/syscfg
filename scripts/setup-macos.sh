@@ -25,6 +25,13 @@ fi
 
 defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
 
+# Dialogs
+
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -boolean true
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -boolean true
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -boolean true
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -boolean true
+
 # Dock
 
 defaults write com.apple.dock autohide -boolean true
@@ -50,12 +57,19 @@ defaults write com.apple.finder _FXSortFoldersFirst -boolean true
 defaults write com.apple.finder AppleShowAllFiles -boolean true
 defaults write com.apple.finder FXEnableExtensionChangeWarning -boolean false
 defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
+defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 defaults write NSGlobalDomain AppleShowAllExtensions -boolean true
 
 # Keyboard
 
 defaults write NSGlobalDomain KeyRepeat -integer 2
 defaults write NSGlobalDomain InitialKeyRepeat -integer 15
+
+# Text input
+
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -boolean false
+defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -boolean false
+defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -boolean false
 
 # Trackpad
 
