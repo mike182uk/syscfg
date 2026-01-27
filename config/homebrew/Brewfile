@@ -1,7 +1,6 @@
 tap "go-task/tap"
 tap "mike182uk/tap"
 tap "oven-sh/bun"
-tap "sst/tap"
 tap "stripe/stripe-cli"
 # Code searching, linting, rewriting
 brew "ast-grep"
@@ -41,8 +40,6 @@ brew "lazygit"
 brew "mas"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
-# AI coding agent, built for the terminal
-brew "opencode"
 # Tools for and transforming and inspecting PDF files
 brew "qpdf"
 # Search tool like grep and The Silver Searcher
@@ -112,12 +109,16 @@ cask "micro-snitch"
 cask "notion"
 # Cloud gaming platform
 cask "nvidia-geforce-now"
+# AI coding agent desktop client
+cask "opencode-desktop"
 # Replacement for Docker Desktop
 cask "orbstack"
 # VPN client focusing on security
 cask "protonvpn"
 # Control your tools with a few keystrokes
 cask "raycast"
+# Sound and audio controller
+cask "soundsource"
 # Music streaming service
 cask "spotify"
 # Text editor for code, markup and prose
@@ -140,7 +141,9 @@ mas "Lungo", id: 1263070803
 mas "Tailscale", id: 1475387142
 mas "Xcode", id: 497799835
 vscode "alefragnani.bookmarks"
+vscode "antfu.pnpm-catalog-lens"
 vscode "anthropic.claude-code"
+vscode "astro-build.astro-vscode"
 vscode "biomejs.biome"
 vscode "bmalehorn.vscode-fish"
 vscode "bradlc.vscode-tailwindcss"
@@ -152,6 +155,7 @@ vscode "dracula-theme.theme-dracula"
 vscode "dunstontc.viml"
 vscode "eamodio.gitlens"
 vscode "editorconfig.editorconfig"
+vscode "enkia.tokyo-night"
 vscode "esbenp.prettier-vscode"
 vscode "evondev.indent-rainbow-palettes"
 vscode "formulahendry.auto-rename-tag"
@@ -184,6 +188,7 @@ vscode "supermaven.supermaven"
 vscode "tamasfe.even-better-toml"
 vscode "task.vscode-task"
 vscode "tryghost.ghost"
+vscode "unifiedjs.vscode-mdx"
 vscode "vue.volar"
 vscode "wayou.vscode-todo-highlight"
 vscode "yoavbls.pretty-ts-errors"
