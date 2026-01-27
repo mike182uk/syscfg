@@ -1,0 +1,4 @@
+telemetry = false
+
+[console]
+depth = 6

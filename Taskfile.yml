@@ -56,6 +56,14 @@ tasks:
     cmds:
       - brew bundle --file {{.USER_WORKING_DIR}}/config/homebrew/Brewfile
 
+  bun:
+    desc: Setup Bun config
+    cmds:
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/bun/bunfig.toml'
+          TARGET: '{{.HOME}}/.bunfig.toml'
+
   claude:
     desc: Setup Claude code
     preconditions:
