@@ -6,7 +6,6 @@ idiomatic_version_file_enable_tools = ["node", "terraform", "yarn"]
 actionlint = "latest"
 bun = "latest"
 deno = "latest"
-go = "1.24"
+go = "latest"
 node = "22"
 "github:anomalyco/opencode" = { version = "latest", asset_pattern = "opencode-darwin-arm64.zip" }
-yarn = "1"
