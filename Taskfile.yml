@@ -84,8 +84,6 @@ tasks:
           TARGET: '{{.HOME}}/CLAUDE.md'
       # Install
       - curl -fsSL http://claude.ai/install.sh | bash
-      # Config
-      - claude config set --global theme dark-daltonized
       # MCP
       - claude mcp add --scope user --transport http context7 https://mcp.context7.com/mcp
       - claude mcp add --scope user playwright npx @playwright/mcp@latest
