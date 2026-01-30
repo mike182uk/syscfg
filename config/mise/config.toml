@@ -7,5 +7,5 @@ actionlint = "latest"
 bun = "latest"
 deno = "latest"
 go = "latest"
-node = "22"
+node = "24"
 "github:anomalyco/opencode" = { version = "latest", asset_pattern = "opencode-darwin-arm64.zip" }
