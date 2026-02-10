@@ -56,7 +56,7 @@
       "enabled": false
     }
   },
-  "model": "anthropic/claude-opus-4-5",   // https://models.dev
+  "model": "anthropic/claude-opus-4-6",   // https://models.dev
   "permission": {
     "bash": {
       "*": "ask",
