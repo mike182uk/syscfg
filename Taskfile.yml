@@ -27,18 +27,20 @@ tasks:
   agents:
     desc: Setup AI agents
     cmds:
-      # https://github.com/ast-grep/claude-skill
-      - DISABLE_TELEMETRY=1 bunx skills add ast-grep/claude-skill --skill ast-grep --agent claude-code --agent codex --agent opencode --global --yes
-      # https://github.com/anthropics/claude-code
-      - DISABLE_TELEMETRY=1 bunx skills add anthropics/claude-code --skill frontend-design --agent claude-code --agent codex --agent opencode --global --yes
+      # https://github.com/ast-grep/agent-skill
+      - DISABLE_TELEMETRY=1 bunx skills add ast-grep/agent-skill --agent claude-code --global --yes
+      # https://github.com/anthropics/skills
+      - DISABLE_TELEMETRY=1 bunx skills add anthropics/skills --skill frontend-design --agent claude-code --global --yes
       # https://github.com/blader/humanizer
-      - DISABLE_TELEMETRY=1 bunx skills add blader/humanizer --skill humanizer --agent claude-code --agent codex --agent opencode --global --yes
+      - DISABLE_TELEMETRY=1 bunx skills add blader/humanizer --agent claude-code --global --yes
       # https://github.com/stripe/ai
-      - DISABLE_TELEMETRY=1 bunx skills add stripe/ai --skill stripe-best-practices --agent claude-code --agent codex --agent opencode --global --yes
+      - DISABLE_TELEMETRY=1 bunx skills add stripe/ai --skill stripe-best-practices --agent claude-code --global --yes
       # https://github.com/vercel-labs/agent-browser
-      - DISABLE_TELEMETRY=1 bunx skills add vercel-labs/agent-browser --skill agent-browser --agent claude-code --agent codex --agent opencode --global --yes
+      - DISABLE_TELEMETRY=1 bunx skills add vercel-labs/agent-browser --agent claude-code --global --yes
       # https://github.com/vercel-labs/agent-skills
-      - DISABLE_TELEMETRY=1 bunx skills add vercel-labs/agent-skills --skill vercel-react-best-practices --agent claude-code --agent codex --agent opencode --global --yes
+      - DISABLE_TELEMETRY=1 bunx skills add vercel-labs/agent-skills --skill vercel-react-best-practices --agent claude-code --global --yes
+      # https://github.com/mike182uk/agent-skills
+      - DISABLE_TELEMETRY=1 bunx skills add mike182uk/agent-skills --agent claude-code --global --yes
 
   brew-bundle:
     desc: Update brewfile with installed formulae / casks
