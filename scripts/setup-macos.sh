@@ -59,6 +59,7 @@ defaults write com.apple.finder FXEnableExtensionChangeWarning -boolean false
 defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
 defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 defaults write NSGlobalDomain AppleShowAllExtensions -boolean true
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE
 
 # Keyboard
 
