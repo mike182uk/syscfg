@@ -98,6 +98,15 @@ tasks:
       - claude mcp add --scope user --transport http linear https://mcp.linear.app/mcp
       - claude mcp add --scope user --transport http grep https://mcp.grep.app
 
+  codex:
+    desc: Setup Codex config
+    cmds:
+      - mkdir -p {{.HOME}}/.codex
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/agents/AGENTS.md'
+          TARGET: '{{.HOME}}/.codex/AGENTS.md'
+
   cursor:
     desc: Setup Cursor config
     vars:
