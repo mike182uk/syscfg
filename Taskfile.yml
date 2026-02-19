@@ -248,6 +248,10 @@ tasks:
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/agents/AGENTS.md'
           TARGET: '{{.HOME}}/.config/opencode/AGENTS.md'
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/agents/commands'
+          TARGET: '{{.HOME}}/.config/opencode/commands'
 
   ssh:
     desc: Setup SSH config
