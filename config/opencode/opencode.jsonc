@@ -135,9 +135,7 @@
   },
   "plugin": [
     // https://github.com/franlol/opencode-md-table-formatter
-    "@franlol/opencode-md-table-formatter@0.0.3",
-    // https://github.com/anomalyco/opencode-anthropic-auth
-    "opencode-anthropic-auth@latest"
+    "@franlol/opencode-md-table-formatter@0.0.3"
   ],
   "share": "disabled",
   "theme": "tokyonight"
