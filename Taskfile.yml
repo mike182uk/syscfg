@@ -26,22 +26,25 @@ tasks:
 
   agents:
     desc: Setup AI agents
+    env:
+      DISABLE_TELEMETRY: 1
     cmds:
       # https://github.com/ast-grep/agent-skill
-      - DISABLE_TELEMETRY=1 bunx skills add ast-grep/agent-skill --agent claude-code --global --yes
+      - bunx skills add ast-grep/agent-skill --agent claude-code --global --yes
       # https://github.com/anthropics/skills
-      - DISABLE_TELEMETRY=1 bunx skills add anthropics/skills --skill frontend-design --agent claude-code --global --yes
+      - bunx skills add anthropics/skills --skill frontend-design --agent claude-code --global --yes
       # https://github.com/blader/humanizer
-      - DISABLE_TELEMETRY=1 bunx skills add blader/humanizer --agent claude-code --global --yes
+      - bunx skills add blader/humanizer --agent claude-code --global --yes
+      # https://github.com/planetscale/database-skills
+      - bunx skills add planetscale/database-skills --skill mysql --skill postgres --agent claude-code --global --yes
       # https://github.com/stripe/ai
-      - DISABLE_TELEMETRY=1 bunx skills add stripe/ai --skill stripe-best-practices --agent claude-code --global --yes
+      # - bunx skills add stripe/ai --skill stripe-best-practices --agent claude-code --global --yes
       # https://github.com/vercel-labs/agent-browser
-      - DISABLE_TELEMETRY=1 bunx skills add vercel-labs/agent-browser --agent claude-code --global --yes
+      - bunx skills add vercel-labs/agent-browser --agent claude-code --global --yes
       # https://github.com/vercel-labs/agent-skills
-      - DISABLE_TELEMETRY=1 bunx skills add vercel-labs/agent-skills --skill vercel-react-best-practices --agent claude-code --global --yes
+      - bunx skills add vercel-labs/agent-skills --skill vercel-react-best-practices --agent claude-code --global --yes
       # https://github.com/mike182uk/agent-skills
-      - DISABLE_TELEMETRY=1 bunx skills add mike182uk/agent-skills --agent claude-code --global --yes
-
+      - bunx skills add mike182uk/agent-skills --agent claude-code --global --yes
   brew-bundle:
     desc: Update brewfile with installed formulae / casks
     preconditions:
