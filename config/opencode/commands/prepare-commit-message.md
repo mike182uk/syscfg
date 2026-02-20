@@ -4,7 +4,7 @@ agent: build
 model: anthropic/claude-sonnet-4-6
 ---
 
-Prepare a commit message for the user's changes.
+Prepare a commit message for the current changes.
 
 If provided, treat the following as additional instruction to guide the commit
 message: "$ARGUMENTS".

@@ -29,12 +29,7 @@ tasks:
     env:
       DISABLE_TELEMETRY: 1
     cmds:
-      # Local skills
       - mkdir -p {{.HOME}}/.agents/skills
-      - task: create-symlink-safe
-        vars:
-          SOURCE: '{{.USER_WORKING_DIR}}/config/agents/skills/git/commit-message'
-          TARGET: '{{.HOME}}/.agents/skills/git-commit-message'
       # https://github.com/ast-grep/agent-skill
       - bunx skills add ast-grep/agent-skill --agent claude-code --global --yes
       # https://github.com/anthropics/skills
@@ -100,12 +95,6 @@ tasks:
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/agents/AGENTS.md'
           TARGET: '{{.HOME}}/CLAUDE.md'
-      # Local skills
-      - mkdir -p {{.HOME}}/.claude/skills
-      - task: create-symlink-safe
-        vars:
-          SOURCE: '{{.HOME}}/.agents/skills/git-commit-message'
-          TARGET: '{{.HOME}}/.claude/skills/git-commit-message'
       # Install
       - curl -fsSL http://claude.ai/install.sh | bash
       # MCP
