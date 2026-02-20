@@ -29,6 +29,12 @@ tasks:
     env:
       DISABLE_TELEMETRY: 1
     cmds:
+      # Local skills
+      - mkdir -p {{.HOME}}/.agents/skills
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/agents/skills/git/commit-message'
+          TARGET: '{{.HOME}}/.agents/skills/git-commit-message'
       # https://github.com/ast-grep/agent-skill
       - bunx skills add ast-grep/agent-skill --agent claude-code --global --yes
       # https://github.com/anthropics/skills
@@ -45,6 +51,7 @@ tasks:
       - bunx skills add vercel-labs/agent-skills --skill vercel-react-best-practices --agent claude-code --global --yes
       # https://github.com/mike182uk/agent-skills
       - bunx skills add mike182uk/agent-skills --agent claude-code --global --yes
+
   brew-bundle:
     desc: Update brewfile with installed formulae / casks
     preconditions:
@@ -78,19 +85,27 @@ tasks:
     preconditions:
       - command -v npm
     cmds:
-      - mkdir -p {{.HOME}}/.claude
+      # Settings
       - task: create-symlink-safe
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/claude/settings.json'
           TARGET: '{{.HOME}}/.claude/settings.json'
+      # Statusline
       - task: create-symlink-safe
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/claude/statusline.sh'
           TARGET: '{{.HOME}}/.claude/statusline.sh'
+      # Agents config
       - task: create-symlink-safe
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/agents/AGENTS.md'
           TARGET: '{{.HOME}}/CLAUDE.md'
+      # Local skills
+      - mkdir -p {{.HOME}}/.claude/skills
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.HOME}}/.agents/skills/git-commit-message'
+          TARGET: '{{.HOME}}/.claude/skills/git-commit-message'
       # Install
       - curl -fsSL http://claude.ai/install.sh | bash
       # MCP
@@ -250,7 +265,7 @@ tasks:
           TARGET: '{{.HOME}}/.config/opencode/AGENTS.md'
       - task: create-symlink-safe
         vars:
-          SOURCE: '{{.USER_WORKING_DIR}}/config/agents/commands'
+          SOURCE: '{{.USER_WORKING_DIR}}/config/opencode/commands'
           TARGET: '{{.HOME}}/.config/opencode/commands'
 
   ssh:
