@@ -1,7 +1,6 @@
 ---
 description: Prepare a commit message
 agent: build
-model: anthropic/claude-sonnet-4-6
 ---
 
 Prepare a commit message for the current changes.
