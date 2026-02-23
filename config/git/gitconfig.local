@@ -4,6 +4,7 @@
 	d = diff
 	b = branch
 	r = remote
+	w = worktree
 	ca = commit -am
 	co = commit -m
 	coi = commit
