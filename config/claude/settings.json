@@ -19,6 +19,7 @@
       "Bash(file:*)",
       "Bash(find:*)",
       "Bash(fzf:*)",
+      "Bash(gh api repos/:*)",
       "Bash(gh auth status:*)",
       "Bash(gh gist list:*)",
       "Bash(gh gist view:*)",
@@ -49,6 +50,8 @@
       "Bash(git rev-parse:*)",
       "Bash(git show:*)",
       "Bash(git status:*)",
+      "Bash(git worktree add:*)",
+      "Bash(git worktree list:*)",
       "Bash(grep:*)",
       "Bash(head:*)",
       "Bash(jq:*)",
@@ -88,8 +91,6 @@
     "command": "~/.claude/statusline.sh",
     "padding": 0
   },
-  "enabledPlugins": {
-    "ast-grep@ast-grep-marketplace": true,
-    "frontend-design@claude-code-plugins": true
-  }
+  "enabledPlugins": {},
+  "syntaxHighlightingDisabled": false
 }
