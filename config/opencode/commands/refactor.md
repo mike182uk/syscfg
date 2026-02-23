@@ -14,7 +14,7 @@ Classify the input to decide what to refactor:
 - **File or directory path**: Refactor the specified code.
 - **Free text**: Treat as guidance for what and how to refactor.
 
-## Load the skill
+## Load the relevant skill
 
 Use the `skill` tool to load the `code-refactor` skill.
 

@@ -8,11 +8,11 @@ Create a worktree based on the user's input: "$ARGUMENTS".
 
 ## Validate input
 
-If no input was provided, ask the user what they need. Possible inputs:
+If no input was provided, ask the user for clarification. Possible inputs:
 
 - **Branch name**: Create a new feature branch worktree.
 - **GitHub pull request** (URL or `#N`): Create a worktree for PR review.
-- **Issue tracker reference** (URL or ID, e.g. `ENG-1234` or a Linear/Jira
+- **Issue tracker reference** (URL or ID, e.g. `ENG-1234` or a Linear / Jira
   URL): Fetch the issue title, derive a branch name from it (e.g.
   `ENG-1234-fix-login-timeout`), and create a new feature branch worktree.
 - **Existing remote branch**: Create a worktree tracking that branch.
@@ -22,10 +22,12 @@ If no input was provided, ask the user what they need. Possible inputs:
 
 Do not proceed without input.
 
-## Load the skill
+## Load the appropriate skill
 
 Use the `skill` tool to load the `parallel-work` skill.
 
 ## Create the worktree
 
 Follow the loaded skill's instructions to create the worktree.
+
+Output only the path to the new worktree.

@@ -19,7 +19,7 @@ Classify the input to decide which type of review to perform:
 
 ## Load the relevant skill
 
-Based on the review type above, use the `skill` tool to load the appropriate skill:
+Based on the determined review type, use the `skill` tool to load the appropriate skill:
 
 - For **code reviews**, load the `code-review` skill.
 - For **pull request reviews**, load the `pull-request-review` skill.
