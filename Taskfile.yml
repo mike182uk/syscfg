@@ -38,6 +38,8 @@ tasks:
       - bunx skills add blader/humanizer --agent claude-code --global --yes
       # https://github.com/planetscale/database-skills
       - bunx skills add planetscale/database-skills --skill mysql --skill postgres --agent claude-code --global --yes
+      # https://github.com/softaworks/agent-toolkit
+      - bunx skills add softaworks/agent-toolkit --skill mermaid-diagrams --agent claude-code --global --yes
       # https://github.com/stripe/ai
       # - bunx skills add stripe/ai --skill stripe-best-practices --agent claude-code --global --yes
       # https://github.com/vercel-labs/agent-browser
