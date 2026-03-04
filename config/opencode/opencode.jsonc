@@ -82,9 +82,6 @@
       "file*": "allow",
       "find*": "allow",
       "fzf*": "allow",
-      "gh api repos/*": "allow",
-      "gh api*--method *": "ask",
-      "gh api*-X *": "ask",
       "gh auth status*": "allow",
       "gh gist list*": "allow",
       "gh gist view*": "allow",
@@ -153,8 +150,7 @@
   },
   "plugin": [
     // https://github.com/franlol/opencode-md-table-formatter
-    "@franlol/opencode-md-table-formatter@0.0.3"
+    "@franlol/opencode-md-table-formatter@latest"
   ],
-  "share": "disabled",
-  "theme": "tokyonight"
+  "share": "disabled"
 }
