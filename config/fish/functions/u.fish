@@ -18,6 +18,11 @@ function u --description 'Update system'
 	mise upgrade github:anomalyco/opencode
 	echo ""
 	claude update
+	echo ""
+	bun upgrade -g agent-browser
+
+	_update_msg "Updating agent skills..."
+	bunx skills update
 end
 
 function _update_msg
