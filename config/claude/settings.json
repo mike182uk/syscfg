@@ -24,7 +24,6 @@
       "Bash(file:*)",
       "Bash(find:*)",
       "Bash(fzf:*)",
-      "Bash(gh api repos/:*)",
       "Bash(gh auth status:*)",
       "Bash(gh gist list:*)",
       "Bash(gh gist view:*)",
