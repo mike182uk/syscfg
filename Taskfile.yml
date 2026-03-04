@@ -41,7 +41,7 @@ tasks:
       # https://github.com/softaworks/agent-toolkit
       - bunx skills add softaworks/agent-toolkit --skill mermaid-diagrams --agent claude-code --global --yes
       # https://github.com/stripe/ai
-      # - bunx skills add stripe/ai --skill stripe-best-practices --agent claude-code --global --yes
+      - bunx skills add stripe/ai --skill stripe-best-practices --agent claude-code --global --yes
       # https://github.com/vercel-labs/agent-browser
       - bunx skills add vercel-labs/agent-browser --agent claude-code --global --yes
       # https://github.com/vercel-labs/agent-skills
