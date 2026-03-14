@@ -36,6 +36,8 @@ tasks:
       - bunx skills add anthropics/skills --skill frontend-design --agent claude-code --global --yes
       # https://github.com/blader/humanizer
       - bunx skills add blader/humanizer --agent claude-code --global --yes
+      # https://github.com/mcollina/skills
+      - bunx skills add mcollina/skills --skill node-best-practices --skill typescript-magician --agent claude-code --global --yes
       # https://github.com/planetscale/database-skills
       - bunx skills add planetscale/database-skills --skill mysql --skill postgres --agent claude-code --global --yes
       # https://github.com/shadcn-ui/ui
