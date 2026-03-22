@@ -1,5 +1,14 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "autoMemoryEnabled": false,
+  "cleanupPeriodDays": 20,
+  "effortLevel": "high",
+  "feedbackSurveyRate": 0,
+  "includeGitInstructions": false,
   "permissions": {
     "allow": [
       "Bash(agent-browser:*)",
@@ -98,11 +107,10 @@
     "deny": [],
     "defaultMode": "default"
   },
+  "plansDirectory": "./.plans",
   "statusLine": {
     "type": "command",
     "command": "~/.claude/statusline.sh",
     "padding": 0
-  },
-  "enabledPlugins": {},
-  "syntaxHighlightingDisabled": false
+  }
 }
