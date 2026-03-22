@@ -8,13 +8,13 @@
 # Communication
 
 - Be concise and direct, avoid filler
-- Don't use emojis unless asked
+- Do not use emojis unless asked
 
 # Documentation & Research
 
 - When looking up documentation, use the context7 MCP first before searching the web
 - If you are unsure how to do something, use the grep MCP to search code examples from github
-- When citing sources, include URLs
+- For general web search, current events, or researching topics outside of code, use the exa MCP
 
 # Code
 
