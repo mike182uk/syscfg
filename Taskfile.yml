@@ -38,6 +38,8 @@ tasks:
       - bunx skills add blader/humanizer --agent claude-code --global --yes
       # https://github.com/mcollina/skills
       - bunx skills add mcollina/skills --skill node-best-practices --skill typescript-magician --agent claude-code --global --yes
+      # https://github.com/nextlevelbuilder/ui-ux-pro-max-skill
+      - bunx skills add nextlevelbuilder/ui-ux-pro-max-skill --skill ui-ux-pro-max --skill ckm:ui-styling --agent claude-code --global --yes
       # https://github.com/planetscale/database-skills
       - bunx skills add planetscale/database-skills --skill mysql --skill postgres --agent claude-code --global --yes
       # https://github.com/shadcn-ui/ui
@@ -49,7 +51,7 @@ tasks:
       # https://github.com/vercel-labs/agent-browser
       - bunx skills add vercel-labs/agent-browser --agent claude-code --global --yes
       # https://github.com/vercel-labs/agent-skills
-      - bunx skills add vercel-labs/agent-skills --skill vercel-react-best-practices --agent claude-code --global --yes
+      - bunx skills add vercel-labs/agent-skills --skill vercel-react-best-practices --skill vercel-composition-patterns --agent claude-code --global --yes
       # https://github.com/mike182uk/agent-skills
       - bunx skills add mike182uk/agent-skills --agent claude-code --global --yes
 
