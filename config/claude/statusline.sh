@@ -4,12 +4,11 @@
 
 # Example input:
 # {
-#   "hook_event_name": "Status",
-#   "session_id": "abc123...",
-#   "transcript_path": "/path/to/transcript.json",
 #   "cwd": "/current/working/directory",
+#   "session_id": "abc123...",
+#   "transcript_path": "/path/to/transcript.jsonl",
 #   "model": {
-#     "id": "claude-opus-4-1",
+#     "id": "claude-opus-4-6",
 #     "display_name": "Opus"
 #   },
 #   "workspace": {
@@ -31,12 +30,38 @@
 #     "total_input_tokens": 15234,
 #     "total_output_tokens": 4521,
 #     "context_window_size": 200000,
+#     "used_percentage": 8,
+#     "remaining_percentage": 92,
 #     "current_usage": {
 #       "input_tokens": 8500,
 #       "output_tokens": 1200,
 #       "cache_creation_input_tokens": 5000,
 #       "cache_read_input_tokens": 2000
 #     }
+#   },
+#   "exceeds_200k_tokens": false,
+#   "rate_limits": {
+#     "five_hour": {
+#       "used_percentage": 23.5,
+#       "resets_at": 1738425600
+#     },
+#     "seven_day": {
+#       "used_percentage": 41.2,
+#       "resets_at": 1738857600
+#     }
+#   },
+#   "vim": {
+#     "mode": "NORMAL"
+#   },
+#   "agent": {
+#     "name": "security-reviewer"
+#   },
+#   "worktree": {
+#     "name": "my-feature",
+#     "path": "/path/to/.claude/worktrees/my-feature",
+#     "branch": "worktree-my-feature",
+#     "original_cwd": "/path/to/project",
+#     "original_branch": "main"
 #   }
 # }
 
@@ -44,66 +69,89 @@ input=$(cat)
 
 DIM=$'\033[90m'
 RESET=$'\033[0m'
-SEPARATOR=" / "
+SEPARATOR=" · "
+
+get_project() {
+	dir=$(echo "$input" | jq -r '.workspace.project_dir // empty')
+	if [ -z "$dir" ]; then
+		return
+	fi
+
+	branch=$(git -C "$dir" rev-parse --abbrev-ref HEAD 2>/dev/null)
+
+	if [ -n "$branch" ]; then
+		echo "${dir}${DIM}:${branch}${RESET}"
+	else
+		echo "$dir"
+	fi
+}
 
 get_model() {
 	echo "$input" | jq -r '.model.display_name'
 }
 
-get_duration() {
-	duration_ms=$(echo "$input" | jq -r '.cost.total_duration_ms')
-
-	if [[ "$duration_ms" =~ ^[0-9]+$ ]] && [ "$duration_ms" -gt 0 ]; then
-		duration_m=$((duration_ms / 60000))
-		duration_h=$((duration_m / 60))
-		duration_m=$((duration_m % 60))
-		duration_format=""
-
-		if [ "$duration_h" -gt 0 ]; then
-			duration_format="${duration_h}h "
-		fi
-
-		duration_format="${duration_format}${duration_m}m"
-		duration="$duration_format"
-	else
-		duration="0m"
-	fi
-
-	echo "$duration"
-}
-
-get_cost() {
-	cost=$(echo "$input" | jq -r '.cost.total_cost_usd // 0')
-
-	if [ -z "$cost" ] || [ "$cost" = "null" ] || [ "$cost" = "0" ]; then
-		cost="0.00"
-	else
-		cost=$(awk "BEGIN {printf \"%.2f\", int($cost * 100) / 100}")
-	fi
-
-	echo "\$${cost}"
+get_agent() {
+	echo "$input" | jq -r '.agent.name // empty'
 }
 
 get_context() {
-	limit=$(echo "$input" | jq -r '.context_window.context_window_size')
-	usage=$(echo "$input" | jq '.context_window.current_usage')
+	percent=$(echo "$input" | jq -r '.context_window.used_percentage // empty')
 
-	if [ "$usage" = "null" ]; then
+	if [ -z "$percent" ]; then
 		return
 	fi
 
-	tokens=$(echo "$usage" | jq '.input_tokens + .cache_creation_input_tokens + .cache_read_input_tokens')
-	percent=$((tokens * 100 / limit))
-	tokens_k=$((tokens / 1000))
-	limit_k=$((limit / 1000))
+	limit_k=$(echo "$input" | jq -r '.context_window.context_window_size / 1000 | floor')
+	tokens_k=$(echo "$input" | jq -r '(.context_window.context_window_size * .context_window.used_percentage / 100) / 1000 | floor')
 
-	echo "${percent}% ${DIM}(${tokens_k}k/${limit_k}k)${RESET}"
+	result="${percent}% ${DIM}(${tokens_k}k/${limit_k}k)${RESET}"
+	rate=$(get_rate_limit)
+	if [ -n "$rate" ]; then
+		result+="${SEPARATOR}${rate} ${DIM}(5h)${RESET}"
+	fi
+
+	echo "$result"
 }
 
-context=$(get_context)
+get_rate_limit() {
+	percent=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // empty')
 
-if [ -n "$context" ]; then
-	echo "$(get_model)${SEPARATOR}$(get_duration)${SEPARATOR}$(get_cost)${SEPARATOR}${context}"
-else
-	echo "$(get_model)${SEPARATOR}$(get_duration)"
+	if [ -z "$percent" ]; then
+		return
+	fi
+
+	# truncate to integer
+	percent=${percent%.*}
+
+	echo "${percent}%"
+}
+
+parts=()
+
+project=$(get_project)
+if [ -n "$project" ]; then
+	parts+=("$project")
 fi
+
+agent=$(get_agent)
+if [ -n "$agent" ]; then
+	parts+=("$agent")
+fi
+
+parts+=("$(get_model)")
+
+context=$(get_context)
+if [ -n "$context" ]; then
+	parts+=("$context")
+fi
+
+output=""
+for i in "${!parts[@]}"; do
+	if [ "$i" -gt 0 ]; then
+		output+="${SEPARATOR}"
+	fi
+
+	output+="${parts[$i]}"
+done
+
+echo "$output"
