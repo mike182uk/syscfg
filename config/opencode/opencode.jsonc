@@ -3,11 +3,12 @@
   "$schema": "https://opencode.ai/config.json",
   "autoupdate": true,
   "mcp": {
-      // https://github.com/ChromeDevTools/chrome-devtools-mcp/
+      // https://github.com/ChromeDevTools/chrome-devtools-mcp
       "chrome-devtools": {
         "type": "local",
         "command": [
           "npx",
+          "-y",
           "chrome-devtools-mcp@latest"
         ],
         "enabled": false
@@ -25,14 +26,20 @@
       "enabled": true
     },
     // https://linear.app/docs/mcp
-    "linear": {
-      "type": "local",
-      "command": [
-        "npx",
-        "-y",
-        "mcp-remote@latest",
-        "https://mcp.linear.app/sse"
-      ],
+    "linear-work": {
+      "type": "remote",
+      "url": "https://mcp.linear.app/mcp",
+      "enabled": false
+    },
+    // https://developers.notion.com/guides/mcp/get-started-with-mcp
+    "notion": {
+      "type": "remote",
+      "url": "https://mcp.notion.com/mcp",
+      "enabled": false
+    },
+    "notion-work": {
+      "type": "remote",
+      "url": "https://mcp.notion.com/mcp",
       "enabled": false
     },
     // https://github.com/microsoft/playwright-mcp
@@ -45,14 +52,9 @@
       "enabled": false
     },
     // https://docs.sentry.io/product/sentry-mcp
-    "sentry": {
-      "type": "local",
-      "command": [
-        "npx",
-        "-y",
-        "mcp-remote@latest",
-        "https://mcp.sentry.dev/mcp"
-      ],
+    "sentry-work": {
+      "type": "remote",
+      "url": "https://mcp.sentry.dev/mcp",
       "enabled": false
     }
   },

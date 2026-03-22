@@ -102,14 +102,16 @@ tasks:
           SOURCE: '{{.USER_WORKING_DIR}}/config/agents/AGENTS.md'
           TARGET: '{{.HOME}}/CLAUDE.md'
       # Install
-      - curl -fsSL http://claude.ai/install.sh | bash
+      - curl -fsSL https://claude.ai/install.sh | bash
       # MCP
+      - claude mcp add --scope user chrome-devtools -- npx -y chrome-devtools-mcp@latest
       - claude mcp add --scope user --transport http context7 https://mcp.context7.com/mcp
-      - claude mcp add --scope user playwright npx @playwright/mcp@latest
-      - claude mcp add --scope user chrome-devtools npx chrome-devtools-mcp@latest
-      - claude mcp add --scope user --transport http sentry https://mcp.sentry.dev/mcp
-      - claude mcp add --scope user --transport http linear https://mcp.linear.app/mcp
       - claude mcp add --scope user --transport http grep https://mcp.grep.app
+      - claude mcp add --scope user --transport http linear-work https://mcp.linear.app/mcp
+      - claude mcp add --scope user --transport http notion https://mcp.notion.com/mcp
+      - claude mcp add --scope user --transport http notion-work https://mcp.notion.com/mcp
+      - claude mcp add --scope user playwright npx @playwright/mcp@latest
+      - claude mcp add --scope user --transport http sentry-work https://mcp.sentry.dev/mcp
 
   codex:
     desc: Setup Codex config
