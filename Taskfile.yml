@@ -262,6 +262,10 @@ tasks:
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/opencode/commands'
           TARGET: '{{.HOME}}/.config/opencode/commands'
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/opencode/plugins'
+          TARGET: '{{.HOME}}/.config/opencode/plugins'
 
   ssh:
     desc: Setup SSH config
