@@ -152,7 +152,9 @@
   },
   "plugin": [
     // https://github.com/franlol/opencode-md-table-formatter
-    "@franlol/opencode-md-table-formatter@latest"
+    "@franlol/opencode-md-table-formatter@latest",
+    // https://github.com/griffinmartin/opencode-claude-auth
+    "opencode-claude-auth@0.7.4"
   ],
   "share": "disabled"
 }
