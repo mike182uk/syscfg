@@ -242,15 +242,6 @@ tasks:
     cmds:
       - '{{.USER_WORKING_DIR}}/scripts/setup-macos.sh'
 
-  raycast:
-    desc: Install Raycast preferences
-    cmds:
-      - mkdir -p {{.HOME}}/.config/raycast
-      - task: create-symlink-safe
-        vars:
-          SOURCE: '{{.USER_WORKING_DIR}}/config/raycast/script-commands'
-          TARGET: '{{.HOME}}/.config/raycast/script-commands'
-
   opencode:
     desc: Setup OpenCode config
     cmds:
@@ -271,6 +262,59 @@ tasks:
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/opencode/plugins'
           TARGET: '{{.HOME}}/.config/opencode/plugins'
+
+  # https://plannotator.ai/install.sh
+  plannotator:
+    desc: Install Plannotator CLI and configure for OpenCode
+    env:
+      DISABLE_TELEMETRY: 1
+    vars:
+      INSTALL_DIR: '{{.HOME}}/.local/bin'
+      REPO: backnotprop/plannotator
+      COMMANDS_DIR: '{{.USER_WORKING_DIR}}/config/opencode/commands'
+      SKILLS_CLI: bunx skills@1.4.4
+      TAG:
+        sh: curl -fsSL "https://api.github.com/repos/backnotprop/plannotator/releases/latest" | jq -r '.tag_name'
+      BINARY_URL: 'https://github.com/backnotprop/plannotator/releases/download/{{.TAG}}/plannotator-darwin-arm64'
+    preconditions:
+      - command -v git
+      - command -v curl
+      - command -v shasum
+      - command -v jq
+      - command -v gh
+      - command -v bunx
+    cmds:
+      - mkdir -p {{.INSTALL_DIR}}
+      # Download CLI binary and verify checksum
+      - curl -fsSL -o /tmp/plannotator "{{.BINARY_URL}}"
+      - |
+        EXPECTED=$(curl -fsSL "{{.BINARY_URL}}.sha256" | cut -d' ' -f1)
+        ACTUAL=$(shasum -a 256 /tmp/plannotator | cut -d' ' -f1)
+        [ "$ACTUAL" = "$EXPECTED" ] || { echo "Checksum verification failed!" >&2; exit 1; }
+      # Verify SLSA build provenance
+      - gh attestation verify /tmp/plannotator --repo {{.REPO}} --source-ref "refs/tags/{{.TAG}}" --signer-workflow "{{.REPO}}/.github/workflows/release.yml"
+      - rm -f {{.INSTALL_DIR}}/plannotator
+      - mv /tmp/plannotator {{.INSTALL_DIR}}/plannotator
+      - chmod +x {{.INSTALL_DIR}}/plannotator
+      # Install skills
+      - '{{.SKILLS_CLI}} add backnotprop/plannotator -s plannotator-compound -a claude-code -g -y --full-depth'
+      # Download OpenCode slash commands from the release tag
+      - curl -fsSL -o "{{.COMMANDS_DIR}}/plannotator-review.md" "https://raw.githubusercontent.com/{{.REPO}}/{{.TAG}}/apps/opencode-plugin/commands/plannotator-review.md"
+      - curl -fsSL -o "{{.COMMANDS_DIR}}/plannotator-annotate.md" "https://raw.githubusercontent.com/{{.REPO}}/{{.TAG}}/apps/opencode-plugin/commands/plannotator-annotate.md"
+      - curl -fsSL -o "{{.COMMANDS_DIR}}/plannotator-last.md" "https://raw.githubusercontent.com/{{.REPO}}/{{.TAG}}/apps/opencode-plugin/commands/plannotator-last.md"
+      - curl -fsSL -o "{{.COMMANDS_DIR}}/plannotator-archive.md" "https://raw.githubusercontent.com/{{.REPO}}/{{.TAG}}/apps/opencode-plugin/commands/plannotator-archive.md"
+      # Clear cached plugin and jiti cache to force fresh download
+      - rm -rf {{.HOME}}/.cache/opencode/node_modules/@plannotator {{.HOME}}/.bun/install/cache/@plannotator /tmp/jiti 2>/dev/null || true
+      - echo "plannotator {{.TAG}} installed"
+
+  raycast:
+    desc: Install Raycast preferences
+    cmds:
+      - mkdir -p {{.HOME}}/.config/raycast
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/raycast/script-commands'
+          TARGET: '{{.HOME}}/.config/raycast/script-commands'
 
   ssh:
     desc: Setup SSH config
