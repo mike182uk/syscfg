@@ -16,6 +16,8 @@ Classify the input to decide which type of review to perform:
 - **GitHub pull request** (URL or `#N`): Pull request review.
 - **GitHub issue** (URL or `#N`): Issue review.
 - **Issue tracker reference** (e.g. `ABC-123` or a URL to Linear, Jira, etc.): Issue review.
+- **SonarCloud / SonarQube URL** (e.g. `sonarcloud.io/...`, `sonarqube.us/...`,
+  or a self-hosted SonarQube host): SonarQube review.
 
 ## Load the relevant skill
 
@@ -24,6 +26,7 @@ Based on the determined review type, use the `skill` tool to load the appropriat
 - For **code reviews**, load the `code-review` skill.
 - For **pull request reviews**, load the `pull-request-review` skill.
 - For **issue reviews**, load the `issue-review` skill.
+- For **SonarQube reviews**, load the `sonarqube-review` skill.
 
 ## Perform the review
 
