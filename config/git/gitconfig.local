@@ -19,7 +19,7 @@
 	coan = commit --amend --no-edit
 	pushf = push -f
 [color]
-	ui = always
+	ui = auto
 [core]
 	attributesFile = ~/.gitattributes
 	excludesfile = ~/.gitignore
