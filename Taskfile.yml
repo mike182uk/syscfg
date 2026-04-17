@@ -115,7 +115,7 @@ tasks:
       # MCP
       - claude mcp add --scope user chrome-devtools -- npx -y chrome-devtools-mcp@latest
       - claude mcp add --scope user --transport http context7 https://mcp.context7.com/mcp
-      - claude mcp add --scope user --transport http exa "https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa" -H "x-api-key: $EXA_API_KEY"
+      - 'claude mcp add --scope user --transport http exa "https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa" -H "x-api-key: $EXA_API_KEY"'
       - claude mcp add --scope user --transport http grep https://mcp.grep.app
       - claude mcp add --scope user --transport http linear-work https://mcp.linear.app/mcp
       - claude mcp add --scope user --transport http notion https://mcp.notion.com/mcp
