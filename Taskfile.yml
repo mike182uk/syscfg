@@ -80,7 +80,7 @@ tasks:
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/bun/bunfig.toml'
           TARGET: '{{.HOME}}/.bunfig.toml'
-      - bun install -g agent-browser
+      - bun install -g agent-browser opensrc
       - bunx playwright install
 
   claude:

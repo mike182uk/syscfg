@@ -19,7 +19,7 @@ function u --description 'Update system'
 	echo ""
 	claude update
 	echo ""
-	bun update -g agent-browser
+	bun update -g agent-browser opensrc
 
 	_update_msg "Updating agent skills..."
 	bunx skills update
