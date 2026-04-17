@@ -28,32 +28,39 @@ tasks:
     desc: Setup AI agents
     env:
       DISABLE_TELEMETRY: 1
+    # Pin skills CLI to 1.4.4 - later versions broke symlinks (copies instead) and
+    # stopped populating ~/.agents/skills/
+    vars:
+      SKILLS_CLI: bunx skills@1.4.4
     cmds:
       - mkdir -p {{.HOME}}/.agents/skills
+      - rm -f {{.HOME}}/.agents/.skill-lock.json
       # https://github.com/ast-grep/agent-skill
-      - bunx skills add ast-grep/agent-skill --agent claude-code --global --yes
+      - '{{.SKILLS_CLI}} add ast-grep/agent-skill -a claude-code -g -y'
       # https://github.com/anthropics/skills
-      - bunx skills add anthropics/skills --skill frontend-design --agent claude-code --global --yes
+      - '{{.SKILLS_CLI}} add anthropics/skills -s frontend-design -a claude-code -g -y'
       # https://github.com/blader/humanizer
-      - bunx skills add blader/humanizer --agent claude-code --global --yes
+      - '{{.SKILLS_CLI}} add blader/humanizer -a claude-code -g -y'
       # https://github.com/mcollina/skills
-      - bunx skills add mcollina/skills --skill node-best-practices --skill typescript-magician --agent claude-code --global --yes
+      - '{{.SKILLS_CLI}} add mcollina/skills -s node -s typescript-magician -a claude-code -g -y'
       # https://github.com/nextlevelbuilder/ui-ux-pro-max-skill
-      - bunx skills add nextlevelbuilder/ui-ux-pro-max-skill --skill ui-ux-pro-max --skill ckm:ui-styling --agent claude-code --global --yes
+      - '{{.SKILLS_CLI}} add nextlevelbuilder/ui-ux-pro-max-skill -s ui-ux-pro-max -s ckm:ui-styling -a claude-code -g -y'
       # https://github.com/planetscale/database-skills
-      - bunx skills add planetscale/database-skills --skill mysql --skill postgres --agent claude-code --global --yes
+      - '{{.SKILLS_CLI}} add planetscale/database-skills -s mysql -s postgres -a claude-code -g -y'
       # https://github.com/shadcn-ui/ui
-      - bunx skills add shadcn/ui --skill shadcn --agent claude-code --global --yes
+      - '{{.SKILLS_CLI}} add shadcn/ui -s shadcn -a claude-code -g -y'
       # https://github.com/softaworks/agent-toolkit
-      - bunx skills add softaworks/agent-toolkit --skill mermaid-diagrams --agent claude-code --global --yes
+      - '{{.SKILLS_CLI}} add softaworks/agent-toolkit -s mermaid-diagrams -a claude-code -g -y'
       # https://github.com/stripe/ai
-      - bunx skills add stripe/ai --skill stripe-best-practices --agent claude-code --global --yes
+      - '{{.SKILLS_CLI}} add stripe/ai -s stripe-best-practices -a claude-code -g -y'
       # https://github.com/vercel-labs/agent-browser
-      - bunx skills add vercel-labs/agent-browser --agent claude-code --global --yes
+      - '{{.SKILLS_CLI}} add vercel-labs/agent-browser -s agent-browser -a claude-code -g -y'
       # https://github.com/vercel-labs/agent-skills
-      - bunx skills add vercel-labs/agent-skills --skill vercel-react-best-practices --skill vercel-composition-patterns --agent claude-code --global --yes
+      - '{{.SKILLS_CLI}} add vercel-labs/agent-skills -s vercel-react-best-practices -s vercel-composition-patterns -a claude-code -g -y'
+      # https://github.com/vercel-labs/opensrc
+      - '{{.SKILLS_CLI}} add vercel-labs/opensrc -s opensrc -a claude-code -g -y'
       # https://github.com/mike182uk/agent-skills
-      - bunx skills add mike182uk/agent-skills --agent claude-code --global --yes
+      - '{{.SKILLS_CLI}} add mike182uk/agent-skills -a claude-code -g -y'
 
   brew-bundle:
     desc: Update brewfile with installed formulae / casks
