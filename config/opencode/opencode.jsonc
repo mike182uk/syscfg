@@ -22,7 +22,10 @@
     // https://docs.exa.ai/reference/exa-mcp
     "exa": {
       "type": "remote",
-      "url": "https://mcp.exa.ai/mcp?exaApiKey={env:EXA_API_KEY}&tools=web_search_exa,get_code_context_exa,company_research_exa,deep_search_exa,crawling_exa,web_search_advanced_exa,deep_researcher_start,deep_researcher_check",
+      "url": "https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa",
+      "headers": {
+        "x-api-key": "{env:EXA_API_KEY}"
+      },
       "enabled": true
     },
     // https://vercel.com/blog/grep-a-million-github-repositories-via-mcp
