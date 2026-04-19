@@ -97,8 +97,6 @@ cask "google-drive"
 cask "httpie-desktop"
 # System monitoring app
 cask "istat-menus"
-# Menu bar manager
-cask "jordanbaird-ice"
 # Tool to show what is persistently installed on the computer
 cask "knockknock"
 # Host-based application firewall
@@ -127,6 +125,8 @@ cask "sublime-text"
 cask "suspicious-package"
 # Native GUI tool for relational databases
 cask "tableplus"
+# Menu bar manager
+cask "thaw"
 # To-do list
 cask "todoist-app"
 # Open-source code editor
