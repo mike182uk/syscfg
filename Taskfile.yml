@@ -168,13 +168,13 @@ tasks:
   fish-completions:
     desc: Install fish completions for installed programs
     preconditions:
-      - command -v orbctl
       - command -v task
       - command -v ast-grep
+      - command -v orbctl
     cmds:
-      - orbctl completion fish > {{.HOME}}/.config/fish/completions/orbstack.fish
       - task --completion fish > {{.HOME}}/.config/fish/completions/task.fish
       - ast-grep completions fish > {{.HOME}}/.config/fish/completions/ast-grep.fish
+      - orbctl completion fish > {{.HOME}}/.config/fish/completions/orbstack.fish
 
   fish-init:
     desc: Install fisher and plugins
