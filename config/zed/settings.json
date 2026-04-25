@@ -7,11 +7,34 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  "features": {
-    "edit_prediction_provider": "zed"
+  "proxy": "",
+  "tab_bar": {
+    "show": true
+  },
+  "edit_predictions": {
+    "provider": "zed"
+  },
+  "project_panel": {
+    "dock": "left"
+  },
+  "outline_panel": {
+    "dock": "left"
+  },
+  "collaboration_panel": {
+    "dock": "left"
+  },
+  "agent": {
+    "show_turn_stats": true,
+    "enable_feedback": false,
+    "dock": "right",
+    "favorite_models": [],
+    "model_parameters": []
+  },
+  "git_panel": {
+    "dock": "left"
   },
   "theme": "One Dark",
-  "buffer_font_size": 15,
+  "buffer_font_size": 15.0,
   "wrap_guides": [
     80
   ],
