@@ -2,9 +2,5 @@
   {
     "key": "ctrl+shift+alt+cmd+\\",
     "command": "workbench.action.toggleSidebarVisibility"
-  },
-  {
-    "key": "cmd+b",
-    "command": "-workbench.action.toggleSidebarVisibility"
   }
 ]
