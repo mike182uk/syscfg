@@ -311,7 +311,7 @@ tasks:
       - curl -fsSL -o "{{.COMMANDS_DIR}}/plannotator-last.md" "https://raw.githubusercontent.com/{{.REPO}}/{{.TAG}}/apps/opencode-plugin/commands/plannotator-last.md"
       - curl -fsSL -o "{{.COMMANDS_DIR}}/plannotator-archive.md" "https://raw.githubusercontent.com/{{.REPO}}/{{.TAG}}/apps/opencode-plugin/commands/plannotator-archive.md"
       # Clear cached plugin and jiti cache to force fresh download
-      - rm -rf {{.HOME}}/.cache/opencode/node_modules/@plannotator {{.HOME}}/.bun/install/cache/@plannotator /tmp/jiti 2>/dev/null || true
+      - rm -rf {{.HOME}}/.cache/opencode/node_modules/@plannotator {{.HOME}}/.cache/opencode/packages/@plannotator {{.HOME}}/.bun/install/cache/@plannotator /tmp/jiti 2>/dev/null || true
       - echo "plannotator {{.TAG}} installed"
 
   raycast:
