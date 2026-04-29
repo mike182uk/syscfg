@@ -41,6 +41,8 @@ tasks:
       - '{{.SKILLS_CLI}} add anthropics/skills -s frontend-design -a claude-code -g -y'
       # https://github.com/blader/humanizer
       - '{{.SKILLS_CLI}} add blader/humanizer -a claude-code -g -y'
+      # https://github.com/boldsoftware/exe.dev
+      - '{{.SKILLS_CLI}} add boldsoftware/exe.dev/skill -a claude-code -g -y'
       # https://github.com/mcollina/skills
       - '{{.SKILLS_CLI}} add mcollina/skills -s node -s typescript-magician -a claude-code -g -y'
       # https://github.com/nextlevelbuilder/ui-ux-pro-max-skill
