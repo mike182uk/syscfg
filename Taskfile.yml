@@ -43,6 +43,8 @@ tasks:
       - '{{.SKILLS_CLI}} add blader/humanizer -a claude-code -g -y'
       # https://github.com/boldsoftware/exe.dev
       - '{{.SKILLS_CLI}} add boldsoftware/exe.dev/skill -a claude-code -g -y'
+      # https://github.com/forrestchang/andrej-karpathy-skills
+      - '{{.SKILLS_CLI}} add forrestchang/andrej-karpathy-skills -a claude-code -g -y'
       # https://github.com/jakubkrehel/make-interfaces-feel-better
       - '{{.SKILLS_CLI}} add jakubkrehel/make-interfaces-feel-better -a claude-code -g -y'
       # https://github.com/jakubkrehel/oklch-skill
