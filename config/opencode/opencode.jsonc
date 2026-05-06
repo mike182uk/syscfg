@@ -47,6 +47,12 @@
       },
       "enabled": false
     },
+    // https://docs.incident.io/ai/remote-mcp
+    "incidentio-work": {
+      "type": "remote",
+      "url": "https://mcp.incident.io/mcp",
+      "enabled": false
+    },
     // https://linear.app/docs/mcp
     "linear-work": {
       "type": "remote",
