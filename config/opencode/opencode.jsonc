@@ -34,6 +34,19 @@
       "url": "https://mcp.grep.app",
       "enabled": true
     },
+    // https://github.com/chrisdoc/hevy-mcp
+    "hevy": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "hevy-mcp@latest"
+      ],
+      "environment": {
+        "HEVY_API_KEY": "{env:HEVY_API_KEY}"
+      },
+      "enabled": false
+    },
     // https://linear.app/docs/mcp
     "linear-work": {
       "type": "remote",

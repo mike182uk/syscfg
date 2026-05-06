@@ -161,3 +161,17 @@ abbr --add dv 'cd ~/Developer'
 if test -f $__fish_config_dir/config.local.fish
 	source $__fish_config_dir/config.local.fish
 end
+
+# Load select environment variables from syscfg .env
+
+set --local syscfg_env $HOME/Developer/Personal/syscfg/.env
+set --local syscfg_env_allow EXA_API_KEY HEVY_API_KEY
+
+if test -f $syscfg_env
+	for line in (string match --invert --regex '^\s*(#|$)' < $syscfg_env)
+		set --local kv (string split --max 1 '=' -- $line)
+		if contains -- $kv[1] $syscfg_env_allow
+			set --global --export $kv[1] (string trim --chars '"\'' -- $kv[2])
+		end
+	end
+end
