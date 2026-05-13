@@ -2,6 +2,8 @@
 	"font_size": 15,
 	"ignored_packages":
 	[
+		"Package Control",
 		"Vintage",
 	],
+	"index_files": true,
 }
