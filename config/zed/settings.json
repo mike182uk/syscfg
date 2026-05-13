@@ -7,12 +7,24 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  "proxy": "",
-  "tab_bar": {
-    "show": true
+  "session": {
+    "trust_all_worktrees": true
   },
-  "edit_predictions": {
-    "provider": "zed"
+  "cli_default_open_behavior": "existing_window",
+  "format_on_save": "off",
+  "agent_servers": {
+    "opencode": {
+      "type": "registry"
+    },
+    "cursor": {
+      "type": "registry"
+    },
+    "codex-acp": {
+      "type": "registry"
+    },
+    "claude-acp": {
+      "type": "registry"
+    }
   },
   "project_panel": {
     "dock": "left"
@@ -21,20 +33,19 @@
     "dock": "left"
   },
   "collaboration_panel": {
-    "dock": "left"
+    "dock": "left",
+    "button": false
   },
   "agent": {
-    "show_turn_stats": true,
-    "enable_feedback": false,
+    "sidebar_side": "right",
     "dock": "right",
-    "favorite_models": [],
-    "model_parameters": []
+    "show_turn_stats": true,
+    "enable_feedback": false
   },
   "git_panel": {
     "dock": "left"
   },
   "theme": "One Dark",
-  "buffer_font_size": 15.0,
   "wrap_guides": [
     80
   ],
