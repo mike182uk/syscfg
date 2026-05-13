@@ -41,5 +41,6 @@
   },
   "workbench.colorTheme": "Tokyo Night",
   "workbench.tree.indent": 22,
-  "workbench.tree.renderIndentGuides": "always"
+  "workbench.tree.renderIndentGuides": "always",
+  "window.autoDetectColorScheme": false
 }
