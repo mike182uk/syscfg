@@ -74,6 +74,22 @@ tasks:
       # https://github.com/mike182uk/agent-skills
       - '{{.SKILLS_CLI}} add mike182uk/agent-skills -a claude-code -g -y'
 
+  bat:
+    desc: Setup bat config
+    preconditions:
+      - command -v bat
+    cmds:
+      - mkdir -p {{.HOME}}/.config/bat/themes
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/bat/config'
+          TARGET: '{{.HOME}}/.config/bat/config'
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/bat/themes/tokyonight_night.tmTheme'
+          TARGET: '{{.HOME}}/.config/bat/themes/tokyonight_night.tmTheme'
+      - bat cache --build
+
   brew-bundle:
     desc: Update brewfile with installed formulae / casks
     preconditions:
