@@ -53,8 +53,12 @@ tasks:
       - '{{.SKILLS_CLI}} add mcollina/skills -s node -s typescript-magician -a claude-code -g -y'
       # https://github.com/nextlevelbuilder/ui-ux-pro-max-skill
       - '{{.SKILLS_CLI}} add nextlevelbuilder/ui-ux-pro-max-skill -s ui-ux-pro-max -s ckm:ui-styling -a claude-code -g -y'
+      # https://github.com/backnotprop/plannotator
+      - '{{.SKILLS_CLI}} add backnotprop/plannotator -s plannotator-compound -a claude-code -g -y --full-depth'
       # https://github.com/planetscale/database-skills
       - '{{.SKILLS_CLI}} add planetscale/database-skills -s mysql -s postgres -a claude-code -g -y'
+      # https://github.com/umputun/revdiff
+      - '{{.SKILLS_CLI}} add umputun/revdiff/.claude-plugin/skills/revdiff -a claude-code -g -y --full-depth'
       # https://github.com/shadcn-ui/ui
       - '{{.SKILLS_CLI}} add shadcn/ui -s shadcn -a claude-code -g -y'
       # https://github.com/softaworks/agent-toolkit
@@ -261,8 +265,13 @@ tasks:
 
   opencode:
     desc: Setup OpenCode config
+    vars:
+      COMMAND_FILES:
+        sh: ls {{.USER_WORKING_DIR}}/config/opencode/commands/*.md 2>/dev/null || true
+      PLUGIN_FILES:
+        sh: ls {{.USER_WORKING_DIR}}/config/opencode/plugins/*.ts 2>/dev/null || true
     cmds:
-      - mkdir -p {{.HOME}}/.config/opencode
+      - mkdir -p {{.HOME}}/.config/opencode/commands {{.HOME}}/.config/opencode/plugins {{.HOME}}/.config/opencode/tools
       - task: create-symlink-safe
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/opencode/opencode.jsonc'
@@ -271,14 +280,16 @@ tasks:
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/agents/AGENTS.md'
           TARGET: '{{.HOME}}/.config/opencode/AGENTS.md'
-      - task: create-symlink-safe
+      - for: { var: COMMAND_FILES }
+        task: create-symlink-safe
         vars:
-          SOURCE: '{{.USER_WORKING_DIR}}/config/opencode/commands'
-          TARGET: '{{.HOME}}/.config/opencode/commands'
-      - task: create-symlink-safe
+          SOURCE: '{{.ITEM}}'
+          TARGET: '{{.HOME}}/.config/opencode/commands/{{base .ITEM}}'
+      - for: { var: PLUGIN_FILES }
+        task: create-symlink-safe
         vars:
-          SOURCE: '{{.USER_WORKING_DIR}}/config/opencode/plugins'
-          TARGET: '{{.HOME}}/.config/opencode/plugins'
+          SOURCE: '{{.ITEM}}'
+          TARGET: '{{.HOME}}/.config/opencode/plugins/{{base .ITEM}}'
 
   # https://plannotator.ai/install.sh
   plannotator:
@@ -288,8 +299,7 @@ tasks:
     vars:
       INSTALL_DIR: '{{.HOME}}/.local/bin'
       REPO: backnotprop/plannotator
-      COMMANDS_DIR: '{{.USER_WORKING_DIR}}/config/opencode/commands'
-      SKILLS_CLI: bunx skills@1.4.4
+      COMMANDS_DIR: '{{.HOME}}/.config/opencode/commands'
       TAG:
         sh: curl -fsSL "https://api.github.com/repos/backnotprop/plannotator/releases/latest" | jq -r '.tag_name'
       BINARY_URL: 'https://github.com/backnotprop/plannotator/releases/download/{{.TAG}}/plannotator-darwin-arm64'
@@ -299,7 +309,6 @@ tasks:
       - command -v shasum
       - command -v jq
       - command -v gh
-      - command -v bunx
     cmds:
       - mkdir -p {{.INSTALL_DIR}}
       # Download CLI binary and verify checksum
@@ -313,9 +322,8 @@ tasks:
       - rm -f {{.INSTALL_DIR}}/plannotator
       - mv /tmp/plannotator {{.INSTALL_DIR}}/plannotator
       - chmod +x {{.INSTALL_DIR}}/plannotator
-      # Install skills
-      - '{{.SKILLS_CLI}} add backnotprop/plannotator -s plannotator-compound -a claude-code -g -y --full-depth'
       # Download OpenCode slash commands from the release tag
+      - mkdir -p {{.COMMANDS_DIR}}
       - curl -fsSL -o "{{.COMMANDS_DIR}}/plannotator-review.md" "https://raw.githubusercontent.com/{{.REPO}}/{{.TAG}}/apps/opencode-plugin/commands/plannotator-review.md"
       - curl -fsSL -o "{{.COMMANDS_DIR}}/plannotator-annotate.md" "https://raw.githubusercontent.com/{{.REPO}}/{{.TAG}}/apps/opencode-plugin/commands/plannotator-annotate.md"
       - curl -fsSL -o "{{.COMMANDS_DIR}}/plannotator-last.md" "https://raw.githubusercontent.com/{{.REPO}}/{{.TAG}}/apps/opencode-plugin/commands/plannotator-last.md"
@@ -332,6 +340,36 @@ tasks:
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/raycast/script-commands'
           TARGET: '{{.HOME}}/.config/raycast/script-commands'
+
+  revdiff:
+    desc: Setup revdiff config and OpenCode integration
+    vars:
+      REPO: umputun/revdiff
+      OPENCODE_DIR: '{{.HOME}}/.config/opencode'
+      TAG:
+        sh: curl -fsSL "https://api.github.com/repos/umputun/revdiff/releases/latest" | jq -r '.tag_name'
+      RAW: 'https://raw.githubusercontent.com/{{.REPO}}/{{.TAG}}'
+    preconditions:
+      - command -v revdiff
+      - command -v curl
+      - command -v jq
+    cmds:
+      - mkdir -p {{.HOME}}/.config/revdiff/themes
+      - revdiff --init-themes > /dev/null 2>&1 || true
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/revdiff/config'
+          TARGET: '{{.HOME}}/.config/revdiff/config'
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/revdiff/themes/tokyonight-custom'
+          TARGET: '{{.HOME}}/.config/revdiff/themes/tokyonight-custom'
+      # https://github.com/umputun/revdiff/blob/master/plugins/opencode/README.md
+      - mkdir -p {{.OPENCODE_DIR}}/commands {{.OPENCODE_DIR}}/tools
+      - curl -fsSL -o "{{.OPENCODE_DIR}}/commands/revdiff.md" "{{.RAW}}/plugins/opencode/commands/revdiff.md"
+      - curl -fsSL -o "{{.OPENCODE_DIR}}/tools/revdiff.ts" "{{.RAW}}/plugins/opencode/tools/revdiff.ts"
+      - curl -fsSL -o "{{.OPENCODE_DIR}}/tools/launch-revdiff.sh" "{{.RAW}}/.claude-plugin/skills/revdiff/scripts/launch-revdiff.sh"
+      - chmod +x "{{.OPENCODE_DIR}}/tools/launch-revdiff.sh"
 
   ssh:
     desc: Setup SSH config

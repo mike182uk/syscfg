@@ -1,0 +1,12 @@
+[Application Options]
+; show untracked files in the tree
+untracked = true
+
+; show line numbers in diff gutter
+line-numbers = true
+
+; highlight intra-line word-level changes in paired add/remove lines
+word-diff = true
+
+; UI theme (overrides chroma-style with the theme's own setting)
+theme = tokyonight-custom

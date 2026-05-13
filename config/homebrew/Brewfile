@@ -2,6 +2,7 @@ tap "go-task/tap"
 tap "mike182uk/tap"
 tap "oven-sh/bun"
 tap "stripe/stripe-cli"
+tap "umputun/apps"
 # Code searching, linting, rewriting
 brew "ast-grep"
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -42,6 +43,8 @@ brew "mas"
 brew "mise"
 # Tools for and transforming and inspecting PDF files
 brew "qpdf"
+# TUI for reviewing diffs, files, and documents with inline annotations
+brew "umputun/apps/revdiff"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Static analysis and lint tool, for (ba)sh scripts

@@ -1,0 +1,26 @@
+# name: tokyonight-custom
+# description: Tokyo Night palette matched to OpenCode's tokyonight theme (Night bg, Moon accents)
+# author: mike182uk
+
+chroma-style = tokyonight-moon
+color-accent = #82aaff
+color-border = #545c7e
+color-normal = #c8d3f5
+color-muted = #828bb8
+color-selected-fg = #1a1b26
+color-selected-bg = #82aaff
+color-annotation = #ffc777
+color-cursor-fg = #c099ff
+color-cursor-bg = #1a1b26
+color-add-fg = #b8db87
+color-add-bg = #20303b
+color-remove-fg = #e26a75
+color-remove-bg = #37222c
+color-modify-fg = #ffc777
+color-modify-bg = #2d2519
+color-tree-bg = #1a1b26
+color-diff-bg = #1a1b26
+color-status-fg = #c8d3f5
+color-status-bg = #1e2030
+color-search-fg = #1a1b26
+color-search-bg = #ffc777
