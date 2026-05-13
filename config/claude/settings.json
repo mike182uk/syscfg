@@ -1,13 +1,10 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "cleanupPeriodDays": 20,
   "attribution": {
     "commit": "",
     "pr": ""
   },
-  "autoMemoryEnabled": false,
-  "cleanupPeriodDays": 20,
-  "effortLevel": "high",
-  "feedbackSurveyRate": 0,
   "includeGitInstructions": false,
   "permissions": {
     "allow": [
@@ -140,13 +137,18 @@
       "mcp__playwright__browser_navigate",
       "mcp__playwright__browser_close"
     ],
-    "deny": [],
-    "defaultMode": "default"
+    "defaultMode": "default",
+    "deny": []
   },
-  "plansDirectory": "./.plans",
   "statusLine": {
     "type": "command",
     "command": "~/.claude/statusline.sh",
     "padding": 0
-  }
+  },
+  "feedbackSurveyRate": 0,
+  "effortLevel": "high",
+  "plansDirectory": "./.plans",
+  "autoMemoryEnabled": false,
+  "theme": "dark-ansi",
+  "skipDangerousModePermissionPrompt": true
 }
