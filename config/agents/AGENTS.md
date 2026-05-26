@@ -35,3 +35,7 @@
 
 - Use `shfmt` to format shell scripts
 - Use `shellcheck` to lint shell scripts
+
+# Writing
+
+- use hyphens instead of em-dashes (`—`) or double hyphens (`--`)
