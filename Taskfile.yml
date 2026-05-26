@@ -55,6 +55,8 @@ tasks:
       - '{{.SKILLS_CLI}} add nextlevelbuilder/ui-ux-pro-max-skill -s ui-ux-pro-max -s ckm:ui-styling -a claude-code -g -y'
       # https://github.com/backnotprop/plannotator
       - '{{.SKILLS_CLI}} add backnotprop/plannotator -s plannotator-compound -a claude-code -g -y --full-depth'
+      # https://github.com/ogulcancelik/herdr
+      - '{{.SKILLS_CLI}} add ogulcancelik/herdr -a claude-code -g -y'
       # https://github.com/planetscale/database-skills
       - '{{.SKILLS_CLI}} add planetscale/database-skills -s mysql -s postgres -a claude-code -g -y'
       # https://github.com/umputun/revdiff
@@ -228,6 +230,18 @@ tasks:
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/ghostty/themes'
           TARGET: '{{.HOME}}/.config/ghostty/themes'
+
+  herdr:
+    desc: Setup Herdr config
+    preconditions:
+      - command -v herdr
+    cmds:
+      - mkdir -p {{.HOME}}/.config/herdr
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/herdr/config.toml'
+          TARGET: '{{.HOME}}/.config/herdr/config.toml'
+      - herdr server reload-config || true
 
   git:
     desc: Setup Git config

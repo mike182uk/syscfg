@@ -70,6 +70,7 @@ task cursor
 task sublime-text
 task zed
 task opencode
+task herdr
 task raycast
 task zsh
 task agents

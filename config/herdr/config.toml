@@ -1,0 +1,20 @@
+# https://herdr.dev/docs/configuration/
+
+onboarding = false
+
+[theme]
+name = "tokyo-night"
+
+[ui.sound]
+enabled = false
+
+[keys]
+reload_config = "prefix+r"
+resize_mode = "prefix+shift+r"
+split_vertical = "prefix+|"
+split_horizontal = "prefix+_"
+
+[[keys.command]]
+key = "prefix+ctrl+d"
+type = "pane"
+command = "revdiff"

@@ -25,6 +25,8 @@ brew "fish"
 brew "fzf"
 # GitHub command-line tool
 brew "gh"
+# Agent multiplexer that lives in your terminal
+brew "herdr"
 # Distributed revision control system
 brew "git"
 # User-friendly cURL replacement (command-line HTTP client)
