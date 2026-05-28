@@ -6,16 +6,24 @@
 # {
 #   "cwd": "/current/working/directory",
 #   "session_id": "abc123...",
+#   "session_name": "my-session",
 #   "transcript_path": "/path/to/transcript.jsonl",
 #   "model": {
-#     "id": "claude-opus-4-6",
+#     "id": "claude-opus-4-8",
 #     "display_name": "Opus"
 #   },
 #   "workspace": {
 #     "current_dir": "/current/working/directory",
-#     "project_dir": "/original/project/directory"
+#     "project_dir": "/original/project/directory",
+#     "added_dirs": [],
+#     "git_worktree": "feature-xyz",
+#     "repo": {
+#       "host": "github.com",
+#       "owner": "anthropics",
+#       "name": "claude-code"
+#     }
 #   },
-#   "version": "1.0.80",
+#   "version": "2.1.90",
 #   "output_style": {
 #     "name": "default"
 #   },
@@ -27,8 +35,8 @@
 #     "total_lines_removed": 23
 #   },
 #   "context_window": {
-#     "total_input_tokens": 15234,
-#     "total_output_tokens": 4521,
+#     "total_input_tokens": 15500,
+#     "total_output_tokens": 1200,
 #     "context_window_size": 200000,
 #     "used_percentage": 8,
 #     "remaining_percentage": 92,
@@ -40,6 +48,12 @@
 #     }
 #   },
 #   "exceeds_200k_tokens": false,
+#   "effort": {
+#     "level": "high"
+#   },
+#   "thinking": {
+#     "enabled": true
+#   },
 #   "rate_limits": {
 #     "five_hour": {
 #       "used_percentage": 23.5,
@@ -55,6 +69,11 @@
 #   },
 #   "agent": {
 #     "name": "security-reviewer"
+#   },
+#   "pr": {
+#     "number": 1234,
+#     "url": "https://github.com/anthropics/claude-code/pull/1234",
+#     "review_state": "pending"
 #   },
 #   "worktree": {
 #     "name": "my-feature",
@@ -80,7 +99,7 @@ get_project() {
 	branch=$(git -C "$dir" rev-parse --abbrev-ref HEAD 2>/dev/null)
 
 	if [ -n "$branch" ]; then
-		echo "${dir}${DIM}:${branch}${RESET}"
+		echo "${dir}:${branch}"
 	else
 		echo "$dir"
 	fi
