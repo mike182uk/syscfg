@@ -242,6 +242,9 @@ tasks:
           SOURCE: '{{.USER_WORKING_DIR}}/config/herdr/config.toml'
           TARGET: '{{.HOME}}/.config/herdr/config.toml'
       - herdr server reload-config || true
+      - herdr integration install opencode
+      - herdr integration install claude
+      - herdr integration install codex
 
   git:
     desc: Setup Git config
