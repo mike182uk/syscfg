@@ -167,7 +167,7 @@ end
 
 # Load select environment variables from syscfg .env
 
-set --local syscfg_env $HOME/Developer/Personal/syscfg/.env
+set --local syscfg_env $HOME/Developer/repos/personal/syscfg/.env
 set --local syscfg_env_allow EXA_API_KEY HEVY_API_KEY
 
 if test -f $syscfg_env

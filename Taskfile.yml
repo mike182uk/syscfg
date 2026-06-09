@@ -179,6 +179,12 @@ tasks:
           SOURCE: '{{.USER_WORKING_DIR}}/config/cursor/keybindings.json'
           TARGET: '{{.CURSOR_CFG_PATH}}/keybindings.json'
 
+  dev-dirs:
+    desc: Setup ~/Developer directory structure
+    cmds:
+      - mkdir -p {{.HOME}}/Developer/repos/oss {{.HOME}}/Developer/repos/personal
+      - mkdir -p {{.HOME}}/Developer/worktrees/oss {{.HOME}}/Developer/worktrees/personal
+
   editorconfig:
     desc: Setup editorconfig config
     cmds:
