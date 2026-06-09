@@ -156,6 +156,9 @@ abbr --add h 'cd ~'
 abbr --add dl 'cd ~/Downloads'
 abbr --add dv 'cd ~/Developer'
 
+abbr --add hp 'herdr session attach personal'
+abbr --add hw 'herdr session attach work'
+
 # Load local config
 
 if test -f $__fish_config_dir/config.local.fish
