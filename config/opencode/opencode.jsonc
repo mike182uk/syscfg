@@ -1,7 +1,7 @@
 // https://opencode.ai/docs/config
 {
   "$schema": "https://opencode.ai/config.json",
-  "autoupdate": true,
+  "autoupdate": false,
   "mcp": {
       // https://github.com/ChromeDevTools/chrome-devtools-mcp
       "chrome-devtools": {
@@ -88,6 +88,7 @@
   },
   // https://models.dev
   "model": "anthropic/claude-opus-4-8",
+  "small_model": "anthropic/claude-haiku-4-5",
   // Default-allow with ask/deny on irreversible or public actions.
   // Last matching rule wins: broad rules first, narrow rules last.
   // In-project changes are recoverable via git + per-message snapshots (/undo).
@@ -98,6 +99,7 @@
       // never
       "sudo *": "deny",
       "rm -rf /": "deny",
+      "rm -rf /*": "deny",
       // local but destructive -> ask
       "rm -rf ~*": "ask",
       "git reset --hard*": "ask",
