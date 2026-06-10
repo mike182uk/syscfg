@@ -1,5 +1,7 @@
 # https://ghostty.org/docs/config/reference
 
+title = Ghostty
+
 command = /opt/homebrew/bin/fish
 shell-integration = fish
 shell-integration-features = no-cursor
