@@ -466,6 +466,19 @@ tasks:
         fi
       - "{{.HOME}}/.tmux/plugins/tpm/bin/install_plugins"
 
+  worktrunk:
+    desc: Setup worktrunk config
+    preconditions:
+      - command -v wt
+    cmds:
+      - mkdir -p {{.HOME}}/.config/worktrunk
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/worktrunk/config.toml'
+          TARGET: '{{.HOME}}/.config/worktrunk/config.toml'
+      - wt config shell install fish --yes
+      - wt config plugins opencode install --yes
+
   zed:
     desc: Setup Zed config
     cmds:

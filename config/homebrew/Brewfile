@@ -61,6 +61,8 @@ brew "tmux"
 brew "trash", link: true
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Git worktree management for parallel AI agent workflows
+brew "worktrunk"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
 brew "yq"
 # Shell extension to navigate your filesystem faster

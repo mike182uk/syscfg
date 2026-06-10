@@ -1,0 +1,3 @@
+# Mirror repos/<category>/<repo> into worktrees/<category>/<repo>/<branch>
+# e.g. repos/personal/foo -> worktrees/personal/foo/<branch>
+worktree-path = "~/Developer/worktrees/{{ repo_path | dirname | basename }}/{{ repo }}/{{ branch | sanitize }}"
