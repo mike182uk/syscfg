@@ -1,13 +1,29 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "cleanupPeriodDays": 20,
   "attribution": {
     "commit": "",
     "pr": ""
   },
+  "autoMemoryEnabled": false,
+  "cleanupPeriodDays": 20,
+  "effortLevel": "high",
+  "feedbackSurveyRate": 0,
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "command": "bash '/Users/mike/.claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10,
+            "type": "command"
+          }
+        ],
+        "matcher": "*"
+      }
+    ]
+  },
   "includeGitInstructions": false,
   "permissions": {
-    "defaultMode": "auto",
     "allow": [
       "mcp__context7",
       "mcp__exa",
@@ -47,21 +63,19 @@
       "Bash(brew install:*)",
       "Bash(brew uninstall:*)"
     ],
+    "defaultMode": "auto",
     "deny": [
       "Bash(sudo:*)",
       "Read(**/.env)",
       "Read(**/.env.*)"
     ]
   },
-  "statusLine": {
-    "type": "command",
-    "command": "~/.claude/statusline.sh",
-    "padding": 0
-  },
-  "feedbackSurveyRate": 0,
-  "effortLevel": "high",
   "plansDirectory": "./.plans",
-  "autoMemoryEnabled": false,
-  "theme": "dark-ansi",
-  "skipDangerousModePermissionPrompt": true
+  "skipDangerousModePermissionPrompt": true,
+  "statusLine": {
+    "command": "~/.claude/statusline.sh",
+    "padding": 0,
+    "type": "command"
+  },
+  "theme": "dark-ansi"
 }
