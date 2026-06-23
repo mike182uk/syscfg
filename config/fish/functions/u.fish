@@ -3,7 +3,7 @@ function u --description 'Update system'
 	op vault list >/dev/null 2>&1; or return 1
 
 	_update_msg "Updating brew..."
-	brew update && brew outdated && brew upgrade
+	brew update && brew outdated && brew upgrade --yes
 
 	_update_msg "Updating mas..."
 	mas outdated && mas upgrade

@@ -86,6 +86,7 @@ fish_add_path "$HOME/.bun/bin"
 set --global --export HOMEBREW_NO_ANALYTICS 1
 set --global --export HOMEBREW_NO_INSECURE_REDIRECT 1
 set --global --export HOMEBREW_CASK_OPTS --require-sha
+set --global --export HOMEBREW_NO_UPGRADE_AUTO_UPDATES_CASKS 1
 
 /opt/homebrew/bin/brew shellenv | source
 
