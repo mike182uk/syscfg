@@ -52,7 +52,7 @@ tasks:
       # https://github.com/mcollina/skills
       - '{{.SKILLS_CLI}} add mcollina/skills -s node -s typescript-magician -a claude-code -g -y'
       # https://github.com/nextlevelbuilder/ui-ux-pro-max-skill
-      - '{{.SKILLS_CLI}} add nextlevelbuilder/ui-ux-pro-max-skill -s ui-ux-pro-max -s ckm:ui-styling -a claude-code -g -y'
+      - '{{.SKILLS_CLI}} add nextlevelbuilder/ui-ux-pro-max-skill -s ui-ux-pro-max -s ui-styling -a claude-code -g -y'
       # https://github.com/backnotprop/plannotator
       - '{{.SKILLS_CLI}} add backnotprop/plannotator -s plannotator-compound -a claude-code -g -y --full-depth'
       # https://github.com/ogulcancelik/herdr
