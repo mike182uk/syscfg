@@ -60,7 +60,7 @@ tasks:
       # https://github.com/planetscale/database-skills
       - '{{.SKILLS_CLI}} add planetscale/database-skills -s mysql -s postgres -a claude-code -g -y'
       # https://github.com/umputun/revdiff
-      - '{{.SKILLS_CLI}} add https://github.com/umputun/revdiff/tree/master/.claude-plugin/skills/revdiff -a claude-code -g -y --full-depth'
+      - '{{.SKILLS_CLI}} add umputun/revdiff -s revdiff -a claude-code -g -y'
       # https://github.com/shadcn-ui/ui
       - '{{.SKILLS_CLI}} add shadcn/ui -s shadcn -a claude-code -g -y'
       # https://github.com/softaworks/agent-toolkit
