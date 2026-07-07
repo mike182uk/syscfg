@@ -56,8 +56,7 @@ tasks:
       # https://github.com/backnotprop/plannotator
       - '{{.SKILLS_CLI}} add backnotprop/plannotator -s plannotator-compound -a claude-code -g -y --full-depth'
       # https://github.com/ogulcancelik/herdr
-      # This skill is currently not installing correctly - the whole repo is being cloned and symlinked
-      # - '{{.SKILLS_CLI}} add ogulcancelik/herdr -a claude-code -g -y'
+      - '{{.SKILLS_CLI}} add ogulcancelik/herdr -s herdr -a claude-code -g -y'
       # https://github.com/planetscale/database-skills
       - '{{.SKILLS_CLI}} add planetscale/database-skills -s mysql -s postgres -a claude-code -g -y'
       # https://github.com/umputun/revdiff
