@@ -26,7 +26,6 @@ Based on the determined review type, use the `skill` tool to load the appropriat
 - For **code reviews**, load the `code-review` skill.
 - For **pull request reviews**, load the `pull-request-review` skill.
 - For **issue reviews**, load the `issue-review` skill.
-- For **SonarQube reviews**, load the `sonarqube-review` skill.
 
 ## Perform the review
 
