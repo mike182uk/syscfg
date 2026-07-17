@@ -7,6 +7,9 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "edit_predictions": {
+    "allow_data_collection": "no"
+  },
   "session": {
     "trust_all_worktrees": true
   },
@@ -14,15 +17,25 @@
   "format_on_save": "off",
   "agent_servers": {
     "opencode": {
+      "default_config_options": {
+        "model": "anthropic/claude-opus-4-8"
+      },
       "type": "registry"
     },
     "cursor": {
       "type": "registry"
     },
     "codex-acp": {
+      "default_config_options": {
+        "model": "gpt-5.6-sol",
+        "fast-mode": true
+      },
       "type": "registry"
     },
     "claude-acp": {
+      "default_config_options": {
+        "model": "opus[1m]"
+      },
       "type": "registry"
     }
   },
@@ -37,11 +50,10 @@
     "button": false
   },
   "agent": {
-    "default_model": {
+    "inline_assistant_model": {
       "provider": "openai-subscribed",
-      "model": "gpt-5.5",
-      "enable_thinking": true,
-      "effort": "medium"
+      "model": "gpt-5.6-sol",
+      "enable_thinking": true
     },
     "sidebar_side": "right",
     "dock": "right",
