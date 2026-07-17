@@ -1,26 +1,9 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "cleanupPeriodDays": 20,
   "attribution": {
     "commit": "",
     "pr": ""
-  },
-  "autoMemoryEnabled": false,
-  "cleanupPeriodDays": 20,
-  "effortLevel": "high",
-  "feedbackSurveyRate": 0,
-  "hooks": {
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "command": "bash '/Users/mike/.claude/hooks/herdr-agent-state.sh' session",
-            "timeout": 10,
-            "type": "command"
-          }
-        ],
-        "matcher": "*"
-      }
-    ]
   },
   "includeGitInstructions": false,
   "permissions": {
@@ -29,7 +12,15 @@
       "mcp__exa",
       "mcp__grep"
     ],
+    "deny": [
+      "Bash(sudo:*)",
+      "Bash(rm -rf /)",
+      "Bash(rm -rf /*)",
+      "Read(**/.env)",
+      "Read(**/.env.*)"
+    ],
     "ask": [
+      "Bash(rm -rf ~*)",
       "Bash(git push)",
       "Bash(git push:*)",
       "Bash(git reset --hard)",
@@ -63,19 +54,31 @@
       "Bash(brew install:*)",
       "Bash(brew uninstall:*)"
     ],
-    "defaultMode": "auto",
-    "deny": [
-      "Bash(sudo:*)",
-      "Read(**/.env)",
-      "Read(**/.env.*)"
+    "defaultMode": "auto"
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$HOME/.claude/hooks/herdr-agent-state.sh\" session",
+            "timeout": 10
+          }
+        ]
+      }
     ]
   },
-  "plansDirectory": "./.plans",
-  "skipDangerousModePermissionPrompt": true,
   "statusLine": {
+    "type": "command",
     "command": "~/.claude/statusline.sh",
-    "padding": 0,
-    "type": "command"
+    "padding": 0
   },
-  "theme": "dark-ansi"
+  "feedbackSurveyRate": 0,
+  "effortLevel": "high",
+  "autoMemoryEnabled": false,
+  "skipDangerousModePermissionPrompt": true,
+  "theme": "dark-ansi",
+  "tui": "fullscreen"
 }
