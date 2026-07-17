@@ -409,6 +409,17 @@ tasks:
       - curl -fsSL -o "{{.OPENCODE_DIR}}/tools/launch-revdiff.sh" "{{.RAW}}/.claude-plugin/skills/revdiff/scripts/launch-revdiff.sh"
       - chmod +x "{{.OPENCODE_DIR}}/tools/launch-revdiff.sh"
 
+  ripgrep:
+    desc: Setup ripgrep config
+    preconditions:
+      - command -v rg
+    cmds:
+      - mkdir -p {{.HOME}}/.config/ripgrep
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/ripgrep/config'
+          TARGET: '{{.HOME}}/.config/ripgrep/config'
+
   ssh:
     desc: Setup SSH config
     deps:

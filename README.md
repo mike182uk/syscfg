@@ -64,6 +64,7 @@ task tmux
 task starship
 task ghostty
 task editorconfig
+task ripgrep
 task bun
 task claude
 task cursor

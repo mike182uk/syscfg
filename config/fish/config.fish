@@ -126,6 +126,10 @@ if command -v zoxide > /dev/null
 	zoxide init fish | source
 end
 
+# Init ripgrep
+
+set --global --export RIPGREP_CONFIG_PATH $HOME/.config/ripgrep/config
+
 # Init abbreviations
 
 abbr --add cat 'bat'

@@ -1,0 +1,10 @@
+# https://github.com/BurntSushi/ripgrep/blob/master/GUIDE.md#configuration-file
+
+# Search hidden files and directories
+--hidden
+
+# Don't search inside .git directories
+--glob=!.git/
+
+# Use smart case (case-insensitive unless the pattern contains uppercase)
+--smart-case
