@@ -7,10 +7,6 @@
 
 - Never take public actions (e.g., posting a comment, sending an email, approving a PR) on my behalf unless I explicitly ask for that specific action
 
-# Self improvement
-
-- When I correct your behavior in a way that would recur across sessions, propose a one-line rule for the relevant `AGENTS.md` (global or project); show the diff, don't edit without approval
-
 # Documentation & research
 
 - When looking up documentation, use the context7 MCP first before searching the web
