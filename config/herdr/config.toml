@@ -1,8 +1,10 @@
 # https://herdr.dev/docs/configuration/
+# https://herdr.dev/docs/config-reference/
 
 onboarding = false
 
 [theme]
+auto_switch = false
 name = "tokyo-night"
 
 [keys]
@@ -18,3 +20,13 @@ command = "revdiff"
 
 [ui.sound]
 enabled = false
+
+[ui]
+agent_panel_sort = "spaces"
+prompt_new_tab_name = false
+
+[ui.sidebar.spaces]
+row_gap = 1
+
+[ui.sidebar.agents]
+row_gap = 1
