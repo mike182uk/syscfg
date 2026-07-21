@@ -342,7 +342,6 @@ tasks:
       - command -v git
       - command -v curl
       - command -v shasum
-      - command -v jq
       - command -v gh
     cmds:
       - mkdir -p {{.INSTALL_DIR}}
@@ -382,12 +381,12 @@ tasks:
       REPO: umputun/revdiff
       OPENCODE_DIR: '{{.HOME}}/.config/opencode'
       TAG:
-        sh: curl -fsSL "https://api.github.com/repos/umputun/revdiff/releases/latest" | jq -r '.tag_name'
+        sh: gh release view --repo umputun/revdiff --json tagName -q .tagName
       RAW: 'https://raw.githubusercontent.com/{{.REPO}}/{{.TAG}}'
     preconditions:
       - command -v revdiff
       - command -v curl
-      - command -v jq
+      - command -v gh
     cmds:
       - mkdir -p {{.HOME}}/.config/revdiff/themes
       - revdiff --init-themes > /dev/null 2>&1 || true
