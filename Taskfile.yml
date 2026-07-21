@@ -336,7 +336,7 @@ tasks:
       REPO: backnotprop/plannotator
       COMMANDS_DIR: '{{.HOME}}/.config/opencode/commands'
       TAG:
-        sh: curl -fsSL "https://api.github.com/repos/backnotprop/plannotator/releases/latest" | jq -r '.tag_name'
+        sh: gh release view --repo backnotprop/plannotator --json tagName -q .tagName
       BINARY_URL: 'https://github.com/backnotprop/plannotator/releases/download/{{.TAG}}/plannotator-darwin-arm64'
     preconditions:
       - command -v git
@@ -357,6 +357,7 @@ tasks:
       - rm -f {{.INSTALL_DIR}}/plannotator
       - mv /tmp/plannotator {{.INSTALL_DIR}}/plannotator
       - chmod +x {{.INSTALL_DIR}}/plannotator
+      - '{{.INSTALL_DIR}}/plannotator install-runtime agent-terminal || echo "Skipped agent terminal runtime install"'
       # Download OpenCode slash commands from the release tag
       - mkdir -p {{.COMMANDS_DIR}}
       - curl -fsSL -o "{{.COMMANDS_DIR}}/plannotator-review.md" "https://raw.githubusercontent.com/{{.REPO}}/{{.TAG}}/apps/opencode-plugin/commands/plannotator-review.md"

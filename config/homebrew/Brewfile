@@ -49,6 +49,8 @@ brew "qpdf"
 brew "umputun/apps/revdiff"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Semantic version control CLI with entity-level diffs and blame
+brew "sem-cli"
 # Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
 # Autoformat shell script source code
