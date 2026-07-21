@@ -28,53 +28,49 @@ tasks:
     desc: Setup AI agents
     env:
       DISABLE_TELEMETRY: 1
-    # Pin skills CLI to 1.4.4 - later versions broke symlinks (copies instead) and
-    # stopped populating ~/.agents/skills/
     vars:
-      SKILLS_CLI: bunx skills@1.4.4
+      SKILLS_CLI: bunx skills@latest
     cmds:
       - mkdir -p {{.HOME}}/.agents/skills
       - rm -f {{.HOME}}/.agents/.skill-lock.json
       # https://github.com/ast-grep/agent-skill
-      - '{{.SKILLS_CLI}} add ast-grep/agent-skill -a claude-code -g -y'
+      - '{{.SKILLS_CLI}} add ast-grep/agent-skill -a claude-code -a opencode -g -y'
       # https://github.com/anthropics/skills
-      - '{{.SKILLS_CLI}} add anthropics/skills -s frontend-design -a claude-code -g -y'
+      - '{{.SKILLS_CLI}} add anthropics/skills -s frontend-design -a claude-code -a opencode -g -y'
       # https://github.com/blader/humanizer
-      - '{{.SKILLS_CLI}} add blader/humanizer -a claude-code -g -y'
+      - '{{.SKILLS_CLI}} add blader/humanizer -a claude-code -a opencode -g -y'
       # https://github.com/boldsoftware/exe.dev
-      - '{{.SKILLS_CLI}} add boldsoftware/exe.dev/skill -a claude-code -g -y'
+      - '{{.SKILLS_CLI}} add boldsoftware/exe.dev/skill -a claude-code -a opencode -g -y'
       # https://github.com/forrestchang/andrej-karpathy-skills
-      - '{{.SKILLS_CLI}} add forrestchang/andrej-karpathy-skills -a claude-code -g -y'
+      - '{{.SKILLS_CLI}} add forrestchang/andrej-karpathy-skills -a claude-code -a opencode -g -y'
       # https://github.com/jakubkrehel/make-interfaces-feel-better
-      - '{{.SKILLS_CLI}} add jakubkrehel/make-interfaces-feel-better -a claude-code -g -y'
+      - '{{.SKILLS_CLI}} add jakubkrehel/make-interfaces-feel-better -a claude-code -a opencode -g -y'
       # https://github.com/jakubkrehel/oklch-skill
-      - '{{.SKILLS_CLI}} add jakubkrehel/oklch-skill -a claude-code -g -y'
+      - '{{.SKILLS_CLI}} add jakubkrehel/oklch-skill -a claude-code -a opencode -g -y'
       # https://github.com/mcollina/skills
-      - '{{.SKILLS_CLI}} add mcollina/skills -s node -s typescript-magician -a claude-code -g -y'
+      - '{{.SKILLS_CLI}} add mcollina/skills -s node -s typescript-magician -a claude-code -a opencode -g -y'
       # https://github.com/nextlevelbuilder/ui-ux-pro-max-skill
-      - '{{.SKILLS_CLI}} add nextlevelbuilder/ui-ux-pro-max-skill -s ui-ux-pro-max -s ui-styling -a claude-code -g -y'
-      # https://github.com/backnotprop/plannotator
-      - '{{.SKILLS_CLI}} add backnotprop/plannotator -s plannotator-compound -a claude-code -g -y --full-depth'
+      - '{{.SKILLS_CLI}} add nextlevelbuilder/ui-ux-pro-max-skill -s ui-ux-pro-max -s ui-styling -a claude-code -a opencode -g -y'
       # https://github.com/ogulcancelik/herdr
-      - '{{.SKILLS_CLI}} add ogulcancelik/herdr -s herdr -a claude-code -g -y'
+      - '{{.SKILLS_CLI}} add ogulcancelik/herdr -s herdr -a claude-code -a opencode -g -y'
       # https://github.com/planetscale/database-skills
-      - '{{.SKILLS_CLI}} add planetscale/database-skills -s mysql -s postgres -a claude-code -g -y'
+      - '{{.SKILLS_CLI}} add planetscale/database-skills -s mysql -s postgres -a claude-code -a opencode -g -y'
       # https://github.com/umputun/revdiff
-      - '{{.SKILLS_CLI}} add umputun/revdiff -s revdiff -a claude-code -g -y'
+      - '{{.SKILLS_CLI}} add umputun/revdiff -s revdiff -a claude-code -a opencode -g -y'
       # https://github.com/shadcn-ui/ui
-      - '{{.SKILLS_CLI}} add shadcn/ui -s shadcn -a claude-code -g -y'
+      - '{{.SKILLS_CLI}} add shadcn/ui -s shadcn -a claude-code -a opencode -g -y'
       # https://github.com/softaworks/agent-toolkit
-      - '{{.SKILLS_CLI}} add softaworks/agent-toolkit -s mermaid-diagrams -a claude-code -g -y'
+      - '{{.SKILLS_CLI}} add softaworks/agent-toolkit -s mermaid-diagrams -a claude-code -a opencode -g -y'
       # https://github.com/stripe/ai
-      - '{{.SKILLS_CLI}} add stripe/ai -s stripe-best-practices -a claude-code -g -y'
+      - '{{.SKILLS_CLI}} add stripe/ai -s stripe-best-practices -a claude-code -a opencode -g -y'
       # https://github.com/vercel-labs/agent-browser
-      - '{{.SKILLS_CLI}} add vercel-labs/agent-browser -s agent-browser -a claude-code -g -y'
+      - '{{.SKILLS_CLI}} add vercel-labs/agent-browser -s agent-browser -a claude-code -a opencode -g -y'
       # https://github.com/vercel-labs/agent-skills
-      - '{{.SKILLS_CLI}} add vercel-labs/agent-skills -s vercel-react-best-practices -s vercel-composition-patterns -a claude-code -g -y'
+      - '{{.SKILLS_CLI}} add vercel-labs/agent-skills -s vercel-react-best-practices -s vercel-composition-patterns -a claude-code -a opencode -g -y'
       # https://github.com/vercel-labs/opensrc
-      - '{{.SKILLS_CLI}} add vercel-labs/opensrc -s opensrc -a claude-code -g -y'
+      - '{{.SKILLS_CLI}} add vercel-labs/opensrc -s opensrc -a claude-code -a opencode -g -y'
       # https://github.com/mike182uk/agent-skills
-      - '{{.SKILLS_CLI}} add mike182uk/agent-skills -a claude-code -g -y'
+      - '{{.SKILLS_CLI}} add mike182uk/agent-skills -a claude-code -a opencode -g -y'
 
   bat:
     desc: Setup bat config

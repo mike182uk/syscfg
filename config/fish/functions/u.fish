@@ -22,7 +22,7 @@ function u --description 'Update system'
 	bun add -g agent-browser@latest opensrc@latest
 
 	_update_msg "Updating agent skills..."
-	bunx skills@1.4.4 update
+	bunx skills@latest update
 end
 
 function _update_msg
