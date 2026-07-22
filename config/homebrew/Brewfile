@@ -1,6 +1,4 @@
 tap "go-task/tap"
-tap "mike182uk/tap"
-tap "oven-sh/bun"
 tap "stripe/stripe-cli"
 tap "umputun/apps"
 # Code searching, linting, rewriting
@@ -39,8 +37,6 @@ brew "jq"
 brew "lazydocker"
 # Simple terminal UI for git commands
 brew "lazygit"
-# Mac App Store command-line interface
-brew "mas"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
 # Tools for and transforming and inspecting PDF files
@@ -59,8 +55,6 @@ brew "shfmt"
 brew "starship"
 # Terminal multiplexer
 brew "tmux"
-# CLI tool that moves files or folder to the trash
-brew "trash", link: true
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
 # Git worktree management for parallel AI agent workflows
@@ -73,134 +67,3 @@ brew "zoxide"
 brew "go-task/tap/go-task"
 # Stripe CLI utility
 brew "stripe/stripe-cli/stripe"
-# Password manager that keeps all passwords secure behind one password
-cask "1password"
-# Command-line interface for 1Password
-cask "1password-cli"
-# Speech-to-text system
-cask "aqua-voice"
-# Chromium based browser
-cask "arc"
-# Tool to flash OS images to SD cards & USB drives
-cask "balenaetcher"
-# Web browser focusing on privacy
-cask "brave-browser"
-# OpenAI's official ChatGPT desktop app
-cask "chatgpt"
-# Anthropic's official Claude AI desktop app
-cask "claude"
-# Screen capturing tool
-cask "cleanshot"
-# OpenAI's coding agent that runs in your terminal
-cask "codex"
-# Write, edit, and chat about your code with AI
-cask "cursor"
-cask "font-jetbrains-mono"
-# Terminal emulator that uses platform-native UI and GPU acceleration
-cask "ghostty"
-# Web browser
-cask "google-chrome"
-# Client for the Google Drive storage service
-cask "google-drive"
-# Testing client for REST, GraphQL, and HTTP APIs
-cask "httpie-desktop"
-# System monitoring app
-cask "istat-menus"
-# Tool to show what is persistently installed on the computer
-cask "knockknock"
-# Host-based application firewall
-cask "little-snitch"
-# Monitors and reports any microphone and camera activity
-cask "micro-snitch"
-# App to write, plan, collaborate, and get organised
-cask "notion"
-# Cloud gaming platform
-cask "nvidia-geforce-now"
-# AI coding agent desktop client
-cask "opencode-desktop"
-# Replacement for Docker Desktop
-cask "orbstack"
-# VPN client focusing on security
-cask "protonvpn"
-# Control your tools with a few keystrokes
-cask "raycast"
-# Sound and audio controller
-cask "soundsource"
-# Music streaming service
-cask "spotify"
-# Text editor for code, markup and prose
-cask "sublime-text"
-# Application for inspecting installer packages
-cask "suspicious-package"
-# Native GUI tool for relational databases
-cask "tableplus"
-# Menu bar manager
-cask "thaw"
-# To-do list
-cask "todoist-app"
-# Open-source code editor
-cask "visual-studio-code"
-# Native desktop client for WhatsApp
-cask "whatsapp"
-# Multiplayer code editor
-cask "zed"
-mas "1Password for Safari", id: 1569813296
-mas "Command X", id: 6448461551
-mas "Lungo", id: 1263070803
-mas "Tailscale", id: 1475387142
-mas "Xcode", id: 497799835
-vscode "alefragnani.bookmarks"
-vscode "antfu.pnpm-catalog-lens"
-vscode "anthropic.claude-code"
-vscode "astro-build.astro-vscode"
-vscode "biomejs.biome"
-vscode "bmalehorn.vscode-fish"
-vscode "bradlc.vscode-tailwindcss"
-vscode "christian-kohler.npm-intellisense"
-vscode "cucumberopen.cucumber-official"
-vscode "dbaeumer.vscode-eslint"
-vscode "denoland.vscode-deno"
-vscode "dracula-theme.theme-dracula"
-vscode "dunstontc.viml"
-vscode "eamodio.gitlens"
-vscode "editorconfig.editorconfig"
-vscode "enkia.tokyo-night"
-vscode "esbenp.prettier-vscode"
-vscode "evondev.indent-rainbow-palettes"
-vscode "formulahendry.auto-rename-tag"
-vscode "garmin.monkey-c"
-vscode "github.copilot"
-vscode "github.copilot-chat"
-vscode "github.vscode-github-actions"
-vscode "golang.go"
-vscode "gruntfuggly.todo-tree"
-vscode "hashicorp.terraform"
-vscode "ionutvmi.path-autocomplete"
-vscode "johnpapa.vscode-peacock"
-vscode "matthewpi.caddyfile-support"
-vscode "mechatroner.rainbow-csv"
-vscode "ms-azuretools.vscode-docker"
-vscode "ms-python.debugpy"
-vscode "ms-python.python"
-vscode "ms-python.vscode-pylance"
-vscode "ms-vscode-remote.remote-containers"
-vscode "ms-vscode.makefile-tools"
-vscode "naumovs.color-highlight"
-vscode "oderwat.indent-rainbow"
-vscode "openai.chatgpt"
-vscode "oven.bun-vscode"
-vscode "prisma.prisma"
-vscode "redhat.ansible"
-vscode "redhat.vscode-yaml"
-vscode "standard.vscode-standard"
-vscode "supermaven.supermaven"
-vscode "tamasfe.even-better-toml"
-vscode "task.vscode-task"
-vscode "tryghost.ghost"
-vscode "unifiedjs.vscode-mdx"
-vscode "vue.volar"
-vscode "wayou.vscode-todo-highlight"
-vscode "yoavbls.pretty-ts-errors"
-vscode "yzhang.markdown-all-in-one"
-vscode "zhuangtongfa.material-theme"
-vscode "zxh404.vscode-proto3"

@@ -101,9 +101,9 @@ tasks:
       - command -v jq
       - "[ -f {{.HOME}}/.cursor/extensions/extensions.json ] && exit 0 || exit 1"
     cmds:
-      - brew bundle dump --no-vscode --force --describe --file {{.USER_WORKING_DIR}}/config/homebrew/Brewfile
-      # Manually append vscode extensions based on what extensions have been added to Cursor
-      - jq -r '.[].identifier.id' {{.HOME}}/.cursor/extensions/extensions.json | sort -u | while read -r id; do echo "vscode \"$id\"" >> {{.USER_WORKING_DIR}}/config/homebrew/Brewfile; done
+      # Dump installed state and partition into Brewfile (portable) and
+      # Brewfile.macos (macOS-only formulae, casks, mas, vscode extensions)
+      - '{{.USER_WORKING_DIR}}/scripts/brew-bundle-split.sh "{{.USER_WORKING_DIR}}/config/homebrew" "{{.HOME}}/.cursor/extensions/extensions.json"'
 
   brew-install:
     desc: Install formulae / casks listed in Brewfile
@@ -111,6 +111,9 @@ tasks:
       - command -v brew
     cmds:
       - brew bundle --file {{.USER_WORKING_DIR}}/config/homebrew/Brewfile
+      - cmd: brew bundle --file {{.USER_WORKING_DIR}}/config/homebrew/Brewfile.macos
+        platforms:
+          - darwin
 
   bun:
     desc: Setup Bun config
