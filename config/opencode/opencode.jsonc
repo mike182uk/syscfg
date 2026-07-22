@@ -136,7 +136,8 @@
       "/tmp/**": "allow",
       "/private/tmp/**": "allow",
       "/var/folders/**": "allow",
-      "/private/var/folders/**": "allow"
+      "/private/var/folders/**": "allow",
+      "/run/user/**": "allow"
     }
   },
   "plugin": [
