@@ -20,6 +20,8 @@ tasks:
 
   1password-ssh:
     desc: Setup 1password SSH agent
+    platforms:
+      - darwin
     cmds:
       - mkdir -p {{.HOME}}/.1password
       - ln -sf {{.HOME}}/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock {{.HOME}}/.1password/agent.sock
@@ -30,6 +32,8 @@ tasks:
       DISABLE_TELEMETRY: 1
     vars:
       SKILLS_CLI: bunx skills@latest
+    preconditions:
+      - command -v bun
     cmds:
       - mkdir -p {{.HOME}}/.agents/skills
       - rm -f {{.HOME}}/.agents/.skill-lock.json
@@ -90,6 +94,8 @@ tasks:
 
   brew-bundle:
     desc: Update brewfile with installed formulae / casks
+    platforms:
+      - darwin
     preconditions:
       - command -v brew
       - command -v jq
@@ -108,6 +114,8 @@ tasks:
 
   bun:
     desc: Setup Bun config
+    preconditions:
+      - command -v bun
     cmds:
       - task: create-symlink-safe
         vars:
@@ -120,6 +128,8 @@ tasks:
     desc: Setup Claude code
     preconditions:
       - command -v npm
+      - command -v npx
+      - command -v curl
     cmds:
       # Settings
       - task: create-symlink-safe
@@ -162,6 +172,8 @@ tasks:
 
   cursor:
     desc: Setup Cursor config
+    platforms:
+      - darwin
     vars:
       CURSOR_CFG_PATH: '{{.HOME}}/Library/Application Support/Cursor/User'
     cmds:
@@ -222,6 +234,8 @@ tasks:
 
   ghostty:
     desc: Install Ghostty config
+    platforms:
+      - darwin
     cmds:
       - mkdir -p {{.HOME}}/.config/ghostty
       - task: create-symlink-safe
@@ -271,6 +285,8 @@ tasks:
 
   git-gpg:
     desc: Setup Git GPG commit signing
+    platforms:
+      - darwin
     vars:
       GPG_SSH_PROGRAM: /Applications/1Password.app/Contents/MacOS/op-ssh-sign
     preconditions:
@@ -295,6 +311,8 @@ tasks:
 
   macos:
     desc: Configure macOS
+    platforms:
+      - darwin
     cmds:
       - '{{.USER_WORKING_DIR}}/scripts/setup-macos.sh'
 
@@ -368,6 +386,8 @@ tasks:
 
   raycast:
     desc: Install Raycast preferences
+    platforms:
+      - darwin
     cmds:
       - mkdir -p {{.HOME}}/.config/raycast
       - task: create-symlink-safe
@@ -436,6 +456,8 @@ tasks:
 
   sublime-text:
     desc: Setup Sublime Text config
+    platforms:
+      - darwin
     vars:
       ST_CFG_PATH: '{{.HOME}}/Library/Application Support/Sublime Text/Packages/User'
       ST_PKG_PATH: '{{.HOME}}/Library/Application Support/Sublime Text/Installed Packages'
@@ -455,6 +477,8 @@ tasks:
 
   tmux:
     desc: Setup tmux config
+    preconditions:
+      - command -v git
     cmds:
       - '[ -d "{{.HOME}}/.tmux/plugins/tpm" ] || git clone https://github.com/tmux-plugins/tpm {{.HOME}}/.tmux/plugins/tpm'
       - task: create-symlink-safe
@@ -487,6 +511,8 @@ tasks:
 
   zed:
     desc: Setup Zed config
+    platforms:
+      - darwin
     cmds:
       - mkdir -p {{.HOME}}/.config/zed
       - task: create-symlink-safe
@@ -496,6 +522,8 @@ tasks:
 
   zsh:
     desc: Setup zsh config
+    platforms:
+      - darwin
     cmds:
       - task: create-symlink-safe
         vars:
