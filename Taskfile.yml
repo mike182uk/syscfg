@@ -450,12 +450,14 @@ tasks:
 
   ssh:
     desc: Setup SSH config
-    deps:
-      - 1password-ssh
+    vars:
+      SSH_CONFIG_FILE: '{{if eq OS "darwin"}}config.macos{{else}}config{{end}}'
     cmds:
+      - mkdir -p {{.HOME}}/.ssh
+      - chmod 700 {{.HOME}}/.ssh
       - task: create-symlink-safe
         vars:
-          SOURCE: '{{.USER_WORKING_DIR}}/config/ssh/config'
+          SOURCE: '{{.USER_WORKING_DIR}}/config/ssh/{{.SSH_CONFIG_FILE}}'
           TARGET: '{{.HOME}}/.ssh/config'
 
   starship:

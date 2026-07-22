@@ -1,5 +1,2 @@
-Include ~/.orbstack/ssh/config
-
 Host *
-	IdentityAgent "~/.1password/agent.sock"
-	SetEnv TERM=xterm-256color
+	IdentityFile ~/.ssh/id_ed25519
