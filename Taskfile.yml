@@ -219,11 +219,13 @@ tasks:
     preconditions:
       - command -v task
       - command -v ast-grep
-      - command -v orbctl
     cmds:
       - task --completion fish > {{.HOME}}/.config/fish/completions/task.fish
       - ast-grep completions fish > {{.HOME}}/.config/fish/completions/ast-grep.fish
-      - orbctl completion fish > {{.HOME}}/.config/fish/completions/orbstack.fish
+      # OrbStack is macOS-only; skip elsewhere and no-op if not installed
+      - cmd: 'if command -v orbctl >/dev/null; then orbctl completion fish > {{.HOME}}/.config/fish/completions/orbstack.fish; fi'
+        platforms:
+          - darwin
 
   fish-init:
     desc: Install fisher and plugins
