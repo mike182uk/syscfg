@@ -88,7 +88,12 @@ set --global --export HOMEBREW_NO_INSECURE_REDIRECT 1
 set --global --export HOMEBREW_CASK_OPTS --require-sha
 set --global --export HOMEBREW_NO_UPGRADE_AUTO_UPDATES_CASKS 1
 
-/opt/homebrew/bin/brew shellenv | source
+for brew_path in /opt/homebrew/bin/brew /home/linuxbrew/.linuxbrew/bin/brew
+	if test -x $brew_path
+		$brew_path shellenv | source
+		break
+	end
+end
 
 # Init editor
 
@@ -134,7 +139,9 @@ set --global --export RIPGREP_CONFIG_PATH $HOME/.config/ripgrep/config
 
 abbr --add cat 'bat'
 abbr --add ls 'eza'
-abbr --add rm 'trash'
+if command -v trash > /dev/null
+	abbr --add rm 'trash'
+end
 abbr --add brwe 'brew'
 
 abbr --add b 'brew'
@@ -147,7 +154,9 @@ abbr --add l 'eza -lga --git --group-directories-first'
 abbr --add lzd 'lazydocker'
 abbr --add lzg 'lazygit'
 abbr --add oc 'opencode'
-abbr --add ts '/Applications/Tailscale.app/Contents/MacOS/Tailscale'
+if test -x /Applications/Tailscale.app/Contents/MacOS/Tailscale
+	abbr --add ts '/Applications/Tailscale.app/Contents/MacOS/Tailscale'
+end
 
 abbr --add .. 'cd ..'
 abbr --add ... 'cd ../..'

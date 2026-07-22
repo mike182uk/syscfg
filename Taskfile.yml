@@ -536,8 +536,6 @@ tasks:
 
   zsh:
     desc: Setup zsh config
-    platforms:
-      - darwin
     cmds:
       - task: create-symlink-safe
         vars:

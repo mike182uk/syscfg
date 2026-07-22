@@ -1,12 +1,18 @@
 function u --description 'Update system'
-	# Trigger 1Password authentication before attempting to update brew
-	op vault list >/dev/null 2>&1; or return 1
+	if command -v brew > /dev/null
+		# Trigger 1Password authentication before attempting to update brew on macOS
+		if command -v op > /dev/null
+			op vault list >/dev/null 2>&1; or return 1
+		end
 
-	_update_msg "Updating brew..."
-	brew update && brew outdated && brew upgrade --yes
+		_update_msg "Updating brew..."
+		brew update && brew outdated && brew upgrade --yes
+	end
 
-	_update_msg "Updating mas..."
-	mas outdated && mas upgrade
+	if command -v mas > /dev/null
+		_update_msg "Updating mas..."
+		mas outdated && mas upgrade
+	end
 
 	_update_msg "Updating fisher..."
 	fisher update
