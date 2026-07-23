@@ -20,5 +20,11 @@ if ! grep -q "^$FISH_PATH\$" /etc/shells; then
 fi
 
 if [ "${SHELL:-}" != "$FISH_PATH" ]; then
-	chsh -s "$FISH_PATH"
+	# On macOS the user authenticates directly; on Linux the account often
+	# has no/locked password, so chsh must go through (passwordless) sudo.
+	if [ "$(uname)" = "Darwin" ]; then
+		chsh -s "$FISH_PATH"
+	else
+		sudo chsh -s "$FISH_PATH" "$(id -un)"
+	fi
 fi
