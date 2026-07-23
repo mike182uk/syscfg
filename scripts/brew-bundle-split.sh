@@ -22,9 +22,6 @@ BREWFILE_MACOS="$CONFIG_DIR/Brewfile.macos"
 # Formulae that exist in homebrew-core but only build on macOS.
 MACOS_ONLY_FORMULAE="mas trash"
 
-# Taps that should live in the macOS file (not referenced by portable formulae).
-MACOS_ONLY_TAPS="mike182uk/tap"
-
 tmp=$(mktemp)
 trap 'rm -f "$tmp"' EXIT
 
@@ -47,14 +44,6 @@ is_macos_only_formula() {
 	return 1
 }
 
-is_macos_only_tap() {
-	name=$1
-	for t in $MACOS_ONLY_TAPS; do
-		[ "$name" = "$t" ] && return 0
-	done
-	return 1
-}
-
 # Extract the quoted argument from a brew/cask/tap line, e.g. brew "git" -> git.
 quoted_arg() {
 	printf '%s' "$1" | sed -n 's/^[a-z]* "\([^"]*\)".*/\1/p'
@@ -68,12 +57,7 @@ while IFS= read -r line; do
 		continue
 		;;
 	tap\ *)
-		name=$(quoted_arg "$line")
-		if is_macos_only_tap "$name"; then
-			dest=$BREWFILE_MACOS
-		else
-			dest=$BREWFILE
-		fi
+		dest=$BREWFILE
 		;;
 	brew\ *)
 		name=$(quoted_arg "$line")

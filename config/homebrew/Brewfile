@@ -1,5 +1,5 @@
 tap "go-task/tap"
-tap "stripe/stripe-cli"
+tap "mike182uk/tap"
 tap "umputun/apps"
 # Code searching, linting, rewriting
 brew "ast-grep"
@@ -66,4 +66,4 @@ brew "zoxide"
 # Task runner / simpler Make alternative written in Go
 brew "go-task/tap/go-task"
 # Stripe CLI utility
-brew "stripe/stripe-cli/stripe"
+brew "stripe-cli"

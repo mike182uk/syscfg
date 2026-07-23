@@ -20,6 +20,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Linux
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+sudo apt-get install -y build-essential bubblewrap
 ```
 
 ### Install `task`

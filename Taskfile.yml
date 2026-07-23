@@ -110,6 +110,9 @@ tasks:
     preconditions:
       - command -v brew
     cmds:
+      - cmd: brew trust --tap go-task/tap umputun/apps mike182uk/tap
+        platforms:
+          - linux
       - brew bundle --file {{.USER_WORKING_DIR}}/config/homebrew/Brewfile
       - cmd: brew bundle --file {{.USER_WORKING_DIR}}/config/homebrew/Brewfile.macos
         platforms:
