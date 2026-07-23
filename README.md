@@ -65,6 +65,7 @@ task 1password-ssh
 task ssh
 task git              # Run this AFTER 1password-ssh to avoid any SSH issues
 task git-gpg          # Optional - requires GIT_SIGNING_KEY in .env
+task dev-dirs
 task fish
 task fish-init
 task fish-completions
@@ -74,13 +75,18 @@ task starship
 task ghostty
 task editorconfig
 task ripgrep
+task bat
 task bun
 task claude
+task codex
 task cursor
 task sublime-text
 task zed
 task opencode
 task herdr
+task revdiff
+task worktrunk
+task plannotator
 task raycast
 task zsh
 task agents
@@ -100,6 +106,7 @@ task brew-install     # Install Homebrew packages
 task ssh
 task ssh-key
 task git
+task dev-dirs
 task fish
 task fish-init
 task fish-completions
@@ -108,10 +115,15 @@ task tmux
 task starship
 task editorconfig
 task ripgrep
+task bat
 task bun
 task claude
+task codex
 task opencode
 task herdr
+task revdiff
+task worktrunk
+task plannotator
 task zsh
 task agents
 ```
