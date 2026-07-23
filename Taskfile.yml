@@ -460,6 +460,17 @@ tasks:
           SOURCE: '{{.USER_WORKING_DIR}}/config/ssh/{{.SSH_CONFIG_FILE}}'
           TARGET: '{{.HOME}}/.ssh/config'
 
+  ssh-key:
+    desc: Setup SSH key
+    platforms:
+      - linux
+    cmds:
+      - mkdir -p {{.HOME}}/.ssh
+      - chmod 700 {{.HOME}}/.ssh
+      - '[ -f {{.HOME}}/.ssh/id_ed25519 ] || ssh-keygen -t ed25519 -C "$GIT_EMAIL" -f {{.HOME}}/.ssh/id_ed25519 -N ""'
+      - echo "SSH public key:"
+      - cat {{.HOME}}/.ssh/id_ed25519.pub
+
   starship:
     desc: Setup starship config
     cmds:

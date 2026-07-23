@@ -69,7 +69,7 @@ set --global fish_color_user white
 
 # Set key bindings
 
-bind shift-up beginning-of-line # Shift + Up Arrow - Move to the beginning of the line
+bind shift-up beginning-of-line   # Shift + Up Arrow - Move to the beginning of the line
 bind shift-down end-of-line       # Shift + Down Arrow - Move to the end of the line
 
 # Allow scrolling with mouse in less, bat etc. when using tmux
@@ -97,7 +97,11 @@ end
 
 # Init editor
 
-set --global --export EDITOR 'zed --wait'
+if command -v zed > /dev/null
+	set --global --export EDITOR 'zed --wait'
+else
+	set --global --export EDITOR 'vim'
+end
 
 # Init fzf
 
@@ -142,8 +146,8 @@ abbr --add ls 'eza'
 if command -v trash > /dev/null
 	abbr --add rm 'trash'
 end
-abbr --add brwe 'brew'
 
+abbr --add brwe 'brew'
 abbr --add b 'brew'
 abbr --add c 'cursor'
 abbr --add d 'docker'

@@ -1,6 +1,6 @@
 # syscfg
 
-Everything I need to set up a new macOS based system
+Everything I need to set up a new macOS / Linux based system
 
 ## Prerequisites
 
@@ -8,53 +8,61 @@ Everything I need to set up a new macOS based system
 - [Homebrew](https://brew.sh/)
 - [Task](https://taskfile.dev/#/installation)
 
-#### Install `homebrew`
+### Install `homebrew`
 
 ```sh
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-#### Install `task`
+```sh
+# macOS
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Linux
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+```
+
+### Install `task`
 
 ```sh
-/opt/homebrew/bin/brew install go-task/tap/go-task
+brew install go-task/tap/go-task
 ```
 
 ## Setup
 
-Clone this repo via `https` instead of `ssh` as SSH keys are not yet setup
+Clone this repo via `https` instead of `ssh` as SSH keys are not yet set up:
 
 ```sh
 git clone https://github.com/mike182uk/syscfg.git
 ```
 
-Copy `.env.example` to `.env` and update the values
+Copy `.env.example` to `.env` and update the values:
 
 ```sh
 cd syscfg && cp .env.example .env
 ```
 
-Run `task` to see available tasks
+Run `task` to see available tasks:
 
 ```sh
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
 task
 ```
 
 ## Recommended Run Order
+
+### macOS
 
 ```sh
 task brew-install     # Install Homebrew packages (Mac App Store apps will fail until signed in)
 task macos            # Set hostname, default shell, and system preferences
 ```
 
-Open 1Password, sign in, and enable SSH agent (Settings > Developer > SSH Agent)
+Open 1Password, sign in, and enable SSH agent (`Settings` > `Developer` > `SSH Agent`)
 
 ```sh
 task 1password-ssh
 task ssh
-task git              # Run this AFTER 1password-ssh to avoid SSH issues
+task git              # Run this AFTER 1password-ssh to avoid any SSH issues
 task git-gpg          # Optional - requires GIT_SIGNING_KEY in .env
 task fish
 task fish-init
@@ -78,3 +86,31 @@ task agents
 ```
 
 Sign into Mac App Store, then re-run `task brew-install` to install Mac App Store apps
+
+### Linux
+
+macOS only tasks are skipped automatically, so they are omitted below
+
+```sh
+task brew-install     # Install Homebrew packages
+```
+
+```sh
+task ssh
+task ssh-key
+task git
+task fish
+task fish-init
+task fish-completions
+task mise
+task tmux
+task starship
+task editorconfig
+task ripgrep
+task bun
+task claude
+task opencode
+task herdr
+task zsh
+task agents
+```

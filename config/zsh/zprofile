@@ -6,3 +6,11 @@ for brew_path in /opt/homebrew/bin/brew /home/linuxbrew/.linuxbrew/bin/brew; do
 		break
 	fi
 done
+
+# Init editor
+
+if command -v zed > /dev/null; then
+	export EDITOR='zed --wait'
+else
+	export EDITOR='vim'
+fi

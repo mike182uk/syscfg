@@ -19,10 +19,11 @@
 
 # Environment
 
-- Operating system: macOS
+- Operating system: macOS or Linux - check before assuming platform-specific tooling
 - Shell: `fish` (not `zsh`), likely in a terminal multiplexer (`tmux`, `zellij`, `herdr`)
 - Tools: `node`, `bun`, `go`, etc. are managed by `mise` (not `nvm`, `brew`)
-- Docker management: `Orbstack` (not `Docker Desktop`)
+- Package manager: `Homebrew`
+- Docker management: `Orbstack` on macOS (not `Docker Desktop`), standard Docker on Linux
 
 # Code
 
