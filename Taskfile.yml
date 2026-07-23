@@ -110,9 +110,7 @@ tasks:
     preconditions:
       - command -v brew
     cmds:
-      - cmd: brew trust --tap go-task/tap umputun/apps mike182uk/tap
-        platforms:
-          - linux
+      - brew trust --tap go-task/tap umputun/apps mike182uk/tap
       - brew bundle --file {{.USER_WORKING_DIR}}/config/homebrew/Brewfile
       - cmd: brew bundle --file {{.USER_WORKING_DIR}}/config/homebrew/Brewfile.macos
         platforms:
@@ -128,10 +126,13 @@ tasks:
           SOURCE: '{{.USER_WORKING_DIR}}/config/bun/bunfig.toml'
           TARGET: '{{.HOME}}/.bunfig.toml'
       - bun add -g agent-browser@latest opensrc@latest
-      # Playwright browsers need system libs unavailable on headless Linux
       - cmd: bunx playwright install
         platforms:
           - darwin
+      # Linux also needs the browser system dependencies installed
+      - cmd: bunx playwright install --with-deps
+        platforms:
+          - linux
 
   claude:
     desc: Setup Claude code
