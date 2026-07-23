@@ -125,7 +125,10 @@ tasks:
           SOURCE: '{{.USER_WORKING_DIR}}/config/bun/bunfig.toml'
           TARGET: '{{.HOME}}/.bunfig.toml'
       - bun add -g agent-browser@latest opensrc@latest
-      - bunx playwright install
+      # Playwright browsers need system libs unavailable on headless Linux
+      - cmd: bunx playwright install
+        platforms:
+          - darwin
 
   claude:
     desc: Setup Claude code
@@ -213,6 +216,7 @@ tasks:
           SOURCE: '{{.USER_WORKING_DIR}}/config/fish'
           TARGET: '{{.HOME}}/.config/fish'
       - '[ -f {{.HOME}}/.config/fish/config.local.fish ] || touch {{.HOME}}/.config/fish/config.local.fish'
+      - '{{.USER_WORKING_DIR}}/scripts/set-default-shell.sh'
 
   fish-completions:
     desc: Install fish completions for installed programs

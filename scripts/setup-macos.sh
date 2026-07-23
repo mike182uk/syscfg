@@ -1,16 +1,9 @@
 #!/usr/bin/env sh
 
-# Default shell
-
-FISH_PATH=$(command -v fish)
-if [ -n "$FISH_PATH" ]; then
-	if ! grep -q "$FISH_PATH" /etc/shells; then
-		echo "$FISH_PATH" | sudo tee -a /etc/shells
-	fi
-	if [ "$SHELL" != "$FISH_PATH" ]; then
-		chsh -s "$FISH_PATH"
-	fi
-fi
+# setup-macos.sh
+#
+# Apply macOS system preferences: hostname, appearance, Dock, Finder,
+# keyboard, trackpad, and text input defaults.
 
 # Hostname
 

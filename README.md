@@ -54,7 +54,7 @@ task
 
 ```sh
 task brew-install     # Install Homebrew packages (Mac App Store apps will fail until signed in)
-task macos            # Set hostname, default shell, and system preferences
+task macos            # Set hostname and system preferences
 ```
 
 Open 1Password, sign in, and enable SSH agent (`Settings` > `Developer` > `SSH Agent`)
