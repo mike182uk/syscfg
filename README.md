@@ -107,6 +107,7 @@ task brew-install     # Install Homebrew packages
 task ssh
 task ssh-key
 task git
+task gh
 task dev-dirs
 task fish
 task fish-init

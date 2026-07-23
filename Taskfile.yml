@@ -244,6 +244,14 @@ tasks:
       # Install plugins
       - fish -c 'fisher update'
 
+  gh:
+    desc: Setup GitHub CLI
+    preconditions:
+      - command -v gh
+    cmds:
+      # Authenticate git over HTTPS using GH_TOKEN (e.g. on Linux; macOS uses SSH)
+      - '[[ -n "$GH_TOKEN" ]] && gh auth setup-git; true'
+
   ghostty:
     desc: Install Ghostty config
     platforms:
