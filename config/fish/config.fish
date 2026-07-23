@@ -115,7 +115,9 @@ set --global --export FZF_DEFAULT_OPTS '
 
 # Init fzf.fish
 
-fzf_configure_bindings --directory=\cf --git_log=\cg --git_status=\cs --processes=\cp --variables=\cv
+if functions -q fzf_configure_bindings
+	fzf_configure_bindings --directory=\cf --git_log=\cg --git_status=\cs --processes=\cp --variables=\cv
+end
 
 # Init starship
 
