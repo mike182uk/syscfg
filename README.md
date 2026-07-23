@@ -34,13 +34,14 @@ brew install go-task/tap/go-task
 Clone this repo via `https` instead of `ssh` as SSH keys are not yet set up:
 
 ```sh
-git clone https://github.com/mike182uk/syscfg.git
+mkdir -p ~/Developer/repos/personal
+git clone https://github.com/mike182uk/syscfg.git ~/Developer/repos/personal/syscfg
 ```
 
 Copy `.env.example` to `.env` and update the values:
 
 ```sh
-cd syscfg && cp .env.example .env
+cd ~/Developer/repos/personal/syscfg && cp .env.example .env
 ```
 
 Run `task` to see available tasks:
