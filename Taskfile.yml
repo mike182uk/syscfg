@@ -294,6 +294,10 @@ tasks:
       - git config --global include.path ~/.gitconfig.local
       - '[[ -n "$GIT_USERNAME" ]] && git config --global user.name "$GIT_USERNAME"; true'
       - '[[ -n "$GIT_EMAIL" ]] && git config --global user.email "$GIT_EMAIL"; true'
+      # macOS uses the 1Password SSH agent
+      - cmd: git config --global url."ssh://git@github.com/".insteadOf https://github.com/
+        platforms:
+          - darwin
 
   git-gpg:
     desc: Setup Git GPG commit signing

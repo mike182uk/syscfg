@@ -49,5 +49,3 @@
 [rebase]
 	autoSquash = true
 	autoStash = true
-[url "ssh://git@github.com/"]
-	insteadOf = https://github.com/
