@@ -39,6 +39,8 @@ brew "lazydocker"
 brew "lazygit"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
 # Tools for and transforming and inspecting PDF files
 brew "qpdf"
 # TUI for reviewing diffs, files, and documents with inline annotations

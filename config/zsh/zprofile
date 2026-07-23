@@ -11,6 +11,8 @@ done
 
 if command -v zed > /dev/null; then
 	export EDITOR='zed --wait'
+elif command -v nvim > /dev/null; then
+	export EDITOR='nvim'
 else
 	export EDITOR='vim'
 fi

@@ -71,6 +71,7 @@ task fish
 task fish-init
 task fish-completions
 task mise
+task nvim
 task tmux
 task starship
 task ghostty
@@ -113,6 +114,7 @@ task fish
 task fish-init
 task fish-completions
 task mise
+task nvim
 task tmux
 task starship
 task editorconfig

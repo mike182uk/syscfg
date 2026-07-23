@@ -99,6 +99,8 @@ end
 
 if command -v zed > /dev/null
 	set --global --export EDITOR 'zed --wait'
+else if command -v nvim > /dev/null
+	set --global --export EDITOR 'nvim'
 else
 	set --global --export EDITOR 'vim'
 end
@@ -163,6 +165,7 @@ abbr --add oc 'opencode'
 if test -x /Applications/Tailscale.app/Contents/MacOS/Tailscale
 	abbr --add ts '/Applications/Tailscale.app/Contents/MacOS/Tailscale'
 end
+abbr --add v 'nvim'
 
 abbr --add .. 'cd ..'
 abbr --add ... 'cd ../..'

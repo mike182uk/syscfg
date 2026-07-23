@@ -341,6 +341,16 @@ tasks:
     cmds:
       - '{{.USER_WORKING_DIR}}/scripts/setup-macos.sh'
 
+  nvim:
+    desc: Setup Neovim config
+    preconditions:
+      - command -v nvim
+    cmds:
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/nvim'
+          TARGET: '{{.HOME}}/.config/nvim'
+
   opencode:
     desc: Setup OpenCode config
     vars:
