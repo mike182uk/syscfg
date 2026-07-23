@@ -1,5 +1,10 @@
 #!/usr/bin/env sh
 
+# symlink-safe.sh
+#
+# Symlink SOURCE to TARGET, backing up any existing non-symlink file first.
+# If TARGET is already a symlink, repoint it to SOURCE when it differs.
+
 SOURCE="$1"
 TARGET="$2"
 
@@ -27,7 +32,7 @@ if [ -e "$TARGET" ]; then
 
 	if ! mv "$TARGET" "$BACKUP"; then
 		echo "Failed to move $TARGET to $BACKUP" >&2
-	exit 1
+		exit 1
 	fi
 fi
 
