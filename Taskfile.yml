@@ -211,6 +211,13 @@ tasks:
           SOURCE: '{{.USER_WORKING_DIR}}/config/editorconfig/editorconfig'
           TARGET: '{{.HOME}}/.editorconfig'
 
+  exe-dev:
+    desc: Configure exe.dev VM
+    platforms:
+      - linux
+    cmds:
+      - '{{.USER_WORKING_DIR}}/scripts/setup-exe-dev.sh'
+
   fish:
     desc: Setup 🐟 config
     cmds:
