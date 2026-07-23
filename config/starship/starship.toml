@@ -3,6 +3,7 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
+$hostname\
 $directory\
 $git_branch\
 $git_state\
@@ -12,6 +13,11 @@ $line_break\
 $character"""
 
 add_newline = false
+
+[hostname]
+ssh_only = true
+format = "[$hostname]($style) "
+style = "green"
 
 [directory]
 format = "[$path]($style) "
