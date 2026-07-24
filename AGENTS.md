@@ -1,0 +1,6 @@
+- `preconditions` for tasks in `Taskfile.yml` should guard the binaries a task's `cmds` actually invoke
+- `platforms` for tasks in `Taskfile.yml` should be the platform the task is intended to run on if the task is not platform agnostic
+- `platforms` only applies to a task or a `cmd:` entry, not a `- task:` sub-task call - gate those another way (e.g. an `{{OS}}`-selected var)
+- For config that differs by OS, prefer a portable base file plus a platform suffixed variant (e.g. `Brewfile` + `Brewfile.macos`) selected at symlink / install time
+- Symlinked config is live immediately. Config applied via a task command (e.g. `git config`) only takes effect when the task is re-run
+- `scripts/symlink-safe.sh` does not prune stale symlinks - renaming or removing a config file leaves a dangling link until removed manually
