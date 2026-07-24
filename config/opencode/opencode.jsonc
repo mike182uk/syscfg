@@ -146,7 +146,9 @@
     // https://github.com/griffinmartin/opencode-claude-auth
     "opencode-claude-auth@latest",
     // https://github.com/backnotprop/plannotator
-    "@plannotator/opencode@latest"
+    "@plannotator/opencode@latest",
+    // https://github.com/mcowger/plexus-agent-plugins
+    "@mcowger/opencode-plexus@latest"
   ],
   "share": "disabled"
 }
