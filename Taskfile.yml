@@ -435,6 +435,11 @@ tasks:
       - curl -fsSL -o "{{.COMMANDS_DIR}}/plannotator-last.md" "https://raw.githubusercontent.com/{{.REPO}}/{{.TAG}}/apps/opencode-plugin/commands/plannotator-last.md"
       # Clear cached plugin and jiti cache to force fresh download
       - rm -rf {{.HOME}}/.cache/opencode/node_modules/@plannotator {{.HOME}}/.cache/opencode/packages/@plannotator {{.HOME}}/.bun/install/cache/@plannotator /tmp/jiti 2>/dev/null || true
+      - mkdir -p {{.HOME}}/.plannotator
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/plannotator/config.json'
+          TARGET: '{{.HOME}}/.plannotator/config.json'
       - echo "plannotator {{.TAG}} installed"
 
   raycast:
