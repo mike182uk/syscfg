@@ -11,15 +11,14 @@ import type { Config, Plugin } from "@opencode-ai/plugin"
 // (OpenAI via a connected ChatGPT subscription or key, Anthropic, Fireworks,
 // xAI, ...). Those upstreams do NOT share one wire protocol:
 //
-//   - openai/*     -> OpenAI Responses API      -> @ai-sdk/openai
+//   - openai/*     -> OpenAI Responses API       -> @ai-sdk/openai
 //   - anthropic/*  -> Anthropic Messages API     -> @ai-sdk/anthropic
 //   - everything   -> OpenAI chat-completions    -> @ai-sdk/openai-compatible
 //     else (fireworks/*, xai/*, ...)
 //
 // opencode supports a per-model provider override (model.provider.npm), so we
 // keep every model under one provider block and set each model's SDK by its
-// id prefix, with an openai-compatible default for the block. This is the same
-// approach the plexus-opencode plugin uses.
+// id prefix, with an openai-compatible default for the block.
 //
 // Two gateway quirks the mapping accounts for:
 //
@@ -76,9 +75,16 @@ function prettify(bareId: string): string {
     .split("-")
     .map((part) => {
       const low = part.toLowerCase()
-      if (ACRONYMS[low]) return ACRONYMS[low]
+
+      if (ACRONYMS[low]) {
+        return ACRONYMS[low]
+      }
+
       // OpenAI reasoning models (o1/o3/o4) read better lower-cased.
-      if (/^o\d+$/.test(low)) return low
+      if (/^o\d+$/.test(low)) {
+        return low
+      }
+
       return part.charAt(0).toUpperCase() + part.slice(1)
     })
     .join(" ")
@@ -120,7 +126,10 @@ async function models(): Promise<Record<string, ModelBlock>> {
   const res = await fetch(`${GATEWAY}/models`, {
     signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
   })
-  if (!res.ok) throw new Error(`gateway returned ${res.status}`)
+
+  if (!res.ok) {
+    throw new Error(`gateway returned ${res.status}`)
+  }
 
   const body = (await res.json()) as ModelList
   const result: Record<string, ModelBlock> = {}
@@ -129,7 +138,10 @@ async function models(): Promise<Record<string, ModelBlock>> {
     // Only the provider-prefixed ids route reliably; the bare aliases the
     // gateway also lists are duplicates, so skip them.
     const slash = model.id.indexOf("/")
-    if (slash <= 0) continue
+
+    if (slash <= 0) {
+      continue
+    }
 
     const prefix = model.id.slice(0, slash)
     const bareId = model.id.slice(slash + 1)
@@ -143,9 +155,12 @@ async function models(): Promise<Record<string, ModelBlock>> {
 export default (async () => {
   // Cheap synchronous check: only exe.dev VMs have the /exe.dev marker. This
   // avoids any network call (and startup delay) on other machines.
-  if (!existsSync("/exe.dev")) return {}
+  if (!existsSync("/exe.dev")) {
+    return {}
+  }
 
   let modelBlocks: Record<string, ModelBlock>
+
   try {
     modelBlocks = await models()
   } catch {
@@ -153,7 +168,9 @@ export default (async () => {
     return {}
   }
 
-  if (Object.keys(modelBlocks).length === 0) return {}
+  if (Object.keys(modelBlocks).length === 0) {
+    return {}
+  }
 
   return {
     config: async (cfg: Config) => {

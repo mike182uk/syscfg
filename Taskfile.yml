@@ -212,7 +212,7 @@ tasks:
           TARGET: '{{.HOME}}/.editorconfig'
 
   exe-dev:
-    desc: Configure exe.dev VM
+    desc: Configure an exe.dev VM
     platforms:
       - linux
     cmds:

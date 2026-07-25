@@ -5,7 +5,7 @@
 # Dump the currently installed Homebrew state and partition it into two files:
 #
 #   Brewfile        portable taps + formulae (installed on macOS AND Linux)
-#   Brewfile.macos  macOS-only formulae, casks, mas, vscode extensions
+#   Brewfile.macos  macOS only formulae, casks, mas, vscode extensions
 #
 # `brew bundle dump` only produces a single combined file, so this script
 # routes each line to the correct file. Formulae are portable EXCEPT the ones

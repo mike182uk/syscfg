@@ -2,8 +2,8 @@
 
 # setup-exe-dev.sh
 #
-# Configure exe.dev-specific VM settings. No-op on machines that are not
-# exe.dev VMs (detected via the /exe.dev marker).
+# Configure exe.dev specific VM settings. No-op on machines that are not
+# exe.dev VMs.
 
 set -eu
 
@@ -17,7 +17,7 @@ CODEX_PROVIDER="exe-llm"
 
 # Point Codex at the exe.dev LLM gateway (backed by a connected ChatGPT
 # subscription) as its model provider. The gateway authenticates the VM at the
-# edge, so no OpenAI key is stored on the box.
+# edge, so no OpenAI key is stored on the machine.
 #
 # The config is merged idempotently: `model_provider` must be a top-level key
 # (before any table header), and the provider table is appended. Existing
