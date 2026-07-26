@@ -39,6 +39,8 @@ brew "lazydocker"
 brew "lazygit"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
+# Remote terminal application
+brew "mosh"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # Tools for and transforming and inspecting PDF files
