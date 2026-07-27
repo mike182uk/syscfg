@@ -1,6 +1,7 @@
 tap "go-task/tap"
 tap "mike182uk/tap"
 tap "umputun/apps"
+tap "yusukebe/tap"
 # Code searching, linting, rewriting
 brew "ast-grep"
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -71,3 +72,5 @@ brew "zoxide"
 brew "go-task/tap/go-task"
 # Stripe CLI utility
 brew "stripe-cli"
+# The AI-era curl: fetch, discover, extract. One command.
+brew "yusukebe/tap/ax"
