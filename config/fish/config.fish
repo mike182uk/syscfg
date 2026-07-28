@@ -166,6 +166,8 @@ if test -x /Applications/Tailscale.app/Contents/MacOS/Tailscale
 	abbr --add ts '/Applications/Tailscale.app/Contents/MacOS/Tailscale'
 end
 abbr --add v 'nvim'
+abbr --add vi 'nvim'
+abbr --add vim 'nvim'
 
 abbr --add .. 'cd ..'
 abbr --add ... 'cd ../..'

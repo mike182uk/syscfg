@@ -62,6 +62,8 @@ brew "starship"
 brew "tmux"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Parser generator tool
+brew "tree-sitter-cli"
 # Git worktree management for parallel AI agent workflows
 brew "worktrunk"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
