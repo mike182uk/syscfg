@@ -55,8 +55,8 @@ tasks:
       - '{{.SKILLS_CLI}} add mcollina/skills -s node -s typescript-magician -a claude-code -a opencode -g -y'
       # https://github.com/nextlevelbuilder/ui-ux-pro-max-skill
       - '{{.SKILLS_CLI}} add nextlevelbuilder/ui-ux-pro-max-skill -s ui-ux-pro-max -s ui-styling -a claude-code -a opencode -g -y'
-      # https://github.com/ogulcancelik/herdr
-      - '{{.SKILLS_CLI}} add ogulcancelik/herdr -s herdr -a claude-code -a opencode -g -y'
+      # https://github.com/herdrdev/herdr
+      - '{{.SKILLS_CLI}} add herdrdev/herdr -s herdr -a claude-code -a opencode -g -y'
       # https://github.com/planetscale/database-skills
       - '{{.SKILLS_CLI}} add planetscale/database-skills -s mysql -s postgres -a claude-code -a opencode -g -y'
       # https://github.com/umputun/revdiff
