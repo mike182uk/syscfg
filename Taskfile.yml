@@ -51,6 +51,8 @@ tasks:
       - '{{.SKILLS_CLI}} add jakubkrehel/make-interfaces-feel-better -a claude-code -a opencode -g -y'
       # https://github.com/jakubkrehel/oklch-skill
       - '{{.SKILLS_CLI}} add jakubkrehel/oklch-skill -a claude-code -a opencode -g -y'
+      # https://github.com/longbridge/gpui-component
+      - '{{.SKILLS_CLI}} add longbridge/gpui-component -a claude-code -a opencode -g -y'
       # https://github.com/mcollina/skills
       - '{{.SKILLS_CLI}} add mcollina/skills -s node -s typescript-magician -a claude-code -a opencode -g -y'
       # https://github.com/nextlevelbuilder/ui-ux-pro-max-skill
