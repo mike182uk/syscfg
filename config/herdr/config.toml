@@ -3,9 +3,9 @@
 
 onboarding = false
 
-[theme]
-auto_switch = false
-name = "tokyo-night"
+[experimental]
+kitty_graphics = true
+pane_history = true
 
 [keys]
 reload_config = "prefix+r"
@@ -18,8 +18,14 @@ key = "prefix+ctrl+d"
 type = "pane"
 command = "revdiff"
 
-[ui.sound]
-enabled = false
+[theme]
+auto_switch = false
+name = "tokyo-night"
+
+[theme.custom]
+surface0 = "#1E2030"
+surface1 = "#1E2030"
+surface_dim = "#1E2030"
 
 [ui]
 agent_panel_sort = "spaces"
@@ -30,3 +36,16 @@ row_gap = 1
 
 [ui.sidebar.agents]
 row_gap = 1
+rows = [
+  ["state_icon", "workspace", "tab"],
+  ["state_text", { token = "agent", dim = false }],
+]
+
+[ui.sound]
+enabled = false
+
+[ui.toast.clipboard]
+position = "top-right"
+
+[ui.toast.herdr]
+position = "top-right"
