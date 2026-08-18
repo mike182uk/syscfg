@@ -9,9 +9,9 @@
 
 # Documentation & research
 
-- When looking up documentation, use the context7 MCP first before searching the web
-- If you are unsure how to do something, use the grep MCP to search code examples from github
-- For general web search, current events, or researching topics outside of code, use the exa MCP
+- When looking up documentation, use context7 first before searching the web
+- If you are unsure how to do something, use grep to search code examples from github
+- For general web search, current events, or researching topics outside of code, use exa
 
 # Writing
 

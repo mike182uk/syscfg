@@ -14,42 +14,42 @@
       "enabled": false
     },
     // https://github.com/upstash/context7
-    "context7": {
-      "type": "remote",
-      "url": "https://mcp.context7.com/mcp",
-      "headers": {
-        "CONTEXT7_API_KEY": "{env:CONTEXT7_API_KEY}"
-      },
-      "enabled": true
-    },
+    // "context7": {
+    //   "type": "remote",
+    //   "url": "https://mcp.context7.com/mcp",
+    //   "headers": {
+    //     "CONTEXT7_API_KEY": "{env:CONTEXT7_API_KEY}"
+    //   },
+    //   "enabled": true
+    // },
     // https://docs.exa.ai/reference/exa-mcp
-    "exa": {
-      "type": "remote",
-      "url": "https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa",
-      "headers": {
-        "x-api-key": "{env:EXA_API_KEY}"
-      },
-      "enabled": true
-    },
+    // "exa": {
+    //   "type": "remote",
+    //   "url": "https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa",
+    //   "headers": {
+    //     "x-api-key": "{env:EXA_API_KEY}"
+    //   },
+    //   "enabled": true
+    // },
     // https://vercel.com/blog/grep-a-million-github-repositories-via-mcp
-    "grep": {
-      "type": "remote",
-      "url": "https://mcp.grep.app",
-      "enabled": true
-    },
+    // "grep": {
+    //   "type": "remote",
+    //   "url": "https://mcp.grep.app",
+    //   "enabled": true
+    // },
     // https://github.com/chrisdoc/hevy-mcp
-    "hevy": {
-      "type": "local",
-      "command": [
-        "npx",
-        "-y",
-        "hevy-mcp@latest"
-      ],
-      "environment": {
-        "HEVY_API_KEY": "{env:HEVY_API_KEY}"
-      },
-      "enabled": false
-    },
+    // "hevy": {
+    //   "type": "local",
+    //   "command": [
+    //     "npx",
+    //     "-y",
+    //     "hevy-mcp@latest"
+    //   ],
+    //   "environment": {
+    //     "HEVY_API_KEY": "{env:HEVY_API_KEY}"
+    //   },
+    //   "enabled": false
+    // },
     // https://docs.incident.io/ai/remote-mcp
     "incidentio-work": {
       "type": "remote",
@@ -63,11 +63,11 @@
       "enabled": false
     },
     // https://developers.notion.com/guides/mcp/get-started-with-mcp
-    "notion": {
-      "type": "remote",
-      "url": "https://mcp.notion.com/mcp",
-      "enabled": false
-    },
+    // "notion": {
+    //   "type": "remote",
+    //   "url": "https://mcp.notion.com/mcp",
+    //   "enabled": false
+    // },
     "notion-work": {
       "type": "remote",
       "url": "https://mcp.notion.com/mcp",
@@ -87,6 +87,16 @@
       "type": "remote",
       "url": "https://mcp.sentry.dev/mcp",
       "enabled": false
+    },
+    // https://executor.sh/docs
+    "executor": {
+      "type": "remote",
+      "url": "{env:EXECUTOR_API_URL}?elicitation_mode=model",
+      "headers": {
+        "x-api-key": "{env:EXECUTOR_API_KEY}"
+      },
+      "oauth": false,
+      "enabled": true
     }
   },
   // https://models.dev

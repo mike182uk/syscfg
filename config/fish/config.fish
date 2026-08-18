@@ -189,7 +189,7 @@ end
 # Load select environment variables from syscfg .env
 
 set --local syscfg_env $HOME/Developer/repos/personal/syscfg/.env
-set --local syscfg_env_allow CONTEXT7_API_KEY EXA_API_KEY GH_TOKEN HEVY_API_KEY PLEXUS_API_URL PLEXUS_API_KEY
+set --local syscfg_env_allow CONTEXT7_API_KEY EXA_API_KEY GH_TOKEN HEVY_API_KEY PLEXUS_API_URL PLEXUS_API_KEY EXECUTOR_API_URL EXECUTOR_API_KEY
 
 if test -f $syscfg_env
 	for line in (string match --invert --regex '^\s*(#|$)' < $syscfg_env)
