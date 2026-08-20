@@ -63,6 +63,8 @@ cask "sublime-text"
 cask "suspicious-package"
 # Native GUI tool for relational databases
 cask "tableplus"
+# Mesh VPN based on WireGuard
+cask "tailscale-app"
 # Menu bar manager
 cask "thaw"
 # To-do list
@@ -76,7 +78,6 @@ cask "zed"
 mas "1Password for Safari", id: 1569813296
 mas "Command X", id: 6448461551
 mas "Lungo", id: 1263070803
-mas "Tailscale", id: 1475387142
 mas "Xcode", id: 497799835
 vscode "alefragnani.bookmarks"
 vscode "antfu.pnpm-catalog-lens"

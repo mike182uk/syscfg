@@ -162,9 +162,7 @@ abbr --add l 'eza -lga --git --group-directories-first'
 abbr --add lzd 'lazydocker'
 abbr --add lzg 'lazygit'
 abbr --add oc 'opencode'
-if test -x /Applications/Tailscale.app/Contents/MacOS/Tailscale
-	abbr --add ts '/Applications/Tailscale.app/Contents/MacOS/Tailscale'
-end
+abbr --add ts 'tailscale'
 abbr --add v 'nvim'
 abbr --add vi 'nvim'
 abbr --add vim 'nvim'
