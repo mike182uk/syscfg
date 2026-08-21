@@ -150,15 +150,19 @@
       "/run/user/**": "allow"
     }
   },
+  // Pin exact versions: opencode resolves a plugin spec once, then caches it in
+  // ~/.cache/opencode/packages/<spec>/ and never re-resolves, so "@latest" is an
+  // accidental pin recorded outside version control. Bump deliberately, then
+  // `rm -rf ~/.cache/opencode/packages` to pick the new versions up.
   "plugin": [
     // https://github.com/franlol/opencode-md-table-formatter
-    "@franlol/opencode-md-table-formatter@latest",
+    "@franlol/opencode-md-table-formatter@0.0.6",
     // https://github.com/griffinmartin/opencode-claude-auth
-    "opencode-claude-auth@latest",
+    "opencode-claude-auth@2.1.6",
     // https://github.com/backnotprop/plannotator
-    "@plannotator/opencode@latest",
+    "@plannotator/opencode@0.27.4",
     // https://github.com/mcowger/plexus-agent-plugins
-    "@mcowger/opencode-plexus@latest"
+    "@mcowger/opencode-plexus@1.4.2"
   ],
   "share": "disabled"
 }
