@@ -4,24 +4,38 @@ agent: build
 subtask: true
 ---
 
-Perform a review based on the user's input: "$ARGUMENTS".
+Review code, a pull request, or an issue.
 
 ## Determine review type
 
-Classify the input to decide which type of review to perform:
+The user's input:
+
+<input>
+$ARGUMENTS
+</input>
+
+Classify it to decide which type of review to perform:
 
 - **No input**: Code review of the current uncommitted changes.
-- **File or directory path**: If the file or directory has uncommitted changes, 
-  code review those changes. Otherwise, do a general review of the file.
-- **GitHub pull request** (URL or `#N`): Pull request review.
-- **GitHub issue** (URL or `#N`): Issue review.
-- **Issue tracker reference** (e.g. `ABC-123` or a URL to Linear, Jira, etc.): Issue review.
-- **SonarCloud / SonarQube URL** (e.g. `sonarcloud.io/...`, `sonarqube.us/...`,
-  or a self-hosted SonarQube host): SonarQube review.
+- **File or directory path**: Code review.
+- **Commit SHA, branch, or commit range** (e.g. `abc1234`, `main...feature`):
+  Code review of those changes.
+- **GitHub pull request** (URL, or a number that resolves to a PR): Pull
+  request review.
+- **GitHub issue** (URL, or a number that resolves to an issue): Issue review.
+- **Issue tracker reference** (e.g. `ABC-123`, or a URL to Linear, Jira,
+  etc.): Issue review.
+- **Free text**: Treat as guidance for the review, and resolve the target from
+  the rest of the input or the conversation.
+
+A bare number is ambiguous - GitHub numbers issues and PRs in one sequence. Try
+`gh pr view <n>` first and fall back to `gh issue view <n>`. Pass the number
+without a leading `#`.
 
 ## Load the relevant skill
 
-Based on the determined review type, use the `skill` tool to load the appropriate skill:
+Based on the determined review type, use the `skill` tool to load the
+appropriate skill:
 
 - For **code reviews**, load the `code-review` skill.
 - For **pull request reviews**, load the `pull-request-review` skill.
@@ -29,10 +43,9 @@ Based on the determined review type, use the `skill` tool to load the appropriat
 
 ## Perform the review
 
-Follow the loaded skill's instructions to carry out the review.
+Follow the loaded skill's instructions.
 
-If the input is free text, treat it as guidance for the review. If it is unclear 
-what should be reviewed, ask the user to be more specific. Do not attempt a 
-review without a clear target.
+If it is unclear what should be reviewed, report what is ambiguous and stop. Do
+not attempt a review without a clear target.
 
-Do not action any changes - only provide the review.
+Do not make any changes - only provide the review.

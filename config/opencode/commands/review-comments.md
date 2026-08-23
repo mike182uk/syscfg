@@ -4,43 +4,89 @@ agent: build
 subtask: true
 ---
 
-Review comments on a pull request based on the user's input: "$ARGUMENTS".
+Review the comments on a pull request.
 
 ## Determine the pull request
 
-Classify the input to identify the target PR:
+The user's input:
 
-- **GitHub pull request** (URL or `#N`): Use the specified PR.
-- **No input**: Search the current conversation for PR references (URLs,
-  `#N` patterns, branch names associated with PRs). If multiple references
-  are found, ask the user which PR to use. If no references are found, ask
-  the user to specify a PR.
+<input>
+$ARGUMENTS
+</input>
+
+Classify it to identify the target PR:
+
+- **GitHub pull request** (URL, `#N`, or bare number): Use the specified PR.
+  Pass the number to `gh` without the leading `#`.
+- **No input**: Resolve the PR for the current branch with `gh pr view`. If
+  none exists, search the conversation for PR references (URLs, `#N` patterns,
+  branch names associated with PRs). If still ambiguous or absent, report what
+  is ambiguous and stop.
 - **Free text**: Treat as additional guidance for the analysis (e.g.
-  "focus on the auth comments", "include resolved"). Still attempt to
-  find the PR from conversation context.
+  "focus on the auth comments", "include resolved"). Still resolve the PR from
+  branch or conversation context.
+
+Resolve the PR's owner, repo, and number up front, and pass all three
+explicitly to every call below. The PR may live in a different repository than
+the current directory, in which case `gh`'s `{owner}`/`{repo}` placeholders
+would silently query the wrong repo.
 
 ## Fetch comments
 
 Gather PR comment data using `gh`. Run these in parallel:
 
-- `gh pr view <number>` - title, description, author, base branch
-- `gh api repos/{owner}/{repo}/pulls/<number>/comments` - inline review
-  comments
-- `gh api repos/{owner}/{repo}/pulls/<number>/reviews` - review summaries
-- `gh pr diff <number>` - the full diff
+- `gh pr view <number> --repo <owner>/<repo>` - title, description, author,
+  base branch
+- `gh pr diff <number> --repo <owner>/<repo>` - the full diff
+- `gh api repos/<owner>/<repo>/pulls/<number>/reviews --paginate` - review
+  summaries
+- `gh api repos/<owner>/<repo>/issues/<number>/comments --paginate` -
+  PR-level conversation comments, which are a separate endpoint from the
+  inline review threads and often carry substantive objections
+- The inline review threads, using the GraphQL query below
+
+Fetch inline comments as review threads rather than from the REST
+`/pulls/<number>/comments` endpoint - REST does not expose thread resolution
+state:
+
+```sh
+gh api graphql -f query='
+  query($owner: String!, $repo: String!, $number: Int!) {
+    repository(owner: $owner, name: $repo) {
+      pullRequest(number: $number) {
+        reviewThreads(first: 100) {
+          totalCount
+          nodes {
+            isResolved
+            isOutdated
+            path
+            line
+            comments(first: 50) { nodes { author { login } body url } }
+          }
+        }
+      }
+    }
+  }' -F owner=<owner> -F repo=<repo> -F number=<number>
+```
+
+If `totalCount` exceeds the threads returned, say so in the output rather than
+reporting a count that only covers the first page.
 
 If `gh` commands fail (auth error, PR not found, rate limit), report the
 error and stop.
 
 ### Filter comments
 
-- **Exclude comments that have been resolved** - e.g. the thread has a
-  reply indicating the feedback was accepted, or the code has been updated
-  accordingly. Unless the user explicitly asked to include them (e.g.
-  "include resolved", "all comments", "resolved too").
+- **Exclude resolved threads** (`isResolved: true`), unless the user
+  explicitly asked to include them (e.g. "include resolved", "all comments",
+  "resolved too").
 - **Exclude purely informational comments** that do not request a change or
-  raise a concern - acknowledgements ("LGTM", "nice"), status updates etc. 
+  raise a concern - acknowledgements ("LGTM", "nice"), status updates etc.
   Focus on actionable feedback.
+- **Weight human comments over bot comments.** Treat feedback from human
+  reviewers as the priority. Automated reviewers (e.g. CodeRabbit, Copilot,
+  Sonar, Dependabot, linters posting as comments) are often noisy or wrong -
+  treat them as low-priority hints, and group them separately in the output.
 - **Keep** comments that request changes, ask questions, flag issues, or
   suggest alternatives.
 
@@ -50,20 +96,23 @@ For each actionable comment, read enough surrounding code to understand what
 the reviewer is referring to:
 
 - Read the file and region the comment targets in the current working tree.
-  Verify the local checkout matches the PR branch first (`gh pr view
-  --json headRefName`). If it does not, read from the diff instead of local
-  files.
+  Verify the local checkout matches the PR branch first (`gh pr view <number>
+  --repo <owner>/<repo> --json headRefName`). If it does not, read from the
+  diff instead of local files.
 - If the comment references other files, types, or call sites, read those
   too.
 - Check whether subsequent commits in the PR already address the comment by
   comparing the commented region against the latest state of the diff.
+  `isOutdated` on the thread is a signal the code has moved since, not proof
+  the concern was handled.
 
 ## Analyze and output
 
 Start with a summary line: total comment count broken down by status (e.g.
 "12 comments: 7 open, 3 addressed, 2 need discussion").
 
-Then for each actionable comment, grouped by file:
+Then for each actionable comment, grouped by file, with human comments first
+and any bot comments worth mentioning in a separate section at the end:
 
 1. **File and line** - location the comment targets.
 2. **Reviewer** - who left the comment.
@@ -78,4 +127,5 @@ Then for each actionable comment, grouped by file:
 6. **Suggested action** - a concrete next step: apply the change, push
    back with rationale, or flag for discussion.
 
-Do not make any code changes. Do not perform your own code review. Only provide the analysis.
+Do not make any code changes. Do not perform your own code review. Only
+provide the analysis.
