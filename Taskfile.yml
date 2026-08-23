@@ -40,7 +40,7 @@ tasks:
       # https://github.com/ast-grep/agent-skill
       - '{{.SKILLS_CLI}} add ast-grep/agent-skill -a claude-code -a opencode -g -y'
       # https://github.com/anthropics/skills
-      - '{{.SKILLS_CLI}} add anthropics/skills -s frontend-design -a claude-code -a opencode -g -y'
+      - '{{.SKILLS_CLI}} add anthropics/skills -s frontend-design -s skill-creator -a claude-code -a opencode -g -y'
       # https://github.com/blader/humanizer
       - '{{.SKILLS_CLI}} add blader/humanizer -a claude-code -a opencode -g -y'
       # https://github.com/boldsoftware/exe.dev
