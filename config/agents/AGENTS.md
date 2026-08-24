@@ -32,10 +32,6 @@ If these tools are available, prefer them over a plain web search, and fall back
   - Load the `ax` skill before use
 - Use `wt` instead of `git worktree` commands to create, list, or remove worktrees. Only use `git worktree` if you cannot get the desired result with `wt`
 
-# Git
-
-- Match the repo's existing commit message style - read `git log` first
-
 # Code
 
 ## Paths

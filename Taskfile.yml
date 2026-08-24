@@ -76,7 +76,7 @@ tasks:
       # https://github.com/vercel-labs/opensrc
       - '{{.SKILLS_CLI}} add vercel-labs/opensrc -s opensrc -a claude-code -a opencode -g -y'
       # https://github.com/yusukebe/ax
-      - '{{.SKILLS_CLI}} add yusukebe/ax -s -a claude-code -a opencode -g -y'
+      - '{{.SKILLS_CLI}} add yusukebe/ax -a claude-code -a opencode -g -y'
       # https://github.com/mike182uk/agent-skills
       - '{{.SKILLS_CLI}} add mike182uk/agent-skills -a claude-code -a opencode -g -y'
 
