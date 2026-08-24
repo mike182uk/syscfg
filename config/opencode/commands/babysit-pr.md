@@ -28,7 +28,7 @@ Classify it to identify the target PR:
 
 ## Load the skill
 
-Use the `skill` tool to load the `babysit-pr` skill.
+Use the `skill` tool to load the `pull-request-babysit` skill.
 
 ## Babysit the pull request
 
