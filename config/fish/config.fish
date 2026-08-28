@@ -98,7 +98,7 @@ end
 # Init editor
 
 if command -v zed > /dev/null
-	set --global --export EDITOR 'zed --wait'
+	set --global --export EDITOR 'zed --classic --wait'
 else if command -v nvim > /dev/null
 	set --global --export EDITOR 'nvim'
 else

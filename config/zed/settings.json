@@ -7,18 +7,23 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "terminal": {
+    "dock": "right"
+  },
   "edit_predictions": {
     "allow_data_collection": "no"
   },
   "session": {
     "trust_all_worktrees": true
   },
-  "cli_default_open_behavior": "existing_window",
+  "cli_default_open_behavior": "new_window",
+  "default_open_behavior": "new_window",
   "format_on_save": "off",
   "agent_servers": {
     "opencode": {
       "default_config_options": {
-        "model": "anthropic/claude-opus-4-8"
+        "effort": "high",
+        "model": "anthropic/claude-opus-5"
       },
       "type": "registry"
     },
