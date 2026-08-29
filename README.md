@@ -20,7 +20,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Linux
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-sudo apt-get install -y build-essential bubblewrap
+sudo apt-get install -y build-essential
 ```
 
 ### Install `task`
@@ -69,8 +69,8 @@ task
 ### macOS
 
 ```sh
-task brew-install     # Install Homebrew packages (Mac App Store apps will fail until signed in)
-task macos            # Set hostname and system preferences
+task brew-install     # Mac App Store apps will fail until signed in
+task macos
 ```
 
 Open 1Password, sign in, and enable SSH agent (`Settings` > `Developer` > `SSH Agent`)
@@ -78,8 +78,8 @@ Open 1Password, sign in, and enable SSH agent (`Settings` > `Developer` > `SSH A
 ```sh
 task 1password-ssh
 task ssh
-task git              # Run this AFTER 1password-ssh to avoid any SSH issues
-task git-gpg          # Optional - requires GIT_SIGNING_KEY in .env
+task git
+task git-gpg          # Requires GIT_SIGNING_KEY
 task dev-dirs
 task fish
 task fish-init
@@ -100,25 +100,24 @@ task sublime-text
 task zed
 task opencode
 task herdr
-task revdiff
+task revdiff          # Requires GitHub auth or GH_TOKEN
 task worktrunk
-task plannotator
+task plannotator      # Requires GitHub auth or GH_TOKEN
 task raycast
 task zsh
-task agents
+task agents           # Requires GitHub auth or GH_TOKEN
 ```
 
-Sign into Mac App Store, then re-run `task brew-install` to install Mac App Store apps
+To install Mac App Store apps, sign into Mac App Store, then re-run: 
+
+```sh
+task brew-install
+```
 
 ### Linux
 
-macOS only tasks are skipped automatically, so they are omitted below
-
 ```sh
-task brew-install     # Install Homebrew packages
-```
-
-```sh
+task brew-install
 task ssh
 task ssh-key
 task git
@@ -139,9 +138,15 @@ task claude
 task codex
 task opencode
 task herdr
-task revdiff
+task revdiff         # Requires GitHub auth or GH_TOKEN
 task worktrunk
-task plannotator
+task plannotator     # Requires GitHub auth or GH_TOKEN
 task zsh
-task agents
+task agents          # Requires GitHub auth or GH_TOKEN
+```
+
+or you can run everything in one go with:
+
+```sh
+task setup-linux
 ```

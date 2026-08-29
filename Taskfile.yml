@@ -31,9 +31,9 @@ tasks:
     env:
       DISABLE_TELEMETRY: 1
     vars:
-      SKILLS_CLI: bunx skills@latest
+      SKILLS_CLI: mise exec -- bunx skills@latest
     preconditions:
-      - command -v bun
+      - mise which bun
     cmds:
       - mkdir -p {{.HOME}}/.agents/skills
       - rm -f {{.HOME}}/.agents/.skill-lock.json
@@ -125,26 +125,25 @@ tasks:
   bun:
     desc: Setup Bun config
     preconditions:
-      - command -v bun
+      - mise which bun
     cmds:
       - task: create-symlink-safe
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/bun/bunfig.toml'
           TARGET: '{{.HOME}}/.bunfig.toml'
-      - bun add -g agent-browser@latest opensrc@latest
-      - cmd: bunx playwright install
+      - mise exec -- bun add -g agent-browser@latest opensrc@latest
+      - cmd: mise exec -- bunx playwright install
         platforms:
           - darwin
       # Linux also needs the browser system dependencies installed
-      - cmd: bunx playwright install --with-deps
+      - cmd: mise exec -- bunx playwright install --with-deps
         platforms:
           - linux
 
   claude:
     desc: Setup Claude code
     preconditions:
-      - command -v npm
-      - command -v npx
+      - mise which node
       - command -v curl
     cmds:
       # Settings
@@ -259,7 +258,7 @@ tasks:
     preconditions:
       - command -v gh
     cmds:
-      # Authenticate git over HTTPS using GH_TOKEN (e.g. on Linux; macOS uses SSH)
+      # Authenticate git over HTTPS using GH_TOKEN if set
       - '[[ -n "$GH_TOKEN" ]] && gh auth setup-git; true'
 
   ghostty:
@@ -495,6 +494,38 @@ tasks:
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/ripgrep/config'
           TARGET: '{{.HOME}}/.config/ripgrep/config'
+
+  setup-linux:
+    desc: Run all Linux setup tasks in the recommended order
+    platforms:
+      - linux
+    cmds:
+      - task: brew-install
+      - task: ssh
+      - task: ssh-key
+      - task: git
+      - task: gh
+      - task: dev-dirs
+      - task: fish
+      - task: fish-init
+      - task: fish-completions
+      - task: mise
+      - task: nvim
+      - task: tmux
+      - task: starship
+      - task: editorconfig
+      - task: ripgrep
+      - task: bat
+      - task: bun
+      - task: claude
+      - task: codex
+      - task: opencode
+      - task: herdr
+      - task: revdiff
+      - task: worktrunk
+      - task: plannotator
+      - task: zsh
+      - task: agents
 
   ssh:
     desc: Setup SSH config
