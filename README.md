@@ -26,7 +26,7 @@ sudo apt-get install -y build-essential bubblewrap
 ### Install `task`
 
 ```sh
-brew install go-task/tap/go-task
+brew install go-task
 ```
 
 ## Setup

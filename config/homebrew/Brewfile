@@ -1,4 +1,3 @@
-tap "go-task/tap"
 tap "mike182uk/tap"
 tap "umputun/apps"
 tap "yusukebe/tap"
@@ -71,7 +70,7 @@ brew "yq"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 # Task runner / simpler Make alternative written in Go
-brew "go-task/tap/go-task"
+brew "go-task"
 # Stripe CLI utility
 brew "stripe-cli"
 # The AI-era curl: fetch, discover, extract. One command.
