@@ -34,15 +34,29 @@ brew install go-task/tap/go-task
 Clone this repo via `https` instead of `ssh` as SSH keys are not yet set up:
 
 ```sh
-mkdir -p ~/Developer/repos/personal
-git clone https://github.com/mike182uk/syscfg.git ~/Developer/repos/personal/syscfg
+git clone https://github.com/mike182uk/syscfg.git ~/.syscfg
 ```
 
 Copy `.env.example` to `.env` and update the values:
 
 ```sh
-cd ~/Developer/repos/personal/syscfg && cp .env.example .env
+cd ~/.syscfg && cp .env.example .env
 ```
+
+- `DEV_DIR` - Directory to use for repositories & worktrees (must be literal path, vars are not expanded)
+- `HOSTNAME` - Desired hostname for the machine (only used during `macos` setup)
+- `GIT_USERNAME` - Username for Git user
+- `GIT_EMAIL` - Email for Git user
+- `GIT_SIGNING_KEY` - Path to GPG signing key for Git
+- `GH_TOKEN` - `gh` token
+- `IPINFO_API_TOKEN` - IPInfo API token
+- `CONTEXT7_API_KEY` - Context7 API key
+- `EXA_API_KEY` - Exa API key
+- `HEVY_API_KEY` - Hevy API key
+- `PLEXUS_API_URL` - Plexus API URL
+- `PLEXUS_API_KEY` - Plexus API key
+- `EXECUTOR_API_URL` - Executor API URL
+- `EXECUTOR_API_KEY` - Executor API key
 
 Run `task` to see available tasks:
 

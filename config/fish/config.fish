@@ -173,7 +173,7 @@ abbr --add .... 'cd ../../..'
 abbr --add ..... 'cd ../../../..'
 abbr --add h 'cd ~'
 abbr --add dl 'cd ~/Downloads'
-abbr --add dv 'cd ~/Developer'
+abbr --add dev 'cd $DEV_DIR'
 
 abbr --add hp 'herdr session attach personal'
 abbr --add hw 'herdr session attach work'
@@ -186,8 +186,8 @@ end
 
 # Load select environment variables from syscfg .env
 
-set --local syscfg_env $HOME/Developer/repos/personal/syscfg/.env
-set --local syscfg_env_allow CONTEXT7_API_KEY EXA_API_KEY GH_TOKEN HEVY_API_KEY PLEXUS_API_URL PLEXUS_API_KEY EXECUTOR_API_URL EXECUTOR_API_KEY
+set --local syscfg_env (path resolve (status filename) | path dirname | path dirname | path dirname)/.env
+set --local syscfg_env_allow CONTEXT7_API_KEY DEV_DIR EXA_API_KEY EXECUTOR_API_KEY EXECUTOR_API_URL GH_TOKEN HEVY_API_KEY PLEXUS_API_KEY PLEXUS_API_URL
 
 if test -f $syscfg_env
 	for line in (string match --invert --regex '^\s*(#|$)' < $syscfg_env)

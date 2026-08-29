@@ -47,8 +47,8 @@ If these tools are available, prefer them over a plain web search, and fall back
 
 ## Paths
 
-- Repositories are cloned to `~/Developer/repos/{personal,oss,...}`
-- Worktrees are checked out in `~/Developer/worktrees/{personal,oss,...}`
+- Repositories are cloned to `$DEV_DIR/repos/{personal,oss,...}`
+- Worktrees are checked out in `$DEV_DIR/worktrees/{personal,oss,...}`
 
 ## General
 

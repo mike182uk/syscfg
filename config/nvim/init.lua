@@ -1,3 +1,6 @@
+-- Cache expected env vars
+local dev_dir = assert(vim.env.DEV_DIR, "DEV_DIR is not set")
+
 -- Leader key must be set before plugins load
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -223,7 +226,7 @@ require("lazy").setup({
             layout = { auto_hide = { "input" } },
           },
           projects = {
-            dev = { "~/Developer/repos", "~/Developer/worktrees" },
+            dev = { dev_dir .. "/repos", dev_dir .. "/worktrees" },
             format = function(item)
               local path = vim.fn.fnamemodify(item.file, ":~")
               local parent, name = path:match("^(.*[/])([^/]+)$")

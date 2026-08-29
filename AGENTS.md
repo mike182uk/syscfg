@@ -20,7 +20,7 @@
 - `subtask: false` does not stop the agent delegating the work to a subagent via the Task tool - say so in the body if it must stay in-thread
 - Inline `"$ARGUMENTS"` renders as `""` when the user passes nothing, which reads as a deliberately empty value. An `<input>` block avoids that, and marks where free text ends
 - Keep commands small and focused. If one grows large or sprouts branching logic, suggest moving the procedure into a skill and have the command dispatch to it
-  - Personal skills live in `~/Developer/repos/personal/agent-skills`
+  - Personal skills live in `$DEV_DIR/repos/personal/agent-skills`
   - Third-party skills are installed by `Taskfile.yml` into `~/.agents/skills`
 - When a command dispatches to a skill, do not restate what the skill already covers - the two copies will drift
 - Restrict a command by outcome, not by tool: "do not commit" rather than "do not run git commands", which would also block the `git log` and `git diff` the command needs

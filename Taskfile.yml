@@ -204,10 +204,13 @@ tasks:
           TARGET: '{{.CURSOR_CFG_PATH}}/keybindings.json'
 
   dev-dirs:
-    desc: Setup ~/Developer directory structure
+    desc: Setup developer directory structure (DEV_DIR)
+    preconditions:
+      - sh: test -n "{{.DEV_DIR}}"
+        msg: DEV_DIR must be set in .env
     cmds:
-      - mkdir -p {{.HOME}}/Developer/repos/oss {{.HOME}}/Developer/repos/personal
-      - mkdir -p {{.HOME}}/Developer/worktrees/oss {{.HOME}}/Developer/worktrees/personal
+      - mkdir -p {{.DEV_DIR}}/repos/oss {{.DEV_DIR}}/repos/personal
+      - mkdir -p {{.DEV_DIR}}/worktrees/oss {{.DEV_DIR}}/worktrees/personal
 
   editorconfig:
     desc: Setup editorconfig config
