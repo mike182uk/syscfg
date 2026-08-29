@@ -1,8 +1,9 @@
 function u --description 'Update system'
 	if command -v brew > /dev/null
-		# Trigger 1Password authentication before attempting to update brew on macOS
-		if command -v op > /dev/null
-			op vault list >/dev/null 2>&1; or return 1
+		# Authorize the 1Password SSH agent up front - git rewrites
+		# github.com to SSH, so brew fetches taps over SSH
+		if test -S $HOME/.1password/agent.sock
+			ssh -T git@github.com 2>&1 | string match --quiet --entire 'successfully authenticated'; or return 1
 		end
 
 		_update_msg "Updating brew..."
