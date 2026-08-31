@@ -41,6 +41,8 @@ tasks:
       - '{{.SKILLS_CLI}} add ast-grep/agent-skill -a claude-code -a opencode -g -y'
       # https://github.com/anthropics/skills
       - '{{.SKILLS_CLI}} add anthropics/skills -s frontend-design -s skill-creator -a claude-code -a opencode -g -y'
+      # https://github.com/backnotprop/plannotator
+      - '{{.SKILLS_CLI}} add backnotprop/plannotator/apps/skills/core -s plannotator -a claude-code -a opencode -g -y'
       # https://github.com/blader/humanizer
       - '{{.SKILLS_CLI}} add blader/humanizer -a claude-code -a opencode -g -y'
       # https://github.com/boldsoftware/exe.dev
@@ -478,6 +480,7 @@ tasks:
           SOURCE: '{{.USER_WORKING_DIR}}/config/revdiff/themes/tokyonight-custom'
           TARGET: '{{.HOME}}/.config/revdiff/themes/tokyonight-custom'
       # https://github.com/umputun/revdiff/blob/master/plugins/opencode/README.md
+      # Plan-review plugin intentionally skipped - plannotator handles plan review
       - mkdir -p {{.OPENCODE_DIR}}/commands {{.OPENCODE_DIR}}/tools
       - curl -fsSL -o "{{.OPENCODE_DIR}}/commands/revdiff.md" "{{.RAW}}/plugins/opencode/commands/revdiff.md"
       - curl -fsSL -o "{{.OPENCODE_DIR}}/tools/revdiff.ts" "{{.RAW}}/plugins/opencode/tools/revdiff.ts"
