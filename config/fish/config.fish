@@ -72,7 +72,7 @@ set --global fish_color_user white
 bind shift-up beginning-of-line   # Shift + Up Arrow - Move to the beginning of the line
 bind shift-down end-of-line       # Shift + Down Arrow - Move to the end of the line
 
-# Allow scrolling with mouse in less, bat etc. when using tmux
+# Allow scrolling with mouse in less, bat etc.
 
 set --global LESS '--mouse'
 

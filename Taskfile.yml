@@ -514,7 +514,6 @@ tasks:
       - task: fish-completions
       - task: mise
       - task: nvim
-      - task: tmux
       - task: starship
       - task: editorconfig
       - task: ripgrep
@@ -581,27 +580,6 @@ tasks:
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/sublime-text/Package Control.sublime-settings'
           TARGET: '{{.ST_CFG_PATH}}/Package Control.sublime-settings'
-
-  tmux:
-    desc: Setup tmux config
-    preconditions:
-      - command -v git
-    cmds:
-      - '[ -d "{{.HOME}}/.tmux/plugins/tpm" ] || git clone https://github.com/tmux-plugins/tpm {{.HOME}}/.tmux/plugins/tpm'
-      - task: create-symlink-safe
-        vars:
-          SOURCE: '{{.USER_WORKING_DIR}}/config/tmux/tmux.conf'
-          TARGET: '{{.HOME}}/.tmux.conf'
-      - |
-        if [[ -n "$IPINFO_API_TOKEN" ]]; then
-          if ! grep -q "IPINFO_API_TOKEN" {{.HOME}}/.config/fish/config.local.fish; then
-            echo "" >> {{.HOME}}/.config/fish/config.local.fish
-            echo "# Init IPINFO_API_TOKEN" >> {{.HOME}}/.config/fish/config.local.fish
-            echo "" >> {{.HOME}}/.config/fish/config.local.fish
-            echo "set --global --export IPINFO_API_TOKEN $IPINFO_API_TOKEN" >> {{.HOME}}/.config/fish/config.local.fish
-          fi
-        fi
-      - "{{.HOME}}/.tmux/plugins/tpm/bin/install_plugins"
 
   worktrunk:
     desc: Setup worktrunk config

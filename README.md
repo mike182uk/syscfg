@@ -49,7 +49,6 @@ cd ~/.syscfg && cp .env.example .env
 - `GIT_EMAIL` - Email for Git user
 - `GIT_SIGNING_KEY` - Path to GPG signing key for Git
 - `GH_TOKEN` - `gh` token
-- `IPINFO_API_TOKEN` - IPInfo API token
 - `CONTEXT7_API_KEY` - Context7 API key
 - `EXA_API_KEY` - Exa API key
 - `HEVY_API_KEY` - Hevy API key
@@ -86,7 +85,6 @@ task fish-init
 task fish-completions
 task mise
 task nvim
-task tmux
 task starship
 task ghostty
 task editorconfig
@@ -128,7 +126,6 @@ task fish-init
 task fish-completions
 task mise
 task nvim
-task tmux
 task starship
 task editorconfig
 task ripgrep

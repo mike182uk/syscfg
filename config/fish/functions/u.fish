@@ -18,9 +18,6 @@ function u --description 'Update system'
 	_update_msg "Updating fisher..."
 	fisher update
 
-	_update_msg "Updating tmux plugins..."
-	$HOME/.tmux/plugins/tpm/bin/update_plugins all
-
 	_update_msg "Updating misc programs..."
 	mise upgrade opencode
 	echo ""
