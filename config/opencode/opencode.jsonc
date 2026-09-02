@@ -100,7 +100,7 @@
     }
   },
   // https://models.dev
-  "model": "anthropic/claude-opus-5",
+  "model": "anthropic/claude-fable-5-1",
   "small_model": "anthropic/claude-haiku-4-5",
   // Default-allow with ask/deny on irreversible or public actions.
   // Last matching rule wins: broad rules first, narrow rules last.
@@ -154,7 +154,7 @@
     // https://github.com/franlol/opencode-md-table-formatter
     "@franlol/opencode-md-table-formatter@0.0.6",
     // https://github.com/griffinmartin/opencode-claude-auth
-    "opencode-claude-auth@2.1.6",
+    "opencode-claude-auth@2.2.0",
     // https://github.com/backnotprop/plannotator
     "@plannotator/opencode@0.27.9",
     // https://github.com/mcowger/plexus-agent-plugins
