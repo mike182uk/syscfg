@@ -26,7 +26,8 @@ Classify it to decide which type of review to perform:
 - **Issue tracker reference** (e.g. `ABC-123`, or a URL to Linear, Jira,
   etc.): Issue review.
 - **Free text**: Treat as guidance for the review, and resolve the target from
-  the rest of the input or the conversation.
+  the rest of the input. This runs as a subtask with no access to the
+  conversation, so if the input names no target, report that and stop.
 
 A bare number is ambiguous - GitHub numbers issues and PRs in one sequence. Try
 `gh pr view <n>` first and fall back to `gh issue view <n>`. Pass the number
@@ -48,4 +49,4 @@ Follow the loaded skill's instructions.
 If it is unclear what should be reviewed, report what is ambiguous and stop. Do
 not attempt a review without a clear target.
 
-Do not make any changes - only provide the review.
+Do not change the code - only provide the review.

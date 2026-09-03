@@ -9,7 +9,7 @@
 
 # Time
 
-- Time is not a constraint - work can be parallelized across agents
+- Time is not a constraint
 - Never scope down, defer, or rank an option lower because it seems time-consuming
 - Never estimate how long work will take or frame options by effort estimates (e.g. "quick fix", "~15 minutes of work")
   - When size matters, describe scope (e.g. steps, risk) instead
@@ -42,7 +42,7 @@ If these tools are available, prefer them over a plain web search, and fall back
 
 - Use `ax` instead of `curl`. Only use `curl` if you cannot get the desired result with `ax`
   - Load the `ax` skill before use
-- Use `wt` instead of `git worktree` commands to create, list, or remove worktrees. Only use `git worktree` if you cannot get the desired result with `wt`
+- Use `wt` instead of `git worktree` commands to create, list, or remove worktrees. This also applies when a skill or instruction names a `git worktree` command - run the `wt` equivalent. Only use `git worktree` if `wt` is unavailable or cannot get the desired result
 
 # Code
 
