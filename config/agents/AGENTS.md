@@ -1,6 +1,7 @@
 # Communication
 
-- Be concise and direct, avoid filler
+- Be concise and direct, avoid filler. Keep it short by leaving things out, not by compressing sentences into fragments, abbreviations, or arrow chains
+- After finishing a task, lead with what happened or what was found; detail and reasoning follow
 - Do not use emojis unless asked
 - Prefer the plainest word. No coined verbs, no jargon, no sophisticated synonym use for its own sake
 - Prefer the literal thing over a metaphor - "removing X breaks Y", not "X is load-bearing"

@@ -50,18 +50,21 @@ Fetch inline comments as review threads rather than from the REST
 state:
 
 ```sh
-gh api graphql -f query='
-  query($owner: String!, $repo: String!, $number: Int!) {
+gh api graphql --paginate -f query='
+  query($owner: String!, $repo: String!, $number: Int!, $endCursor: String) {
     repository(owner: $owner, name: $repo) {
       pullRequest(number: $number) {
-        reviewThreads(first: 100) {
-          totalCount
+        reviewThreads(first: 100, after: $endCursor) {
+          pageInfo { hasNextPage endCursor }
           nodes {
             isResolved
             isOutdated
             path
             line
-            comments(first: 50) { nodes { author { login } body url } }
+            comments(first: 50) {
+              totalCount
+              nodes { author { login } body url }
+            }
           }
         }
       }
@@ -69,8 +72,10 @@ gh api graphql -f query='
   }' -F owner=<owner> -F repo=<repo> -F number=<number>
 ```
 
-If `totalCount` exceeds the threads returned, say so in the output rather than
-reporting a count that only covers the first page.
+`--paginate` needs the `$endCursor` variable and `pageInfo` selection above -
+without them only the first page comes back. It pages threads, not the comments
+inside one: where a thread's `comments.totalCount` exceeds the nodes returned,
+fetch the rest of that thread before judging it.
 
 If `gh` commands fail (auth error, PR not found, rate limit), report the
 error and stop.

@@ -33,9 +33,6 @@ Use the `skill` tool to load the `mermaid-diagrams` skill.
 
 Follow the loaded skill's instructions.
 
-When multiple diagram types could work, prefer the one that communicates the
-most useful information about the subject.
-
 Output the diagram in a fenced mermaid code block. Do not write it to a file
 unless the user asked for one.
 

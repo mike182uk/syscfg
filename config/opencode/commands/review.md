@@ -37,9 +37,9 @@ without a leading `#`.
 Based on the determined review type, use the `skill` tool to load the
 appropriate skill:
 
-- For **code reviews**, load the `code-review` skill.
-- For **pull request reviews**, load the `pull-request-review` skill.
-- For **issue reviews**, load the `issue-review` skill.
+- **Code reviews**: load the `code-review` skill.
+- **Pull request reviews**: load the `pull-request-review` skill.
+- **Issue reviews**: load the `issue-review` skill.
 
 ## Perform the review
 
