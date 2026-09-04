@@ -591,6 +591,10 @@ tasks:
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/worktrunk/config.toml'
           TARGET: '{{.HOME}}/.config/worktrunk/config.toml'
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/worktrunk/herdr-worktree.sh'
+          TARGET: '{{.HOME}}/.config/worktrunk/herdr-worktree.sh'
       - wt config shell install fish --yes
       - wt config plugins opencode install --yes
 

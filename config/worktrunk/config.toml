@@ -1,3 +1,9 @@
 # Mirror repos/<category>/<repo> into worktrees/<category>/<repo>/<branch>
 # e.g. repos/personal/foo -> worktrees/personal/foo/<branch>
 worktree-path = "{{ repo_path | dirname | dirname | dirname }}/worktrees/{{ repo_path | dirname | basename }}/{{ repo }}/{{ branch | sanitize }}"
+
+[post-start]
+herdr-worktree = '"$HOME/.config/worktrunk/herdr-worktree.sh" open'
+
+[post-remove]
+herdr-worktree = '"$HOME/.config/worktrunk/herdr-worktree.sh" close'
