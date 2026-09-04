@@ -143,6 +143,7 @@
       "*": "ask",
       "{env:DEV_DIR}/repos/**": "allow",
       "{env:DEV_DIR}/worktrees/**": "allow",
+      "{env:HOME}/.opensrc/**": "allow",
       "/tmp/**": "allow",
       "/private/tmp/**": "allow",
       "/var/folders/**": "allow",

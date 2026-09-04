@@ -43,6 +43,8 @@ If these tools are available, prefer them over a plain web search, and fall back
 - Use `ax` instead of `curl`. Only use `curl` if you cannot get the desired result with `ax`
   - Load the `ax` skill before use
 - Use `wt` instead of `git worktree` commands to create, list, or remove worktrees. This also applies when a skill or instruction names a `git worktree` command - run the `wt` equivalent. Only use `git worktree` if `wt` is unavailable or cannot get the desired result
+- Use `opensrc` to download a GitHub repository for inspection
+  - Only use `opensrc` when you need the whole repository because and cannot get the desired result with `grep` (grep.app)
 
 # Code
 
