@@ -1,5 +1,5 @@
-# name: tokyonight-custom
-# description: Tokyo Night palette matched to OpenCode's tokyonight theme (Night bg, Moon accents)
+# name: tokyonight-oc
+# description: Tokyo Night palette matched to OpenCode
 # author: mike182uk
 
 chroma-style = tokyonight-moon

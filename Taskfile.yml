@@ -96,8 +96,8 @@ tasks:
           TARGET: '{{.HOME}}/.config/bat/config'
       - task: create-symlink-safe
         vars:
-          SOURCE: '{{.USER_WORKING_DIR}}/config/bat/themes/tokyonight_night.tmTheme'
-          TARGET: '{{.HOME}}/.config/bat/themes/tokyonight_night.tmTheme'
+          SOURCE: '{{.USER_WORKING_DIR}}/config/themes/tokyonight-oc.tmTheme'
+          TARGET: '{{.HOME}}/.config/bat/themes/tokyonight-oc.tmTheme'
       - bat cache --build
 
   brew-bundle:
@@ -123,6 +123,21 @@ tasks:
       - cmd: brew bundle --file {{.USER_WORKING_DIR}}/config/homebrew/Brewfile.macos
         platforms:
           - darwin
+
+  btop:
+    desc: Setup btop config
+    preconditions:
+      - command -v btop
+    cmds:
+      - mkdir -p {{.HOME}}/.config/btop/themes
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/btop/btop.conf'
+          TARGET: '{{.HOME}}/.config/btop/btop.conf'
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/btop/themes/tokyonight-oc.theme'
+          TARGET: '{{.HOME}}/.config/btop/themes/tokyonight-oc.theme'
 
   bun:
     desc: Setup Bun config
@@ -162,8 +177,8 @@ tasks:
       # Theme
       - task: create-symlink-safe
         vars:
-          SOURCE: '{{.USER_WORKING_DIR}}/config/claude/themes/tokyonight-night.json'
-          TARGET: '{{.HOME}}/.claude/themes/tokyonight-night.json'
+          SOURCE: '{{.USER_WORKING_DIR}}/config/claude/themes/tokyonight-oc.json'
+          TARGET: '{{.HOME}}/.claude/themes/tokyonight-oc.json'
       # Agents config
       - task: create-symlink-safe
         vars:
@@ -194,8 +209,8 @@ tasks:
           TARGET: '{{.HOME}}/.codex/personal.config.toml'
       - task: create-symlink-safe
         vars:
-          SOURCE: '{{.USER_WORKING_DIR}}/config/codex/themes/tokyonight-night.tmTheme'
-          TARGET: '{{.HOME}}/.codex/themes/tokyonight-night.tmTheme'
+          SOURCE: '{{.USER_WORKING_DIR}}/config/themes/tokyonight-oc.tmTheme'
+          TARGET: '{{.HOME}}/.codex/themes/tokyonight-oc.tmTheme'
       - task: create-symlink-safe
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/codex/rules/default.rules'
@@ -387,7 +402,7 @@ tasks:
       PLUGIN_FILES:
         sh: ls {{.USER_WORKING_DIR}}/config/opencode/plugins/*.ts 2>/dev/null || true
     cmds:
-      - mkdir -p {{.HOME}}/.config/opencode/commands {{.HOME}}/.config/opencode/plugins {{.HOME}}/.config/opencode/tools
+      - mkdir -p {{.HOME}}/.config/opencode/commands {{.HOME}}/.config/opencode/plugins {{.HOME}}/.config/opencode/themes {{.HOME}}/.config/opencode/tools
       - task: create-symlink-safe
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/opencode/opencode.jsonc'
@@ -396,6 +411,10 @@ tasks:
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/opencode/tui.json'
           TARGET: '{{.HOME}}/.config/opencode/tui.json'
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/opencode/themes/tokyonight-oc.json'
+          TARGET: '{{.HOME}}/.config/opencode/themes/tokyonight-oc.json'
       - task: create-symlink-safe
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/agents/AGENTS.md'
@@ -495,8 +514,8 @@ tasks:
           TARGET: '{{.HOME}}/.config/revdiff/config'
       - task: create-symlink-safe
         vars:
-          SOURCE: '{{.USER_WORKING_DIR}}/config/revdiff/themes/tokyonight-custom'
-          TARGET: '{{.HOME}}/.config/revdiff/themes/tokyonight-custom'
+          SOURCE: '{{.USER_WORKING_DIR}}/config/revdiff/themes/tokyonight-oc'
+          TARGET: '{{.HOME}}/.config/revdiff/themes/tokyonight-oc'
       # https://github.com/umputun/revdiff/blob/master/plugins/opencode/README.md
       # Plan-review plugin intentionally skipped - plannotator handles plan review
       - mkdir -p {{.OPENCODE_DIR}}/commands {{.OPENCODE_DIR}}/tools
@@ -536,6 +555,7 @@ tasks:
       - task: editorconfig
       - task: ripgrep
       - task: bat
+      - task: btop
       - task: bun
       - task: claude
       - task: codex

@@ -12,6 +12,14 @@
 
 - `scripts/symlink-safe.sh` does not prune stale symlinks - renaming or removing a config file leaves a dangling link until removed manually
 
+## Themes
+
+- `tokyonight-oc` is the shared theme for all configured tools
+- `config/opencode/themes/tokyonight-oc.json` is the canonical palette; keep tool-specific adapters aligned with its dark colors
+  - When OpenCode is updated, refresh the canonical palette from the matching version and update every adapter
+  - Current source: https://github.com/anomalyco/opencode/blob/v1.18.27/packages/tui/src/theme/assets/tokyonight.json
+- Bat and Codex share `config/themes/tokyonight-oc.tmTheme`; do not create separate copies
+
 ## Opencode commands
 
 - `description` in frontmatter is TUI-only and is never sent to the model - the body needs its own task statement

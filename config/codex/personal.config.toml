@@ -21,7 +21,7 @@ memories = false
 
 [tui]
 status_line = ["current-dir", "git-branch", "model-with-reasoning", "context-used", "used-tokens"]
-theme = "tokyonight-night"
+theme = "tokyonight-oc"
 
 [permissions.workspace-no-env]
 description = "Workspace access without environment files"

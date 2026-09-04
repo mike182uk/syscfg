@@ -82,6 +82,6 @@
   "tui": "fullscreen",
   "autoMemoryEnabled": false,
   "skipDangerousModePermissionPrompt": true,
-  "theme": "custom:tokyonight-night",
+  "theme": "custom:tokyonight-oc",
   "verbose": true
 }

@@ -52,10 +52,14 @@ require("lazy").setup({
     lazy = false, -- load during startup
     priority = 1000, -- load before other plugins
     opts = {
+      style = "moon",
+      on_colors = function(colors)
+        colors.bg = "#1a1b26"
+      end,
       on_highlights = function(highlights, colors)
-        highlights.CursorLine = { bg = "#1f2335" }
+        highlights.CursorLine = { bg = "#222436" }
         highlights.CursorLineNr = { fg = "#737aa2" }
-        highlights.VirtColumn = { fg = "#24283b" }
+        highlights.VirtColumn = { fg = "#1e2030" }
         highlights.SnacksDashboardDesc = { fg = colors.fg_dark }
         highlights.SnacksDashboardFooter = { fg = colors.comment }
         highlights.SnacksDashboardHeader = { fg = colors.blue, bold = true }
@@ -73,7 +77,7 @@ require("lazy").setup({
         highlights.SnacksPickerInputTitle = { fg = colors.blue }
         highlights.SnacksPickerListBorder = { fg = colors.blue }
         highlights.SnacksPickerList = { bg = colors.bg }
-        highlights.SnacksPickerListCursorLine = { bg = "#1f2335" }
+        highlights.SnacksPickerListCursorLine = { bg = "#222436" }
         highlights.SnacksPickerListTitle = { fg = colors.blue }
         highlights.SnacksPickerMatch = { fg = colors.blue, bold = true }
         highlights.SnacksPickerPreviewBorder = { fg = colors.blue }
@@ -93,7 +97,7 @@ require("lazy").setup({
     },
     config = function(_, opts)
       require("tokyonight").setup(opts)
-      vim.cmd.colorscheme("tokyonight-night")
+      vim.cmd.colorscheme("tokyonight-oc")
     end,
   },
   {
@@ -268,10 +272,10 @@ require("lazy").setup({
     "nvim-lualine/lualine.nvim",
     opts = function()
       local theme = require("lualine.themes.tokyonight")
-      theme.normal.c.bg = "#24283b"
-      theme.normal.c.fg = "#737aa2"
-      theme.inactive.c.bg = "#24283b"
-      theme.inactive.c.fg = "#737aa2"
+      theme.normal.c.bg = "#1e2030"
+      theme.normal.c.fg = "#828bb8"
+      theme.inactive.c.bg = "#1e2030"
+      theme.inactive.c.fg = "#828bb8"
 
       return {
         options = {

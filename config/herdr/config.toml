@@ -23,9 +23,25 @@ auto_switch = false
 name = "tokyo-night"
 
 [theme.custom]
-surface0 = "#1E2030"
-surface1 = "#1E2030"
-surface_dim = "#1E2030"
+accent = "#82aaff"
+panel_bg = "#1a1b26"
+#sidebar_bg = "#1e2030"
+active_row_bg = "#292e42"
+selection_bg = "#222436"
+surface0 = "#1e2030" #"#222436"
+surface1 = "#1e2030" #"#292e42"
+surface_dim = "#1e2030"
+overlay0 = "#545c7e"
+overlay1 = "#737aa2"
+text = "#c8d3f5"
+subtext0 = "#828bb8"
+mauve = "#c099ff"
+green = "#c3e88d"
+yellow = "#ffc777"
+red = "#ff757f"
+blue = "#82aaff"
+teal = "#4fd6be"
+peach = "#ff966c"
 
 [ui]
 agent_panel_sort = "spaces"

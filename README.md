@@ -90,6 +90,7 @@ task ghostty
 task editorconfig
 task ripgrep
 task bat
+task btop
 task bun
 task claude
 task codex
@@ -130,6 +131,7 @@ task starship
 task editorconfig
 task ripgrep
 task bat
+task btop
 task bun
 task claude
 task codex
