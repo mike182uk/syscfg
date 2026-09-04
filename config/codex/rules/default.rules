@@ -1,0 +1,77 @@
+prefix_rule(
+    pattern = ["sudo"],
+    decision = "forbidden",
+    justification = "Do not run commands with elevated privileges.",
+)
+
+prefix_rule(
+    pattern = ["rm", ["-rf", "-fr"]],
+    decision = "prompt",
+    justification = "Recursive forced deletion requires approval.",
+)
+
+prefix_rule(
+    pattern = ["rm", ["-rf", "-fr"], ["/", "/*"]],
+    decision = "forbidden",
+    justification = "Never recursively delete the filesystem root.",
+)
+
+prefix_rule(
+    pattern = ["git", "reset", "--hard"],
+    decision = "prompt",
+    justification = "Discarding local changes requires approval.",
+)
+
+prefix_rule(
+    pattern = ["git", "push"],
+    decision = "prompt",
+    justification = "Publishing commits requires approval.",
+)
+
+prefix_rule(
+    pattern = ["brew", ["install", "uninstall"]],
+    decision = "prompt",
+    justification = "Changing system packages requires approval.",
+)
+
+prefix_rule(
+    pattern = ["gh", "pr", ["create", "merge", "close", "comment", "review"]],
+    decision = "prompt",
+    justification = "Public pull request actions require approval.",
+)
+
+prefix_rule(
+    pattern = ["gh", "issue", ["create", "comment", "close"]],
+    decision = "prompt",
+    justification = "Public issue actions require approval.",
+)
+
+prefix_rule(
+    pattern = ["gh", "release", "create"],
+    decision = "prompt",
+    justification = "Publishing a release requires approval.",
+)
+
+prefix_rule(
+    pattern = ["gh", "repo", ["create", "delete"]],
+    decision = "prompt",
+    justification = "Repository changes require approval.",
+)
+
+prefix_rule(
+    pattern = ["gh", "gist", "create"],
+    decision = "prompt",
+    justification = "Publishing a gist requires approval.",
+)
+
+prefix_rule(
+    pattern = [["npm", "pnpm", "yarn", "bun", "deno"], "publish"],
+    decision = "prompt",
+    justification = "Publishing packages requires approval.",
+)
+
+prefix_rule(
+    pattern = ["docker", "push"],
+    decision = "prompt",
+    justification = "Publishing container images requires approval.",
+)

@@ -148,6 +148,7 @@ tasks:
       - mise which node
       - command -v curl
     cmds:
+      - mkdir -p {{.HOME}}/.claude/themes
       # Settings
       - task: create-symlink-safe
         vars:
@@ -158,6 +159,11 @@ tasks:
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/claude/statusline.sh'
           TARGET: '{{.HOME}}/.claude/statusline.sh'
+      # Theme
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/claude/themes/tokyonight-night.json'
+          TARGET: '{{.HOME}}/.claude/themes/tokyonight-night.json'
       # Agents config
       - task: create-symlink-safe
         vars:
@@ -181,7 +187,7 @@ tasks:
   codex:
     desc: Setup Codex config
     cmds:
-      - mkdir -p {{.HOME}}/.codex/themes
+      - mkdir -p {{.HOME}}/.codex/rules {{.HOME}}/.codex/themes
       - task: create-symlink-safe
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/codex/personal.config.toml'
@@ -190,6 +196,10 @@ tasks:
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/codex/themes/tokyonight-night.tmTheme'
           TARGET: '{{.HOME}}/.codex/themes/tokyonight-night.tmTheme'
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/codex/rules/default.rules'
+          TARGET: '{{.HOME}}/.codex/rules/default.rules'
       - task: create-symlink-safe
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/agents/AGENTS.md'

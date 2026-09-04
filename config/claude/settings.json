@@ -17,7 +17,8 @@
       "Bash(rm -rf /)",
       "Bash(rm -rf /*)",
       "Read(**/.env)",
-      "Read(**/.env.*)"
+      "Read(**/.env.local)",
+      "Read(**/.env.*.local)"
     ],
     "ask": [
       "Bash(rm -rf ~*)",
@@ -56,6 +57,7 @@
     ],
     "defaultMode": "auto"
   },
+  "model": "claude-fable-5-1[1m]",
   "hooks": {
     "SessionStart": [
       {
@@ -77,8 +79,9 @@
   },
   "feedbackSurveyRate": 0,
   "effortLevel": "high",
+  "tui": "fullscreen",
   "autoMemoryEnabled": false,
   "skipDangerousModePermissionPrompt": true,
-  "theme": "dark-ansi",
-  "tui": "fullscreen"
+  "theme": "custom:tokyonight-night",
+  "verbose": true
 }

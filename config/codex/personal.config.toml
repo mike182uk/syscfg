@@ -8,7 +8,7 @@ plan_mode_reasoning_effort = "high"
 service_tier = "priority"
 approvals_reviewer = "auto_review"
 approval_policy = "on-request"
-sandbox_mode = "workspace-write"
+default_permissions = "workspace-no-env"
 web_search = "live"
 
 [analytics]
@@ -22,3 +22,13 @@ memories = false
 [tui]
 status_line = ["current-dir", "git-branch", "model-with-reasoning", "context-used", "used-tokens"]
 theme = "tokyonight-night"
+
+[permissions.workspace-no-env]
+description = "Workspace access without environment files"
+extends = ":workspace"
+
+[permissions.workspace-no-env.filesystem.":workspace_roots"]
+"." = "write"
+"**/.env" = "deny"
+"**/.env.*" = "deny"
+".env.example" = "read"
