@@ -2,8 +2,22 @@
 
 model = "gpt-6-astra"
 model_reasoning_effort = "medium"
-service_tier = "fast"
+model_reasoning_summary = "concise"
+model_verbosity = "low"
+plan_mode_reasoning_effort = "high"
+service_tier = "priority"
 approvals_reviewer = "auto_review"
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+web_search = "live"
+
+[analytics]
+enabled = false
+
+[features]
+hooks = true
+multi_agent = true
+memories = false
 
 [tui]
 status_line = ["current-dir", "git-branch", "model-with-reasoning", "context-used", "used-tokens"]
