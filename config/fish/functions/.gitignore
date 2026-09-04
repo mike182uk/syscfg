@@ -2,6 +2,7 @@
 !.gitignore
 
 !cdf.fish
+!codex.fish
 !mkd.fish
 !o.fish
 !r.fish

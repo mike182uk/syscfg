@@ -1,0 +1,10 @@
+#:schema https://developers.openai.com/codex/config-schema.json
+
+model = "gpt-6-astra"
+model_reasoning_effort = "medium"
+service_tier = "fast"
+approvals_reviewer = "auto_review"
+
+[tui]
+status_line = ["current-dir", "git-branch", "model-with-reasoning", "context-used", "used-tokens"]
+theme = "tokyonight-night"

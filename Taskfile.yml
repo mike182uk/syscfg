@@ -181,7 +181,15 @@ tasks:
   codex:
     desc: Setup Codex config
     cmds:
-      - mkdir -p {{.HOME}}/.codex
+      - mkdir -p {{.HOME}}/.codex/themes
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/codex/personal.config.toml'
+          TARGET: '{{.HOME}}/.codex/personal.config.toml'
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/codex/themes/tokyonight-night.tmTheme'
+          TARGET: '{{.HOME}}/.codex/themes/tokyonight-night.tmTheme'
       - task: create-symlink-safe
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/agents/AGENTS.md'
