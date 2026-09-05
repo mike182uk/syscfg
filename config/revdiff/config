@@ -9,7 +9,7 @@ compact = true
 line-numbers = true
 
 ; UI theme (overrides chroma-style with the theme's own setting)
-theme = tokyonight-oc
+theme = tokyonight_mike
 
 ; show untracked files in the tree
 untracked = true

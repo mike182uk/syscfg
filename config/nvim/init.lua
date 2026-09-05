@@ -54,18 +54,40 @@ require("lazy").setup({
     opts = {
       style = "moon",
       on_colors = function(colors)
+        -- tokyonight_mike overrides
         colors.bg = "#1a1b26"
+        colors.bg_highlight = "#222436"
+        colors.comment = colors.fg_dark
+        colors.border = colors.dark5
+        colors.border_highlight = colors.fg_dark
+        colors.diff.add = "#20303b"
+        colors.diff.delete = "#37222c"
+        colors.error = colors.red
+        colors.warning = colors.orange
+        colors.info = colors.blue
+        -- end tokyonight_mike overrides
       end,
       on_highlights = function(highlights, colors)
-        highlights.CursorLine = { bg = "#222436" }
-        highlights.CursorLineNr = { fg = "#737aa2" }
-        highlights.VirtColumn = { fg = "#1e2030" }
+        -- tokyonight_mike overrides
+        highlights["@markup.heading"] = { fg = colors.magenta, bold = true }
+        for i = 1, 6 do
+          highlights["@markup.heading." .. i .. ".markdown"] = { fg = colors.magenta, bold = true }
+        end
+        highlights["@markup.strong"] = { fg = colors.orange, bold = true }
+        highlights["@markup.italic"] = { fg = colors.yellow, italic = true }
+        highlights["@markup.link"] = { fg = colors.cyan }
+        highlights["@markup.link.label"] = { fg = colors.cyan }
+        highlights["@markup.link.url"] = { fg = colors.cyan, underline = true }
+        highlights["@markup.list"] = { fg = colors.blue }
+        highlights["@markup.list.markdown"] = { fg = colors.blue }
+        highlights["@markup.quote"] = { fg = colors.yellow }
+        -- end tokyonight_mike overrides
         highlights.SnacksDashboardDesc = { fg = colors.fg_dark }
-        highlights.SnacksDashboardFooter = { fg = colors.comment }
+        highlights.SnacksDashboardFooter = { fg = colors.fg_dark }
         highlights.SnacksDashboardHeader = { fg = colors.blue, bold = true }
         highlights.SnacksDashboardKey = { fg = colors.magenta }
         highlights.SnacksDashboardNormal = { fg = colors.fg, bg = colors.bg }
-        highlights.SnacksDashboardSpecial = { fg = colors.purple }
+        highlights.SnacksDashboardSpecial = { fg = colors.magenta }
         highlights.SnacksInputBorder = { fg = colors.blue }
         highlights.SnacksInputNormal = { fg = colors.fg, bg = colors.bg }
         highlights.SnacksInputPrompt = { fg = colors.blue }
@@ -77,7 +99,6 @@ require("lazy").setup({
         highlights.SnacksPickerInputTitle = { fg = colors.blue }
         highlights.SnacksPickerListBorder = { fg = colors.blue }
         highlights.SnacksPickerList = { bg = colors.bg }
-        highlights.SnacksPickerListCursorLine = { bg = "#222436" }
         highlights.SnacksPickerListTitle = { fg = colors.blue }
         highlights.SnacksPickerMatch = { fg = colors.blue, bold = true }
         highlights.SnacksPickerPreviewBorder = { fg = colors.blue }
@@ -97,7 +118,7 @@ require("lazy").setup({
     },
     config = function(_, opts)
       require("tokyonight").setup(opts)
-      vim.cmd.colorscheme("tokyonight-oc")
+      vim.cmd.colorscheme("tokyonight")
     end,
   },
   {
@@ -271,15 +292,9 @@ require("lazy").setup({
   {
     "nvim-lualine/lualine.nvim",
     opts = function()
-      local theme = require("lualine.themes.tokyonight")
-      theme.normal.c.bg = "#1e2030"
-      theme.normal.c.fg = "#828bb8"
-      theme.inactive.c.bg = "#1e2030"
-      theme.inactive.c.fg = "#828bb8"
-
       return {
         options = {
-          theme = theme,
+          theme = "tokyonight",
           globalstatus = true,
           disabled_filetypes = { statusline = { "snacks_dashboard" } },
           component_separators = { left = "", right = "" },

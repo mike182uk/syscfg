@@ -22,7 +22,11 @@ function add_newline_before_prompt_maybe --on-event fish_postexec
 end
 
 # Set colors
+#
+# ANSI names so the colours follow the terminal palette (see ghostty theme)
+#
 # https://fishshell.com/docs/current/interactive.html
+#
 # To see all colors set: set -n | grep color
 
 set --global fish_color_autosuggestion brblack
@@ -107,13 +111,8 @@ end
 
 # Init fzf
 
-set --global --export FZF_DEFAULT_OPTS '
-	--color=fg:-1,fg+:-1,bg:-1,bg+:-1
-	--color=hl:5,hl+:5,info:3,marker:2
-	--color=prompt:4,spinner:3,pointer:5:bold,header:8:bold
-	--color=border:8,label:7,query:7
-	--border --cycle --layout=reverse --info=inline-right --marker=*
-'
+set --global --export FZF_DEFAULT_OPTS_FILE "$HOME/.config/fzf/fzfrc"
+set --global --export FZF_DEFAULT_OPTS '--cycle --marker=*'
 
 # Init fzf.fish
 
@@ -143,6 +142,11 @@ end
 
 set --global --export RIPGREP_CONFIG_PATH $HOME/.config/ripgrep/config
 
+# Init eza
+# eza does not follow XDG on macOS unless EZA_CONFIG_DIR is set
+
+set --global --export EZA_CONFIG_DIR $HOME/.config/eza
+
 # Init abbreviations
 
 abbr --add cat 'bat'
@@ -159,8 +163,6 @@ abbr --add dc 'docker-compose'
 abbr --add e "$EDITOR"
 abbr --add g 'git'
 abbr --add l 'eza -lga --git --group-directories-first'
-abbr --add lzd 'lazydocker'
-abbr --add lzg 'lazygit'
 abbr --add oc 'opencode'
 abbr --add ts 'tailscale'
 abbr --add v 'nvim'

@@ -1,3 +1,5 @@
+# https://github.com/folke/tokyonight.nvim/blob/main/extras/ghostty/tokyonight_moon
+
 palette = 0=#1b1d2b
 palette = 1=#ff757f
 palette = 2=#c3e88d
@@ -15,8 +17,8 @@ palette = 13=#caabff
 palette = 14=#b2ebff
 palette = 15=#c8d3f5
 
-background = #1a1b26
+background = #222436
 foreground = #c8d3f5
 cursor-color = #c8d3f5
-selection-background = #222436
+selection-background = #2d3f76
 selection-foreground = #c8d3f5

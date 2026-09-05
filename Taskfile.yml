@@ -7,6 +7,11 @@ silent: true
 dotenv:
   - .env
 
+vars:
+  THEMES:
+    - tokyonight_moon
+    - tokyonight_mike
+
 tasks:
   create-symlink-safe:
     internal: true
@@ -94,10 +99,11 @@ tasks:
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/bat/config'
           TARGET: '{{.HOME}}/.config/bat/config'
-      - task: create-symlink-safe
+      - for: { var: THEMES }
+        task: create-symlink-safe
         vars:
-          SOURCE: '{{.USER_WORKING_DIR}}/config/themes/tokyonight-oc.tmTheme'
-          TARGET: '{{.HOME}}/.config/bat/themes/tokyonight-oc.tmTheme'
+          SOURCE: '{{.USER_WORKING_DIR}}/config/themes/{{.ITEM}}.tmTheme'
+          TARGET: '{{.HOME}}/.config/bat/themes/{{.ITEM}}.tmTheme'
       - bat cache --build
 
   brew-bundle:
@@ -134,10 +140,11 @@ tasks:
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/btop/btop.conf'
           TARGET: '{{.HOME}}/.config/btop/btop.conf'
-      - task: create-symlink-safe
+      - for: { var: THEMES }
+        task: create-symlink-safe
         vars:
-          SOURCE: '{{.USER_WORKING_DIR}}/config/btop/themes/tokyonight-oc.theme'
-          TARGET: '{{.HOME}}/.config/btop/themes/tokyonight-oc.theme'
+          SOURCE: '{{.USER_WORKING_DIR}}/config/btop/themes/{{.ITEM}}.theme'
+          TARGET: '{{.HOME}}/.config/btop/themes/{{.ITEM}}.theme'
 
   bun:
     desc: Setup Bun config
@@ -175,10 +182,11 @@ tasks:
           SOURCE: '{{.USER_WORKING_DIR}}/config/claude/statusline.sh'
           TARGET: '{{.HOME}}/.claude/statusline.sh'
       # Theme
-      - task: create-symlink-safe
+      - for: { var: THEMES }
+        task: create-symlink-safe
         vars:
-          SOURCE: '{{.USER_WORKING_DIR}}/config/claude/themes/tokyonight-oc.json'
-          TARGET: '{{.HOME}}/.claude/themes/tokyonight-oc.json'
+          SOURCE: '{{.USER_WORKING_DIR}}/config/claude/themes/{{.ITEM}}.json'
+          TARGET: '{{.HOME}}/.claude/themes/{{.ITEM}}.json'
       # Agents config
       - task: create-symlink-safe
         vars:
@@ -207,10 +215,11 @@ tasks:
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/codex/personal.config.toml'
           TARGET: '{{.HOME}}/.codex/personal.config.toml'
-      - task: create-symlink-safe
+      - for: { var: THEMES }
+        task: create-symlink-safe
         vars:
-          SOURCE: '{{.USER_WORKING_DIR}}/config/themes/tokyonight-oc.tmTheme'
-          TARGET: '{{.HOME}}/.codex/themes/tokyonight-oc.tmTheme'
+          SOURCE: '{{.USER_WORKING_DIR}}/config/themes/{{.ITEM}}.tmTheme'
+          TARGET: '{{.HOME}}/.codex/themes/{{.ITEM}}.tmTheme'
       - task: create-symlink-safe
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/codex/rules/default.rules'
@@ -254,6 +263,15 @@ tasks:
           SOURCE: '{{.USER_WORKING_DIR}}/config/editorconfig/editorconfig'
           TARGET: '{{.HOME}}/.editorconfig'
 
+  eza:
+    desc: Setup eza config
+    cmds:
+      - mkdir -p {{.HOME}}/.config/eza
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/eza/theme.yml'
+          TARGET: '{{.HOME}}/.config/eza/theme.yml'
+
   fish:
     desc: Setup 🐟 config
     cmds:
@@ -288,6 +306,15 @@ tasks:
       # Install plugins
       - fish -c 'fisher update'
 
+  fzf:
+    desc: Setup fzf config
+    cmds:
+      - mkdir -p {{.HOME}}/.config/fzf
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/fzf/fzfrc'
+          TARGET: '{{.HOME}}/.config/fzf/fzfrc'
+
   gh:
     desc: Setup GitHub CLI
     preconditions:
@@ -297,7 +324,7 @@ tasks:
       - '[[ -n "$GH_TOKEN" ]] && gh auth setup-git; true'
 
   ghostty:
-    desc: Install Ghostty config
+    desc: Setup Ghostty config
     platforms:
       - darwin
     cmds:
@@ -411,10 +438,11 @@ tasks:
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/opencode/tui.json'
           TARGET: '{{.HOME}}/.config/opencode/tui.json'
-      - task: create-symlink-safe
+      - for: { var: THEMES }
+        task: create-symlink-safe
         vars:
-          SOURCE: '{{.USER_WORKING_DIR}}/config/opencode/themes/tokyonight-oc.json'
-          TARGET: '{{.HOME}}/.config/opencode/themes/tokyonight-oc.json'
+          SOURCE: '{{.USER_WORKING_DIR}}/config/opencode/themes/{{.ITEM}}.json'
+          TARGET: '{{.HOME}}/.config/opencode/themes/{{.ITEM}}.json'
       - task: create-symlink-safe
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/agents/AGENTS.md'
@@ -512,10 +540,11 @@ tasks:
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/revdiff/config'
           TARGET: '{{.HOME}}/.config/revdiff/config'
-      - task: create-symlink-safe
+      - for: { var: THEMES }
+        task: create-symlink-safe
         vars:
-          SOURCE: '{{.USER_WORKING_DIR}}/config/revdiff/themes/tokyonight-oc'
-          TARGET: '{{.HOME}}/.config/revdiff/themes/tokyonight-oc'
+          SOURCE: '{{.USER_WORKING_DIR}}/config/revdiff/themes/{{.ITEM}}'
+          TARGET: '{{.HOME}}/.config/revdiff/themes/{{.ITEM}}'
       # https://github.com/umputun/revdiff/blob/master/plugins/opencode/README.md
       # Plan-review plugin intentionally skipped - plannotator handles plan review
       - mkdir -p {{.OPENCODE_DIR}}/commands {{.OPENCODE_DIR}}/tools
@@ -556,6 +585,8 @@ tasks:
       - task: ripgrep
       - task: bat
       - task: btop
+      - task: eza
+      - task: fzf
       - task: bun
       - task: claude
       - task: codex

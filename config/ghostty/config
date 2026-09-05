@@ -11,10 +11,7 @@ window-padding-y = 8
 
 font-size = 14
 
-theme = tokyonight-oc
-
-selection-background = #222436
-selection-foreground = #c8d3f5
+theme = tokyonight_mike
 
 cursor-style = block
 cursor-style-blink = true

@@ -33,10 +33,6 @@ brew "httpie"
 brew "iperf3"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# Lazier way to manage everything docker
-brew "lazydocker"
-# Simple terminal UI for git commands
-brew "lazygit"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
 # Remote terminal application

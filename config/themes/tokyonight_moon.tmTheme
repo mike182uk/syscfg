@@ -6,7 +6,7 @@
 	<key>colorSpaceName</key>
 	<string>sRGB</string>
 	<key>name</key>
-	<string>tokyonight-oc</string>
+	<string>TokyoNight</string>
 	<key>semanticClass</key>
 	<string>enki.theme.tokyo</string>
 	<key>settings</key>
@@ -17,7 +17,7 @@
 				<key>activeGuide</key>
 				<string>#363b54</string>
 				<key>background</key>
-				<string>#1a1b26</string>
+				<string>#222436</string>
 				<key>caret</key>
 				<string>#DBC08A</string>
 				<key>findHighlight</key>
@@ -1374,3 +1374,4 @@
 	<string>06f855e3-9fb7-4fb1-b790-aef06065f34e</string>
 </dict>
 </plist>
+
