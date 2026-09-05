@@ -1,7 +1,8 @@
 # Communication
 
 - Be concise and direct, avoid filler. Keep it short by leaving things out, not by compressing sentences into fragments, abbreviations, or arrow chains
-- After finishing a task, lead with what happened or what was found; detail and reasoning follow
+- After finishing a task, lead with the outcome or findings. Put supporting detail afterward
+- When listing items I may want to respond to individually, such as findings, questions, suggestions, or options, use a numbered list. Keep numbering continuous across sections within a response so each item has a unique number. Use bullets for purely informational lists
 - Do not use emojis unless asked
 - Prefer the plainest word. No coined verbs, no jargon, no sophisticated synonym use for its own sake
 - Prefer the literal thing over a metaphor - "removing X breaks Y", not "X is load-bearing"
@@ -17,11 +18,11 @@
 
 # Acting on my behalf
 
-- Never take public actions (e.g. posting a comment, sending an email, approving a PR) on my behalf unless I explicitly ask for that specific action
+- Never take external actions (e.g. posting a comment, sending an email, approving a PR) on my behalf unless I explicitly ask for that specific action
 
 # Documentation & research
 
-If these tools are available, prefer them over a plain web search, and fall back to web search if they come up empty:
+Prefer these tools over a plain web search, and fall back to web search if they are unavailable or insufficient. Discover available integration tools before concluding they are unavailable:
 
 - `context7` - library and framework documentation
 - `deepwiki` - how a specific GitHub repo works
@@ -31,6 +32,7 @@ If these tools are available, prefer them over a plain web search, and fall back
 # Writing
 
 - In prose, use hyphens (`-`) instead of em-dashes (`—`), en-dashes (`–`), or double hyphens (`--`)
+- Do not use semicolons in prose. Use separate sentences instead
 
 # Environment
 
@@ -40,13 +42,16 @@ If these tools are available, prefer them over a plain web search, and fall back
 
 # Tools
 
-- Use `ax` instead of `curl`. Only use `curl` if you cannot get the desired result with `ax`
-  - Load the `ax` skill before use
+- Use `ax` for web fetching and HTML extraction instead of `curl` or throwaway Python / Node parsing scripts
+  - Load the `ax` skill before use. If its guidance is insufficient, run `ax agent-context` for the full manual
+  - Use another approach only when `ax` cannot handle the task, not merely because an extraction attempt failed
 - Use `wt` instead of `git worktree` commands to create, list, or remove worktrees. This also applies when a skill or instruction names a `git worktree` command - run the `wt` equivalent. Only use `git worktree` if `wt` is unavailable or cannot get the desired result
-- Use `opensrc` to download a GitHub repository for inspection
-  - Only use `opensrc` when you need the whole repository because and cannot get the desired result with `grep` (grep.app)
+- Prefer `grep` (grep.app) for checking external GitHub code
+  - When local repository inspection is needed, use an existing local checkout if available. Otherwise, use `opensrc` instead of `git clone`
 
 # Code
+
+- Before writing, modifying, or reviewing code, load the `karpathy-guidelines` skill
 
 ## Paths
 
@@ -66,6 +71,12 @@ If these tools are available, prefer them over a plain web search, and fall back
 - Never use the `any` type without explicit approval
 - Prefer `satisfies`, a type guard, or fixing the source type over an `as` cast. `as const` is not a cast and is fine. If a cast is unavoidable, say why
 - Prefer `interface` over `type` for object shapes
+- For type errors, complex generics, or inference problems, load the `typescript-magician` skill
+
+## Go
+
+- Before writing or modifying Go code, load the `use-modern-go` skill
+  - Follow its version-compatible idioms in changed code. Do not modernize unrelated code
 
 ## Shell
 
