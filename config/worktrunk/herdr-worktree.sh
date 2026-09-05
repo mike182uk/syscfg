@@ -38,8 +38,6 @@ root_workspace_id=$(
 )
 
 if [ "$action" = open ]; then
-	[ -n "$root_workspace_id" ] || exit 0
-
 	worktree=$(
 		printf '%s\n' "$worktrees" |
 			jq -c --arg path "$worktree_path" \
@@ -51,6 +49,14 @@ if [ "$action" = open ]; then
 		printf '%s\n' "$worktree" | jq -r '.open_workspace_id // empty'
 	)
 	[ -z "$open_workspace_id" ] || exit 0
+
+	if [ -z "$root_workspace_id" ]; then
+		root_workspace=$(herdr workspace create --cwd "$primary_worktree_path" --no-focus)
+		root_workspace_id=$(
+			printf '%s\n' "$root_workspace" |
+				jq -er '.result.workspace.workspace_id | select(type == "string" and length > 0)'
+		) || die "created root workspace has no ID"
+	fi
 
 	herdr worktree open \
 		--workspace "$root_workspace_id" \
