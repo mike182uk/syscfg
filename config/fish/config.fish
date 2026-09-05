@@ -112,7 +112,6 @@ end
 # Init fzf
 
 set --global --export FZF_DEFAULT_OPTS_FILE "$HOME/.config/fzf/fzfrc"
-set --global --export FZF_DEFAULT_OPTS '--cycle --marker=*'
 
 # Init fzf.fish
 
@@ -141,11 +140,6 @@ end
 # Init ripgrep
 
 set --global --export RIPGREP_CONFIG_PATH $HOME/.config/ripgrep/config
-
-# Init eza
-# eza does not follow XDG on macOS unless EZA_CONFIG_DIR is set
-
-set --global --export EZA_CONFIG_DIR $HOME/.config/eza
 
 # Init abbreviations
 

@@ -16,14 +16,15 @@
 
 - Tools that support theming should use `tokyonight`, specifically the `moon` variant if available
   - See https://github.com/folke/tokyonight.nvim
-  - Prefer the file from `extras/` verbatim, named `tokyonight_moon` - only hand-write an adapter (claude, revdiff, herdr etc.) when upstream has none, using values from `lua/tokyonight/colors/moon.lua`
-  - Bat and Codex share `config/themes/tokyonight_moon.tmTheme` (from `extras/sublime`) - do not create separate copies
+  - Prefer the file from `/extras` verbatim, named `tokyonight_moon` 
+    - Only hand-write a theme when upstream has none, using values from `lua/tokyonight/colors/moon.lua`
+  - Bat and Codex share `config/themes/tokyonight_moon.tmTheme` (from `extras/sublime`). Do not create separate copies
 - `tokyonight_mike` is the moon palette with the role assignments of opencode's built-in `tokyonight` theme
   - See https://github.com/anomalyco/opencode/blob/dev/packages/tui/src/theme/assets/tokyonight.json
   - `config/opencode/themes/tokyonight_mike.json` is the reference: `diff` it against `tokyonight_moon.json` to see the full delta in palette terms
   - Palette-level delta, applied to every tool that has the role: 
     - bg: `#1a1b26`
-    - element/cursor-line: `#222436`
+    - element / cursor-line: `#222436`
     - comment: `#828bb8`
     - border: `#737aa2`
     - active/float border: `#828bb8`
@@ -39,14 +40,14 @@
     - links: `cyan`
     - list markers: `blue` (opencode also has `markdownListEnumeration`, which is `cyan`)
     - block quote: `yellow`
-  - The built-in's syntax roles (variable/parameter/property/call `red`, type `yellow`, keyword `magenta`) are kept in the opencode file only - nvim and the tmTheme keep upstream tokyonight syntax
-  - The built-in's off-palette values (`#89b4fa`, `#9099b2`, `#8f909a`) are replaced with `#65bcff` / `#828bb8` - do not reintroduce them
+  - The built-in's syntax roles (variable / parameter / property / call `red`, type `yellow`, keyword `magenta`) are kept in the opencode file only - nvim and the `tmTheme` keep upstream tokyonight syntax
+  - The built-in's off-palette values (`#89b4fa`, `#9099b2`, `#8f909a`) are replaced with `#65bcff` / `#828bb8`. Do not reintroduce them
   - Every `tokyonight_moon` theme file has a `tokyonight_mike` sibling - `THEMES` in `Taskfile.yml` links both so switching is an edit to the tool's config
-  - Where the theme is inline config, both variants stay in the file: herdr `[theme.custom]` holds a full `tokyonight_moon` block (commented) and a full `tokyonight_mike` block (active) with every documented key. nvim wraps the mike-only code in `-- tokyonight_mike overrides` / `-- end tokyonight_mike overrides` markers, and removing those regions yields plain moon
-  - eza and fzf have no role in the delta and stay on `tokyonight_moon`
-  - fish sets its colours with ANSI names in `config.fish` so they follow the terminal palette - do not add the upstream fish theme
+  - Where the theme is inline config, both variants stay in the file e.g. herdr `[theme.custom]` holds a full `tokyonight_moon` block (commented) and a full `tokyonight_mike` block (active) with every documented key
+  - fish and fzf set their colours with ANSI names (`config.fish`, `config/fzf/fzfrc`) so they follow the terminal palette - do not add the upstream fish or fzf themes
+  - eza is not themed
   - When updating from upstream, re-derive `tokyonight_mike` from the new `tokyonight_moon` file plus the delta above rather than editing it directly
-- VS Code, Zed & Sublime Text use their own themes - do not modify them
+- VS Code, Zed & Sublime Text use their own themes. Do not modify them
 
 ## Opencode commands
 

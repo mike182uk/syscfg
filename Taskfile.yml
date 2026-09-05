@@ -246,15 +246,6 @@ tasks:
           SOURCE: '{{.USER_WORKING_DIR}}/config/editorconfig/editorconfig'
           TARGET: '{{.HOME}}/.editorconfig'
 
-  eza:
-    desc: Setup eza config
-    cmds:
-      - mkdir -p {{.HOME}}/.config/eza
-      - task: create-symlink-safe
-        vars:
-          SOURCE: '{{.USER_WORKING_DIR}}/config/eza/theme.yml'
-          TARGET: '{{.HOME}}/.config/eza/theme.yml'
-
   fish:
     desc: Setup 🐟 config
     cmds:
@@ -568,7 +559,6 @@ tasks:
       - task: ripgrep
       - task: bat
       - task: btop
-      - task: eza
       - task: fzf
       - task: bun
       - task: claude
