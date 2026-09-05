@@ -1,0 +1,13 @@
+// Zed keymap
+//
+// https://zed.dev/docs/key-bindings
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      // Hyper+\ - Zed folds shift into the shifted character for non-letter
+      // keys, so shift-\ is written as |
+      "ctrl-alt-cmd-|": "workspace::ToggleLeftDock"
+    }
+  }
+]

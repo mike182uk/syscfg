@@ -46,7 +46,7 @@
   - eza and fzf have no role in the delta and stay on `tokyonight_moon`
   - fish sets its colours with ANSI names in `config.fish` so they follow the terminal palette - do not add the upstream fish theme
   - When updating from upstream, re-derive `tokyonight_mike` from the new `tokyonight_moon` file plus the delta above rather than editing it directly
-- Cursor, Zed & Sublime Text use their own themes - do not modify them
+- VS Code, Zed & Sublime Text use their own themes - do not modify them
 
 ## Opencode commands
 

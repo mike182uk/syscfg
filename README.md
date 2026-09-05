@@ -94,7 +94,7 @@ task btop
 task bun
 task claude
 task codex
-task cursor
+task vscode
 task sublime-text
 task zed
 task opencode

@@ -157,7 +157,7 @@ end
 
 abbr --add brwe 'brew'
 abbr --add b 'brew'
-abbr --add c 'cursor'
+abbr --add c 'code'
 abbr --add d 'docker'
 abbr --add dc 'docker-compose'
 abbr --add e "$EDITOR"

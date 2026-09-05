@@ -1,0 +1,42 @@
+{
+  "chat.titleBar.openInAgentsWindow.enabled": false,
+  "deno.enable": false,
+  "editor.accessibilitySupport": "off",
+  "editor.fontFamily": "Jetbrains Mono",
+  "editor.fontSize": 15,
+  "editor.linkedEditing": true,
+  "editor.minimap.enabled": false,
+  "editor.renderWhitespace": "all",
+  "editor.rulers": [
+    80
+  ],
+  "editor.semanticHighlighting.enabled": true,
+  "git.blame.editorDecoration.enabled": true,
+  "go.toolsManagement.autoUpdate": true,
+  "gopls": {
+    "ui.semanticTokens": true
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "json.schemaDownload.trustedDomains": {
+    "https://biomejs.dev": true,
+    "https://developer.microsoft.com/json-schemas/": true,
+    "https://json-schema.org/": true,
+    "https://json.schemastore.org/": true,
+    "https://raw.githubusercontent.com/devcontainers/spec/": true,
+    "https://raw.githubusercontent.com/microsoft/vscode/": true,
+    "https://schemastore.azurewebsites.net/": true,
+    "https://www.schemastore.org/": true
+  },
+  "markdown.extension.toc.updateOnSave": false,
+  "python.defaultInterpreterPath": "/opt/homebrew/bin/python3",
+  "redhat.telemetry.enabled": false,
+  "workbench.activityBar.location": "top",
+  "workbench.browser.showInTitleBar": false,
+  "workbench.colorCustomizations": {
+    "git.blame.editorDecorationForeground": "#565f89"
+  },
+  "workbench.colorTheme": "Tokyo Night",
+  "workbench.startupEditor": "none",
+  "workbench.tree.indent": 22,
+  "workbench.tree.renderIndentGuides": "always"
+}

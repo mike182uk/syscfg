@@ -113,11 +113,11 @@ tasks:
     preconditions:
       - command -v brew
       - command -v jq
-      - "[ -f {{.HOME}}/.cursor/extensions/extensions.json ] && exit 0 || exit 1"
+      - "[ -f {{.HOME}}/.vscode/extensions/extensions.json ] && exit 0 || exit 1"
     cmds:
       # Dump installed state and partition into Brewfile (portable) and
       # Brewfile.macos (macOS-only formulae, casks, mas, vscode extensions)
-      - '{{.USER_WORKING_DIR}}/scripts/brew-bundle-split.sh "{{.USER_WORKING_DIR}}/config/homebrew" "{{.HOME}}/.cursor/extensions/extensions.json"'
+      - '{{.USER_WORKING_DIR}}/scripts/brew-bundle-split.sh "{{.USER_WORKING_DIR}}/config/homebrew" "{{.HOME}}/.vscode/extensions/extensions.json"'
 
   brew-install:
     desc: Install formulae / casks listed in Brewfile
@@ -228,23 +228,6 @@ tasks:
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/agents/AGENTS.md'
           TARGET: '{{.HOME}}/.codex/AGENTS.md'
-
-  cursor:
-    desc: Setup Cursor config
-    platforms:
-      - darwin
-    vars:
-      CURSOR_CFG_PATH: '{{.HOME}}/Library/Application Support/Cursor/User'
-    cmds:
-      - mkdir -p '{{.CURSOR_CFG_PATH}}'
-      - task: create-symlink-safe
-        vars:
-          SOURCE: '{{.USER_WORKING_DIR}}/config/cursor/settings.json'
-          TARGET: '{{.CURSOR_CFG_PATH}}/settings.json'
-      - task: create-symlink-safe
-        vars:
-          SOURCE: '{{.USER_WORKING_DIR}}/config/cursor/keybindings.json'
-          TARGET: '{{.CURSOR_CFG_PATH}}/keybindings.json'
 
   dev-dirs:
     desc: Setup developer directory structure (DEV_DIR)
@@ -650,6 +633,23 @@ tasks:
           SOURCE: '{{.USER_WORKING_DIR}}/config/sublime-text/Package Control.sublime-settings'
           TARGET: '{{.ST_CFG_PATH}}/Package Control.sublime-settings'
 
+  vscode:
+    desc: Setup VS Code config
+    platforms:
+      - darwin
+    vars:
+      VSCODE_CFG_PATH: '{{.HOME}}/Library/Application Support/Code/User'
+    cmds:
+      - mkdir -p '{{.VSCODE_CFG_PATH}}'
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/vscode/settings.json'
+          TARGET: '{{.VSCODE_CFG_PATH}}/settings.json'
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/vscode/keybindings.json'
+          TARGET: '{{.VSCODE_CFG_PATH}}/keybindings.json'
+
   worktrunk:
     desc: Setup worktrunk config
     preconditions:
@@ -677,6 +677,10 @@ tasks:
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/zed/settings.json'
           TARGET: '{{.HOME}}/.config/zed/settings.json'
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/zed/keymap.json'
+          TARGET: '{{.HOME}}/.config/zed/keymap.json'
 
   zsh:
     desc: Setup zsh config

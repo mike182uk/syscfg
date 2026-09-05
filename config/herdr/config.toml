@@ -12,6 +12,7 @@ reload_config = "prefix+r"
 resize_mode = "prefix+shift+r"
 split_vertical = "prefix+|"
 split_horizontal = "prefix+_"
+toggle_sidebar = "ctrl+shift+alt+cmd+backslash"
 
 [[keys.command]]
 key = "prefix+ctrl+d"

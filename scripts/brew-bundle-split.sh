@@ -14,7 +14,7 @@
 set -eu
 
 CONFIG_DIR="$1"        # config/homebrew directory
-CURSOR_EXTENSIONS="$2" # path to Cursor extensions.json
+VSCODE_EXTENSIONS="$2" # path to VS Code extensions.json
 
 BREWFILE="$CONFIG_DIR/Brewfile"
 BREWFILE_MACOS="$CONFIG_DIR/Brewfile.macos"
@@ -25,7 +25,7 @@ MACOS_ONLY_FORMULAE="mas trash"
 tmp=$(mktemp)
 trap 'rm -f "$tmp"' EXIT
 
-# Dump everything (minus vscode; we append those from Cursor below) to a temp.
+# Dump everything (minus vscode; we append those from VS Code below) to a temp.
 # Descriptions are included by default now, so --describe is not passed.
 brew bundle dump --no-vscode --force --file "$tmp"
 
@@ -87,9 +87,9 @@ while IFS= read -r line; do
 	pending_comment=""
 done <"$tmp"
 
-# Append vscode extensions from Cursor to the macOS file.
-if [ -f "$CURSOR_EXTENSIONS" ]; then
-	jq -r '.[].identifier.id' "$CURSOR_EXTENSIONS" | sort -u | while IFS= read -r id; do
+# Append vscode extensions from VS Code to the macOS file.
+if [ -f "$VSCODE_EXTENSIONS" ]; then
+	jq -r '.[].identifier.id' "$VSCODE_EXTENSIONS" | sort -u | while IFS= read -r id; do
 		printf 'vscode "%s"\n' "$id" >>"$BREWFILE_MACOS"
 	done
 fi
