@@ -620,6 +620,10 @@ tasks:
           TARGET: '{{.ST_CFG_PATH}}/Preferences.sublime-settings'
       - task: create-symlink-safe
         vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/sublime-text/Default (OSX).sublime-keymap'
+          TARGET: '{{.ST_CFG_PATH}}/Default (OSX).sublime-keymap'
+      - task: create-symlink-safe
+        vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/sublime-text/Package Control.sublime-settings'
           TARGET: '{{.ST_CFG_PATH}}/Package Control.sublime-settings'
 
