@@ -43,7 +43,7 @@ Prefer these tools over a plain web search, and fall back to web search if they 
 # Tools
 
 - Use `ax` for web fetching and HTML extraction instead of `curl` or throwaway Python / Node parsing scripts
-  - Load the `ax` skill before use. If its guidance is insufficient, run `ax agent-context` for the full manual
+  - Use the `skill` tool to load the `ax` skill before use. If its guidance is insufficient, run `ax agent-context` for the full manual
   - Use another approach only when `ax` cannot handle the task, not merely because an extraction attempt failed
 - Use `wt` instead of `git worktree` commands to create, list, or remove worktrees. This also applies when a skill or instruction names a `git worktree` command - run the `wt` equivalent. Only use `git worktree` if `wt` is unavailable or cannot get the desired result
 - Prefer `grep` (grep.app) for checking external GitHub code
@@ -51,7 +51,7 @@ Prefer these tools over a plain web search, and fall back to web search if they 
 
 # Code
 
-- Before writing, modifying, or reviewing code, load the `karpathy-guidelines` skill
+- Before writing, modifying, or reviewing code, use the `skill` tool to load the `karpathy-guidelines` skill
 
 ## Paths
 
@@ -71,11 +71,11 @@ Prefer these tools over a plain web search, and fall back to web search if they 
 - Never use the `any` type without explicit approval
 - Prefer `satisfies`, a type guard, or fixing the source type over an `as` cast. `as const` is not a cast and is fine. If a cast is unavoidable, say why
 - Prefer `interface` over `type` for object shapes
-- For type errors, complex generics, or inference problems, load the `typescript-magician` skill
+- For type errors, complex generics, or inference problems, use the `skill` tool to load the `typescript-magician` skill
 
 ## Go
 
-- Before writing or modifying Go code, load the `use-modern-go` skill
+- Before writing or modifying Go code, use the `skill` tool to load the `use-modern-go` skill
   - Follow its version-compatible idioms in changed code. Do not modernize unrelated code
 
 ## Shell
