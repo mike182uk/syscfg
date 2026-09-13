@@ -7,6 +7,8 @@
 - `preconditions` for tasks should guard the binaries a task's `cmds` actually invoke
 - `platforms` for tasks should be the platform the task is intended to run on if the task is not platform agnostic
 - `platforms` only applies to a task or a `cmd:` entry, not a `- task:` sub-task call - gate those another way (e.g. an `{{OS}}`-selected var)
+- Tasks should be able to be run multiple times without error
+- Tasks should not rely on external state or resources that have not been set up yet
 
 ## Scripts
 

@@ -23,6 +23,18 @@ memories = false
 status_line = ["current-dir", "git-branch", "model-with-reasoning", "context-used", "used-tokens"]
 theme = "tokyonight_mike"
 
+[mcp_servers.incidentio-work]
+url = "https://mcp.incident.io/mcp"
+
+[mcp_servers.linear-work]
+url = "https://mcp.linear.app/mcp"
+
+[mcp_servers.notion-work]
+url = "https://mcp.notion.com/mcp"
+
+[mcp_servers.sentry-work]
+url = "https://mcp.sentry.dev/mcp"
+
 [permissions.workspace-no-env]
 description = "Workspace access without environment files"
 extends = ":workspace"
