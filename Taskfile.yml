@@ -36,58 +36,102 @@ tasks:
     env:
       DISABLE_TELEMETRY: 1
     vars:
-      SKILLS_CLI: mise exec -- bunx skills@latest
+      SOURCES:
+        # https://github.com/ast-grep/agent-skill
+        - repo: ast-grep/agent-skill
+          skills: []
+        # https://github.com/anthropics/skills
+        - repo: anthropics/skills
+          skills:
+            - frontend-design
+            - skill-creator
+        # https://github.com/backnotprop/plannotator
+        - repo: backnotprop/plannotator/apps/skills/core
+          skills:
+            - plannotator
+        # https://github.com/blader/humanizer
+        - repo: blader/humanizer
+          skills: []
+        # https://github.com/boldsoftware/exe.dev
+        - repo: boldsoftware/exe.dev/skill
+          skills: []
+        # https://github.com/forrestchang/andrej-karpathy-skills
+        - repo: forrestchang/andrej-karpathy-skills
+          skills: []
+        # https://github.com/herdrdev/herdr
+        - repo: herdrdev/herdr
+          skills:
+            - herdr
+        # https://github.com/jakubkrehel/make-interfaces-feel-better
+        - repo: jakubkrehel/make-interfaces-feel-better
+          skills: []
+        # https://github.com/jakubkrehel/oklch-skill
+        - repo: jakubkrehel/oklch-skill
+          skills: []
+        # https://github.com/JetBrains/go-modern-guidelines
+        - repo: JetBrains/go-modern-guidelines
+          skills:
+            - use-modern-go
+        # https://github.com/longbridge/gpui-kit
+        - repo: longbridge/gpui-kit
+          skills: []
+        # https://github.com/mcollina/skills
+        - repo: mcollina/skills
+          skills:
+            - node
+            - typescript-magician
+        # https://github.com/nextlevelbuilder/ui-ux-pro-max-skill
+        - repo: nextlevelbuilder/ui-ux-pro-max-skill
+          skills:
+            - ui-ux-pro-max
+            - ui-styling
+        # https://github.com/planetscale/database-skills
+        - repo: planetscale/database-skills
+          skills:
+            - mysql
+            - postgres
+        # https://github.com/shadcn-ui/ui
+        - repo: shadcn/ui
+          skills:
+            - shadcn
+        # https://github.com/softaworks/agent-toolkit
+        - repo: softaworks/agent-toolkit
+          skills:
+            - mermaid-diagrams
+        # https://github.com/stripe/ai
+        - repo: stripe/ai
+          skills:
+            - stripe-best-practices
+        # https://github.com/umputun/revdiff
+        - repo: umputun/revdiff
+          skills:
+            - revdiff
+        # https://github.com/vercel-labs/agent-browser
+        - repo: vercel-labs/agent-browser
+          skills:
+            - agent-browser
+        # https://github.com/vercel-labs/agent-skills
+        - repo: vercel-labs/agent-skills
+          skills:
+            - vercel-react-best-practices
+            - vercel-composition-patterns
+        # https://github.com/vercel-labs/opensrc
+        - repo: vercel-labs/opensrc
+          skills:
+            - opensrc
+        # https://github.com/yusukebe/ax
+        - repo: yusukebe/ax
+          skills: []
+        # https://github.com/mike182uk/agent-skills
+        - repo: mike182uk/agent-skills
+          skills: []
     preconditions:
       - mise which bun
     cmds:
       - mkdir -p {{.HOME}}/.agents/skills
       - rm -f {{.HOME}}/.agents/.skill-lock.json
-      # https://github.com/ast-grep/agent-skill
-      - '{{.SKILLS_CLI}} add ast-grep/agent-skill -a claude-code -a opencode -g -y'
-      # https://github.com/anthropics/skills
-      - '{{.SKILLS_CLI}} add anthropics/skills -s frontend-design -s skill-creator -a claude-code -a opencode -g -y'
-      # https://github.com/backnotprop/plannotator
-      - '{{.SKILLS_CLI}} add backnotprop/plannotator/apps/skills/core -s plannotator -a claude-code -a opencode -g -y'
-      # https://github.com/blader/humanizer
-      - '{{.SKILLS_CLI}} add blader/humanizer -a claude-code -a opencode -g -y'
-      # https://github.com/boldsoftware/exe.dev
-      - '{{.SKILLS_CLI}} add boldsoftware/exe.dev/skill -a claude-code -a opencode -g -y'
-      # https://github.com/forrestchang/andrej-karpathy-skills
-      - '{{.SKILLS_CLI}} add forrestchang/andrej-karpathy-skills -a claude-code -a opencode -g -y'
-      # https://github.com/herdrdev/herdr
-      - '{{.SKILLS_CLI}} add herdrdev/herdr -s herdr -a claude-code -a opencode -g -y'
-      # https://github.com/jakubkrehel/make-interfaces-feel-better
-      - '{{.SKILLS_CLI}} add jakubkrehel/make-interfaces-feel-better -a claude-code -a opencode -g -y'
-      # https://github.com/jakubkrehel/oklch-skill
-      - '{{.SKILLS_CLI}} add jakubkrehel/oklch-skill -a claude-code -a opencode -g -y'
-      # https://github.com/JetBrains/go-modern-guidelines
-      - '{{.SKILLS_CLI}} add JetBrains/go-modern-guidelines -s use-modern-go -a claude-code -a opencode -g -y'
-      # https://github.com/longbridge/gpui-kit
-      - '{{.SKILLS_CLI}} add longbridge/gpui-kit -a claude-code -a opencode -g -y'
-      # https://github.com/mcollina/skills
-      - '{{.SKILLS_CLI}} add mcollina/skills -s node -s typescript-magician -a claude-code -a opencode -g -y'
-      # https://github.com/nextlevelbuilder/ui-ux-pro-max-skill
-      - '{{.SKILLS_CLI}} add nextlevelbuilder/ui-ux-pro-max-skill -s ui-ux-pro-max -s ui-styling -a claude-code -a opencode -g -y'
-      # https://github.com/planetscale/database-skills
-      - '{{.SKILLS_CLI}} add planetscale/database-skills -s mysql -s postgres -a claude-code -a opencode -g -y'
-      # https://github.com/shadcn-ui/ui
-      - '{{.SKILLS_CLI}} add shadcn/ui -s shadcn -a claude-code -a opencode -g -y'
-      # https://github.com/softaworks/agent-toolkit
-      - '{{.SKILLS_CLI}} add softaworks/agent-toolkit -s mermaid-diagrams -a claude-code -a opencode -g -y'
-      # https://github.com/stripe/ai
-      - '{{.SKILLS_CLI}} add stripe/ai -s stripe-best-practices -a claude-code -a opencode -g -y'
-      # https://github.com/umputun/revdiff
-      - '{{.SKILLS_CLI}} add umputun/revdiff -s revdiff -a claude-code -a opencode -g -y'
-      # https://github.com/vercel-labs/agent-browser
-      - '{{.SKILLS_CLI}} add vercel-labs/agent-browser -s agent-browser -a claude-code -a opencode -g -y'
-      # https://github.com/vercel-labs/agent-skills
-      - '{{.SKILLS_CLI}} add vercel-labs/agent-skills -s vercel-react-best-practices -s vercel-composition-patterns -a claude-code -a opencode -g -y'
-      # https://github.com/vercel-labs/opensrc
-      - '{{.SKILLS_CLI}} add vercel-labs/opensrc -s opensrc -a claude-code -a opencode -g -y'
-      # https://github.com/yusukebe/ax
-      - '{{.SKILLS_CLI}} add yusukebe/ax -a claude-code -a opencode -g -y'
-      # https://github.com/mike182uk/agent-skills
-      - '{{.SKILLS_CLI}} add mike182uk/agent-skills -a claude-code -a opencode -g -y'
+      - for: { var: SOURCES }
+        cmd: mise exec -- bunx skills@latest add {{.ITEM.repo}} {{range .ITEM.skills}}-s {{.}} {{end}}-a claude-code -a opencode -g -y
 
   bat:
     desc: Setup bat config
