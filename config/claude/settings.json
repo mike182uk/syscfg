@@ -7,11 +7,6 @@
   },
   "includeGitInstructions": false,
   "permissions": {
-    "allow": [
-      "mcp__context7",
-      "mcp__exa",
-      "mcp__grep"
-    ],
     "deny": [
       "Bash(sudo:*)",
       "Bash(rm -rf /)",

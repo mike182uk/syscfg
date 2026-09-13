@@ -93,7 +93,7 @@
       "type": "remote",
       "url": "{env:EXECUTOR_API_URL}?elicitation_mode=model",
       "headers": {
-        "x-api-key": "{env:EXECUTOR_API_KEY}"
+        "x-api-key": "{env:EXECUTOR_API_KEY_OC}"
       },
       "oauth": false,
       "enabled": true
