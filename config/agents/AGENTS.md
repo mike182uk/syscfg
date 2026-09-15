@@ -81,3 +81,8 @@ Prefer these tools over a plain web search, and fall back to web search if they 
 ## Shell
 
 - After editing a shell script, format with `shfmt` and lint with `shellcheck`
+
+# Scratch
+
+- One-off work that is not a project (e.g. an investigation, a data gathering exercise, a set of notes) goes in `$SCRATCH_DIR/<YYYY-MM-DD>-<slug>/`, dated when the work starts
+- Scratch is not a permanent home. Never leave the only copy of something valuable there, and say what should be promoted and where

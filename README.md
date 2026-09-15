@@ -44,6 +44,7 @@ cd ~/.syscfg && cp .env.example .env
 ```
 
 - `DEV_DIR` - Directory to use for repositories & worktrees (must be literal path, vars are not expanded)
+- `SCRATCH_DIR` - Directory to use for scratch space (must be literal path, vars are not expanded)
 - `HOSTNAME` - Desired hostname for the machine (only used during `macos` setup)
 - `GIT_USERNAME` - Username for Git user
 - `GIT_EMAIL` - Email for Git user
@@ -83,6 +84,7 @@ task ssh
 task git
 task git-gpg          # Requires GIT_SIGNING_KEY
 task dev-dirs
+task scratch-dir
 task fish
 task fish-init
 task fish-completions
@@ -125,6 +127,7 @@ task ssh-key
 task git
 task gh
 task dev-dirs
+task scratch-dir
 task fish
 task fish-init
 task fish-completions

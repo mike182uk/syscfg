@@ -612,6 +612,14 @@ tasks:
           SOURCE: '{{.USER_WORKING_DIR}}/config/ripgrep/config'
           TARGET: '{{.HOME}}/.config/ripgrep/config'
 
+  scratch-dir:
+    desc: Setup scratch directory (SCRATCH_DIR)
+    preconditions:
+      - sh: test -n "{{.SCRATCH_DIR}}"
+        msg: SCRATCH_DIR must be set in .env
+    cmds:
+      - mkdir -p {{.SCRATCH_DIR}}
+
   setup-linux:
     desc: Run all Linux setup tasks in the recommended order
     platforms:
@@ -623,6 +631,7 @@ tasks:
       - task: git
       - task: gh
       - task: dev-dirs
+      - task: scratch-dir
       - task: fish
       - task: fish-init
       - task: fish-completions
