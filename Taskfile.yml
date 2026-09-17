@@ -440,6 +440,14 @@ tasks:
       - '[ -f "{{.GPG_SSH_PROGRAM}}" ] && git config --global gpg.ssh.program "{{.GPG_SSH_PROGRAM}}"'
       - '[[ -n "$GIT_SIGNING_KEY" ]] && git config --global user.signingkey "$GIT_SIGNING_KEY"; true'
 
+  go:
+    desc: Setup Go env
+    preconditions:
+      - mise which go
+    cmds:
+      - mise exec -- go env -w GOPATH={{.HOME}}/.local/share/go
+      - mise exec -- go env -w GOBIN={{.HOME}}/.local/bin
+
   mise:
     desc: Setup mise config
     preconditions:
@@ -636,6 +644,7 @@ tasks:
       - task: fish-init
       - task: fish-completions
       - task: mise
+      - task: go
       - task: nvim
       - task: starship
       - task: editorconfig
