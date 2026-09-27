@@ -78,7 +78,7 @@ bind shift-down end-of-line       # Shift + Down Arrow - Move to the end of the 
 
 # Allow scrolling with mouse in less, bat etc.
 
-set --global LESS '--mouse'
+set --global --export LESS '--mouse'
 
 # Init paths
 

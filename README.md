@@ -87,7 +87,6 @@ task dev-dirs
 task scratch-dir
 task fish
 task fish-init
-task fish-completions
 task mise
 task go
 task nvim
@@ -97,6 +96,7 @@ task editorconfig
 task ripgrep
 task bat
 task btop
+task fzf
 task bun
 task claude
 task codex
@@ -131,7 +131,6 @@ task dev-dirs
 task scratch-dir
 task fish
 task fish-init
-task fish-completions
 task mise
 task go
 task nvim
@@ -140,6 +139,7 @@ task editorconfig
 task ripgrep
 task bat
 task btop
+task fzf
 task bun
 task claude
 task codex

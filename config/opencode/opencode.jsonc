@@ -115,10 +115,6 @@
     },
     "bash": {
       "*": "allow",
-      // never
-      "sudo *": "deny",
-      "rm -rf /": "deny",
-      "rm -fr /": "deny",
       // local but destructive -> ask
       "rm -rf *": "ask",
       "rm -fr *": "ask",
@@ -144,7 +140,11 @@
       "yarn publish*": "ask",
       "bun publish*": "ask",
       "deno publish*": "ask",
-      "docker push*": "ask"
+      "docker push*": "ask",
+      // never
+      "sudo *": "deny",
+      "rm -rf /": "deny",
+      "rm -fr /": "deny"
     },
     "external_directory": {
       "*": "ask",

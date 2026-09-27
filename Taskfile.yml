@@ -200,18 +200,18 @@ tasks:
           SOURCE: '{{.USER_WORKING_DIR}}/config/bun/bunfig.toml'
           TARGET: '{{.HOME}}/.bunfig.toml'
       - mise exec -- bun add -g agent-browser@latest opensrc@latest
-      - cmd: mise exec -- bunx playwright install
+      # Full path as ~/.bun/bin is not on PATH until a new shell after the first install
+      - cmd: mise exec -- {{.HOME}}/.bun/bin/agent-browser install
         platforms:
           - darwin
       # Linux also needs the browser system dependencies installed
-      - cmd: mise exec -- bunx playwright install --with-deps
+      - cmd: mise exec -- {{.HOME}}/.bun/bin/agent-browser install --with-deps
         platforms:
           - linux
 
   claude:
     desc: Setup Claude code
     preconditions:
-      - mise which node
       - command -v curl
     cmds:
       - mkdir -p {{.HOME}}/.claude/themes
@@ -330,19 +330,6 @@ tasks:
           TARGET: '{{.HOME}}/.config/fish'
       - '[ -f {{.HOME}}/.config/fish/config.local.fish ] || touch {{.HOME}}/.config/fish/config.local.fish'
       - '{{.USER_WORKING_DIR}}/scripts/set-default-shell.sh'
-
-  fish-completions:
-    desc: Install fish completions for installed programs
-    preconditions:
-      - command -v task
-      - command -v ast-grep
-    cmds:
-      - task --completion fish > {{.HOME}}/.config/fish/completions/task.fish
-      - ast-grep completions fish > {{.HOME}}/.config/fish/completions/ast-grep.fish
-      # OrbStack is macOS-only; skip elsewhere and no-op if not installed
-      - cmd: 'if command -v orbctl >/dev/null; then orbctl completion fish > {{.HOME}}/.config/fish/completions/orbstack.fish; fi'
-        platforms:
-          - darwin
 
   fish-init:
     desc: Install fisher and plugins
@@ -482,10 +469,8 @@ tasks:
     vars:
       COMMAND_FILES:
         sh: ls {{.USER_WORKING_DIR}}/config/opencode/commands/*.md 2>/dev/null || true
-      PLUGIN_FILES:
-        sh: ls {{.USER_WORKING_DIR}}/config/opencode/plugins/*.ts 2>/dev/null || true
     cmds:
-      - mkdir -p {{.HOME}}/.config/opencode/commands {{.HOME}}/.config/opencode/plugins {{.HOME}}/.config/opencode/themes {{.HOME}}/.config/opencode/tools
+      - mkdir -p {{.HOME}}/.config/opencode/commands {{.HOME}}/.config/opencode/themes
       - task: create-symlink-safe
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/opencode/opencode.jsonc'
@@ -508,11 +493,6 @@ tasks:
         vars:
           SOURCE: '{{.ITEM}}'
           TARGET: '{{.HOME}}/.config/opencode/commands/{{base .ITEM}}'
-      - for: { var: PLUGIN_FILES }
-        task: create-symlink-safe
-        vars:
-          SOURCE: '{{.ITEM}}'
-          TARGET: '{{.HOME}}/.config/opencode/plugins/{{base .ITEM}}'
 
   # https://plannotator.ai/install.sh
   plannotator:
@@ -530,7 +510,6 @@ tasks:
         sh: 'case "{{ARCH}}" in amd64) echo x64;; *) echo "{{ARCH}}";; esac'
       BINARY_URL: 'https://github.com/backnotprop/plannotator/releases/download/{{.TAG}}/plannotator-{{OS}}-{{.ARCH_TOKEN}}'
     preconditions:
-      - command -v git
       - command -v curl
       - command -v sha256sum || command -v shasum
       - command -v gh
@@ -642,7 +621,6 @@ tasks:
       - task: scratch-dir
       - task: fish
       - task: fish-init
-      - task: fish-completions
       - task: mise
       - task: go
       - task: nvim
