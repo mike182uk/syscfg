@@ -6,53 +6,55 @@
     "pr": ""
   },
   "includeGitInstructions": false,
+  "env": {
+    "DISABLE_TELEMETRY": "1",
+    "DISABLE_ERROR_REPORTING": "1"
+  },
   "permissions": {
     "deny": [
-      "Bash(sudo:*)",
+      "Bash(sudo *)",
       "Bash(rm -rf /)",
-      "Bash(rm -rf /*)",
-      "Read(**/.env)",
-      "Read(**/.env.local)",
-      "Read(**/.env.*.local)"
+      "Bash(rm -fr /)",
+      "Read(//**/.env)",
+      "Read(//**/.env.*)"
     ],
     "ask": [
-      "Bash(rm -rf ~*)",
-      "Bash(git push)",
-      "Bash(git push:*)",
-      "Bash(git reset --hard)",
-      "Bash(git reset --hard:*)",
-      "Bash(gh pr create)",
-      "Bash(gh pr create:*)",
-      "Bash(gh pr merge:*)",
-      "Bash(gh pr close:*)",
-      "Bash(gh pr comment:*)",
-      "Bash(gh pr review:*)",
-      "Bash(gh issue create)",
-      "Bash(gh issue create:*)",
-      "Bash(gh issue comment:*)",
-      "Bash(gh issue close:*)",
-      "Bash(gh release create:*)",
-      "Bash(gh repo create)",
-      "Bash(gh repo create:*)",
-      "Bash(gh repo delete:*)",
-      "Bash(gh gist create:*)",
-      "Bash(npm publish)",
-      "Bash(npm publish:*)",
-      "Bash(pnpm publish)",
-      "Bash(pnpm publish:*)",
-      "Bash(yarn publish)",
-      "Bash(yarn publish:*)",
-      "Bash(bun publish)",
-      "Bash(bun publish:*)",
-      "Bash(deno publish)",
-      "Bash(deno publish:*)",
-      "Bash(docker push:*)",
-      "Bash(brew install:*)",
-      "Bash(brew uninstall:*)"
+      "Bash(rm -rf *)",
+      "Bash(rm -fr *)",
+      "Bash(git push *)",
+      "Bash(git reset --hard *)",
+      "Bash(gh pr create *)",
+      "Bash(gh pr merge *)",
+      "Bash(gh pr close *)",
+      "Bash(gh pr comment *)",
+      "Bash(gh pr review *)",
+      "Bash(gh issue create *)",
+      "Bash(gh issue comment *)",
+      "Bash(gh issue close *)",
+      "Bash(gh release create *)",
+      "Bash(gh repo create *)",
+      "Bash(gh repo delete *)",
+      "Bash(gh gist create *)",
+      "Bash(npm publish *)",
+      "Bash(pnpm publish *)",
+      "Bash(yarn publish *)",
+      "Bash(bun publish *)",
+      "Bash(deno publish *)",
+      "Bash(docker push *)",
+      "Bash(brew install *)",
+      "Bash(brew uninstall *)"
+    ],
+    "additionalDirectories": [
+      "~/.opensrc",
+      "/tmp",
+      "/private/tmp",
+      "/var/folders",
+      "/private/var/folders",
+      "/run/user"
     ],
     "defaultMode": "auto"
   },
-  "model": "claude-fable-5-1[1m]",
+  "model": "claude-opus-5-5[1m]",
   "hooks": {
     "SessionStart": [
       {
@@ -60,7 +62,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash '/Users/mike/.claude/hooks/herdr-agent-state.sh' session",
+            "command": "bash \"$HOME/.claude/hooks/herdr-agent-state.sh\" session",
             "timeout": 10
           }
         ]
@@ -73,7 +75,6 @@
     "padding": 0
   },
   "feedbackSurveyRate": 0,
-  "effortLevel": "high",
   "tui": "fullscreen",
   "autoMemoryEnabled": false,
   "skipDangerousModePermissionPrompt": true,

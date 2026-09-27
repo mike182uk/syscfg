@@ -22,14 +22,13 @@
   "agent_servers": {
     "opencode": {
       "default_config_options": {
-        "effort": "high",
-        "model": "anthropic/claude-opus-5"
+        "model": "anthropic/claude-opus-5-5"
       },
       "type": "registry"
     },
     "codex-acp": {
       "default_config_options": {
-        "model": "gpt-6-astra",
+        "model": "gpt-6-sol",
         "fast-mode": true
       },
       "type": "registry"
@@ -54,7 +53,7 @@
   "agent": {
     "inline_assistant_model": {
       "provider": "openai-subscribed",
-      "model": "gpt-6-astra",
+      "model": "gpt-6-sol",
       "enable_thinking": true
     },
     "sidebar_side": "right",

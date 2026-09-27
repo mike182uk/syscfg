@@ -1,10 +1,8 @@
 #:schema https://developers.openai.com/codex/config-schema.json
 
-model = "gpt-6-astra"
-model_reasoning_effort = "medium"
+model = "gpt-6-sol"
 model_reasoning_summary = "concise"
 model_verbosity = "low"
-plan_mode_reasoning_effort = "high"
 service_tier = "priority"
 approvals_reviewer = "auto_review"
 approval_policy = "on-request"
@@ -12,6 +10,9 @@ default_permissions = "workspace-no-env"
 web_search = "live"
 
 [analytics]
+enabled = false
+
+[feedback]
 enabled = false
 
 [features]
@@ -23,17 +24,31 @@ memories = false
 status_line = ["current-dir", "git-branch", "model-with-reasoning", "context-used", "used-tokens"]
 theme = "tokyonight_mike"
 
+[mcp_servers.chrome-devtools]
+command = "npx"
+args = ["-y", "chrome-devtools-mcp@latest"]
+enabled = false
+
 [mcp_servers.incidentio-work]
 url = "https://mcp.incident.io/mcp"
+enabled = false
 
 [mcp_servers.linear-work]
 url = "https://mcp.linear.app/mcp"
+enabled = false
 
 [mcp_servers.notion-work]
 url = "https://mcp.notion.com/mcp"
+enabled = false
+
+[mcp_servers.playwright]
+command = "npx"
+args = ["@playwright/mcp@latest"]
+enabled = false
 
 [mcp_servers.sentry-work]
 url = "https://mcp.sentry.dev/mcp"
+enabled = false
 
 [permissions.workspace-no-env]
 description = "Workspace access without environment files"

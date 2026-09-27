@@ -1,7 +1,7 @@
 // https://opencode.ai/docs/config
 {
   "$schema": "https://opencode.ai/config.json",
-  "autoupdate": false,
+  "autoupdate": true,
   "mcp": {
     // https://github.com/ChromeDevTools/chrome-devtools-mcp
     "chrome-devtools": {
@@ -118,13 +118,14 @@
       // never
       "sudo *": "deny",
       "rm -rf /": "deny",
-      "rm -rf /*": "deny",
+      "rm -fr /": "deny",
       // local but destructive -> ask
-      "rm -rf ~*": "ask",
+      "rm -rf *": "ask",
+      "rm -fr *": "ask",
       "git reset --hard*": "ask",
       "brew install*": "ask",
       "brew uninstall*": "ask",
-      // public or irreversible -> ask (AGENTS.md: no public actions unasked)
+      // public or irreversible -> ask
       "git push*": "ask",
       "gh pr create*": "ask",
       "gh pr merge*": "ask",

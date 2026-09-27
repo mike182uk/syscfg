@@ -253,17 +253,17 @@ tasks:
           fi
         }
 
-        mcp_add chrome-devtools -- npx -y chrome-devtools-mcp@latest
+        # mcp_add chrome-devtools -- npx -y chrome-devtools-mcp@latest
         # mcp_add --transport http context7 https://mcp.context7.com/mcp
         # mcp_add --transport http exa "https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa" -H "x-api-key: $EXA_API_KEY"
         # mcp_add --transport http grep https://mcp.grep.app
         # mcp_add hevy -e HEVY_API_KEY=$HEVY_API_KEY -- npx -y hevy-mcp@latest
-        mcp_add --transport http incidentio-work https://mcp.incident.io/mcp
-        mcp_add --transport http linear-work https://mcp.linear.app/mcp
+        # mcp_add --transport http incidentio-work https://mcp.incident.io/mcp
+        # mcp_add --transport http linear-work https://mcp.linear.app/mcp
         # mcp_add --transport http notion https://mcp.notion.com/mcp
-        mcp_add --transport http notion-work https://mcp.notion.com/mcp
-        mcp_add playwright npx @playwright/mcp@latest
-        mcp_add --transport http sentry-work https://mcp.sentry.dev/mcp
+        # mcp_add --transport http notion-work https://mcp.notion.com/mcp
+        # mcp_add playwright npx @playwright/mcp@latest
+        # mcp_add --transport http sentry-work https://mcp.sentry.dev/mcp
         mcp_add --transport http executor "${EXECUTOR_API_URL}?elicitation_mode=model" -H "x-api-key: ${EXECUTOR_API_KEY_CC}"
 
   codex:
@@ -290,7 +290,7 @@ tasks:
           SOURCE: '{{.USER_WORKING_DIR}}/config/agents/AGENTS.md'
           TARGET: '{{.HOME}}/.codex/AGENTS.md'
       # MCP
-      - codex mcp add chrome-devtools -- npx -y chrome-devtools-mcp@latest
+      # - codex mcp add chrome-devtools -- npx -y chrome-devtools-mcp@latest
       # - codex mcp add context7 --url https://mcp.context7.com/mcp
       # - codex mcp add exa --url 'https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa'
       # - codex mcp add grep --url https://mcp.grep.app
@@ -299,7 +299,7 @@ tasks:
       # - codex mcp add linear-work --url https://mcp.linear.app/mcp
       # - codex mcp add notion --url https://mcp.notion.com/mcp
       # - codex mcp add notion-work --url https://mcp.notion.com/mcp
-      - codex mcp add playwright -- npx @playwright/mcp@latest
+      # - codex mcp add playwright -- npx @playwright/mcp@latest
       # - codex mcp add sentry-work --url https://mcp.sentry.dev/mcp
       - codex mcp add executor --url "${EXECUTOR_API_URL}?elicitation_mode=model" --bearer-token-env-var EXECUTOR_API_KEY_CX
 

@@ -51,6 +51,23 @@
   - When updating from upstream, re-derive `tokyonight_mike` from the new `tokyonight_moon` file plus the delta above rather than editing it directly
 - VS Code, Zed & Sublime Text use their own themes. Do not modify them
 
+## Coding agents
+
+- OpenCode, Claude Code and Codex are kept aligned. When changing one, make the same change in the others, or say why it can't be expressed there
+- Where each setting lives:
+  - Models: `config/opencode/opencode.jsonc`, `config/claude/settings.json`, `config/codex/personal.config.toml`, and the agent entries in `config/zed/settings.json`
+  - Bash permission rules: `opencode.jsonc`, Claude Code `settings.json`, `config/codex/rules/default.rules`
+  - File read rules (`.env`): `opencode.jsonc`, Claude Code `settings.json`, the Codex permission profile in `personal.config.toml`
+  - Access to directories outside the project: `external_directory` in `opencode.jsonc`, `additionalDirectories` in Claude Code `settings.json` plus `config/fish/functions/claude.fish`, and Codex workspace roots in `config/fish/functions/codex.fish`
+  - MCP servers: `opencode.jsonc`, the `claude` and `codex` tasks in `Taskfile.yml`, and `personal.config.toml`
+- Effort / reasoning level is left at each model's default. Do not set it
+- Claude Code and Codex config can't read env vars (`~/` works in both). Paths built from `DEV_DIR` / `SCRATCH_DIR` go in the fish wrappers
+- Codex drops `-c` overrides given before a subcommand when another `-c` follows it, so `codex exec -c ...` loses the wrapper's workspace roots
+- OpenCode permission rules are last-match-wins: broad rules first, narrow rules last
+- Claude Code evaluates deny, then ask, then allow - an allow can't carve an exception out of a deny
+- Claude Code `Read` patterns without a `//` or `~/` prefix are relative to the working directory, so user-level rules that must apply everywhere use `//**/...`
+- Codex filesystem globs only support `deny`, so a read exception such as `.env.example` can only be an exact path
+
 ## Opencode commands
 
 - `description` in frontmatter is TUI-only and is never sent to the model - the body needs its own task statement
