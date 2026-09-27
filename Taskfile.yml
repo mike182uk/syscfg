@@ -235,7 +235,7 @@ tasks:
       - task: create-symlink-safe
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/agents/AGENTS.md'
-          TARGET: '{{.HOME}}/CLAUDE.md'
+          TARGET: '{{.HOME}}/.claude/CLAUDE.md'
       # Install
       - curl -fsSL https://claude.ai/install.sh | bash
       # MCP
