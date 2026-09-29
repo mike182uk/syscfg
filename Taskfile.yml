@@ -55,6 +55,9 @@ tasks:
         # https://github.com/boldsoftware/exe.dev
         - repo: boldsoftware/exe.dev/skill
           skills: []
+        # https://github.com/docker/skills
+        - repo: docker/skills
+          skills: []
         # https://github.com/forrestchang/andrej-karpathy-skills
         - repo: forrestchang/andrej-karpathy-skills
           skills: []
