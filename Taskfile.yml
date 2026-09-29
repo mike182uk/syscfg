@@ -37,6 +37,9 @@ tasks:
       DISABLE_TELEMETRY: 1
     vars:
       SOURCES:
+        # https://github.com/addyosmani/clarity
+        - repo: addyosmani/clarity
+          skills: []
         # https://github.com/ast-grep/agent-skill
         - repo: ast-grep/agent-skill
           skills: []
