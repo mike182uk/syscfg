@@ -1,12 +1,14 @@
 # Communication
 
-- Be concise and direct, avoid filler. Keep it short by leaving things out, not by compressing sentences into fragments, abbreviations, or arrow chains
-- After finishing a task, lead with the outcome or findings. Put supporting detail afterward
-- When listing items I may want to respond to individually, such as findings, questions, suggestions, or options, use a numbered list. Keep numbering continuous across sections within a response so each item has a unique number. Use bullets for purely informational lists
+- Be concise and direct, avoid filler
+  - Cut whole points, not words. Write full sentences, not fragments or arrow chains
+- When listing items I may want to respond to individually, such as findings, questions, suggestions, or options, use a numbered list
+  - Keep numbering continuous across sections within a response so each item has a unique number
+  - Use bullets for purely informational lists
 - Do not use emojis unless asked
-- Prefer the plainest word. No coined verbs, no jargon, no sophisticated synonym use for its own sake
+- Prefer the plainest word. No jargon, no sophisticated synonym use for its own sake
 - Prefer the literal thing over a metaphor - "removing X breaks Y", not "X is load-bearing"
-- No flourish or self-vouching ("genuinely", "worth noting"): show why it matters, don't assert that it does
+- Do not vouch for your own points ("genuinely", "worth noting", "importantly"). State the point
 
 # Time
 
@@ -43,7 +45,7 @@ Prefer these tools over a plain web search, and fall back to web search if they 
 # Tools
 
 - Use `ax` for web fetching and HTML extraction instead of `curl` or throwaway Python / Node parsing scripts
-  - Use the `skill` tool to load the `ax` skill before use. If its guidance is insufficient, run `ax agent-context` for the full manual
+  - Load the `ax` skill before use. If its guidance is insufficient, run `ax agent-context` for the full manual
   - Use another approach only when `ax` cannot handle the task, not merely because an extraction attempt failed
 - Use `wt` instead of `git worktree` commands to create, list, or remove worktrees. This also applies when a skill or instruction names a `git worktree` command - run the `wt` equivalent. Only use `git worktree` if `wt` is unavailable or cannot get the desired result
 - Prefer `grep` (grep.app) for checking external GitHub code
@@ -51,7 +53,7 @@ Prefer these tools over a plain web search, and fall back to web search if they 
 
 # Code
 
-- Before writing, modifying, or reviewing code, use the `skill` tool to load the `karpathy-guidelines` skill
+- Before writing, modifying, or reviewing code, load the `karpathy-guidelines` skill
 
 ## Paths
 
@@ -63,19 +65,19 @@ Prefer these tools over a plain web search, and fall back to web search if they 
 - Follow existing code style and patterns in the project
 - Keep changes minimal and focused
 - Always use pinned versions of dependencies unless the project deviates from this rule
-- Only write comments when the code itself is not self-explanatory. Comments should be the exception not the norm
-- After changing code, run the project's formatter and linter, and the tests covering what you changed. Say which commands you ran, and say so if you skipped any
+- Do not add comments. The exception is a non-obvious "why" (a workaround, a constraint, a surprising choice) that the reader cannot get from the code
+- Verify your work by running the project's formatter and linter, and the tests covering what you changed. Say which commands you ran, and say so if you skipped any
 
 ## TypeScript
 
 - Never use the `any` type without explicit approval
 - Prefer `satisfies`, a type guard, or fixing the source type over an `as` cast. `as const` is not a cast and is fine. If a cast is unavoidable, say why
 - Prefer `interface` over `type` for object shapes
-- For type errors, complex generics, or inference problems, use the `skill` tool to load the `typescript-magician` skill
+- For type errors, complex generics, or inference problems, load the `typescript-magician` skill
 
 ## Go
 
-- Before writing or modifying Go code, use the `skill` tool to load the `use-modern-go` skill
+- Before writing or modifying Go code, load the `use-modern-go` skill
   - Follow its version-compatible idioms in changed code. Do not modernize unrelated code
 
 ## Shell
@@ -85,4 +87,3 @@ Prefer these tools over a plain web search, and fall back to web search if they 
 # Scratch
 
 - One-off work that is not a project (e.g. an investigation, a data gathering exercise, a set of notes) goes in `$SCRATCH_DIR/<YYYY-MM-DD>-<slug>/`, dated when the work starts
-- Scratch is not a permanent home. Never leave the only copy of something valuable there, and say what should be promoted and where
