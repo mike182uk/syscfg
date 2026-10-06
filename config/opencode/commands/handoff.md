@@ -1,7 +1,7 @@
 ---
 description: Write a handoff document so a fresh session can continue the work
 agent: build
-subtask: false
+subagent: false
 ---
 
 Write a handoff document capturing the current conversation so a fresh agent

@@ -1,7 +1,7 @@
 ---
 description: Restate the last message in plain human language, with no jargon
 agent: build
-subtask: false
+subagent: false
 ---
 
 Restate your last message in plain language, like one human talking to

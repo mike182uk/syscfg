@@ -19,8 +19,6 @@ function u --description 'Update system'
 	fisher update
 
 	_update_msg "Updating misc programs..."
-	mise upgrade opencode
-	echo ""
 	claude update
 	echo ""
 	bun add -g agent-browser@latest opensrc@latest

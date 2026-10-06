@@ -43,8 +43,6 @@ cask "micro-snitch"
 cask "notion"
 # Cloud gaming platform
 cask "nvidia-geforce-now"
-# AI coding agent desktop client
-cask "opencode-desktop"
 # Replacement for Docker Desktop
 cask "orbstack"
 # VPN client focusing on security
@@ -116,7 +114,6 @@ vscode "oven.bun-vscode"
 vscode "prisma.prisma"
 vscode "redhat.ansible"
 vscode "redhat.vscode-yaml"
-vscode "sst-dev.opencode"
 vscode "standard.vscode-standard"
 vscode "tamasfe.even-better-toml"
 vscode "task.vscode-task"

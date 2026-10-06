@@ -481,10 +481,7 @@ tasks:
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/opencode/opencode.jsonc'
           TARGET: '{{.HOME}}/.config/opencode/opencode.jsonc'
-      - task: create-symlink-safe
-        vars:
-          SOURCE: '{{.USER_WORKING_DIR}}/config/opencode/tui.json'
-          TARGET: '{{.HOME}}/.config/opencode/tui.json'
+      - 'test -e "{{.HOME}}/.config/opencode/cli.json" || cp "{{.USER_WORKING_DIR}}/config/opencode/cli.json" "{{.HOME}}/.config/opencode/cli.json"'
       - for: { var: THEMES }
         task: create-symlink-safe
         vars:
@@ -588,9 +585,12 @@ tasks:
           TARGET: '{{.HOME}}/.config/revdiff/themes/{{.ITEM}}'
       # https://github.com/umputun/revdiff/blob/master/plugins/opencode/README.md
       # Plan-review plugin intentionally skipped - plannotator handles plan review
-      - mkdir -p {{.OPENCODE_DIR}}/commands {{.OPENCODE_DIR}}/tools
+      - mkdir -p {{.OPENCODE_DIR}}/commands {{.OPENCODE_DIR}}/plugins {{.OPENCODE_DIR}}/tools
       - curl -fsSL -o "{{.OPENCODE_DIR}}/commands/revdiff.md" "{{.RAW}}/plugins/opencode/commands/revdiff.md"
-      - curl -fsSL -o "{{.OPENCODE_DIR}}/tools/revdiff.ts" "{{.RAW}}/plugins/opencode/tools/revdiff.ts"
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/opencode/plugins/revdiff.ts'
+          TARGET: '{{.OPENCODE_DIR}}/plugins/revdiff.ts'
       - curl -fsSL -o "{{.OPENCODE_DIR}}/tools/launch-revdiff.sh" "{{.RAW}}/.claude-plugin/skills/revdiff/scripts/launch-revdiff.sh"
       - chmod +x "{{.OPENCODE_DIR}}/tools/launch-revdiff.sh"
 

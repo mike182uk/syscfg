@@ -1,7 +1,7 @@
 ---
 description: Review code, PRs, or issues
 agent: build
-subtask: true
+subagent: true
 ---
 
 Review code, a pull request, or an issue.
@@ -26,8 +26,8 @@ Classify it to decide which type of review to perform:
 - **Issue tracker reference** (e.g. `ABC-123`, or a URL to Linear, Jira,
   etc.): Issue review.
 - **Free text**: Treat as guidance for the review, and resolve the target from
-  the rest of the input. This runs as a subtask with no access to the
-  conversation, so if the input names no target, report that and stop.
+  the rest of the input. This runs as a background subagent with no access to
+  the conversation, so if the input names no target, report that and stop.
 
 A bare number is ambiguous - GitHub numbers issues and PRs in one sequence. Try
 `gh pr view <n>` first and fall back to `gh issue view <n>`. Pass the number

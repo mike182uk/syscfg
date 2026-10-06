@@ -1,173 +1,169 @@
-// https://opencode.ai/docs/config
+// https://opencode.ai/v2/docs/config
 {
   "$schema": "https://opencode.ai/config.json",
-  "autoupdate": true,
+  "update": "auto",
   "mcp": {
-    // https://github.com/ChromeDevTools/chrome-devtools-mcp
-    "chrome-devtools": {
-      "type": "local",
-      "command": [
-        "npx",
-        "-y",
-        "chrome-devtools-mcp@latest"
-      ],
-      "enabled": false
-    },
-    // https://github.com/upstash/context7
-    // "context7": {
-    //   "type": "remote",
-    //   "url": "https://mcp.context7.com/mcp",
-    //   "headers": {
-    //     "CONTEXT7_API_KEY": "{env:CONTEXT7_API_KEY}"
-    //   },
-    //   "enabled": true
-    // },
-    // https://docs.exa.ai/reference/exa-mcp
-    // "exa": {
-    //   "type": "remote",
-    //   "url": "https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa",
-    //   "headers": {
-    //     "x-api-key": "{env:EXA_API_KEY}"
-    //   },
-    //   "enabled": true
-    // },
-    // https://vercel.com/blog/grep-a-million-github-repositories-via-mcp
-    // "grep": {
-    //   "type": "remote",
-    //   "url": "https://mcp.grep.app",
-    //   "enabled": true
-    // },
-    // https://github.com/chrisdoc/hevy-mcp
-    // "hevy": {
-    //   "type": "local",
-    //   "command": [
-    //     "npx",
-    //     "-y",
-    //     "hevy-mcp@latest"
-    //   ],
-    //   "environment": {
-    //     "HEVY_API_KEY": "{env:HEVY_API_KEY}"
-    //   },
-    //   "enabled": false
-    // },
-    // https://docs.incident.io/ai/remote-mcp
-    "incidentio-work": {
-      "type": "remote",
-      "url": "https://mcp.incident.io/mcp",
-      "enabled": false
-    },
-    // https://linear.app/docs/mcp
-    "linear-work": {
-      "type": "remote",
-      "url": "https://mcp.linear.app/mcp",
-      "enabled": false
-    },
-    // https://developers.notion.com/guides/mcp/get-started-with-mcp
-    // "notion": {
-    //   "type": "remote",
-    //   "url": "https://mcp.notion.com/mcp",
-    //   "enabled": false
-    // },
-    "notion-work": {
-      "type": "remote",
-      "url": "https://mcp.notion.com/mcp",
-      "enabled": false
-    },
-    // https://github.com/microsoft/playwright-mcp
-    "playwright": {
-      "type": "local",
-      "command": [
-        "npx",
-        "@playwright/mcp@latest"
-      ],
-      "enabled": false
-    },
-    // https://docs.sentry.io/product/sentry-mcp
-    "sentry-work": {
-      "type": "remote",
-      "url": "https://mcp.sentry.dev/mcp",
-      "enabled": false
-    },
-    // https://executor.sh/docs
-    "executor": {
-      "type": "remote",
-      "url": "{env:EXECUTOR_API_URL}?elicitation_mode=model",
-      "headers": {
-        "x-api-key": "{env:EXECUTOR_API_KEY_OC}"
+    "servers": {
+      // https://github.com/ChromeDevTools/chrome-devtools-mcp
+      "chrome-devtools": {
+        "type": "local",
+        "command": [
+          "npx",
+          "-y",
+          "chrome-devtools-mcp@latest"
+        ],
+        "disabled": true
       },
-      "oauth": false,
-      "enabled": true
+      // https://github.com/upstash/context7
+      // "context7": {
+      //   "type": "remote",
+      //   "url": "https://mcp.context7.com/mcp",
+      //   "headers": {
+      //     "CONTEXT7_API_KEY": "{env:CONTEXT7_API_KEY}"
+      //   }
+      // },
+      // https://docs.exa.ai/reference/exa-mcp
+      // "exa": {
+      //   "type": "remote",
+      //   "url": "https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa",
+      //   "headers": {
+      //     "x-api-key": "{env:EXA_API_KEY}"
+      //   }
+      // },
+      // https://vercel.com/blog/grep-a-million-github-repositories-via-mcp
+      // "grep": {
+      //   "type": "remote",
+      //   "url": "https://mcp.grep.app"
+      // },
+      // https://github.com/chrisdoc/hevy-mcp
+      // "hevy": {
+      //   "type": "local",
+      //   "command": [
+      //     "npx",
+      //     "-y",
+      //     "hevy-mcp@latest"
+      //   ],
+      //   "environment": {
+      //     "HEVY_API_KEY": "{env:HEVY_API_KEY}"
+      //   },
+      //   "disabled": true
+      // },
+      // https://docs.incident.io/ai/remote-mcp
+      "incidentio-work": {
+        "type": "remote",
+        "url": "https://mcp.incident.io/mcp",
+        "disabled": true
+      },
+      // https://linear.app/docs/mcp
+      "linear-work": {
+        "type": "remote",
+        "url": "https://mcp.linear.app/mcp",
+        "disabled": true
+      },
+      // https://developers.notion.com/guides/mcp/get-started-with-mcp
+      // "notion": {
+      //   "type": "remote",
+      //   "url": "https://mcp.notion.com/mcp",
+      //   "disabled": true
+      // },
+      "notion-work": {
+        "type": "remote",
+        "url": "https://mcp.notion.com/mcp",
+        "disabled": true
+      },
+      // https://github.com/microsoft/playwright-mcp
+      "playwright": {
+        "type": "local",
+        "command": [
+          "npx",
+          "@playwright/mcp@latest"
+        ],
+        "disabled": true
+      },
+      // https://docs.sentry.io/product/sentry-mcp
+      "sentry-work": {
+        "type": "remote",
+        "url": "https://mcp.sentry.dev/mcp",
+        "disabled": true
+      },
+      // https://executor.sh/docs
+      "executor": {
+        "type": "remote",
+        "url": "{env:EXECUTOR_API_URL}?elicitation_mode=model",
+        "headers": {
+          "x-api-key": "{env:EXECUTOR_API_KEY_OC}"
+        },
+        "oauth": false,
+        "codemode": false // Executor is already a code-mode server
+      }
     }
   },
   // https://models.dev
   "model": "anthropic/claude-opus-5-5", //"openai/gpt-6-sol",
-  "small_model": "anthropic/claude-haiku-4-5", //"openai/gpt-6-luna",
+  "agents": {
+    "title": {
+      "model": "anthropic/claude-haiku-4-5",//"openai/gpt-6-luna",
+    }
+  },
   // Default-allow with ask/deny on irreversible or public actions.
   // Last matching rule wins: broad rules first, narrow rules last.
   // In-project changes are recoverable via git + per-message snapshots (/undo).
   // Anything touching paths outside the project still prompts via external_directory.
-  "permission": {
-    "read": {
-      "*": "allow",
-      "**/.env": "deny",
-      "**/.env.*": "deny",
-      "**/.env.example": "allow"
-    },
-    "bash": {
-      "*": "allow",
-      // local but destructive -> ask
-      "rm -rf *": "ask",
-      "rm -fr *": "ask",
-      "git reset --hard*": "ask",
-      "brew install*": "ask",
-      "brew uninstall*": "ask",
-      // public or irreversible -> ask
-      "git push*": "ask",
-      "gh pr create*": "ask",
-      "gh pr merge*": "ask",
-      "gh pr close*": "ask",
-      "gh pr comment*": "ask",
-      "gh pr review*": "ask",
-      "gh issue create*": "ask",
-      "gh issue comment*": "ask",
-      "gh issue close*": "ask",
-      "gh release create*": "ask",
-      "gh repo create*": "ask",
-      "gh repo delete*": "ask",
-      "gh gist create*": "ask",
-      "npm publish*": "ask",
-      "pnpm publish*": "ask",
-      "yarn publish*": "ask",
-      "bun publish*": "ask",
-      "deno publish*": "ask",
-      "docker push*": "ask",
-      // never
-      "sudo *": "deny",
-      "rm -rf /": "deny",
-      "rm -fr /": "deny"
-    },
-    "external_directory": {
-      "*": "ask",
-      "{env:DEV_DIR}/repos/**": "allow",
-      "{env:DEV_DIR}/worktrees/**": "allow",
-      "{env:SCRATCH_DIR}/**": "allow",
-      "{env:HOME}/.opensrc/**": "allow",
-      "/tmp/**": "allow",
-      "/private/tmp/**": "allow",
-      "/var/folders/**": "allow",
-      "/private/var/folders/**": "allow",
-      "/run/user/**": "allow"
-    }
-  },
-  "plugin": [
-    // https://github.com/franlol/opencode-md-table-formatter
-    "@franlol/opencode-md-table-formatter@0.0.6",
-    // https://github.com/griffinmartin/opencode-claude-auth
-    "opencode-claude-auth@2.2.1",
-    // https://github.com/backnotprop/plannotator
-    "@plannotator/opencode@0.27.21",
+  "permissions": [
+    { "action": "read", "resource": "*", "effect": "allow" },
+    { "action": "read", "resource": "*.env", "effect": "deny" },
+    { "action": "read", "resource": "*.env.*", "effect": "deny" },
+    { "action": "read", "resource": "*.env.example", "effect": "allow" },
+    { "action": "shell", "resource": "*", "effect": "allow" },
+    // local but destructive -> ask
+    { "action": "shell", "resource": "rm -rf *", "effect": "ask" },
+    { "action": "shell", "resource": "rm -fr *", "effect": "ask" },
+    { "action": "shell", "resource": "git reset --hard*", "effect": "ask" },
+    { "action": "shell", "resource": "brew install*", "effect": "ask" },
+    { "action": "shell", "resource": "brew uninstall*", "effect": "ask" },
+    // public or irreversible -> ask
+    { "action": "shell", "resource": "git push*", "effect": "ask" },
+    { "action": "shell", "resource": "gh pr create*", "effect": "ask" },
+    { "action": "shell", "resource": "gh pr merge*", "effect": "ask" },
+    { "action": "shell", "resource": "gh pr close*", "effect": "ask" },
+    { "action": "shell", "resource": "gh pr comment*", "effect": "ask" },
+    { "action": "shell", "resource": "gh pr review*", "effect": "ask" },
+    { "action": "shell", "resource": "gh issue create*", "effect": "ask" },
+    { "action": "shell", "resource": "gh issue comment*", "effect": "ask" },
+    { "action": "shell", "resource": "gh issue close*", "effect": "ask" },
+    { "action": "shell", "resource": "gh release create*", "effect": "ask" },
+    { "action": "shell", "resource": "gh repo create*", "effect": "ask" },
+    { "action": "shell", "resource": "gh repo delete*", "effect": "ask" },
+    { "action": "shell", "resource": "gh gist create*", "effect": "ask" },
+    { "action": "shell", "resource": "npm publish*", "effect": "ask" },
+    { "action": "shell", "resource": "pnpm publish*", "effect": "ask" },
+    { "action": "shell", "resource": "yarn publish*", "effect": "ask" },
+    { "action": "shell", "resource": "bun publish*", "effect": "ask" },
+    { "action": "shell", "resource": "deno publish*", "effect": "ask" },
+    { "action": "shell", "resource": "docker push*", "effect": "ask" },
+    // never
+    { "action": "shell", "resource": "sudo *", "effect": "deny" },
+    { "action": "shell", "resource": "rm -rf /", "effect": "deny" },
+    { "action": "shell", "resource": "rm -fr /", "effect": "deny" },
+    // external directories
+    { "action": "external_directory", "resource": "*", "effect": "ask" },
+    { "action": "external_directory", "resource": "{env:DEV_DIR}/repos/*", "effect": "allow" },
+    { "action": "external_directory", "resource": "{env:DEV_DIR}/worktrees/*", "effect": "allow" },
+    { "action": "external_directory", "resource": "{env:SCRATCH_DIR}/*", "effect": "allow" },
+    { "action": "external_directory", "resource": "$HOME/.opensrc/*", "effect": "allow" },
+    { "action": "external_directory", "resource": "/tmp/*", "effect": "allow" },
+    { "action": "external_directory", "resource": "/private/tmp/*", "effect": "allow" },
+    { "action": "external_directory", "resource": "/var/folders/*", "effect": "allow" },
+    { "action": "external_directory", "resource": "/private/var/folders/*", "effect": "allow" },
+    { "action": "external_directory", "resource": "/run/user/*", "effect": "allow" }
+  ],
+  "plugins": [
+    // https://github.com/ex-machina-co/opencode-anthropic-auth/tree/v2/main
+    "@ex-machina/opencode-anthropic-auth@2.0.0-next.5",
     // https://github.com/mcowger/plexus-agent-plugins
-    "@mcowger/opencode-plexus@1.6.0"
+    "@mcowger/opencode-plexus@1.11.0",
+    // https://github.com/backnotprop/plannotator
+    "@plannotator/opencode@0.28.4"
   ],
   "share": "disabled"
 }

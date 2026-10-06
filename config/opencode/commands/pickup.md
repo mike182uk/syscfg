@@ -1,7 +1,7 @@
 ---
 description: Pick up work from a handoff document
 agent: build
-subtask: false
+subagent: false
 ---
 
 Continue the work described in a handoff document.

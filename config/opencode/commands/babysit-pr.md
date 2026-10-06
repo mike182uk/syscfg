@@ -1,7 +1,7 @@
 ---
 description: Watch an open PR and drive it toward mergeable
 agent: build
-subtask: false
+subagent: false
 ---
 
 Babysit a pull request toward a mergeable state.

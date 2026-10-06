@@ -1,7 +1,7 @@
 ---
 description: Visualize code, architecture, or concepts as Mermaid diagrams
 agent: build
-subtask: true
+subagent: true
 ---
 
 Visualize code, architecture, or a concept as a Mermaid diagram.

@@ -1,3 +1,4 @@
+tap "anomalyco/tap"
 tap "mike182uk/tap"
 tap "umputun/apps"
 tap "yusukebe/tap"
@@ -39,6 +40,8 @@ brew "mise"
 brew "mosh"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
+# OpenCode V2 - the AI coding agent for the terminal
+brew "anomalyco/tap/opencode-v2"
 # Tools for and transforming and inspecting PDF files
 brew "qpdf"
 # TUI for reviewing diffs, files, and documents with inline annotations

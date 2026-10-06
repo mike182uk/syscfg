@@ -71,9 +71,9 @@
 ## Opencode commands
 
 - `description` in frontmatter is TUI-only and is never sent to the model - the body needs its own task statement
-- Always set `subtask` explicitly
-- `subtask: true` runs the command in a child session: it cannot ask the user (report what is ambiguous and stop instead) and cannot see the conversation
-- `subtask: false` does not stop the agent delegating the work to a subagent via the Task tool - say so in the body if it must stay in-thread
+- Always set `subagent` explicitly
+- `subagent: true` runs the command in a background child session with no access to the conversation. Report what is ambiguous and stop instead
+- `subagent: false` keeps the command in the current session. Say in the body if it must stay in-thread rather than delegate work
 - Inline `"$ARGUMENTS"` renders as `""` when the user passes nothing, which reads as a deliberately empty value. An `<input>` block avoids that, and marks where free text ends
 - Keep commands small and focused. If one grows large or sprouts branching logic, suggest moving the procedure into a skill and have the command dispatch to it
   - Personal skills live in `$DEV_DIR/repos/personal/agent-skills`

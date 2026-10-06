@@ -1,7 +1,7 @@
 ---
 description: Prepare a commit message
 agent: build
-subtask: false
+subagent: false
 ---
 
 Prepare a commit message for the current uncommitted changes.
