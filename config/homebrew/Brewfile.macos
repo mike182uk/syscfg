@@ -22,6 +22,8 @@ cask "claude"
 cask "cleanshot"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
+# Background desktop automation driver for AI agents
+cask "cuadriver"
 cask "font-jetbrains-mono"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
