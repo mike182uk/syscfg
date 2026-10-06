@@ -80,6 +80,10 @@ bind shift-down end-of-line       # Shift + Down Arrow - Move to the end of the 
 
 set --global --export LESS '--mouse'
 
+# Opt out of telemetry for tools that honour DO_NOT_TRACK
+
+set --global --export DO_NOT_TRACK 1
+
 # Init paths
 
 fish_add_path "$HOME/.local/bin"
