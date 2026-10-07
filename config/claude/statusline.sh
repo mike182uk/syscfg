@@ -1,15 +1,16 @@
 #!/usr/bin/env bash
 
-# https://docs.anthropic.com/en/docs/claude-code/statusline
+# https://code.claude.com/docs/en/statusline
 
 # Example input:
 # {
 #   "cwd": "/current/working/directory",
 #   "session_id": "abc123...",
 #   "session_name": "my-session",
+#   "prompt_id": "550e8400-e29b-41d4-a716-446655440000",
 #   "transcript_path": "/path/to/transcript.jsonl",
 #   "model": {
-#     "id": "claude-opus-4-8",
+#     "id": "claude-opus-5-5",
 #     "display_name": "Opus"
 #   },
 #   "workspace": {
@@ -48,6 +49,29 @@
 #     }
 #   },
 #   "exceeds_200k_tokens": false,
+#   "prompt_cache": {
+#     "warm": true,
+#     "caching_observed": true,
+#     "ttl": "1h",
+#     "expires_at": 1738429200,
+#     "requests": 14,
+#     "misses": 2,
+#     "expected_rebuilds": 1,
+#     "hit_ratio": 0.91,
+#     "cache_write_tokens": 352000,
+#     "miss_recache_tokens": 310200,
+#     "last_miss_at": 1738425230,
+#     "last_miss_cause": {
+#       "causes": ["tools_changed"],
+#       "tools_added": 2,
+#       "tools_removed": 0
+#     },
+#     "miss_causes": {
+#       "tools_changed": 2
+#     },
+#     "recache_tokens_if_cold": 45000
+#   },
+#   "fast_mode": false,
 #   "effort": {
 #     "level": "high"
 #   },
@@ -62,6 +86,13 @@
 #     "seven_day": {
 #       "used_percentage": 41.2,
 #       "resets_at": 1738857600
+#     },
+#     "spend_limit": {
+#       "used_percentage": 62.8,
+#       "resets_at": 1740787200,
+#       "used_usd": 314.12,
+#       "limit_usd": 500,
+#       "period": "monthly"
 #     }
 #   },
 #   "vim": {
@@ -84,84 +115,37 @@
 #   }
 # }
 
-input=$(cat)
-
-DIM=$'\033[90m'
-RESET=$'\033[0m'
 SEPARATOR=" · "
 
-get_project() {
-	dir=$(echo "$input" | jq -r '.workspace.project_dir // empty')
-	if [ -z "$dir" ]; then
-		return
-	fi
-
-	branch=$(git -C "$dir" rev-parse --abbrev-ref HEAD 2>/dev/null)
-
-	if [ -n "$branch" ]; then
-		echo "${dir}:${branch}"
-	else
-		echo "$dir"
-	fi
-}
-
-get_model() {
-	echo "$input" | jq -r '.model.display_name'
-}
-
-get_agent() {
-	echo "$input" | jq -r '.agent.name // empty'
-}
-
-get_context() {
-	percent=$(echo "$input" | jq -r '.context_window.used_percentage // empty')
-
-	if [ -z "$percent" ]; then
-		return
-	fi
-
-	limit_k=$(echo "$input" | jq -r '.context_window.context_window_size / 1000 | floor')
-	tokens_k=$(echo "$input" | jq -r '(.context_window.context_window_size * .context_window.used_percentage / 100) / 1000 | floor')
-
-	result="${percent}% ${DIM}(${tokens_k}k/${limit_k}k)${RESET}"
-	rate=$(get_rate_limit)
-	if [ -n "$rate" ]; then
-		result+="${SEPARATOR}${rate} ${DIM}(5h)${RESET}"
-	fi
-
-	echo "$result"
-}
-
-get_rate_limit() {
-	percent=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // empty')
-
-	if [ -z "$percent" ]; then
-		return
-	fi
-
-	# truncate to integer
-	percent=${percent%.*}
-
-	echo "${percent}%"
-}
+IFS=$'\x1f' read -r dir model agent percent tokens_k limit_k rate < <(jq -r '[
+	.workspace.current_dir // "",
+	.model.display_name,
+	.agent.name // "",
+	.context_window.used_percentage // "",
+	(.context_window.total_input_tokens / 1000 | floor),
+	(.context_window.context_window_size / 1000 | floor),
+	(.rate_limits.five_hour.used_percentage // "" | if . == "" then . else floor end)
+] | join("\u001f")')
 
 parts=()
 
-project=$(get_project)
-if [ -n "$project" ]; then
-	parts+=("$project")
+if [ -n "$dir" ]; then
+	branch=$(git -C "$dir" rev-parse --abbrev-ref HEAD 2>/dev/null)
+	parts+=("${dir}${branch:+:$branch}")
 fi
 
-agent=$(get_agent)
 if [ -n "$agent" ]; then
 	parts+=("$agent")
 fi
 
-parts+=("$(get_model)")
+parts+=("$model")
 
-context=$(get_context)
-if [ -n "$context" ]; then
-	parts+=("$context")
+if [ -n "$percent" ]; then
+	parts+=("${percent}% (${tokens_k}k/${limit_k}k)")
+fi
+
+if [ -n "$rate" ]; then
+	parts+=("${rate}% (5h)")
 fi
 
 output=""

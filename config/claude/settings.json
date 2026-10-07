@@ -77,7 +77,7 @@
   "feedbackSurveyRate": 0,
   "tui": "fullscreen",
   "autoMemoryEnabled": false,
-  "skipDangerousModePermissionPrompt": true,
   "theme": "custom:tokyonight_mike",
-  "verbose": true
+  "verbose": true,
+  "spinnerTipsEnabled": false
 }
