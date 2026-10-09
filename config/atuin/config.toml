@@ -1,0 +1,12 @@
+# https://docs.atuin.sh/configuration/config
+
+auto_sync = true
+update_check = false
+
+invert = true
+show_help = false
+show_tabs = false
+show_numeric_shortcuts = false
+
+[ui]
+columns = ["time", "command"]

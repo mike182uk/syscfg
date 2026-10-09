@@ -50,6 +50,7 @@ cd ~/.syscfg && cp .env.example .env
 - `GIT_EMAIL` - Email for Git user
 - `GIT_SIGNING_KEY` - Path to GPG signing key for Git
 - `GH_TOKEN` - `gh` token
+- `ATUIN_SYNC_ADDRESS` - Atuin sync server URL
 - `CONTEXT7_API_KEY` - Context7 API key
 - `EXA_API_KEY` - Exa API key
 - `HEVY_API_KEY` - Hevy API key
@@ -97,6 +98,7 @@ task ripgrep
 task bat
 task btop
 task fzf
+task atuin
 task bun
 task claude
 task codex
@@ -140,6 +142,7 @@ task ripgrep
 task bat
 task btop
 task fzf
+task atuin
 task bun
 task claude
 task codex
