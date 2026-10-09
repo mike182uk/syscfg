@@ -64,6 +64,9 @@ tasks:
         # https://github.com/forrestchang/andrej-karpathy-skills
         - repo: forrestchang/andrej-karpathy-skills
           skills: []
+        # https://github.com/GoogleChrome/modern-web-guidance
+        - repo: GoogleChrome/modern-web-guidance
+          skills: []
         # https://github.com/herdrdev/herdr
         - repo: herdrdev/herdr
           skills:
