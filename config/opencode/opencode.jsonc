@@ -111,7 +111,7 @@
   "model": "anthropic/claude-opus-5-5", //"openai/gpt-6-sol",
   "agents": {
     "title": {
-      "model": "anthropic/claude-haiku-4-5",//"openai/gpt-6-luna",
+      "model": "anthropic/claude-haiku-5-5",//"openai/gpt-6-luna",
     }
   },
   // Default-allow with ask/deny on irreversible or public actions.
