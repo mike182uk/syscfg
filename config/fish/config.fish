@@ -162,6 +162,7 @@ abbr --add e "$EDITOR"
 abbr --add g 'git'
 abbr --add l 'eza -lga --git --group-directories-first'
 abbr --add oc 'opencode'
+abbr --add rd 'revdiff'
 abbr --add ts 'tailscale'
 abbr --add v 'nvim'
 abbr --add vi 'nvim'
