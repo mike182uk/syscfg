@@ -6,7 +6,6 @@ go.set_gobin = false
 [tools]
 actionlint = "latest"
 bun = "latest"
-deno = "latest"
 go = "latest"
 node = "24"
 nub = "latest"

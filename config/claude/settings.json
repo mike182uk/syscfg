@@ -39,7 +39,6 @@
       "Bash(pnpm publish *)",
       "Bash(yarn publish *)",
       "Bash(bun publish *)",
-      "Bash(deno publish *)",
       "Bash(docker push *)",
       "Bash(brew install *)",
       "Bash(brew uninstall *)"

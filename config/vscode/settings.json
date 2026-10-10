@@ -1,6 +1,5 @@
 {
   "chat.titleBar.openInAgentsWindow.enabled": false,
-  "deno.enable": false,
   "editor.accessibilitySupport": "off",
   "editor.fontFamily": "Jetbrains Mono",
   "editor.fontSize": 15,

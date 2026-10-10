@@ -148,7 +148,6 @@
     { "action": "shell", "resource": "pnpm publish*", "effect": "ask" },
     { "action": "shell", "resource": "yarn publish*", "effect": "ask" },
     { "action": "shell", "resource": "bun publish*", "effect": "ask" },
-    { "action": "shell", "resource": "deno publish*", "effect": "ask" },
     { "action": "shell", "resource": "docker push*", "effect": "ask" },
     // never
     { "action": "shell", "resource": "sudo *", "effect": "deny" },
