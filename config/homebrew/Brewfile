@@ -44,6 +44,8 @@ brew "mosh"
 brew "neovim"
 # OpenCode V2 - the AI coding agent for the terminal
 brew "anomalyco/tap/opencode-v2"
+# Public URLs for local services, end-to-end encrypted
+brew "anomalyco/tap/opentunnel"
 # Tools for and transforming and inspecting PDF files
 brew "qpdf"
 # TUI for reviewing diffs, files, and documents with inline annotations
