@@ -167,11 +167,11 @@
   ],
   "plugins": [
     // https://github.com/ex-machina-co/opencode-anthropic-auth/tree/v2/main
-    "@ex-machina/opencode-anthropic-auth@2.0.0-next.5",
+    "@ex-machina/opencode-anthropic-auth@2.0.0-next.6",
     // https://github.com/mcowger/plexus-agent-plugins
-    "@mcowger/opencode-plexus@1.11.0",
+    "@mcowger/opencode-plexus@1.12.0",
     // https://github.com/backnotprop/plannotator
-    "@plannotator/opencode@0.28.4"
+    "@plannotator/opencode@0.28.10"
   ],
   "share": "disabled"
 }

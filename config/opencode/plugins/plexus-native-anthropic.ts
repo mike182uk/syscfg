@@ -1,6 +1,6 @@
 import type { Plugin } from "@opencode/plugin";
 
-// @mcowger/opencode-plexus@1.11.0 selects the AI SDK Anthropic adapter, whose
+// @mcowger/opencode-plexus@1.12.0 selects the AI SDK Anthropic adapter, whose
 // OpenCode 2.0.26 bridge omits prompt-cache markers. Use the native adapter to
 // restore caching. Remove this workaround when the Plexus plugin selects it itself.
 export default {
