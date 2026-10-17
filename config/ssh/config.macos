@@ -1,3 +1,4 @@
+Include ~/.ssh/config.d/*.conf
 Include ~/.orbstack/ssh/config
 
 Host *
