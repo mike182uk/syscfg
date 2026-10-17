@@ -58,7 +58,6 @@ cd ~/.syscfg && cp .env.example .env
 - `PLEXUS_API_KEY` - Plexus API key
 - `EXECUTOR_API_URL` - Executor API URL
 - `EXECUTOR_API_KEY_CC` - Executor API key (Claude Code)
-- `EXECUTOR_API_KEY_CX` - Executor API key (Codex)
 - `EXECUTOR_API_KEY_OC` - Executor API key (OpenCode)
 
 
@@ -101,7 +100,6 @@ task fzf
 task atuin
 task bun
 task claude
-task codex
 task vscode
 task sublime-text
 task zed
@@ -145,7 +143,6 @@ task fzf
 task atuin
 task bun
 task claude
-task codex
 task opencode
 task herdr
 task revdiff         # Requires GitHub auth or GH_TOKEN
