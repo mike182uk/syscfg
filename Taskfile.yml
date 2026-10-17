@@ -36,7 +36,7 @@ tasks:
     env:
       DISABLE_TELEMETRY: 1
     vars:
-      SOURCES:
+      SKILL_SOURCES:
         # https://github.com/addyosmani/clarity
         - repo: addyosmani/clarity
           skills: []
@@ -139,7 +139,7 @@ tasks:
     cmds:
       - mkdir -p {{.HOME}}/.agents/skills
       - rm -f {{.HOME}}/.agents/.skill-lock.json
-      - for: { var: SOURCES }
+      - for: { var: SKILL_SOURCES }
         cmd: mise exec -- bunx skills@latest add {{.ITEM.repo}} {{range .ITEM.skills}}-s {{.}} {{end}}-a claude-code -a opencode -g -y
 
   atuin:
