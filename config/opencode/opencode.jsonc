@@ -1,7 +1,7 @@
 // https://opencode.ai/v2/docs/config
 {
   "$schema": "https://opencode.ai/config.json",
-  "update": "auto",
+  "update": "disable", // updates managed by brew
   "mcp": {
     "servers": {
       // https://github.com/ChromeDevTools/chrome-devtools-mcp
@@ -108,7 +108,7 @@
     }
   },
   // https://models.dev
-  "model": "anthropic/claude-opus-5-5", //"openai/gpt-6-sol",
+  "model": "anthropic/claude-opus-5-5", //"openai/gpt-6.1-sol",
   "agents": {
     "title": {
       "model": "anthropic/claude-haiku-5-5",//"openai/gpt-6-luna",
@@ -173,5 +173,6 @@
     // https://github.com/backnotprop/plannotator
     "@plannotator/opencode@0.28.10"
   ],
-  "share": "disabled"
+  "share": "disabled",
+  "websearch": false
 }
