@@ -280,17 +280,12 @@ tasks:
         }
 
         # mcp_add chrome-devtools -- npx -y chrome-devtools-mcp@latest
-        # mcp_add --transport http context7 https://mcp.context7.com/mcp
-        # mcp_add --transport http exa "https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa" -H "x-api-key: $EXA_API_KEY"
-        # mcp_add --transport http grep https://mcp.grep.app
-        # mcp_add hevy -e HEVY_API_KEY=$HEVY_API_KEY -- npx -y hevy-mcp@latest
         # mcp_add --transport http incidentio-work https://mcp.incident.io/mcp
         # mcp_add --transport http linear-work https://mcp.linear.app/mcp
-        # mcp_add --transport http notion https://mcp.notion.com/mcp
         # mcp_add --transport http notion-work https://mcp.notion.com/mcp
         # mcp_add playwright npx @playwright/mcp@latest
         # mcp_add --transport http sentry-work https://mcp.sentry.dev/mcp
-        mcp_add --transport http executor "${EXECUTOR_API_URL}?elicitation_mode=model" -H "x-api-key: ${EXECUTOR_API_KEY_CC}"
+        mcp_add --transport http executor "${EXECUTOR_API_URL}" -H "Bearer ${EXECUTOR_API_KEY_CC}"
 
   dev-dirs:
     desc: Setup developer directory structure (DEV_DIR)
