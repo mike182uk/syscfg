@@ -21,10 +21,10 @@ function u --description 'Update system'
 	_update_msg "Updating misc programs..."
 	claude update
 	echo ""
-	bun add -g agent-browser@latest opensrc@latest
+	mise upgrade npm:agent-browser npm:opensrc npm:skills
 
 	_update_msg "Updating agent skills..."
-	bunx skills@latest update --global
+	skills update --global
 end
 
 function _update_msg

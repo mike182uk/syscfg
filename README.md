@@ -99,6 +99,7 @@ task btop
 task fzf
 task atuin
 task bun
+task agent-browser
 task claude
 task vscode
 task sublime-text
@@ -142,6 +143,7 @@ task btop
 task fzf
 task atuin
 task bun
+task agent-browser
 task claude
 task opencode
 task herdr

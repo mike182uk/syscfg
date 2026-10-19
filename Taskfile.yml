@@ -31,6 +31,19 @@ tasks:
       - mkdir -p {{.HOME}}/.1password
       - ln -sf {{.HOME}}/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock {{.HOME}}/.1password/agent.sock
 
+  agent-browser:
+    desc: Setup agent-browser
+    preconditions:
+      - mise which agent-browser
+    cmds:
+      - cmd: mise exec -- agent-browser install
+        platforms:
+          - darwin
+      # Linux also needs the browser system dependencies installed
+      - cmd: mise exec -- agent-browser install --with-deps
+        platforms:
+          - linux
+
   agents:
     desc: Setup AI agents
     env:
@@ -57,6 +70,9 @@ tasks:
           skills: []
         # https://github.com/boldsoftware/exe.dev
         - repo: boldsoftware/exe.dev/skill
+          skills: []
+        # https://github.com/cloudflare/skills
+        - repo: cloudflare/skills
           skills: []
         # https://github.com/docker/skills
         - repo: docker/skills
@@ -135,12 +151,12 @@ tasks:
         - repo: mike182uk/agent-skills
           skills: []
     preconditions:
-      - mise which bun
+      - mise which skills
     cmds:
       - mkdir -p {{.HOME}}/.agents/skills
       - rm -f {{.HOME}}/.agents/.skill-lock.json
       - for: { var: SKILL_SOURCES }
-        cmd: mise exec -- bunx skills@latest add {{.ITEM.repo}} {{range .ITEM.skills}}-s {{.}} {{end}}-a claude-code -a opencode -g -y
+        cmd: mise exec -- skills add {{.ITEM.repo}} {{range .ITEM.skills}}-s {{.}} {{end}}-a claude-code -a opencode -g -y
 
   atuin:
     desc: Setup atuin config
@@ -225,15 +241,6 @@ tasks:
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/bun/bunfig.toml'
           TARGET: '{{.HOME}}/.bunfig.toml'
-      - mise exec -- bun add -g agent-browser@latest opensrc@latest
-      # Full path as ~/.bun/bin is not on PATH until a new shell after the first install
-      - cmd: mise exec -- {{.HOME}}/.bun/bin/agent-browser install
-        platforms:
-          - darwin
-      # Linux also needs the browser system dependencies installed
-      - cmd: mise exec -- {{.HOME}}/.bun/bin/agent-browser install --with-deps
-        platforms:
-          - linux
 
   claude:
     desc: Setup Claude code
@@ -616,6 +623,7 @@ tasks:
       - task: fzf
       - task: atuin
       - task: bun
+      - task: agent-browser
       - task: claude
       - task: opencode
       - task: herdr
