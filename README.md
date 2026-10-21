@@ -51,9 +51,6 @@ cd ~/.syscfg && cp .env.example .env
 - `GIT_SIGNING_KEY` - Path to GPG signing key for Git
 - `GH_TOKEN` - `gh` token
 - `ATUIN_SYNC_ADDRESS` - Atuin sync server URL
-- `CONTEXT7_API_KEY` - Context7 API key
-- `EXA_API_KEY` - Exa API key
-- `HEVY_API_KEY` - Hevy API key
 - `PLEXUS_API_URL` - Plexus API URL
 - `PLEXUS_API_KEY` - Plexus API key
 - `EXECUTOR_API_URL` - Executor API URL
