@@ -3,7 +3,7 @@
 worktree-path = "{{ repo_path | dirname | dirname | dirname }}/worktrees/{{ repo_path | dirname | basename }}/{{ repo }}/{{ branch | sanitize }}"
 
 [post-start]
-herdr-worktree = '"$HOME/.config/worktrunk/herdr-worktree.sh" open'
+herdr-worktree = '"$HOME/.config/worktrunk/herdr-worktree.sh" open {{ primary_worktree_path }} {{ worktree_path }}'
 
 [post-remove]
-herdr-worktree = '"$HOME/.config/worktrunk/herdr-worktree.sh" close'
+herdr-worktree = '"$HOME/.config/worktrunk/herdr-worktree.sh" close {{ primary_worktree_path }} {{ worktree_path }}'

@@ -8,29 +8,25 @@ die() {
 }
 
 action=${1:-}
+primary_worktree_path=${2:-}
+worktree_path=${3:-}
 case "$action" in
 open | close) ;;
 *)
-	printf 'usage: %s open|close\n' "$0" >&2
+	printf 'usage: %s open|close <primary_worktree_path> <worktree_path>\n' "$0" >&2
 	exit 2
 	;;
 esac
+[ -n "$primary_worktree_path" ] && [ -n "$worktree_path" ] || {
+	printf 'usage: %s open|close <primary_worktree_path> <worktree_path>\n' "$0" >&2
+	exit 2
+}
 
 [ "${HERDR_ENV:-}" = 1 ] || exit 0
 
 for dependency in herdr jq; do
 	command -v "$dependency" >/dev/null 2>&1 || die "$dependency not found"
 done
-
-context=$(jq -ce .) || die "invalid Worktrunk hook context"
-primary_worktree_path=$(
-	printf '%s\n' "$context" |
-		jq -er '.primary_worktree_path | select(type == "string" and length > 0)'
-) || die "primary_worktree_path is missing from the Worktrunk hook context"
-worktree_path=$(
-	printf '%s\n' "$context" |
-		jq -er '.worktree_path | select(type == "string" and length > 0)'
-) || die "worktree_path is missing from the Worktrunk hook context"
 
 worktrees=$(herdr worktree list --cwd "$primary_worktree_path")
 root_workspace_id=$(
