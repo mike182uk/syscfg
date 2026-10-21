@@ -11,6 +11,7 @@
     "dock": "right"
   },
   "edit_predictions": {
+    "provider": "copilot",
     "allow_data_collection": "no"
   },
   "session": {
@@ -30,8 +31,7 @@
     },
     "codex-acp": {
       "default_config_options": {
-        "model": "gpt-6-sol",
-        "fast-mode": true
+        "model": "gpt-6.1-sol"
       },
       "type": "registry"
     },
@@ -55,10 +55,9 @@
   "agent": {
     "inline_assistant_model": {
       "provider": "openai-subscribed",
-      "model": "gpt-6-sol",
+      "model": "gpt-6.1-sol",
       "enable_thinking": true
     },
-    "sidebar_side": "right",
     "dock": "right",
     "show_turn_stats": true,
     "enable_feedback": false

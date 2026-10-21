@@ -20,7 +20,7 @@
   - See https://github.com/folke/tokyonight.nvim
   - Prefer the file from `/extras` verbatim, named `tokyonight_moon` 
     - Only hand-write a theme when upstream has none, using values from `lua/tokyonight/colors/moon.lua`
-  - Bat uses `config/themes/tokyonight_moon.tmTheme` (from `extras/sublime`)
+  - Bat uses the `config/themes/*.tmTheme` files (`tokyonight_moon` is from `extras/sublime`)
 - `tokyonight_mike` is the moon palette with the role assignments of opencode's built-in `tokyonight` theme
   - See https://github.com/anomalyco/opencode/blob/dev/packages/tui/src/theme/assets/tokyonight.json
   - `config/opencode/themes/tokyonight_mike.json` is the reference: `diff` it against `tokyonight_moon.json` to see the full delta in palette terms

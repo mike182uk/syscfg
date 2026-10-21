@@ -6,6 +6,10 @@
   "keybinds": {
     "session.sidebar.toggle": ["ctrl+alt+super+shift+\\", "<leader>b"]
   },
+  "diffs": {
+    "wrap": "word",
+    "single": true
+  },
   "prompt": {
     "image_preview": true
   },
@@ -16,5 +20,15 @@
     "image_preview": true
   },
   "animations": true,
-  "plugins": ["./herdr-opencode"]
+  "plugins": ["./herdr-opencode"],
+  "mini": {
+    "thinking": "hide",
+    "work_spinner": "block-shuttle",
+    "mono": false,
+    "splash": "show",
+    "footer": "show",
+    "turn_summary": "show",
+    "shell_output": "hide",
+    "tools": "hide"
+  }
 }

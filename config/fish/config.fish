@@ -195,7 +195,7 @@ end
 # Load select environment variables from syscfg .env
 
 set --local syscfg_env (path resolve (status filename) | path dirname | path dirname | path dirname)/.env
-set --local syscfg_env_allow ATUIN_SYNC_ADDRESS DEV_DIR EXECUTOR_API_KEY_CC EXECUTOR_API_KEY_OC EXECUTOR_API_URL GH_TOKEN PLEXUS_API_KEY PLEXUS_API_URL SCRATCH_DIR
+set --local syscfg_env_allow ATUIN_SYNC_ADDRESS DEV_DIR EXECUTOR_API_KEY_CC EXECUTOR_API_KEY_OC EXECUTOR_API_URL GH_TOKEN SCRATCH_DIR
 
 if test -f $syscfg_env
 	for line in (string match --invert --regex '^\s*(#|$)' < $syscfg_env)
