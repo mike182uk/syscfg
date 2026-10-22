@@ -5,6 +5,7 @@ go.set_gobin = false
 [tools]
 actionlint = "latest"
 bun = "latest"
+"github:github/copilot-language-server-release" = "latest"
 go = "latest"
 node = "24"
 "npm:agent-browser" = "latest"

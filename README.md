@@ -50,6 +50,8 @@ cd ~/.syscfg && cp .env.example .env
 - `GIT_EMAIL` - Email for Git user
 - `GIT_SIGNING_KEY` - Path to GPG signing key for Git
 - `GH_TOKEN` - `gh` token
+- `GH_COPILOT_TOKEN` - GitHub Copilot token, used to sign in to Copilot automatically. Copy it from a machine that is already signed in:
+  `sqlite3 ~/.config/github-copilot/auth.db "select cast(token_ciphertext as text) from oauth_tokens limit 1"`
 - `ATUIN_SYNC_ADDRESS` - Atuin sync server URL
 - `EXECUTOR_API_URL` - Executor API URL
 - `EXECUTOR_API_KEY_CC` - Executor API key (Claude Code)

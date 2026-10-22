@@ -128,6 +128,19 @@ require("lazy").setup({
     opts = {},
   },
   {
+    "neovim/nvim-lspconfig",
+    lazy = false,
+    config = function()
+      vim.lsp.enable("copilot")
+      vim.lsp.inline_completion.enable()
+      vim.keymap.set("i", "<Tab>", function()
+        if not vim.lsp.inline_completion.get() then
+          return "<Tab>"
+        end
+      end, { expr = true, desc = "Accept inline completion" })
+    end,
+  },
+  {
     "nvim-treesitter/nvim-treesitter",
     branch = "main",
     lazy = false,

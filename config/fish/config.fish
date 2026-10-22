@@ -195,13 +195,23 @@ end
 # Load select environment variables from syscfg .env
 
 set --local syscfg_env (path resolve (status filename) | path dirname | path dirname | path dirname)/.env
-set --local syscfg_env_allow ATUIN_SYNC_ADDRESS DEV_DIR EXECUTOR_API_KEY_CC EXECUTOR_API_KEY_OC EXECUTOR_API_URL GH_TOKEN SCRATCH_DIR
+set --local syscfg_env_allow \
+	ATUIN_SYNC_ADDRESS \
+	DEV_DIR \
+	EXECUTOR_API_KEY_CC \
+	EXECUTOR_API_KEY_OC \
+	EXECUTOR_API_URL \
+	GH_COPILOT_TOKEN \
+	GH_TOKEN \
+	SCRATCH_DIR
 
 if test -f $syscfg_env
 	for line in (string match --invert --regex '^\s*(#|$)' < $syscfg_env)
 		set --local kv (string split --max 1 '=' -- $line)
-		if contains -- $kv[1] $syscfg_env_allow
-			set --global --export $kv[1] (string trim --chars '"\'' -- $kv[2])
+		set --local value (string trim --chars '"\'' -- $kv[2])
+
+		if contains -- $kv[1] $syscfg_env_allow; and test -n "$value"
+			set --global --export $kv[1] $value
 		end
 	end
 end
