@@ -201,12 +201,10 @@ tasks:
       - darwin
     preconditions:
       - command -v brew
-      - command -v jq
-      - "[ -f {{.HOME}}/.vscode/extensions/extensions.json ] && exit 0 || exit 1"
     cmds:
       # Dump installed state and partition into Brewfile (portable) and
-      # Brewfile.macos (macOS-only formulae, casks, mas, vscode extensions)
-      - '{{.USER_WORKING_DIR}}/scripts/brew-bundle-split.sh "{{.USER_WORKING_DIR}}/config/homebrew" "{{.HOME}}/.vscode/extensions/extensions.json"'
+      # Brewfile.macos (macOS-only formulae, casks, mas)
+      - '{{.USER_WORKING_DIR}}/scripts/brew-bundle-split.sh "{{.USER_WORKING_DIR}}/config/homebrew"'
 
   brew-install:
     desc: Install formulae / casks listed in Brewfile
@@ -691,23 +689,6 @@ tasks:
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/sublime-text/Package Control.sublime-settings'
           TARGET: '{{.ST_CFG_PATH}}/Package Control.sublime-settings'
-
-  vscode:
-    desc: Setup VS Code config
-    platforms:
-      - darwin
-    vars:
-      VSCODE_CFG_PATH: '{{.HOME}}/Library/Application Support/Code/User'
-    cmds:
-      - mkdir -p '{{.VSCODE_CFG_PATH}}'
-      - task: create-symlink-safe
-        vars:
-          SOURCE: '{{.USER_WORKING_DIR}}/config/vscode/settings.json'
-          TARGET: '{{.VSCODE_CFG_PATH}}/settings.json'
-      - task: create-symlink-safe
-        vars:
-          SOURCE: '{{.USER_WORKING_DIR}}/config/vscode/keybindings.json'
-          TARGET: '{{.VSCODE_CFG_PATH}}/keybindings.json'
 
   worktrunk:
     desc: Setup worktrunk config

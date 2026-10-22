@@ -5,7 +5,7 @@
 # Dump the currently installed Homebrew state and partition it into two files:
 #
 #   Brewfile        portable taps + formulae (installed on macOS AND Linux)
-#   Brewfile.macos  macOS only formulae, casks, mas, vscode extensions
+#   Brewfile.macos  macOS only formulae, casks, mas
 #
 # `brew bundle dump` only produces a single combined file, so this script
 # routes each line to the correct file. Formulae are portable EXCEPT the ones
@@ -13,8 +13,7 @@
 
 set -eu
 
-CONFIG_DIR="$1"        # config/homebrew directory
-VSCODE_EXTENSIONS="$2" # path to VS Code extensions.json
+CONFIG_DIR="$1" # config/homebrew directory
 
 BREWFILE="$CONFIG_DIR/Brewfile"
 BREWFILE_MACOS="$CONFIG_DIR/Brewfile.macos"
@@ -25,9 +24,9 @@ MACOS_ONLY_FORMULAE="mas trash"
 tmp=$(mktemp)
 trap 'rm -f "$tmp"' EXIT
 
-# Dump everything (minus vscode; we append those from VS Code below) to a temp.
+# Dump everything except language package managers (managed by mise) to a temp file.
 # Descriptions are included by default now, so --describe is not passed.
-brew bundle dump --no-vscode --force --file "$tmp"
+brew bundle dump --no-go --no-cargo --no-npm --force --file "$tmp"
 
 # Start both output files fresh.
 : >"$BREWFILE"
@@ -86,10 +85,3 @@ while IFS= read -r line; do
 	printf '%s\n' "$line" >>"$dest"
 	pending_comment=""
 done <"$tmp"
-
-# Append vscode extensions from VS Code to the macOS file.
-if [ -f "$VSCODE_EXTENSIONS" ]; then
-	jq -r '.[].identifier.id' "$VSCODE_EXTENSIONS" | sort -u | while IFS= read -r id; do
-		printf 'vscode "%s"\n' "$id" >>"$BREWFILE_MACOS"
-	done
-fi

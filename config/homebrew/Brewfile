@@ -1,6 +1,6 @@
 tap "anomalyco/tap"
-tap "mike182uk/tap"
-tap "umputun/apps"
+tap "mike182uk/tap", trusted: true
+tap "umputun/apps", trusted: true
 tap "yusukebe/tap"
 # Code searching, linting, rewriting
 brew "ast-grep"
@@ -10,6 +10,8 @@ brew "atuin"
 brew "bat"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
 brew "btop"
+# Statistics utility to count lines of code
+brew "cloc"
 # Cloudflare Tunnel client (formerly Argo Tunnel)
 brew "cloudflared"
 # Good-lookin' diffs with diff-highlight and more
@@ -26,14 +28,18 @@ brew "fish"
 brew "fzf"
 # GitHub command-line tool
 brew "gh"
-# Agent multiplexer that lives in your terminal
-brew "herdr"
 # Distributed revision control system
 brew "git"
+# Task is a task runner/build tool that aims to be simpler and easier to use
+brew "go-task"
+# Agent multiplexer that lives in your terminal
+brew "herdr"
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
 # Update of iperf: measures TCP, UDP, and SCTP bandwidth
 brew "iperf3"
+# Git-compatible distributed version control system
+brew "jj"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Polyglot runtime manager (asdf rust clone)
@@ -42,14 +48,8 @@ brew "mise"
 brew "mosh"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
-# OpenCode V2 - the AI coding agent for the terminal
-brew "anomalyco/tap/opencode-v2"
-# Public URLs for local services, end-to-end encrypted
-brew "anomalyco/tap/opentunnel"
 # Tools for and transforming and inspecting PDF files
 brew "qpdf"
-# TUI for reviewing diffs, files, and documents with inline annotations
-brew "umputun/apps/revdiff"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Semantic version control CLI with entity-level diffs and blame
@@ -60,19 +60,23 @@ brew "shellcheck"
 brew "shfmt"
 # Cross-shell prompt for astronauts
 brew "starship"
+# Command-line tool for Stripe
+brew "stripe-cli"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
 # Parser generator tool
 brew "tree-sitter-cli"
-# Git worktree management for parallel AI agent workflows
+# CLI for Git worktree management, designed for parallel AI agent workflows
 brew "worktrunk"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
 brew "yq"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
-# Task runner / simpler Make alternative written in Go
-brew "go-task"
-# Stripe CLI utility
-brew "stripe-cli"
+# OpenCode V2 - the AI coding agent for the terminal
+brew "anomalyco/tap/opencode-v2", trusted: true
+# Public URLs for local services, end-to-end encrypted
+brew "anomalyco/tap/opentunnel", trusted: true
+# TUI for reviewing diffs, files, and documents with inline annotations
+brew "umputun/apps/revdiff"
 # The AI-era curl: fetch, discover, extract. One command.
-brew "yusukebe/tap/ax"
+brew "yusukebe/tap/ax", trusted: true

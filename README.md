@@ -98,7 +98,6 @@ task atuin
 task bun
 task agent-browser
 task claude
-task vscode
 task sublime-text
 task zed
 task opencode

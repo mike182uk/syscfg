@@ -49,7 +49,7 @@
   - fish and fzf set their colours with ANSI names (`config.fish`, `config/fzf/fzfrc`) so they follow the terminal palette - do not add the upstream fish or fzf themes
   - eza is not themed
   - When updating from upstream, re-derive `tokyonight_mike` from the new `tokyonight_moon` file plus the delta above rather than editing it directly
-- VS Code, Zed & Sublime Text use their own themes. Do not modify them
+- Zed & Sublime Text use their own themes. Do not modify them
 
 ## Coding agents
 
