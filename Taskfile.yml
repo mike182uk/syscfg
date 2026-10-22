@@ -74,6 +74,9 @@ tasks:
         # https://github.com/cloudflare/skills
         - repo: cloudflare/skills
           skills: []
+        # https://github.com/cloudflare/security-audit-skill
+        - repo: cloudflare/security-audit-skill
+          skills: []
         # https://github.com/docker/skills
         - repo: docker/skills
           skills: []
