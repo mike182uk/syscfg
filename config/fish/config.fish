@@ -151,6 +151,12 @@ end
 
 set --global --export RIPGREP_CONFIG_PATH $HOME/.config/ripgrep/config
 
+# Init OrbStack
+
+if test -f ~/.orbstack/shell/init2.fish
+	source ~/.orbstack/shell/init2.fish 2>/dev/null || :
+end
+
 # Init abbreviations
 
 abbr --add cat 'bat'
@@ -184,12 +190,6 @@ abbr --add sc 'cd $SCRATCH_DIR'
 
 abbr --add hp 'herdr session attach personal'
 abbr --add hw 'herdr session attach work'
-
-# Load local config
-
-if test -f $__fish_config_dir/config.local.fish
-	source $__fish_config_dir/config.local.fish
-end
 
 # Load select environment variables from syscfg .env
 
