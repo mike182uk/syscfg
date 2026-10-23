@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+
+# syscfg-env
+#
+# Print the value of KEY from a syscfg env file (.env or .env.local) in the
+# repo root. Prints nothing if the key is missing, exits 1 if the file is.
+#
+# Usage: syscfg-env FILE KEY
+
+ROOT=$(dirname "$(dirname "$(dirname "$(readlink -f "$0")")")")
+FILE="$ROOT/$1"
+
+[ -e "$FILE" ] || exit 1
+
+sed -n "s/^$2=//p" "$FILE" | sed -e "s/^[\"']//" -e "s/[\"']\$//"

@@ -5,7 +5,7 @@ version: '3'
 silent: true
 
 dotenv:
-  - .env
+  - .env.local
 
 vars:
   THEMES:
@@ -195,6 +195,15 @@ tasks:
           TARGET: '{{.HOME}}/.config/bat/themes/{{.ITEM}}.tmTheme'
       - bat cache --build
 
+  bin:
+    desc: Symlink config/bin scripts into ~/.local/bin
+    cmds:
+      - mkdir -p {{.HOME}}/.local/bin
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/bin/syscfg-env'
+          TARGET: '{{.HOME}}/.local/bin/syscfg-env'
+
   brew-bundle:
     desc: Update brewfile with installed formulae / casks
     platforms:
@@ -257,8 +266,13 @@ tasks:
       # Statusline
       - task: create-symlink-safe
         vars:
-          SOURCE: '{{.USER_WORKING_DIR}}/config/claude/statusline.sh'
+          SOURCE: '{{.USER_WORKING_DIR}}/config/claude/scripts/statusline.sh'
           TARGET: '{{.HOME}}/.claude/statusline.sh'
+      # Executor MCP auth headers
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/claude/scripts/executor-headers.sh'
+          TARGET: '{{.HOME}}/.claude/executor-headers.sh'
       # Theme
       - for: { var: THEMES }
         task: create-symlink-safe
@@ -293,13 +307,15 @@ tasks:
         # mcp_add --transport http notion-work https://mcp.notion.com/mcp
         # mcp_add playwright npx @playwright/mcp@latest
         # mcp_add --transport http sentry-work https://mcp.sentry.dev/mcp
-        mcp_add --transport http executor "${EXECUTOR_API_URL}" -H "Bearer ${EXECUTOR_API_KEY_CC}"
+
+        claude mcp remove --scope user executor >/dev/null 2>&1 || true
+        claude mcp add-json --scope user executor "{\"type\":\"http\",\"url\":\"${EXECUTOR_URL}\",\"headersHelper\":\"{{.HOME}}/.claude/executor-headers.sh\"}"
 
   dev-dirs:
     desc: Setup developer directory structure (DEV_DIR)
     preconditions:
       - sh: test -n "{{.DEV_DIR}}"
-        msg: DEV_DIR must be set in .env
+        msg: DEV_DIR must be set in .env.local
     cmds:
       - mkdir -p {{.DEV_DIR}}/repos/oss {{.DEV_DIR}}/repos/personal
       - mkdir -p {{.DEV_DIR}}/worktrees/oss {{.DEV_DIR}}/worktrees/personal
@@ -344,6 +360,8 @@ tasks:
 
   gh:
     desc: Setup GitHub CLI
+    dotenv:
+      - .env
     preconditions:
       - command -v gh
     cmds:
@@ -595,7 +613,7 @@ tasks:
     desc: Setup scratch directory (SCRATCH_DIR)
     preconditions:
       - sh: test -n "{{.SCRATCH_DIR}}"
-        msg: SCRATCH_DIR must be set in .env
+        msg: SCRATCH_DIR must be set in .env.local
     cmds:
       - mkdir -p {{.SCRATCH_DIR}}
 
@@ -611,6 +629,7 @@ tasks:
       - task: gh
       - task: dev-dirs
       - task: scratch-dir
+      - task: bin
       - task: fish
       - task: fish-init
       - task: mise

@@ -37,10 +37,10 @@ Clone this repo via `https` instead of `ssh` as SSH keys are not yet set up:
 git clone https://github.com/mike182uk/syscfg.git ~/.syscfg
 ```
 
-Copy `.env.example` to `.env` and update the values:
+Copy `.env.local.example` to `.env.local` and update the values. These are not secret and are loaded by every task and fish shell:
 
 ```sh
-cd ~/.syscfg && cp .env.example .env
+cd ~/.syscfg && cp .env.local.example .env.local
 ```
 
 - `DEV_DIR` - Directory to use for repositories & worktrees (must be literal path, vars are not expanded)
@@ -49,14 +49,16 @@ cd ~/.syscfg && cp .env.example .env
 - `GIT_USERNAME` - Username for Git user
 - `GIT_EMAIL` - Email for Git user
 - `GIT_SIGNING_KEY` - Path to GPG signing key for Git
+- `ATUIN_SYNC_ADDRESS` - Atuin sync server URL
+- `EXECUTOR_URL` - Executor API URL
+
+Secrets go in `.env`, mounted from a [1Password Environment](https://developer.1password.com/docs/environments/local-env-file/) using the variables in `.env.example`:
+
 - `GH_TOKEN` - `gh` token
 - `GH_COPILOT_TOKEN` - GitHub Copilot token, used to sign in to Copilot automatically. Copy it from a machine that is already signed in:
   `sqlite3 ~/.config/github-copilot/auth.db "select cast(token_ciphertext as text) from oauth_tokens limit 1"`
-- `ATUIN_SYNC_ADDRESS` - Atuin sync server URL
-- `EXECUTOR_API_URL` - Executor API URL
-- `EXECUTOR_API_KEY_CC` - Executor API key (Claude Code)
-- `EXECUTOR_API_KEY_OC` - Executor API key (OpenCode)
-
+- `EXECUTOR_TOKEN_CC` - Executor API key (Claude Code)
+- `EXECUTOR_TOKEN_OC` - Executor API key (OpenCode)
 
 Run `task` to see available tasks:
 
@@ -82,6 +84,7 @@ task git
 task git-gpg          # Requires GIT_SIGNING_KEY
 task dev-dirs
 task scratch-dir
+task bin
 task fish
 task fish-init
 task mise
@@ -126,6 +129,7 @@ task git
 task gh
 task dev-dirs
 task scratch-dir
+task bin
 task fish
 task fish-init
 task mise

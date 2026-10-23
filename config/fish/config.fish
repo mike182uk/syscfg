@@ -191,26 +191,13 @@ abbr --add sc 'cd $SCRATCH_DIR'
 abbr --add hp 'herdr session attach personal'
 abbr --add hw 'herdr session attach work'
 
-# Load select environment variables from syscfg .env
+# Load select environment variables from .env.local
 
-set --local syscfg_env (path resolve (status filename) | path dirname | path dirname | path dirname)/.env
-set --local syscfg_env_allow \
+for key in \
 	ATUIN_SYNC_ADDRESS \
 	DEV_DIR \
-	EXECUTOR_API_KEY_CC \
-	EXECUTOR_API_KEY_OC \
-	EXECUTOR_API_URL \
-	GH_COPILOT_TOKEN \
-	GH_TOKEN \
+	EXECUTOR_URL \
 	SCRATCH_DIR
-
-if test -f $syscfg_env
-	for line in (string match --invert --regex '^\s*(#|$)' < $syscfg_env)
-		set --local kv (string split --max 1 '=' -- $line)
-		set --local value (string trim --chars '"\'' -- $kv[2])
-
-		if contains -- $kv[1] $syscfg_env_allow; and test -n "$value"
-			set --global --export $kv[1] $value
-		end
-	end
+	set --local value (syscfg-env .env.local $key)
+	test -n "$value"; and set --global --export $key $value
 end
