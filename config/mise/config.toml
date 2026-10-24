@@ -8,7 +8,7 @@ bun = "latest"
 "github:github/copilot-language-server-release" = "latest"
 go = "latest"
 node = "24"
-"npm:agent-browser" = "latest"
+"npm:agent-browser" = { version = "latest", postinstall = "agent-browser install $([ \"$(uname)\" = Linux ] && echo --with-deps)" }
 "npm:cf" = "1.0.0-beta.18"
 "npm:opensrc" = "latest"
 "npm:skills" = "latest"

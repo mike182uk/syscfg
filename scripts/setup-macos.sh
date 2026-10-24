@@ -7,10 +7,10 @@
 
 # Hostname
 
-if [ -n "$HOSTNAME" ]; then
-	sudo scutil --set ComputerName "$HOSTNAME"
-	sudo scutil --set LocalHostName "$HOSTNAME"
-	sudo scutil --set HostName "$HOSTNAME"
+if [ -n "$MACOS_HOSTNAME" ]; then
+	sudo scutil --set ComputerName "$MACOS_HOSTNAME"
+	sudo scutil --set LocalHostName "$MACOS_HOSTNAME"
+	sudo scutil --set HostName "$MACOS_HOSTNAME"
 	dscacheutil -flushcache
 fi
 

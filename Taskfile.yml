@@ -27,22 +27,14 @@ tasks:
     desc: Setup 1password SSH agent
     platforms:
       - darwin
+    vars:
+      AGENT_SOCK: '{{.HOME}}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock'
+    preconditions:
+      - sh: test -S "{{.AGENT_SOCK}}"
+        msg: Enable the 1Password SSH agent (Settings > Developer > SSH Agent)
     cmds:
       - mkdir -p {{.HOME}}/.1password
-      - ln -sf {{.HOME}}/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock {{.HOME}}/.1password/agent.sock
-
-  agent-browser:
-    desc: Setup agent-browser
-    preconditions:
-      - mise which agent-browser
-    cmds:
-      - cmd: mise exec -- agent-browser install
-        platforms:
-          - darwin
-      # Linux also needs the browser system dependencies installed
-      - cmd: mise exec -- agent-browser install --with-deps
-        platforms:
-          - linux
+      - ln -sf "{{.AGENT_SOCK}}" {{.HOME}}/.1password/agent.sock
 
   agents:
     desc: Setup AI agents
@@ -155,6 +147,9 @@ tasks:
           skills: []
     preconditions:
       - mise which skills
+      - command -v gh
+      - sh: gh auth status >/dev/null 2>&1
+        msg: Run `gh auth login` first
     cmds:
       - mkdir -p {{.HOME}}/.agents/skills
       - rm -f {{.HOME}}/.agents/.skill-lock.json
@@ -163,6 +158,9 @@ tasks:
 
   atuin:
     desc: Setup atuin config
+    vars:
+      # Task passes empty .env.local values on to commands, and atuin fails on an empty ATUIN_SYNC_ADDRESS
+      NO_EMPTY_ATUIN: '{{if not .ATUIN_SYNC_ADDRESS}}env -u ATUIN_SYNC_ADDRESS{{end}}'
     preconditions:
       - command -v atuin
     cmds:
@@ -176,7 +174,8 @@ tasks:
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/opencode/plugins/atuin.ts'
           TARGET: '{{.HOME}}/.config/opencode/plugins/atuin.ts'
-      - atuin hook install claude-code
+      - '{{.NO_EMPTY_ATUIN}} atuin hook install claude-code'
+      - '{{.NO_EMPTY_ATUIN}} atuin hook install codex'
 
   bat:
     desc: Setup bat config
@@ -252,10 +251,21 @@ tasks:
           SOURCE: '{{.USER_WORKING_DIR}}/config/bun/bunfig.toml'
           TARGET: '{{.HOME}}/.bunfig.toml'
 
+  check-gh-ssh:
+    internal: true
+    preconditions:
+      - sh: gh auth status >/dev/null 2>&1
+        msg: Run `gh auth login` (choose SSH, and skip uploading a key)
+      # `ssh -T` exits 1 even on success, so check its greeting instead
+      - sh: ssh -T -o BatchMode=yes -o StrictHostKeyChecking=accept-new git@github.com 2>&1 | grep -q "successfully authenticated"
+        msg: GitHub does not accept your SSH key - add ~/.ssh/id_ed25519.pub at https://github.com/settings/ssh/new as an authentication and a signing key
+
   claude:
     desc: Setup Claude code
     preconditions:
       - command -v curl
+      - sh: test -n "{{.EXECUTOR_URL}}"
+        msg: EXECUTOR_URL must be set in .env.local
     cmds:
       - mkdir -p {{.HOME}}/.claude/themes
       # Settings
@@ -288,6 +298,9 @@ tasks:
       - curl -fsSL https://claude.ai/install.sh | bash
       # MCP
       - |
+        # The installer puts claude in ~/.local/bin, which may not be on PATH yet on a new machine
+        export PATH="{{.HOME}}/.local/bin:$PATH"
+
         mcp_add() {
           if output=$(claude mcp add --scope user "$@" 2>&1); then
             printf '%s\n' "$output"
@@ -358,16 +371,6 @@ tasks:
           SOURCE: '{{.USER_WORKING_DIR}}/config/fzf/fzfrc'
           TARGET: '{{.HOME}}/.config/fzf/fzfrc'
 
-  gh:
-    desc: Setup GitHub CLI
-    dotenv:
-      - .env
-    preconditions:
-      - command -v gh
-    cmds:
-      # Authenticate git over HTTPS using GH_TOKEN if set
-      - '[[ -n "$GH_TOKEN" ]] && gh auth setup-git; true'
-
   ghostty:
     desc: Setup Ghostty config
     platforms:
@@ -395,13 +398,22 @@ tasks:
           TARGET: '{{.HOME}}/.config/herdr/config.toml'
       - herdr server reload-config || true
       - herdr integration install opencode
-      - herdr integration install claude
+      # herdr re-adds its hook with an absolute path, even though settings.json already has it with $HOME
+      - |
+        settings="{{.USER_WORKING_DIR}}/config/claude/settings.json"
+        cp "$settings" "$settings.bak"
+        herdr integration install claude
+        mv "$settings.bak" "$settings"
       - herdr integration install codex
 
   git:
     desc: Setup Git config
     preconditions:
       - command -v git
+      - sh: test -n "{{.GIT_USERNAME}}"
+        msg: GIT_USERNAME must be set in .env.local
+      - sh: test -n "{{.GIT_EMAIL}}"
+        msg: GIT_EMAIL must be set in .env.local
     cmds:
       - task: create-symlink-safe
         vars:
@@ -416,26 +428,30 @@ tasks:
           SOURCE: '{{.USER_WORKING_DIR}}/config/git/gitconfig.local'
           TARGET: '{{.HOME}}/.gitconfig.local'
       - git config --global include.path ~/.gitconfig.local
-      - '[[ -n "$GIT_USERNAME" ]] && git config --global user.name "$GIT_USERNAME"; true'
-      - '[[ -n "$GIT_EMAIL" ]] && git config --global user.email "$GIT_EMAIL"; true'
-      # macOS uses the 1Password SSH agent
-      - cmd: git config --global url."ssh://git@github.com/".insteadOf https://github.com/
-        platforms:
-          - darwin
+      - git config --global user.name "{{.GIT_USERNAME}}"
+      - git config --global user.email "{{.GIT_EMAIL}}"
+      # Use SSH for GitHub (the 1Password SSH agent on macOS, ~/.ssh/id_ed25519 on Linux)
+      - git config --global url."ssh://git@github.com/".insteadOf https://github.com/
 
-  git-gpg:
-    desc: Setup Git GPG commit signing
-    platforms:
-      - darwin
+  git-signing:
+    desc: Setup Git commit signing with SSH
     vars:
-      GPG_SSH_PROGRAM: /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+      # macOS signs with the key in 1Password, Linux with the key from the ssh-key task
+      SIGNING_KEY: '{{if eq OS "darwin"}}{{.GIT_SIGNING_KEY}}{{else}}{{.HOME}}/.ssh/id_ed25519.pub{{end}}'
+      GPG_SSH_PROGRAM: '{{if eq OS "darwin"}}/Applications/1Password.app/Contents/MacOS/op-ssh-sign{{else}}ssh-keygen{{end}}'
     preconditions:
       - command -v git
+      - sh: test -n "{{.SIGNING_KEY}}"
+        msg: GIT_SIGNING_KEY must be set in .env.local
+      - sh: test "{{OS}}" = darwin || test -f "{{.SIGNING_KEY}}"
+        msg: '{{.SIGNING_KEY}} not found - run the ssh-key task first'
+      - sh: command -v "{{.GPG_SSH_PROGRAM}}"
+        msg: '{{.GPG_SSH_PROGRAM}} not found - is 1Password installed?'
     cmds:
       - git config --global commit.gpgsign true
       - git config --global gpg.format ssh
-      - '[ -f "{{.GPG_SSH_PROGRAM}}" ] && git config --global gpg.ssh.program "{{.GPG_SSH_PROGRAM}}"'
-      - '[[ -n "$GIT_SIGNING_KEY" ]] && git config --global user.signingkey "$GIT_SIGNING_KEY"; true'
+      - git config --global gpg.ssh.program "{{.GPG_SSH_PROGRAM}}"
+      - git config --global user.signingkey "{{.SIGNING_KEY}}"
 
   go:
     desc: Setup Go env
@@ -511,7 +527,7 @@ tasks:
       REPO: backnotprop/plannotator
       COMMANDS_DIR: '{{.HOME}}/.config/opencode/commands'
       TAG:
-        sh: gh release view --repo backnotprop/plannotator --json tagName -q .tagName
+        sh: gh release view --repo backnotprop/plannotator --json tagName -q .tagName 2>/dev/null || true
       # Release assets use x64/arm64 (not Go's amd64) in the arch token
       ARCH_TOKEN:
         sh: 'case "{{ARCH}}" in amd64) echo x64;; *) echo "{{ARCH}}";; esac'
@@ -520,6 +536,8 @@ tasks:
       - command -v curl
       - command -v sha256sum || command -v shasum
       - command -v gh
+      - sh: gh auth status >/dev/null 2>&1
+        msg: Run `gh auth login` first
     cmds:
       - mkdir -p {{.INSTALL_DIR}}
       # Download CLI binary and verify checksum
@@ -569,12 +587,14 @@ tasks:
       REPO: umputun/revdiff
       OPENCODE_DIR: '{{.HOME}}/.config/opencode'
       TAG:
-        sh: gh release view --repo umputun/revdiff --json tagName -q .tagName
+        sh: gh release view --repo umputun/revdiff --json tagName -q .tagName 2>/dev/null || true
       RAW: 'https://raw.githubusercontent.com/{{.REPO}}/{{.TAG}}'
     preconditions:
       - command -v revdiff
       - command -v curl
       - command -v gh
+      - sh: gh auth status >/dev/null 2>&1
+        msg: Run `gh auth login` first
     cmds:
       - mkdir -p {{.HOME}}/.config/revdiff/themes
       - revdiff --init-themes > /dev/null 2>&1 || true
@@ -625,8 +645,9 @@ tasks:
       - task: brew-install
       - task: ssh
       - task: ssh-key
+      - task: check-gh-ssh
       - task: git
-      - task: gh
+      - task: git-signing
       - task: dev-dirs
       - task: scratch-dir
       - task: bin
@@ -643,7 +664,6 @@ tasks:
       - task: fzf
       - task: atuin
       - task: bun
-      - task: agent-browser
       - task: claude
       - task: opencode
       - task: herdr
