@@ -266,6 +266,8 @@ tasks:
       - command -v curl
       - sh: test -n "{{.EXECUTOR_URL}}"
         msg: EXECUTOR_URL must be set in .env.local
+      - sh: test -x "{{.HOME}}/.local/bin/syscfg-env"
+        msg: syscfg-env not found - run the bin task first
     cmds:
       - mkdir -p {{.HOME}}/.claude/themes
       # Settings
@@ -495,12 +497,19 @@ tasks:
     vars:
       COMMAND_FILES:
         sh: ls {{.USER_WORKING_DIR}}/config/opencode/commands/*.md 2>/dev/null || true
+    preconditions:
+      - sh: test -x "{{.HOME}}/.local/bin/syscfg-env"
+        msg: syscfg-env not found - run the bin task first
     cmds:
-      - mkdir -p {{.HOME}}/.config/opencode/commands {{.HOME}}/.config/opencode/themes
+      - mkdir -p {{.HOME}}/.config/opencode/commands {{.HOME}}/.config/opencode/themes {{.HOME}}/.config/opencode/plugins
       - task: create-symlink-safe
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/opencode/opencode.jsonc'
           TARGET: '{{.HOME}}/.config/opencode/opencode.jsonc'
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/opencode/plugins/executor-headers.ts'
+          TARGET: '{{.HOME}}/.config/opencode/plugins/executor-headers.ts'
       - 'test -e "{{.HOME}}/.config/opencode/cli.json" || cp "{{.USER_WORKING_DIR}}/config/opencode/cli.json" "{{.HOME}}/.config/opencode/cli.json"'
       - for: { var: THEMES }
         task: create-symlink-safe

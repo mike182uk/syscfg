@@ -53,6 +53,9 @@
     "button": false
   },
   "agent": {
+    "threads_sidebar": {
+      "position": "left"
+    },
     "inline_assistant_model": {
       "provider": "openai-subscribed",
       "model": "gpt-6.1-sol",

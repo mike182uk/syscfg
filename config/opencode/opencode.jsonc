@@ -56,12 +56,10 @@
         "disabled": true
       },
       // https://executor.sh/docs
+      // Auth is handled by plugins/executor-headers.ts
       "executor": {
         "type": "remote",
         "url": "{env:EXECUTOR_URL}",
-        "headers": {
-          "Authorization": "Bearer {env:EXECUTOR_TOKEN_OC}"
-        },
         "oauth": false,
         "codemode": false // Executor is already a code-mode server
       }
