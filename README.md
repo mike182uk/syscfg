@@ -5,13 +5,14 @@ Everything I need to set up a new macOS / Linux based system
 ## Prerequisites
 
 - [Git](https://git-scm.com/)
+- [1Password](https://1password.com/)
 - [Homebrew](https://brew.sh/)
 - [Task](https://taskfile.dev/#/installation)
 
 ### Install `homebrew`
 
 ```sh
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+sudo -v && NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
 ```sh
@@ -48,15 +49,16 @@ cd ~/.syscfg && cp .env.local.example .env.local
 - `HOSTNAME` - Desired hostname for the machine (only used during `macos` setup)
 - `GIT_USERNAME` - Username for Git user
 - `GIT_EMAIL` - Email for Git user
-- `GIT_SIGNING_KEY` - Path to GPG signing key for Git
+- `GIT_SIGNING_KEY` - Public SSH key from 1Password used to sign commits (macOS only - Linux signs with `~/.ssh/id_ed25519`)
 - `ATUIN_SYNC_ADDRESS` - Atuin sync server URL
-- `EXECUTOR_URL` - Executor API URL
+- `EXECUTOR_URL` - Executor URL
 
-Secrets go in `.env`, mounted from a [1Password Environment](https://developer.1password.com/docs/environments/local-env-file/) using the variables in `.env.example`:
+Secrets go in `.env`, using the variables in `.env.example`. With the 1Password desktop app, mount it from a [1Password Environment](https://developer.1password.com/docs/environments/local-env-file/). Without it (e.g. a headless VM), create it as a regular file and restrict it to your user:
 
-- `GH_TOKEN` - `gh` token
-- `GH_COPILOT_TOKEN` - GitHub Copilot token, used to sign in to Copilot automatically. Copy it from a machine that is already signed in:
-  `sqlite3 ~/.config/github-copilot/auth.db "select cast(token_ciphertext as text) from oauth_tokens limit 1"`
+```sh
+cp .env.example .env && chmod 600 .env
+```
+
 - `EXECUTOR_TOKEN_CC` - Executor API key (Claude Code)
 - `EXECUTOR_TOKEN_OC` - Executor API key (OpenCode)
 
@@ -72,6 +74,7 @@ task
 
 ```sh
 task brew-install     # Mac App Store apps will fail until signed in
+gh auth login
 task macos
 ```
 
@@ -81,7 +84,7 @@ Open 1Password, sign in, and enable SSH agent (`Settings` > `Developer` > `SSH A
 task 1password-ssh
 task ssh
 task git
-task git-gpg          # Requires GIT_SIGNING_KEY
+task git-signing
 task dev-dirs
 task scratch-dir
 task bin
@@ -99,18 +102,17 @@ task btop
 task fzf
 task atuin
 task bun
-task agent-browser
 task claude
 task sublime-text
 task zed
 task opencode
 task herdr
-task revdiff          # Requires GitHub auth or GH_TOKEN
+task revdiff
 task worktrunk
-task plannotator      # Requires GitHub auth or GH_TOKEN
+task plannotator
 task raycast
 task zsh
-task agents           # Requires GitHub auth or GH_TOKEN
+task agents
 ```
 
 To install Mac App Store apps, sign into Mac App Store, then re-run: 
@@ -124,9 +126,10 @@ task brew-install
 ```sh
 task brew-install
 task ssh
-task ssh-key
+task ssh-key           # Add the printed key on GitHub twice: as an authentication key and a signing key
+gh auth login          # Choose SSH, and skip uploading a key
 task git
-task gh
+task git-signing
 task dev-dirs
 task scratch-dir
 task bin
@@ -143,15 +146,14 @@ task btop
 task fzf
 task atuin
 task bun
-task agent-browser
 task claude
 task opencode
 task herdr
-task revdiff         # Requires GitHub auth or GH_TOKEN
+task revdiff
 task worktrunk
-task plannotator     # Requires GitHub auth or GH_TOKEN
+task plannotator
 task zsh
-task agents          # Requires GitHub auth or GH_TOKEN
+task agents
 ```
 
 or you can run everything in one go with:
