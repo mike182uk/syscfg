@@ -1,4 +1,4 @@
-// From https://github.com/atuinsh/atuin/blob/v18.24.1/crates/atuin-common/res/harnesstools/opencode/atuin.v2.ts
+// From https://github.com/atuinsh/atuin/blob/v18.24.4/crates/atuin-common/res/harnesstools/opencode/atuin.v2.ts
 // Local change: set PWD when spawning atuin, which reads the directory from PWD rather than the process cwd
 // (the same bug https://github.com/atuinsh/atuin/pull/4318 fixes for PowerShell).
 // Replace with `atuin hook install opencode` once the released template sets PWD.

@@ -567,9 +567,11 @@ tasks:
       - '{{.INSTALL_DIR}}/plannotator install-runtime agent-terminal || echo "Skipped agent terminal runtime install"'
       # Download OpenCode slash commands from the release tag
       - mkdir -p {{.COMMANDS_DIR}}
-      - curl -fsSL -o "{{.COMMANDS_DIR}}/plannotator-review.md" "https://raw.githubusercontent.com/{{.REPO}}/{{.TAG}}/apps/opencode-plugin/commands/plannotator-review.md"
-      - curl -fsSL -o "{{.COMMANDS_DIR}}/plannotator-annotate.md" "https://raw.githubusercontent.com/{{.REPO}}/{{.TAG}}/apps/opencode-plugin/commands/plannotator-annotate.md"
-      - curl -fsSL -o "{{.COMMANDS_DIR}}/plannotator-last.md" "https://raw.githubusercontent.com/{{.REPO}}/{{.TAG}}/apps/opencode-plugin/commands/plannotator-last.md"
+      - |
+        NAMES=$(gh api "repos/{{.REPO}}/contents/apps/opencode-plugin/commands?ref={{.TAG}}" -q '.[].name') || exit 1
+        for name in $NAMES; do
+          curl -fsSL -o "{{.COMMANDS_DIR}}/$name" "https://raw.githubusercontent.com/{{.REPO}}/{{.TAG}}/apps/opencode-plugin/commands/$name" || exit 1
+        done
       # Clear cached plugin and jiti cache to force fresh download
       - rm -rf {{.HOME}}/.cache/opencode/node_modules/@plannotator {{.HOME}}/.cache/opencode/packages/@plannotator {{.HOME}}/.cache/opencode/npm/@plannotator {{.HOME}}/.bun/install/cache/@plannotator /tmp/jiti 2>/dev/null || true
       - mkdir -p {{.HOME}}/.plannotator
