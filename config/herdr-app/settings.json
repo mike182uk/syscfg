@@ -1,0 +1,13 @@
+{
+  "zoom": 1,
+  "sounds": {
+    "enabled": true
+  },
+  "font_size": 14,
+  "telemetry": false,
+  "minimum_contrast": 1,
+  "theme": {
+    "light": "paper",
+    "dark": "ink"
+  }
+}

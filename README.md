@@ -141,7 +141,8 @@ task claude
 task sublime-text
 task zed
 task opencode
-task herdr
+task herdr-tui
+task herdr-app
 task revdiff
 task worktrunk
 task plannotator
@@ -207,7 +208,7 @@ task atuin
 task bun
 task claude
 task opencode
-task herdr
+task herdr-tui
 task revdiff
 task worktrunk
 task plannotator

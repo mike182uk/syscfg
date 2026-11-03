@@ -388,15 +388,15 @@ tasks:
           SOURCE: '{{.USER_WORKING_DIR}}/config/ghostty/themes'
           TARGET: '{{.HOME}}/.config/ghostty/themes'
 
-  herdr:
-    desc: Setup Herdr config
+  herdr-tui:
+    desc: Setup Herdr TUI config
     preconditions:
       - command -v herdr
     cmds:
       - mkdir -p {{.HOME}}/.config/herdr
       - task: create-symlink-safe
         vars:
-          SOURCE: '{{.USER_WORKING_DIR}}/config/herdr/config.toml'
+          SOURCE: '{{.USER_WORKING_DIR}}/config/herdr-tui/config.toml'
           TARGET: '{{.HOME}}/.config/herdr/config.toml'
       - herdr server reload-config || true
       - herdr integration install opencode
@@ -407,6 +407,23 @@ tasks:
         herdr integration install claude
         mv "$settings.bak" "$settings"
       - herdr integration install codex
+
+  herdr-app:
+    desc: Setup Herdr app config
+    platforms:
+      - darwin
+    preconditions:
+      - command -v herdr-app
+    cmds:
+      - mkdir -p {{.HOME}}/.config/herdr-app/layouts
+      - for: [keys.json, settings.json, layouts/mike.json]
+        task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/herdr-app/{{.ITEM}}'
+          TARGET: '{{.HOME}}/.config/herdr-app/{{.ITEM}}'
+      # herdr only reloads a linked file when the link itself changes
+      - for: [keys.json, settings.json, layouts/mike.json]
+        cmd: ln -sfh "{{.USER_WORKING_DIR}}/config/herdr-app/{{.ITEM}}" "{{.HOME}}/.config/herdr-app/{{.ITEM}}"
 
   git:
     desc: Setup Git config
@@ -677,7 +694,7 @@ tasks:
       - task: bun
       - task: claude
       - task: opencode
-      - task: herdr
+      - task: herdr-tui
       - task: revdiff
       - task: worktrunk
       - task: plannotator
