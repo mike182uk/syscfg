@@ -592,11 +592,13 @@ tasks:
       # Clear cached plugin and jiti cache to force fresh download
       - rm -rf {{.HOME}}/.cache/opencode/node_modules/@plannotator {{.HOME}}/.cache/opencode/packages/@plannotator {{.HOME}}/.cache/opencode/npm/@plannotator {{.HOME}}/.bun/install/cache/@plannotator /tmp/jiti 2>/dev/null || true
       - mkdir -p {{.HOME}}/.plannotator
+      # opencode.jsonc reads this to pick the plugin version
+      - printf '%s' '{{trimPrefix "v" .TAG}}' > {{.HOME}}/.plannotator/installed-version
       - task: create-symlink-safe
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/plannotator/config.json'
           TARGET: '{{.HOME}}/.plannotator/config.json'
-      - echo "plannotator {{.TAG}} installed"
+      - echo "plannotator {{.TAG}} installed - run /reload in OpenCode to load the matching plugin"
 
   raycast:
     desc: Install Raycast preferences
@@ -635,8 +637,10 @@ tasks:
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/revdiff/themes/{{.ITEM}}'
           TARGET: '{{.HOME}}/.config/revdiff/themes/{{.ITEM}}'
+      # Upstream's V2 plugin is not used: it has no agent tool and runs its own plan
+      # review, which plannotator handles. config/opencode/plugins/revdiff.ts provides
+      # the tool, using upstream's launcher script and command.
       # https://github.com/umputun/revdiff/blob/master/plugins/opencode/README.md
-      # Plan-review plugin intentionally skipped - plannotator handles plan review
       - mkdir -p {{.OPENCODE_DIR}}/commands {{.OPENCODE_DIR}}/plugins {{.OPENCODE_DIR}}/tools
       - curl -fsSL -o "{{.OPENCODE_DIR}}/commands/revdiff.md" "{{.RAW}}/plugins/opencode/commands/revdiff.md"
       - task: create-symlink-safe

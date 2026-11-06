@@ -126,7 +126,7 @@
   ],
   "plugins": [
     // https://github.com/backnotprop/plannotator
-    "@plannotator/opencode@0.28.38"
+    "@plannotator/opencode@{file:~/.plannotator/installed-version}"
   ],
   "share": "disabled",
   "websearch": false
