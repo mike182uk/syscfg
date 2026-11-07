@@ -1,0 +1,34 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "cua-driver-status",
+  "title": "Cua Driver Status",
+  "description": "Shows a menu bar dot while cua-driver is in use",
+  "icon": "icon.png",
+  "author": "mike",
+  "license": "MIT",
+  "platforms": [
+    "macOS"
+  ],
+  "commands": [
+    {
+      "name": "status",
+      "title": "Cua Driver Status",
+      "description": "Shows a menu bar dot while cua-driver is in use",
+      "mode": "menu-bar",
+      "interval": "10s"
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "2.11.1"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.5",
+    "@types/react": "19.3.0",
+    "typescript": "5.9.3"
+  },
+  "scripts": {
+    "build": "ray build",
+    "dev": "ray develop",
+    "typecheck": "tsc --noEmit"
+  }
+}
