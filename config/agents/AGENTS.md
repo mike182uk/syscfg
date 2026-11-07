@@ -51,6 +51,16 @@ Prefer these tools over a plain web search, and fall back to web search if they 
 - Prefer `grep` (grep.app) for checking external GitHub code
   - When local repository inspection is needed, use an existing local checkout if available. Otherwise, use `opensrc` instead of `git clone`
 
+# Browser & desktop automation
+
+- Pick the tool by what the task needs:
+  - `agent-browser` - a clean browser with no logins, for programmatic browsing and scraping
+  - `browse` - my real browser with my logins, for tasks in my browser or when I ask you to look at a tab
+    - You can only use your own tabs. To work in one of my open tabs, ask me to lend it with the browse toolbar button
+  - `chrome-devtools` MCP - only for performance traces, Lighthouse audits and memory debugging. It needs remote debugging turned on in Chrome
+  - `cua-driver` - desktop apps, not web pages
+- `browse`, `chrome-devtools` and `cua-driver` are disabled by default. If the one you need is not available, ask me to enable it instead of switching to another tool
+
 # Code
 
 - Before writing, modifying, or reviewing code, load the `karpathy-guidelines` skill

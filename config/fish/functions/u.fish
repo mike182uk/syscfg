@@ -21,7 +21,7 @@ function u --description 'Update system'
 	_update_msg "Updating misc programs..."
 	claude update
 	echo ""
-	mise upgrade npm:agent-browser npm:opensrc npm:skills
+	mise upgrade npm:@opencode/browse npm:agent-browser npm:opensrc npm:skills
 
 	_update_msg "Updating agent skills..."
 	skills update --global

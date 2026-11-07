@@ -4,6 +4,15 @@
   "update": "disable", // updates managed by brew
   "mcp": {
     "servers": {
+      // https://github.com/anomalyco/browse
+      "browse": {
+        "type": "local",
+        "command": [
+          "browse",
+          "mcp"
+        ],
+        "disabled": true
+      },
       // https://github.com/ChromeDevTools/chrome-devtools-mcp
       "chrome-devtools": {
         "type": "local",
@@ -39,15 +48,6 @@
       "notion-work": {
         "type": "remote",
         "url": "https://mcp.notion.com/mcp",
-        "disabled": true
-      },
-      // https://github.com/microsoft/playwright-mcp
-      "playwright": {
-        "type": "local",
-        "command": [
-          "npx",
-          "@playwright/mcp@latest"
-        ],
         "disabled": true
       },
       // https://docs.sentry.io/product/sentry-mcp
