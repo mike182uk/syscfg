@@ -527,6 +527,11 @@ tasks:
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/opencode/plugins/executor-headers.ts'
           TARGET: '{{.HOME}}/.config/opencode/plugins/executor-headers.ts'
+      - mkdir -p {{.HOME}}/.config/opencode/plugins/program-status
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/opencode/plugins/program-status/tui.ts'
+          TARGET: '{{.HOME}}/.config/opencode/plugins/program-status/tui.ts'
       - 'test -e "{{.HOME}}/.config/opencode/cli.json" || cp "{{.USER_WORKING_DIR}}/config/opencode/cli.json" "{{.HOME}}/.config/opencode/cli.json"'
       - for: { var: THEMES }
         task: create-symlink-safe
@@ -649,6 +654,25 @@ tasks:
           TARGET: '{{.OPENCODE_DIR}}/plugins/revdiff.ts'
       - curl -fsSL -o "{{.OPENCODE_DIR}}/tools/launch-revdiff.sh" "{{.RAW}}/.claude-plugin/skills/revdiff/scripts/launch-revdiff.sh"
       - chmod +x "{{.OPENCODE_DIR}}/tools/launch-revdiff.sh"
+
+  rex:
+    desc: Setup Rex config and agent integrations
+    platforms:
+      - darwin
+    preconditions:
+      - command -v rex
+    cmds:
+      - mkdir -p {{.HOME}}/.config/rex
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/rex/init.lua'
+          TARGET: '{{.HOME}}/.config/rex/init.lua'
+      - '[ -f {{.HOME}}/.config/rex/local.lua ] || touch {{.HOME}}/.config/rex/local.lua'
+      - ln -sfh "{{.HOME}}/.config/rex/local.lua" "{{.USER_WORKING_DIR}}/config/rex/local.lua"
+      - rex config reload
+      - rex skill setup
+      - mkdir -p {{.HOME}}/.config/fish/completions
+      - rex completion fish > {{.HOME}}/.config/fish/completions/rex.fish
 
   ripgrep:
     desc: Setup ripgrep config
@@ -775,6 +799,10 @@ tasks:
         vars:
           SOURCE: '{{.USER_WORKING_DIR}}/config/worktrunk/herdr-worktree.sh'
           TARGET: '{{.HOME}}/.config/worktrunk/herdr-worktree.sh'
+      - task: create-symlink-safe
+        vars:
+          SOURCE: '{{.USER_WORKING_DIR}}/config/worktrunk/rex-worktree.sh'
+          TARGET: '{{.HOME}}/.config/worktrunk/rex-worktree.sh'
       - wt config shell install fish --yes
       - wt config plugins opencode install --yes
 

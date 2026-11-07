@@ -144,6 +144,7 @@ task opencode
 task herdr-tui
 task herdr-app
 task revdiff
+task rex
 task worktrunk
 task plannotator
 task raycast
