@@ -32,30 +32,6 @@
         ],
         "disabled": true
       },
-      // https://docs.incident.io/ai/remote-mcp
-      "incidentio-work": {
-        "type": "remote",
-        "url": "https://mcp.incident.io/mcp",
-        "disabled": true
-      },
-      // https://linear.app/docs/mcp
-      "linear-work": {
-        "type": "remote",
-        "url": "https://mcp.linear.app/mcp",
-        "disabled": true
-      },
-      // https://developers.notion.com/guides/mcp/get-started-with-mcp
-      "notion-work": {
-        "type": "remote",
-        "url": "https://mcp.notion.com/mcp",
-        "disabled": true
-      },
-      // https://docs.sentry.io/product/sentry-mcp
-      "sentry-work": {
-        "type": "remote",
-        "url": "https://mcp.sentry.dev/mcp",
-        "disabled": true
-      },
       // https://executor.sh/docs
       // Auth is handled by plugins/executor-headers.ts
       "executor": {

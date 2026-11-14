@@ -316,12 +316,9 @@ tasks:
           fi
         }
 
-        # mcp_add browse -- browse mcp
-        # mcp_add chrome-devtools -- npx -y chrome-devtools-mcp@latest --autoConnect
-        # mcp_add --transport http incidentio-work https://mcp.incident.io/mcp
-        # mcp_add --transport http linear-work https://mcp.linear.app/mcp
-        # mcp_add --transport http notion-work https://mcp.notion.com/mcp
-        # mcp_add --transport http sentry-work https://mcp.sentry.dev/mcp
+        mcp_add browse -- browse mcp
+        mcp_add chrome-devtools -- npx -y chrome-devtools-mcp@latest
+        mcp_add cua-driver -- cua-driver mcp
 
         claude mcp remove --scope user executor >/dev/null 2>&1 || true
         claude mcp add-json --scope user executor "{\"type\":\"http\",\"url\":\"${EXECUTOR_URL}\",\"headersHelper\":\"{{.HOME}}/.claude/executor-headers.sh\"}"
