@@ -11,5 +11,8 @@ trim_trailing_whitespace = true
 [*.md]
 trim_trailing_whitespace = false
 
-[*.{fish,sh}]
+[*.fish]
+indent_size = 4
+
+[*.sh]
 indent_style = tab

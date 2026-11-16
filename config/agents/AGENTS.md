@@ -28,37 +28,40 @@ Prefer these tools over a plain web search, and fall back to web search if they 
 
 - `context7` - library and framework documentation
 - `deepwiki` - how a specific GitHub repo works
-- `grep` (grep.app) - real-world code examples from GitHub
+- grep.app (the `grep` MCP) - real-world code examples from GitHub
 - `exa` - current events and non-code research
 
 # Writing
 
-- In prose, use hyphens (`-`) instead of em-dashes (`—`), en-dashes (`–`), or double hyphens (`--`)
-- Do not use semicolons in prose, use separate sentences instead
+- In prose, use hyphens (`-`) instead of em-dashes (`—`), en-dashes (`–`), or double hyphens (`--`), including in ranges (e.g. `3-5`)
+- Do not use semicolons in prose. Use separate sentences instead
 
 # Environment
 
 - Tools (e.g. `node`, `bun`, `go`, `rust`) are managed by `mise` (not `nvm`, `brew`)
 - Packages are managed by `Homebrew`. If not available use the system package manager
-- Docker is managed by `Orbstack` on macOS (not `Docker Desktop`) or standard Docker on Linux
+- Docker on macOS is `OrbStack`, not `Docker Desktop`
 
 # Tools
 
-- Use `ax` for web fetching and HTML extraction instead of `curl` or throwaway Python / Node parsing scripts
+- Use `ax` for fetching web pages and HTML extraction instead of the `webfetch` tool, `curl`, or throwaway Python / Node parsing scripts
+  - `curl` is fine for APIs, raw files, downloads and status checks
   - Load the `ax` skill before use. If its guidance is insufficient, run `ax agent-context` for the full manual
   - Use another approach only when `ax` cannot handle the task, not merely because an extraction attempt failed
-- Use `wt` instead of `git worktree` commands to create, list, or remove worktrees. This also applies when a skill or instruction names a `git worktree` command - run the `wt` equivalent. Only use `git worktree` if `wt` is unavailable or cannot get the desired result
-- Prefer `grep` (grep.app) for checking external GitHub code
-  - When local repository inspection is needed, use an existing local checkout if available. Otherwise, use `opensrc` instead of `git clone`
+- Use `wt` instead of `git worktree` commands to create or remove worktrees. This also applies when a skill or instruction names a `git worktree` command - run the `wt` equivalent. Only use `git worktree` if `wt` is unavailable or cannot get the desired result
+- For repos already checked out under `$DEV_DIR/repos`, use the local checkout (fetch first if you need the latest)
+- To read an external repo or package beyond one or two files, or to search its code, use `opensrc`
+  - Do not clone it, or read it file by file with `gh api .../contents` or raw.githubusercontent.com URLs
+  - Use `git clone` only to make changes or check out a PR
 
 # Browser & desktop automation
 
 - Pick the tool by what the task needs:
-  - `agent-browser` - a clean browser with no logins, for programmatic browsing and scraping
-  - `browse` - my real browser with my logins, for tasks in my browser or when I ask you to look at a tab
-    - You can only use your own tabs. To work in one of my open tabs, ask me to lend it with the browse toolbar button
-  - `chrome-devtools` MCP - only for performance traces, Lighthouse audits and memory debugging. It needs remote debugging turned on in Chrome
-  - `cua-driver` - desktop apps, not web pages
+  - `agent-browser` - for programmatic browsing and scraping in a clean browser with no logins
+  - `browse` - for tasks that need my real browser and logins
+    - It can only control tabs it opened. To work in a tab I already have open, ask me to lend it with the browse toolbar button
+  - `chrome-devtools` MCP - only for performance traces, Lighthouse audits and memory debugging. It also needs remote debugging turned on in Chrome
+  - `cua-driver` - for desktop apps, not web pages
 - `browse`, `chrome-devtools` and `cua-driver` are disabled by default. If the one you need is not available, ask me to enable it instead of switching to another tool
 
 # Code
@@ -72,18 +75,20 @@ Prefer these tools over a plain web search, and fall back to web search if they 
 
 ## General
 
-- Follow existing code style and patterns in the project
-- Keep changes minimal and focused
 - Always use pinned versions of dependencies unless the project deviates from this rule
-- Do not add comments. The exception is a non-obvious "why" (a workaround, a constraint, a surprising choice) that the reader cannot get from the code
-- Verify your work by running the project's formatter and linter, and the tests covering what you changed. Say which commands you ran, and say so if you skipped any
+- Do not add comments by default, including docstrings and JSDoc. Add one only for a fact the reader cannot get from the code, types or names:
+  - Why the code is the way it is (e.g. a workaround, an external constraint, a surprising choice)
+  - On types, fields and exported functions, something a caller would otherwise have to read the implementation to know (e.g. units, format, when an optional value is set)
+  - What a script does and how to run it, as a short header
+- Never add a comment that restates the name, the type or the code
+- Where a project's convention or tooling requires doc comments, follow it
+- Before finishing, check your diff for added comments and remove any that do not qualify
 
 ## TypeScript
 
 - Never use the `any` type without explicit approval
 - Prefer `satisfies`, a type guard, or fixing the source type over an `as` cast. `as const` is not a cast and is fine. If a cast is unavoidable, say why
 - Prefer `interface` over `type` for object shapes
-- For type errors, complex generics, or inference problems, load the `typescript-magician` skill
 
 ## Go
 
@@ -92,9 +97,10 @@ Prefer these tools over a plain web search, and fall back to web search if they 
 
 ## Shell
 
-- After editing a shell script, format with `shfmt` and lint with `shellcheck`
+- After editing a sh or bash script, format with `shfmt` and lint with `shellcheck`
+- After editing a fish file, format with `fish_indent -w`
 
 # Scratch
 
 - One-off work that is not a project (e.g. an investigation, a data gathering exercise, a set of notes) goes in `$SCRATCH_DIR/<YYYY-MM-DD>-<slug>/`, dated when the work starts
-- Security audit's generated by the `security-audit` skill should use a scratch directory instead of the skill's default `~/security-audit-skill/` directory
+- Security audits generated by the `security-audit` skill should use a scratch directory instead of the skill's default `~/security-audit-skill/` directory
