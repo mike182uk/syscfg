@@ -21,6 +21,7 @@
 # Acting on my behalf
 
 - Never take external actions (e.g. posting a comment, sending an email, approving a PR) on my behalf unless I explicitly ask for that specific action
+- Before committing, show me the full commit message. Before creating a PR, show me the PR title and body. Wait for my approval before running either
 
 # Documentation & research
 
