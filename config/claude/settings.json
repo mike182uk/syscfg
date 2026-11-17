@@ -6,6 +6,8 @@
     "pr": ""
   },
   "includeGitInstructions": false,
+  "syncClaudeAiSkills": false,
+  "syncClaudeAiPlugins": false,
   "env": {
     "DISABLE_TELEMETRY": "1",
     "DISABLE_ERROR_REPORTING": "1",
